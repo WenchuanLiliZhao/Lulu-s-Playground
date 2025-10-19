@@ -1,73 +1,131 @@
-# React + TypeScript + Vite
+# Lululemon UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, accessible React component library for building beautiful user interfaces.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install lululemon-ui
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```tsx
+import { Button } from 'lululemon-ui'
+import 'lululemon-ui/styles'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+function App() {
+  return (
+    <Button variant="primary" size="medium">
+      Click Me
+    </Button>
+  )
+}
 ```
+
+## Available Components
+
+- **Button** - A versatile button component with multiple variants and sizes
+
+More components coming soon!
+
+## Component Props
+
+### Button
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'primary' \| 'secondary' \| 'outline'` | `'primary'` | Button style variant |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Button size |
+| `fullWidth` | `boolean` | `false` | Make button full width |
+| `disabled` | `boolean` | `false` | Disable button interaction |
+
+## Development
+
+This project is organized into three main parts:
+
+### 1. Components (`src/components/`)
+The design components that are published to npm. This is the core library.
+
+### 2. Playground (`src/playground/`)
+A development environment for testing components and creating page demos.
+
+### 3. Debug (`src/debug/`)
+Debug pages for troubleshooting and testing.
+
+## Scripts
+
+```bash
+# Start development server (playground)
+npm run dev
+
+# Build the library for npm publishing
+npm run build:lib
+
+# Build the playground for deployment
+npm run build:playground
+
+# Run linter
+npm run lint
+
+# Preview production build
+npm run preview
+```
+
+## Project Structure
+
+```
+app/
+├── src/
+│   ├── components/        # Design components (published to npm)
+│   │   ├── Button/
+│   │   └── index.ts
+│   ├── playground/        # Development playground
+│   │   ├── pages/
+│   │   ├── styles/
+│   │   └── App.tsx
+│   ├── debug/            # Debug pages
+│   └── lib-entry.ts      # npm package entry point
+├── dist/                 # Built library (generated)
+├── package.json
+├── vite.config.ts        # Playground config
+└── vite.config.lib.ts    # Library build config
+```
+
+## Publishing to npm
+
+1. Update version in `package.json`
+2. Build the library:
+   ```bash
+   npm run build:lib
+   ```
+3. Verify the package contents:
+   ```bash
+   npm pack --dry-run
+   ```
+4. Publish:
+   ```bash
+   npm publish
+   ```
+
+## Contributing
+
+When adding a new component:
+
+1. Create a new directory in `src/components/`
+2. Include these files:
+   - `ComponentName.tsx` - Main component file
+   - `ComponentName.types.ts` - TypeScript types
+   - `ComponentName.module.scss` - Styles
+   - `index.ts` - Export file
+3. Export the component in `src/components/index.ts`
+4. Export types in `src/lib-entry.ts`
+5. Test in the playground
+
+## License
+
+MIT
+
+## Support
+
+For issues and questions, please open an issue on GitHub.

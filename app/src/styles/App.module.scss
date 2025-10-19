@@ -1,0 +1,49 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 2rem;
+  background: linear-gradient(135deg, #d31334 0%, #b5112c 100%);
+  color: white;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.nav {
+  padding: 1.5rem 2rem;
+  display: flex;
+  gap: 1rem;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem;
+  background: #fff;
+}
+
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #2c2c2c;
+  font-weight: 600;
+}
+

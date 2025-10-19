@@ -1,0 +1,45 @@
+# Source files
+src/
+
+# Config files
+*.html
+vite.config.ts
+vite.config.lib.ts
+tsconfig*.json
+eslint.config.js
+.gitignore
+
+# Development directories
+public/
+node_modules/
+
+# Documentation
+*.md
+!README.md
+
+# Build files for playground
+dist-ssr/
+
+# Editor directories
+.vscode/
+.idea/
+.cursor/
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+
+# Playground and debug directories
+src/playground/
+src/debug/
+
