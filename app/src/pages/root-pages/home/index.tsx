@@ -2,6 +2,7 @@ import AppLayout from "../../../components/ui/AppLayout";
 import type { PageProps } from "../../_page-types";
 import { Link } from "react-router";
 import { PlaygroundPages } from "../../playground";
+import { DebugPages } from "../../debug";
 
 const Home: PageProps = {
   title: "Home",
@@ -42,6 +43,34 @@ const Home: PageProps = {
           <h2 style={{ marginBottom: "15px" }}>Playground Demos</h2>
           <ul style={{ listStyle: "none", padding: 0 }}>
             {Object.values(PlaygroundPages).map((page) => (
+              <li key={page.slug} style={{ marginBottom: "10px" }}>
+                <Link 
+                  to={`/${page.slug}`}
+                  style={{ 
+                    color: "var(--brand-color)", 
+                    textDecoration: "none",
+                    fontWeight: 600
+                  }}
+                >
+                  {page.title} →
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div
+          style={{
+            marginTop: "30px",
+            padding: "20px",
+            backgroundColor: "var(--color-bg-sec)",
+            border: "1px solid var(--color-border-main)",
+            borderRadius: "8px",
+          }}
+        >
+          <h2 style={{ marginBottom: "15px" }}>Debug Pages</h2>
+          <ul style={{ listStyle: "none", padding: 0 }}>
+            {Object.values(DebugPages).map((page) => (
               <li key={page.slug} style={{ marginBottom: "10px" }}>
                 <Link 
                   to={`/${page.slug}`}
