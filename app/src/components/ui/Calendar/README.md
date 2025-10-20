@@ -10,11 +10,12 @@ A full-year calendar component with self-aware responsive design using ResizeObs
 - **Configurable breakpoint**: Customize when to switch between layouts
 - **Today highlight**: Current day is highlighted in red
 - **Year selection**: View any year from 1900 to 2100
+- **Time ranges**: Highlight specific date ranges with custom text and background colors
 
 ## Usage
 
 ```tsx
-import { Calendar } from '@/components/ui/Calendar'
+import { Calendar, type TimeRange } from '@/components/ui/Calendar'
 
 // Basic usage - shows current year
 <Calendar />
@@ -25,11 +26,33 @@ import { Calendar } from '@/components/ui/Calendar'
 // Custom breakpoint (default is 600px)
 <Calendar breakpoint={768} />
 
+// With time ranges (using project color system)
+import { COLOR_SCALES } from '@/styles/colors'
+
+const timeRanges: TimeRange[] = [
+  {
+    interval: [new Date(2025, 0, 1), new Date(2025, 0, 7)],
+    color: COLOR_SCALES.wilderness.colors[8],
+    backgroundColor: COLOR_SCALES.wilderness.colors[4],
+  },
+  {
+    interval: [new Date(2025, 11, 24), new Date(2025, 11, 31)],
+    color: COLOR_SCALES.daydream.colors[8],
+    backgroundColor: COLOR_SCALES.daydream.colors[4],
+  },
+]
+
+<Calendar 
+  year={2025} 
+  timeRanges={timeRanges}
+/>
+
 // Combined with custom styling
 <Calendar 
   year={2025} 
   breakpoint={600}
   className="my-custom-class"
+  timeRanges={timeRanges}
 />
 ```
 
@@ -40,6 +63,17 @@ import { Calendar } from '@/components/ui/Calendar'
 | `year` | `number` | Current year | The year to display |
 | `className` | `string` | `''` | Optional additional CSS class |
 | `breakpoint` | `number` | `600` | Width threshold (in pixels) for switching between desktop and mobile layouts |
+| `timeRanges` | `TimeRange[]` | `[]` | Array of date ranges to highlight with custom colors |
+
+### TimeRange Interface
+
+```typescript
+interface TimeRange {
+  interval: [Date, Date]  // [start date, end date] (inclusive)
+  color: string           // Text color (e.g., '#ffffff')
+  backgroundColor: string // Background color (e.g., '#4CAF50')
+}
+```
 
 ## Responsive Behavior
 

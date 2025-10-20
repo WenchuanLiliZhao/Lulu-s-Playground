@@ -1,6 +1,25 @@
 import { useState, useEffect, useRef } from 'react'
 import styles from './_styles.module.scss'
 
+
+// 
+
+
+export interface TimeRange {
+  /**
+   * The date range [start, end] (inclusive)
+   */
+  interval: [Date, Date]
+  /**
+   * Color of the day text
+   */
+  color: string
+  /**
+   * Background color of the day cell
+   */
+  backgroundColor: string
+}
+
 export interface CalendarProps {
   /**
    * Year to display
@@ -16,6 +35,10 @@ export interface CalendarProps {
    * @default 600
    */
   breakpoint?: number
+  /**
+   * Array of time ranges with custom colors
+   */
+  timeRanges?: TimeRange[]
 }
 
 interface MonthData {
@@ -48,12 +71,54 @@ const getMonthData = (month: number, year: number): MonthData => {
   return { month, year, firstDay, daysInMonth }
 }
 
+/**
+ * Check if a date falls within any of the time ranges and return the styling
+ */
+const getDateRangeStyle = (
+  date: Date,
+  timeRanges?: TimeRange[]
+): { color?: string; backgroundColor?: string } | null => {
+  if (!timeRanges || timeRanges.length === 0) return null
+
+  // Normalize the date to midnight for comparison
+  const normalizedDate = new Date(date)
+  normalizedDate.setHours(0, 0, 0, 0)
+
+  for (const range of timeRanges) {
+    const [start, end] = range.interval
+    const normalizedStart = new Date(start)
+    normalizedStart.setHours(0, 0, 0, 0)
+    const normalizedEnd = new Date(end)
+    normalizedEnd.setHours(0, 0, 0, 0)
+
+    if (
+      normalizedDate >= normalizedStart &&
+      normalizedDate <= normalizedEnd
+    ) {
+      return {
+        color: range.color,
+        backgroundColor: range.backgroundColor,
+      }
+    }
+  }
+
+  return null
+}
+
 interface DayCell {
   day: number
   isCurrentMonth: boolean
 }
 
-const MonthCalendar = ({ month, year }: { month: number; year: number }) => {
+const MonthCalendar = ({
+  month,
+  year,
+  timeRanges,
+}: {
+  month: number
+  year: number
+  timeRanges?: TimeRange[]
+}) => {
   const monthData = getMonthData(month, year)
   const days: DayCell[] = []
 
@@ -103,22 +168,54 @@ const MonthCalendar = ({ month, year }: { month: number; year: number }) => {
         ))}
       </div>
       <div className={styles.days}>
-        {days.map((dayCell, index) => (
-          <div
-            key={index}
-            className={`${styles.day} ${
-              !dayCell.isCurrentMonth ? styles.otherMonth : ''
-            } ${
-              isTodayInThisMonth &&
-              dayCell.isCurrentMonth &&
-              dayCell.day === currentDay
-                ? styles.today
-                : ''
-            }`}
-          >
-            {dayCell.day}
-          </div>
-        ))}
+        {days.map((dayCell, index) => {
+          // Calculate the actual date for this cell
+          let actualMonth: number
+          let actualYear: number
+
+          if (!dayCell.isCurrentMonth) {
+            if (index < monthData.firstDay) {
+              // Day from previous month
+              actualMonth = prevMonth
+              actualYear = prevYear
+            } else {
+              // Day from next month
+              actualMonth = month === 11 ? 0 : month + 1
+              actualYear = month === 11 ? year + 1 : year
+            }
+          } else {
+            actualMonth = month
+            actualYear = year
+          }
+
+          const cellDate = new Date(actualYear, actualMonth, dayCell.day)
+          const rangeStyle = getDateRangeStyle(cellDate, timeRanges)
+
+          return (
+            <div
+              key={index}
+              className={`${styles.day} ${
+                !dayCell.isCurrentMonth ? styles.otherMonth : ''
+              } ${
+                isTodayInThisMonth &&
+                dayCell.isCurrentMonth &&
+                dayCell.day === currentDay
+                  ? styles.today
+                  : ''
+              }`}
+              style={
+                rangeStyle
+                  ? {
+                      color: rangeStyle.color,
+                      backgroundColor: rangeStyle.backgroundColor,
+                    }
+                  : undefined
+              }
+            >
+              {dayCell.day}
+            </div>
+          )
+        })}
       </div>
     </div>
   )
@@ -128,6 +225,7 @@ export const Calendar = ({
   year = new Date().getFullYear(),
   className = '',
   breakpoint = 600,
+  timeRanges = [],
 }: CalendarProps) => {
   const [isCompact, setIsCompact] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -161,7 +259,12 @@ export const Calendar = ({
       <div className={styles.yearHeader}>{year}</div>
       <div className={styles.grid}>
         {months.map((month) => (
-          <MonthCalendar key={month} month={month} year={year} />
+          <MonthCalendar
+            key={month}
+            month={month}
+            year={year}
+            timeRanges={timeRanges}
+          />
         ))}
       </div>
     </div>

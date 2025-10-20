@@ -14,7 +14,7 @@
 
 .grid {
   display: grid;
-  gap: 1.5rem;
+  gap: 16px;
   width: 100%;
   height: auto;
 }
@@ -66,17 +66,18 @@
 .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 0.25rem;
+  // gap: 0.25rem;
+  row-gap: 4px;
 }
 
 .day {
-  aspect-ratio: 1;
+  aspect-ratio: 1.25;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
-  border-radius: 4px;
-  background: var(--color-bg-main);
+  font-size: 12px;
+  // border-radius: 4px;
+  // background: var(--color-bg-main);
   color: var(--color-main);
 
   &:hover {

@@ -1,14 +1,40 @@
 import { useState } from 'react'
-import { Calendar } from '../../../components/ui/Calendar'
+import { Calendar, type TimeRange } from '../../../components/ui/Calendar'
 import AppLayout from '../../../components/ui/AppLayout'
 import type { PageProps } from '../../_page-types'
 import styles from './styles.module.scss'
+import { COLOR_SCALES } from '../../../styles/colors'
 
 const CalendarDebug = () => {
   const currentYear = new Date().getFullYear()
   const [year, setYear] = useState(currentYear)
   const [containerWidth, setContainerWidth] = useState(100)
   const [breakpoint, setBreakpoint] = useState(600)
+  const [showTimeRanges, setShowTimeRanges] = useState(false)
+
+  // Example time ranges for demonstration
+  const exampleTimeRanges: TimeRange[] = [
+    {
+      interval: [new Date(year, 0, 1), new Date(year, 0, 7)],
+      color: "white", // Light color for text
+      backgroundColor: COLOR_SCALES.wilderness.colors[4], // Green
+    },
+    {
+      interval: [new Date(year, 1, 14), new Date(year, 1, 14)],
+      color: "white", // Light color for text
+      backgroundColor: COLOR_SCALES.rosewood.colors[4], // Pink/Rose
+    },
+    {
+      interval: [new Date(year, 6, 1), new Date(year, 6, 31)],
+      color: "white", // Light color for text
+      backgroundColor: COLOR_SCALES.orange.colors[4], // Orange
+    },
+    {
+      interval: [new Date(year, 11, 24), new Date(year, 11, 31)],
+      color: "white", // Light color for text
+      backgroundColor: COLOR_SCALES.daydream.colors[4], // Blue
+    },
+  ]
 
   return (
     <div className={styles.container}>
@@ -62,6 +88,18 @@ const CalendarDebug = () => {
           />
         </div>
 
+        <div className={styles.controlGroup}>
+          <label htmlFor="showTimeRanges">
+            <input
+              id="showTimeRanges"
+              type="checkbox"
+              checked={showTimeRanges}
+              onChange={(e) => setShowTimeRanges(e.target.checked)}
+            />
+            {' '}Show Time Ranges Example
+          </label>
+        </div>
+
         <div className={styles.info}>
           <p>
             <strong>Current Layout:</strong>{' '}
@@ -80,7 +118,11 @@ const CalendarDebug = () => {
           className={styles.resizableContainer}
           style={{ width: `${containerWidth}%` }}
         >
-          <Calendar year={year} breakpoint={breakpoint} />
+          <Calendar
+            year={year}
+            breakpoint={breakpoint}
+            timeRanges={showTimeRanges ? exampleTimeRanges : undefined}
+          />
         </div>
       </div>
 
@@ -93,7 +135,20 @@ const CalendarDebug = () => {
           <li><strong>Configurable breakpoint:</strong> Customize when to switch layouts</li>
           <li><strong>Today highlight:</strong> Current day is highlighted in red</li>
           <li><strong>Year selection:</strong> View any year from 1900 to 2100</li>
+          <li><strong>Time ranges:</strong> Highlight specific date ranges with custom colors</li>
         </ul>
+        
+        {showTimeRanges && (
+          <div className={styles.timeRangeInfo}>
+            <h3>Active Time Ranges</h3>
+            <ul>
+              <li>Jan 1-7: Wilderness color (New Year week)</li>
+              <li>Feb 14: Rosewood color (Valentine's Day)</li>
+              <li>July 1-31: Orange color (Summer month)</li>
+              <li>Dec 24-31: Daydream color (Holiday week)</li>
+            </ul>
+          </div>
+        )}
       </section>
     </div>
   )
