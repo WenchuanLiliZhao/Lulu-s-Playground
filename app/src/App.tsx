@@ -1,8 +1,7 @@
-import { BrowserRouter, Route, Routes } from "react-router"
+import { BrowserRouter, Route, Routes } from "react-router";
 import { Pages } from "./pages";
 
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>

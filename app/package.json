@@ -19,11 +19,12 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:lib",
+    "build": "npm run build:lib && npm run build:playground",
     "build:lib": "vite build --config vite.config.lib.ts",
     "build:playground": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "preview:playground": "npm run build:playground && vite preview",
     "prepublishOnly": "npm run build:lib"
   },
   "keywords": [

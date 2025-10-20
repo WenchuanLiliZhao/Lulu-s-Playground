@@ -7,11 +7,11 @@
 }
 
 @mixin light-theme {
-  --color-text-main: #1a1a1a;
-  --color-text-sec: #858585;
-  --color-text-sec-trans: rgba(0, 0, 0, 0.48);
-  --color-text-neg: #ADADAD;
-  --color-text-neg-trans: rgba(0, 0, 0, 0.32);
+  --color-main: #1a1a1a;
+  --color-sec: #858585;
+  --color-sec-trans: rgba(0, 0, 0, 0.48);
+  --color-neg: #ADADAD;
+  --color-neg-trans: rgba(0, 0, 0, 0.32);
 
   --color-bg-main: white;
 
@@ -28,12 +28,12 @@
 }
 
 @mixin dark-theme {
-  --color-text-main: #eaeaea;
-  --color-text-sec: #b3b3b3;
-  --color-text-sec-trans: rgba(255, 255, 255, 0.48);
+  --color-main: #eaeaea;
+  --color-sec: #b3b3b3;
+  --color-sec-trans: rgba(255, 255, 255, 0.48);
 
-  --color-text-neg: #4d4d4d;
-  --color-text-neg-trans: rgba(255, 255, 255, 0.32);
+  --color-neg: #4d4d4d;
+  --color-neg-trans: rgba(255, 255, 255, 0.32);
 
   --color-bg-main: #121212;
 
@@ -77,5 +77,5 @@
 html,
 body {
   background-color: var(--color-bg-main);
-  color: var(--color-text-main);
+  color: var(--color-main);
 }

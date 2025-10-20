@@ -5,6 +5,9 @@
  * Exports UI components, utilities, and enhanced components.
  */
 
+// Import global styles
+import './styles/_app.scss'
+
 // Export UI components
 export * from './components/ui'
 

@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     react(),
     dts({
-      include: ['src/components/**/*', 'src/lib-entry.ts'],
+      include: ['src/components/**/*', 'src/lib-entry.ts', 'src/styles/**/*'],
       exclude: ['src/playground', 'src/debug', '**/*.test.tsx', '**/*.test.ts'],
       outDir: 'dist',
       insertTypesEntry: true,

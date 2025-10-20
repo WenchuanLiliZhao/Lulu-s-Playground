@@ -12,7 +12,7 @@ npm install lululemon-ui
 
 ```tsx
 import { Button } from 'lululemon-ui'
-import 'lululemon-ui/styles'
+import 'lululemon-ui/styles' // Import global styles
 
 function App() {
   return (
@@ -22,6 +22,26 @@ function App() {
   )
 }
 ```
+
+### Styles
+
+The package includes a complete design system with:
+
+- **Reset styles** - CSS reset for consistent cross-browser rendering
+- **Typography** - Font definitions and text styles
+- **Colors** - CSS custom properties for light/dark theme support
+- **Spacing** - Consistent spacing variables
+- **Shadows** - Shadow utilities for depth and elevation
+- **Z-index** - Z-index scale for layering
+- **Custom scrollbar** - Styled scrollbar for better UX
+
+Import the styles at the root of your application:
+
+```tsx
+import 'lululemon-ui/styles'
+```
+
+All styles use CSS custom properties (CSS variables) that support both light and dark themes. The theme switches automatically based on user preference or can be manually controlled via the `data-theme` attribute on the root element.
 
 ## Available Components
 
@@ -42,15 +62,18 @@ More components coming soon!
 
 ## Development
 
-This project is organized into three main parts:
+This project is organized into four main parts:
 
 ### 1. Components (`src/components/`)
 The design components that are published to npm. This is the core library.
 
-### 2. Playground (`src/playground/`)
+### 2. Styles (`src/styles/`)
+Global styles and design tokens published to npm. Includes reset, colors, typography, spacing, and more.
+
+### 3. Playground (`src/playground/`)
 A development environment for testing components and creating page demos.
 
-### 3. Debug (`src/debug/`)
+### 4. Debug (`src/debug/`)
 Debug pages for troubleshooting and testing.
 
 ## Scripts
@@ -78,15 +101,25 @@ npm run preview
 app/
 ├── src/
 │   ├── components/        # Design components (published to npm)
-│   │   ├── Button/
+│   │   ├── ui/           # UI components
+│   │   ├── enhanced/     # Enhanced components
+│   │   ├── utils/        # Utility functions
 │   │   └── index.ts
+│   ├── styles/           # Global styles (published to npm)
+│   │   ├── _app.scss     # Main entry point
+│   │   ├── 0_reset.scss  # CSS reset
+│   │   ├── color.scss    # Color variables
+│   │   ├── font.scss     # Typography
+│   │   ├── spacing.scss  # Spacing system
+│   │   ├── shadow.scss   # Shadow utilities
+│   │   └── z-index.scss  # Z-index scale
 │   ├── playground/        # Development playground
-│   │   ├── pages/
-│   │   ├── styles/
-│   │   └── App.tsx
 │   ├── debug/            # Debug pages
 │   └── lib-entry.ts      # npm package entry point
 ├── dist/                 # Built library (generated)
+│   ├── lululemon-ui.es.js
+│   ├── lululemon-ui.umd.js
+│   └── lululemon-ui.css  # Bundled styles
 ├── package.json
 ├── vite.config.ts        # Playground config
 └── vite.config.lib.ts    # Library build config
