@@ -25,7 +25,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "preview:playground": "npm run build:playground && vite preview",
-    "prepublishOnly": "npm run build:lib"
+    "prepublishOnly": "npm run build:lib",
+    "generate:colors": "node scripts/generate-colors-ts.cjs"
   },
   "keywords": [
     "lululemon",
