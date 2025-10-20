@@ -10,8 +10,13 @@
   cursor: pointer;
 
   &:hover {
-    transform: translateX(5px);
+    transform: translateY(-1px);
     border-color: var(--color-border-darken-trans);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 }
 
