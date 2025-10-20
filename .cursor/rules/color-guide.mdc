@@ -9,7 +9,7 @@ alwaysApply: false
 
 This document provides comprehensive style guidelines for designers and developers working with the Lulu Design System. The system is defined across multiple SCSS files in `app/src/styles/`:
 
-- `color.scss` - Color variables with light/dark theme support
+- `color-use.scss` - Color variables with light/dark theme support
 - `spacing.scss` - Spacing and layout variables
 - `font.scss` - Typography settings
 - `shadow.scss` - Shadow effects
