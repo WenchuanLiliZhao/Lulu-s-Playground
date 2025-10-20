@@ -19,7 +19,6 @@
   font-size: 20px;
   cursor: pointer;
   box-shadow: var(--pop-shadow);
-  transition: all 0.2s ease;
   z-index: var(--z-index-popup-sec);
   display: flex;
   align-items: center;
@@ -92,7 +91,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  transition: all 0.2s ease;
 
   &:hover {
     background-color: var(--color-bg-sec-2);
@@ -136,7 +134,6 @@
   cursor: pointer;
   font-size: 13px;
   font-weight: 500;
-  transition: all 0.2s ease;
   text-align: left;
   color: var(--color-main);
 
