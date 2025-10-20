@@ -1,0 +1,138 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg-main);
+}
+
+.yearHeader {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-main);
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+  height: auto;
+}
+
+// Desktop layout: 4 columns x 3 rows
+.desktop .grid {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+}
+
+// Compact layout: 3 columns x 4 rows
+.compact .grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+}
+
+.month {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-sec);
+  border-radius: 6px;
+  padding: 0.75rem;
+  min-width: 0; // Allow grid items to shrink below their content size
+}
+
+.monthHeader {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  color: var(--color-main);
+}
+
+.dayNames {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.dayName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-sec);
+  padding: 0.25rem 0;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  background: var(--color-bg-main);
+  color: var(--color-main);
+
+  &:hover {
+    background: var(--color-bg-sec-2);
+    cursor: pointer;
+  }
+
+  &.otherMonth {
+    color: var(--color-neg);
+    background: transparent;
+
+    &:hover {
+      background: var(--color-bg-sec-trans);
+    }
+  }
+
+  &.today {
+    background: var(--color-semantic-error);
+    color: var(--color-bg-main);
+    font-weight: 700;
+
+    &:hover {
+      background: var(--color-semantic-error);
+      opacity: 0.9;
+    }
+  }
+}
+
+// Additional responsive adjustments for very small containers
+.compact {
+  .monthHeader {
+    font-size: 0.875rem;
+  }
+
+  .dayName {
+    font-size: 0.625rem;
+  }
+
+  .day {
+    font-size: 0.75rem;
+  }
+}
+
+// Media query fallback for very small screens
+@media (max-width: 480px) {
+  .yearHeader {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .grid {
+    gap: 1rem;
+  }
+
+  .month {
+    padding: 0.5rem;
+  }
+}
+
