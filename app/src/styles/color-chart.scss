@@ -1,0 +1,381 @@
+/* Sequoia Color Scale - Based on #6A2C3E (maintaining hue) */
+$sequoia-0: #3D1823;
+$sequoia-1: #532230;
+$sequoia-2: #6A2C3E;  /* Original color */
+$sequoia-3: #874058;
+$sequoia-4: #A45472;
+$sequoia-5: #C1688C;
+$sequoia-6: #D488A8;
+$sequoia-7: #E5B3C9;
+$sequoia-8: #F5DEEA;
+
+/* Rosewood Color Scale - Based on #DC6D87 (maintaining hue) */
+$rosewood-0: #4D1F2D;
+$rosewood-1: #6B2C3F;
+$rosewood-2: #893951;
+$rosewood-3: #A74663;
+$rosewood-4: #C55375;
+$rosewood-5: #DC6D87;  /* Original color */
+$rosewood-6: #E68FA3;
+$rosewood-7: #F0B1BF;
+$rosewood-8: #FAD3DB;
+
+/* Hot Heat Color Scale - #FF4646 at index 4 */
+$hot-heat-0: #8B1A1A;
+$hot-heat-1: #B22222;
+$hot-heat-2: #D93030;
+$hot-heat-3: #FF3B3B;
+$hot-heat-4: #FF4646;  /* Original color */
+$hot-heat-5: #FF7070;
+$hot-heat-6: #FF9A9A;
+$hot-heat-7: #FFC4C4;
+$hot-heat-8: #FFEEEE;
+
+/* Nomad Color Scale - #7F746C at index 4 */
+$nomad-0: #3D3631;
+$nomad-1: #524840;
+$nomad-2: #685D54;
+$nomad-3: #73685F;
+$nomad-4: #7F746C;  /* Original color */
+$nomad-5: #9A9189;
+$nomad-6: #B5ADA7;
+$nomad-7: #D0CAC4;
+$nomad-8: #EBE7E2;
+
+/* Bone Color Scale - #EFEEEC at index 7 */
+$bone-0: #5C5B59;
+$bone-1: #7A7977;
+$bone-2: #989795;
+$bone-3: #B6B5B3;
+$bone-4: #C8C7C5;
+$bone-5: #DAD9D7;
+$bone-6: #E5E4E2;
+$bone-7: #EFEEEC;  /* Original color */
+$bone-8: #F7F7F6;
+
+/* Riverstone Color Scale - #C8C2B8 at index 6 */
+$riverstone-0: #3A352E;
+$riverstone-1: #524C43;
+$riverstone-2: #6A6359;
+$riverstone-3: #827A6E;
+$riverstone-4: #9A9184;
+$riverstone-5: #B1AA9E;
+$riverstone-6: #C8C2B8;  /* Original color */
+$riverstone-7: #DDD9D2;
+$riverstone-8: #F2F0ED;
+
+/* Espresso Color Scale - #2B1F1E at index 0 */
+$espresso-0: #2B1F1E;  /* Original color */
+$espresso-1: #4A3B39;
+$espresso-2: #695754;
+$espresso-3: #88736F;
+$espresso-4: #A78F8A;
+$espresso-5: #C6ABA5;
+$espresso-6: #D9C6C2;
+$espresso-7: #E8DBDA;
+$espresso-8: #F7F0EF;
+
+/* Wilderness Color Scale - #142A0E at index 0 */
+$wilderness-0: #142A0E;  /* Original color */
+$wilderness-1: #2D4D24;
+$wilderness-2: #467039;
+$wilderness-3: #5F934F;
+$wilderness-4: #78B664;
+$wilderness-5: #95C883;
+$wilderness-6: #B2DAA2;
+$wilderness-7: #CFEBC1;
+$wilderness-8: #ECFDE0;
+
+/* Daydream Color Scale - #C0DDFF at index 6 */
+$daydream-0: #1A4166;
+$daydream-1: #2F5B85;
+$daydream-2: #4475A3;
+$daydream-3: #5990C2;
+$daydream-4: #7DABE0;
+$daydream-5: #9EC4ED;
+$daydream-6: #C0DDFF;  /* Original color */
+$daydream-7: #DAEAFF;
+$daydream-8: #F4F8FF;
+
+/* Zest Color Scale - #F4FF8E at index 7 */
+$zest-0: #5C6614;
+$zest-1: #7A8829;
+$zest-2: #98AA3D;
+$zest-3: #B6CC52;
+$zest-4: #D4EE66;
+$zest-5: #E0F574;
+$zest-6: #EAFA81;
+$zest-7: #F4FF8E;  /* Original color */
+$zest-8: #F9FFC6;
+
+/* Mossy Color Scale - #524A43 at index 3 */
+$mossy-0: #1F1A15;
+$mossy-1: #312B25;
+$mossy-2: #423B34;
+$mossy-3: #524A43;  /* Original color */
+$mossy-4: #6E6660;
+$mossy-5: #8B847D;
+$mossy-6: #A9A39D;
+$mossy-7: #C8C4C0;
+$mossy-8: #E8E6E4;
+
+/* Pink Organza Color Scale - #FFE5F7 at index 7 */
+$pink-organza-0: #6B244E;
+$pink-organza-1: #8F3368;
+$pink-organza-2: #B34282;
+$pink-organza-3: #D7519C;
+$pink-organza-4: #F076BA;
+$pink-organza-5: #FFA0D5;
+$pink-organza-6: #FFC3E6;
+$pink-organza-7: #FFE5F7;  /* Original color */
+$pink-organza-8: #FFF2FB;
+
+/* Cyan Color Scale - #06B6D4 at index 4 */
+$cyan-0: #083344;
+$cyan-1: #0E4C5E;
+$cyan-2: #0E7490;
+$cyan-3: #0891B2;
+$cyan-4: #06B6D4;  /* Original color */
+$cyan-5: #22D3EE;
+$cyan-6: #67E8F9;
+$cyan-7: #A5F3FC;
+$cyan-8: #CFFAFE;
+
+/* Teal Color Scale - #14B8A6 at index 4 */
+$teal-0: #042F2E;
+$teal-1: #0F5C57;
+$teal-2: #0D9488;
+$teal-3: #13A894;
+$teal-4: #14B8A6;  /* Original color */
+$teal-5: #2DD4BF;
+$teal-6: #5EEAD4;
+$teal-7: #99F6E4;
+$teal-8: #CCFBF1;
+
+/* Purple Color Scale - #9333EA at index 4 */
+$purple-0: #2E1065;
+$purple-1: #4C1D95;
+$purple-2: #6B21A8;
+$purple-3: #7E22CE;
+$purple-4: #9333EA;  /* Original color */
+$purple-5: #A855F7;
+$purple-6: #C084FC;
+$purple-7: #D8B4FE;
+$purple-8: #E9D5FF;
+
+/* Indigo Color Scale - #4F46E5 at index 4 */
+$indigo-0: #1E1B4B;
+$indigo-1: #312E81;
+$indigo-2: #3730A3;
+$indigo-3: #4338CA;
+$indigo-4: #4F46E5;  /* Original color */
+$indigo-5: #6366F1;
+$indigo-6: #818CF8;
+$indigo-7: #A5B4FC;
+$indigo-8: #C7D2FE;
+
+/* Orange Color Scale - #F97316 at index 4 */
+$orange-0: #5A1807;
+$orange-1: #9A3412;
+$orange-2: #C2410C;
+$orange-3: #EA580C;
+$orange-4: #F97316;  /* Original color */
+$orange-5: #FB923C;
+$orange-6: #FDBA74;
+$orange-7: #FED7AA;
+$orange-8: #FFEDD5;
+
+/* Amber Color Scale - #F59E0B at index 4 */
+$amber-0: #451A03;
+$amber-1: #78350F;
+$amber-2: #B45309;
+$amber-3: #D97706;
+$amber-4: #F59E0B;  /* Original color */
+$amber-5: #FBBF24;
+$amber-6: #FCD34D;
+$amber-7: #FDE68A;
+$amber-8: #FEF3C7;
+
+/* Export as CSS variables */
+:root {
+  --sequoia-0: #{$sequoia-0};
+  --sequoia-1: #{$sequoia-1};
+  --sequoia-2: #{$sequoia-2};
+  --sequoia-3: #{$sequoia-3};
+  --sequoia-4: #{$sequoia-4};
+  --sequoia-5: #{$sequoia-5};
+  --sequoia-6: #{$sequoia-6};
+  --sequoia-7: #{$sequoia-7};
+  --sequoia-8: #{$sequoia-8};
+
+  --rosewood-0: #{$rosewood-0};
+  --rosewood-1: #{$rosewood-1};
+  --rosewood-2: #{$rosewood-2};
+  --rosewood-3: #{$rosewood-3};
+  --rosewood-4: #{$rosewood-4};
+  --rosewood-5: #{$rosewood-5};
+  --rosewood-6: #{$rosewood-6};
+  --rosewood-7: #{$rosewood-7};
+  --rosewood-8: #{$rosewood-8};
+
+  --hot-heat-0: #{$hot-heat-0};
+  --hot-heat-1: #{$hot-heat-1};
+  --hot-heat-2: #{$hot-heat-2};
+  --hot-heat-3: #{$hot-heat-3};
+  --hot-heat-4: #{$hot-heat-4};
+  --hot-heat-5: #{$hot-heat-5};
+  --hot-heat-6: #{$hot-heat-6};
+  --hot-heat-7: #{$hot-heat-7};
+  --hot-heat-8: #{$hot-heat-8};
+
+  --nomad-0: #{$nomad-0};
+  --nomad-1: #{$nomad-1};
+  --nomad-2: #{$nomad-2};
+  --nomad-3: #{$nomad-3};
+  --nomad-4: #{$nomad-4};
+  --nomad-5: #{$nomad-5};
+  --nomad-6: #{$nomad-6};
+  --nomad-7: #{$nomad-7};
+  --nomad-8: #{$nomad-8};
+
+  --bone-0: #{$bone-0};
+  --bone-1: #{$bone-1};
+  --bone-2: #{$bone-2};
+  --bone-3: #{$bone-3};
+  --bone-4: #{$bone-4};
+  --bone-5: #{$bone-5};
+  --bone-6: #{$bone-6};
+  --bone-7: #{$bone-7};
+  --bone-8: #{$bone-8};
+
+  --riverstone-0: #{$riverstone-0};
+  --riverstone-1: #{$riverstone-1};
+  --riverstone-2: #{$riverstone-2};
+  --riverstone-3: #{$riverstone-3};
+  --riverstone-4: #{$riverstone-4};
+  --riverstone-5: #{$riverstone-5};
+  --riverstone-6: #{$riverstone-6};
+  --riverstone-7: #{$riverstone-7};
+  --riverstone-8: #{$riverstone-8};
+
+  --espresso-0: #{$espresso-0};
+  --espresso-1: #{$espresso-1};
+  --espresso-2: #{$espresso-2};
+  --espresso-3: #{$espresso-3};
+  --espresso-4: #{$espresso-4};
+  --espresso-5: #{$espresso-5};
+  --espresso-6: #{$espresso-6};
+  --espresso-7: #{$espresso-7};
+  --espresso-8: #{$espresso-8};
+
+  --wilderness-0: #{$wilderness-0};
+  --wilderness-1: #{$wilderness-1};
+  --wilderness-2: #{$wilderness-2};
+  --wilderness-3: #{$wilderness-3};
+  --wilderness-4: #{$wilderness-4};
+  --wilderness-5: #{$wilderness-5};
+  --wilderness-6: #{$wilderness-6};
+  --wilderness-7: #{$wilderness-7};
+  --wilderness-8: #{$wilderness-8};
+
+  --daydream-0: #{$daydream-0};
+  --daydream-1: #{$daydream-1};
+  --daydream-2: #{$daydream-2};
+  --daydream-3: #{$daydream-3};
+  --daydream-4: #{$daydream-4};
+  --daydream-5: #{$daydream-5};
+  --daydream-6: #{$daydream-6};
+  --daydream-7: #{$daydream-7};
+  --daydream-8: #{$daydream-8};
+
+  --zest-0: #{$zest-0};
+  --zest-1: #{$zest-1};
+  --zest-2: #{$zest-2};
+  --zest-3: #{$zest-3};
+  --zest-4: #{$zest-4};
+  --zest-5: #{$zest-5};
+  --zest-6: #{$zest-6};
+  --zest-7: #{$zest-7};
+  --zest-8: #{$zest-8};
+
+  --mossy-0: #{$mossy-0};
+  --mossy-1: #{$mossy-1};
+  --mossy-2: #{$mossy-2};
+  --mossy-3: #{$mossy-3};
+  --mossy-4: #{$mossy-4};
+  --mossy-5: #{$mossy-5};
+  --mossy-6: #{$mossy-6};
+  --mossy-7: #{$mossy-7};
+  --mossy-8: #{$mossy-8};
+
+  --pink-organza-0: #{$pink-organza-0};
+  --pink-organza-1: #{$pink-organza-1};
+  --pink-organza-2: #{$pink-organza-2};
+  --pink-organza-3: #{$pink-organza-3};
+  --pink-organza-4: #{$pink-organza-4};
+  --pink-organza-5: #{$pink-organza-5};
+  --pink-organza-6: #{$pink-organza-6};
+  --pink-organza-7: #{$pink-organza-7};
+  --pink-organza-8: #{$pink-organza-8};
+
+  --cyan-0: #{$cyan-0};
+  --cyan-1: #{$cyan-1};
+  --cyan-2: #{$cyan-2};
+  --cyan-3: #{$cyan-3};
+  --cyan-4: #{$cyan-4};
+  --cyan-5: #{$cyan-5};
+  --cyan-6: #{$cyan-6};
+  --cyan-7: #{$cyan-7};
+  --cyan-8: #{$cyan-8};
+
+  --teal-0: #{$teal-0};
+  --teal-1: #{$teal-1};
+  --teal-2: #{$teal-2};
+  --teal-3: #{$teal-3};
+  --teal-4: #{$teal-4};
+  --teal-5: #{$teal-5};
+  --teal-6: #{$teal-6};
+  --teal-7: #{$teal-7};
+  --teal-8: #{$teal-8};
+
+  --purple-0: #{$purple-0};
+  --purple-1: #{$purple-1};
+  --purple-2: #{$purple-2};
+  --purple-3: #{$purple-3};
+  --purple-4: #{$purple-4};
+  --purple-5: #{$purple-5};
+  --purple-6: #{$purple-6};
+  --purple-7: #{$purple-7};
+  --purple-8: #{$purple-8};
+
+  --indigo-0: #{$indigo-0};
+  --indigo-1: #{$indigo-1};
+  --indigo-2: #{$indigo-2};
+  --indigo-3: #{$indigo-3};
+  --indigo-4: #{$indigo-4};
+  --indigo-5: #{$indigo-5};
+  --indigo-6: #{$indigo-6};
+  --indigo-7: #{$indigo-7};
+  --indigo-8: #{$indigo-8};
+
+  --orange-0: #{$orange-0};
+  --orange-1: #{$orange-1};
+  --orange-2: #{$orange-2};
+  --orange-3: #{$orange-3};
+  --orange-4: #{$orange-4};
+  --orange-5: #{$orange-5};
+  --orange-6: #{$orange-6};
+  --orange-7: #{$orange-7};
+  --orange-8: #{$orange-8};
+
+  --amber-0: #{$amber-0};
+  --amber-1: #{$amber-1};
+  --amber-2: #{$amber-2};
+  --amber-3: #{$amber-3};
+  --amber-4: #{$amber-4};
+  --amber-5: #{$amber-5};
+  --amber-6: #{$amber-6};
+  --amber-7: #{$amber-7};
+  --amber-8: #{$amber-8};
+}
+

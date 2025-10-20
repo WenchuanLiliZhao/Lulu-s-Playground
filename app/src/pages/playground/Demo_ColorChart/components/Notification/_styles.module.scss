@@ -1,0 +1,124 @@
+.notification {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: var(--z-index-popup-main);
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  
+  min-width: 280px;
+  max-width: 400px;
+  padding: 12px 16px;
+  
+  background-color: var(--color-bg-main);
+  border: 1px solid var(--color-border-main);
+  border-radius: 8px;
+  box-shadow: var(--pop-shadow);
+  
+  font-family: var(--ff-sans);
+  
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.message {
+  color: var(--color-main);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  
+  background: none;
+  border: none;
+  border-radius: 4px;
+  
+  color: var(--color-sec);
+  font-size: 14px;
+  cursor: pointer;
+  
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  background-color: var(--color-bg-sec);
+  color: var(--color-main);
+}
+
+/* Type variants */
+.success {
+    border-left: 4px solid var(--color-semantic-success);
+  
+  .icon {
+    background-color: var(--color-semantic-success);
+    color: white;
+  }
+}
+
+.error {
+  border-left: 4px solid var(--brand-color);
+  
+  .icon {
+    background-color: var(--brand-color);
+    color: white;
+  }
+}
+
+.info {
+  border-left: 4px solid var(--color-semantic-active);
+  
+  .icon {
+    background-color: var(--color-semantic-active);
+    color: white;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .notification {
+    top: 16px;
+    right: 16px;
+    left: 16px;
+    max-width: none;
+  }
+}
+

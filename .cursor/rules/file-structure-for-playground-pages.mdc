@@ -1,0 +1,15 @@
+---
+description: When generating pages (demos) in playground
+alwaysApply: false
+---
+
+All pages within the playground follow this structure:
+
+```
+PageName/
+  ├── index.tsx
+  ├── data/ #when necessary
+  └── components/
+```
+
+Here, `index.tsx` serves not only as the public exports but also contains the basic page structure (refer to PageProps). When no suitable components are available in `src/components/`, all temporary components should be placed in `PageName/components/`, following the specifications outlined in [component-structure.mdc](./component-structure.mdc).

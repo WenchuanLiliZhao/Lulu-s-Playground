@@ -1,3 +1,4 @@
-export { default as ClickCounterButton } from './ClickCounterButton'
-export type { ClickCounterButtonProps } from './ClickCounterButton.types'
+export { ClickCounterButton } from './_component'
+export { ClickCounterButton as default } from './_component'
+export type { ClickCounterButtonProps } from './_component'
 

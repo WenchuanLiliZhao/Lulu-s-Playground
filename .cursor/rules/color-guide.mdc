@@ -3,18 +3,16 @@ description: When generating style codes, e.g., all .scss files
 alwaysApply: false
 ---
 
-# Lulu Design System - Style Guide
+# Lululemon UI - Style Guide
 
 ## Overview
 
-This document provides comprehensive style guidelines for designers and developers working with the Lulu Design System. The system is defined across multiple SCSS files in `app/src/styles/`:
-
+Style guidelines for the Lulu Design System. Defined in `app/src/styles/`:
 - `color-use.scss` - Color variables with light/dark theme support
 - `spacing.scss` - Spacing and layout variables
 - `font.scss` - Typography settings
 - `shadow.scss` - Shadow effects
 - `z-index.scss` - Z-index layering system
-- `0_reset.scss` - CSS reset and normalization
 
 All styles support light and dark themes with automatic system preference detection.
 
@@ -22,265 +20,121 @@ All styles support light and dark themes with automatic system preference detect
 
 # Color System
 
-## Overview
+## Theme Support
+- Light Theme: Default
+- Dark Theme: Activated via `data-theme="dark"` attribute
+- System Theme Detection: Auto-switches based on system preferences
 
-The color system supports both light and dark modes with semantic color variables that automatically adapt to the current theme.
+## Color Variables
 
-## Color System Architecture
-
-### Theme Support
-- **Light Theme**: Default theme for daytime use
-- **Dark Theme**: Activated via the `data-theme="dark"` attribute
-- **System Theme Detection**: Automatically switches themes based on user system preferences
-
-### Color Variable Categories
-
-#### 1. Brand Colors
+### Brand & Semantic Colors
 ```scss
---brand-color;           // Primary brand color (#FF4646)
---color-semantic-active; // Semantic active color (royalblue)
+--brand-color;                // Primary brand (var(--hot-heat-4))
+--color-semantic-active;      // Active states (var(--indigo-5))
+--color-semantic-success;     // Success states (var(--wilderness-4))
+--color-semantic-warning;     // Warning states (var(--amber-4))
+--color-semantic-error;       // Error states (var(--hot-heat-4))
 ```
 
-#### 2. Text Colors
+### Text Colors
 ```scss
 --color-main;           // Primary text
 --color-sec;            // Secondary text
---color-sec-trans;      // Secondary text with transparency (0.48 opacity)
---color-neg;            // Negative/disabled text
---color-neg-trans;      // Negative text with transparency (0.32 opacity)
+--color-sec-trans;      // Secondary text with transparency (0.48)
+--color-neg;            // Disabled/negative text
+--color-neg-trans;      // Negative text with transparency (0.32)
 ```
 
-#### 3. Background Colors
+### Background Colors
 ```scss
 --color-bg-main;           // Primary background
 --color-bg-sec;            // Secondary background
---color-bg-sec-trans;      // Secondary background with transparency (0.02 opacity)
+--color-bg-sec-trans;      // Secondary background with transparency (0.02)
 --color-bg-sec-2;          // Tertiary background
---color-bg-sec-2-trans;    // Tertiary background with transparency (0.04 opacity)
+--color-bg-sec-2-trans;    // Tertiary background with transparency (0.04)
 ```
 
-#### 4. Border Colors
+### Border Colors
 ```scss
 --color-border-main;           // Primary border
---color-border-main-trans;     // Primary border with transparency (0.08 opacity)
---color-border-darken-trans;   // Darkened border with transparency (0.16 opacity)
+--color-border-main-trans;     // Primary border with transparency (0.08)
+--color-border-darken-trans;   // Darkened border with transparency (0.16)
 ```
 
 ## Usage Guidelines
 
-### 🎯 Text Color Principles
+### Text Colors
+- `--color-main`: Page titles, primary content, navigation
+- `--color-sec`: Subtitles, descriptions, timestamps, labels
+- `--color-neg`: Disabled states, placeholders
 
-#### `--color-main`
-**Use Cases:**
-- Page titles
-- Primary content text
-- Important information display
-- Navigation menu items
+### Background Colors
+- `--color-bg-main`: Page background, cards, modals
+- `--color-bg-sec`: Sidebars, toolbars, hover states
+- `--color-bg-sec-2`: Input fields, nested cards, selected states
 
-**Example:**
-```css
-.page-title {
-  color: var(--color-main);
-}
-```
+### Border Colors
+- `--color-border-main`: Card borders, dividers, table borders
+- `--color-border-darken-trans`: Emphasis borders, focus states
 
-#### `--color-sec`
-**Use Cases:**
-- Subtitles
-- Descriptive text
-- Supplementary information
-- Timestamps
-- Label text
+### Brand & Semantic Colors
+- `--brand-color`: Primary buttons, brand identity, important actions
+- `--color-semantic-active`: Active states, links, selected states
+- `--color-semantic-success`: Success messages, confirmation states
+- `--color-semantic-warning`: Warning messages, caution states
+- `--color-semantic-error`: Error messages, destructive actions
 
-**Example:**
-```css
-.description {
-  color: var(--color-sec);
-}
-```
-
-#### `--color-neg`
-**Use Cases:**
-- Disabled state text
-- Error messages
-- Secondary action button text
-- Placeholder text
-
-**Example:**
-```css
-.disabled-text {
-  color: var(--color-neg);
-}
-```
-
-### 🎨 Background Color Principles
-
-#### `--color-bg-main`
-**Use Cases:**
-- Page primary background
-- Card background
-- Modal background
-
-**Example:**
-```css
-.page-container {
-  background-color: var(--color-bg-main);
-}
-```
-
-#### `--color-bg-sec`
-**Use Cases:**
-- Sidebar background
-- Toolbar background
-- Secondary area background
-- Hover states
-
-**Example:**
-```css
-.sidebar {
-  background-color: var(--color-bg-sec);
-}
-```
-
-#### `--color-bg-sec-2`
-**Use Cases:**
-- Nested card background
-- Input field background
-- Selected state background
-- Group background
-
-**Example:**
-```css
-.input-field {
-  background-color: var(--color-bg-sec-2);
-}
-```
-
-### 🔲 Border Color Principles
-
-#### `--color-border-main`
-**Use Cases:**
-- Card borders
-- Input field borders
-- Dividers
-- Table borders
-
-**Example:**
-```css
-.card {
-  border: 1px solid var(--color-border-main);
-}
-```
-
-#### `--color-border-darken-trans`
-**Use Cases:**
-- Shadow effects
-- Emphasis borders
-- Focus state borders
-- Error state borders
-
-**Example:**
-```css
-.focused-input {
-  border: 2px solid var(--color-border-darken-trans);
-}
-```
-
-### 🎯 Brand Color Principles
-
-#### `--brand-color`
-**Use Cases:**
-- Primary buttons
-- Brand identity
-- Important actions
-- Emphasis elements
-
-**Example:**
-```css
-.primary-button {
-  background-color: var(--brand-color);
-}
-```
-
-#### `--color-semantic-active`
-**Use Cases:**
-- Active states
-- Link colors
-- Selected states
-- Interactive feedback
-
-**Example:**
-```css
-.active-link {
-  color: var(--color-semantic-active);
-}
-```
-
-## Transparency Usage Guidelines
-
-### Available Transparency Variants
-
-The color system provides specific transparency variants with predefined opacity levels:
+## Transparency Variants
 
 | Variable | Opacity | Use Cases |
 |----------|---------|-----------|
-| `--color-bg-sec-trans` | 0.02 | Subtle background layers, extremely light hover states |
-| `--color-bg-sec-2-trans` | 0.04 | Light background differentiation, nested elements |
-| `--color-border-main-trans` | 0.08 | Subtle borders, light dividers |
-| `--color-border-darken-trans` | 0.16 | Visible borders, shadows, emphasis borders |
-| `--color-neg-trans` | 0.32 | Disabled/negative text with transparency |
-| `--color-sec-trans` | 0.48 | Secondary text with transparency, medium emphasis |
-
-### Transparency Naming Convention
-- `-trans` suffix: Indicates a transparency variant of the base color
-- Opacity values are consistent across light and dark themes (only the base color changes)
+| `--color-bg-sec-trans` | 0.02 | Subtle background layers |
+| `--color-bg-sec-2-trans` | 0.04 | Light background differentiation |
+| `--color-border-main-trans` | 0.08 | Subtle borders, dividers |
+| `--color-border-darken-trans` | 0.16 | Visible borders, shadows |
+| `--color-neg-trans` | 0.32 | Disabled text with transparency |
+| `--color-sec-trans` | 0.48 | Secondary text with transparency |
 
 ## Best Practices
 
-### ✅ Recommended Approaches
+**DO:**
+- Always use CSS variables (e.g., `var(--color-main)`)
+- Maintain text hierarchy: Primary → `--color-main`, Secondary → `--color-sec`, Disabled → `--color-neg`
+- Test in both light and dark modes
+- Only transition movement properties (`transform`, `top`, `left`)
+- Keep color changes instant (no transitions on color properties)
 
-1. **Always Use CSS Variables**
-   ```css
-   /* ✅ Correct */
-   color: var(--color-main);
-   
-   /* ❌ Incorrect */
-   color: [specific color value];
-   ```
+**DON'T:**
+- Use hard-coded color values
+- Add transitions to color-related properties (`color`, `background-color`, `border-color`)
+- Use non-system colors
+- Overuse transparency
 
-2. **Maintain Hierarchy**
-   - Primary text → `--color-main`
-   - Secondary text → `--color-sec`
-   - Disabled text → `--color-neg`
+```css
+/* ✅ Correct - Color changes instantly */
+.item {
+  background-color: var(--color-bg-sec);
+}
+.item:hover {
+  background-color: var(--color-bg-sec-2);
+}
 
-3. **Use Transparency Appropriately**
-   - Create visual hierarchy
-   - Enhance readability
-   - Maintain consistency
-
-4. **Consider Dark Mode**
-   - All colors support theme switching
-   - Test effects in both modes
-
-### ❌ Approaches to Avoid
-
-1. **Hard-coded color values**
-2. **Excessive use of transparency**
-3. **Ignoring theme switching**
-4. **Using non-system colors**
+/* ❌ Incorrect - Don't transition colors */
+.item {
+  background-color: var(--color-bg-sec);
+  transition: background-color 0.2s ease; /* NO! */
+}
+```
 
 ## Component Examples
 
-### Button Component
 ```css
+/* Button */
 .btn-primary {
   background-color: var(--brand-color);
   color: white;
-  border: none;
 }
-
 .btn-primary:hover {
-  /* Slightly darker effect using transparency overlay */
   box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.1);
 }
 
@@ -289,105 +143,54 @@ The color system provides specific transparency variants with predefined opacity
   color: var(--color-main);
   border: 1px solid var(--color-border-main);
 }
-
 .btn-secondary:hover {
   background-color: var(--color-bg-sec-2);
 }
 
-.btn-disabled {
-  background-color: var(--color-bg-sec-2);
-  color: var(--color-neg);
-  border: 1px solid var(--color-border-main-trans);
-  cursor: not-allowed;
-}
-```
-
-### Card Component
-```css
+/* Card */
 .card {
   background-color: var(--color-bg-main);
   border: 1px solid var(--color-border-main);
   color: var(--color-main);
 }
-
 .card:hover {
   border-color: var(--color-border-darken-trans);
 }
-
-.card-header {
-  background-color: var(--color-bg-sec);
-  border-bottom: 1px solid var(--color-border-main);
-}
-
 .card-description {
   color: var(--color-sec);
 }
 
-.card-meta {
-  color: var(--color-sec-trans);
-  font-size: 0.875rem;
-}
-```
-
-### Input Component
-```css
+/* Input */
 .input {
   background-color: var(--color-bg-sec-2);
   border: 1px solid var(--color-border-main);
   color: var(--color-main);
 }
-
 .input::placeholder {
   color: var(--color-neg-trans);
 }
-
-.input:hover {
-  border-color: var(--color-border-darken-trans);
-}
-
 .input:focus {
   border-color: var(--color-semantic-active);
-  outline: none;
 }
 
-.input:disabled {
-  background-color: var(--color-bg-sec-trans);
-  color: var(--color-neg);
-  cursor: not-allowed;
-}
-```
-
-### List Item with Hover
-```css
+/* List */
 .list-item {
-  padding: 12px 16px;
   color: var(--color-main);
   border-bottom: 1px solid var(--color-border-main-trans);
 }
-
 .list-item:hover {
   background-color: var(--color-bg-sec-trans);
 }
-
 .list-item-active {
   background-color: var(--color-bg-sec);
   border-left: 2px solid var(--color-semantic-active);
 }
-
-.list-item-secondary-text {
-  color: var(--color-sec);
-  font-size: 0.875rem;
-}
 ```
 
-## Color System Implementation
-
-### SCSS Architecture
-
-The color system is built using SCSS mixins for maintainability:
+## SCSS Implementation
 
 ```scss
-// Define theme mixins
+// Theme mixins
 @mixin light-theme {
   --color-main: #1a1a1a;
   --color-sec: #858585;
@@ -400,96 +203,25 @@ The color system is built using SCSS mixins for maintainability:
   // ... other variables
 }
 
-// Apply to root
-:root {
-  @include light-theme;
-}
+// Apply themes
+:root { @include light-theme; }
+:root[data-theme="dark"] { @include dark-theme; }
 
-:root[data-theme="dark"] {
-  @include dark-theme;
-}
-
-// System theme detection
+// System detection
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    @include dark-theme;
-  }
+  :root:not([data-theme]) { @include dark-theme; }
 }
 ```
 
-### Key Implementation Details
+## Theme Switching
 
-1. **Brand colors are theme-independent**: `--brand-color` and `--color-semantic-active` remain constant across themes
-2. **Transparency values are consistent**: Only the base RGB values change between themes, opacity levels stay the same
-3. **Automatic system detection**: If no `data-theme` attribute is set, the system preference is respected
-4. **Global application**: `body` inherits `--color-bg-main` and `--color-main` automatically
-
-## Theme Switching Implementation
-
-### JavaScript Implementation
 ```javascript
 // Toggle theme
 function toggleTheme() {
   const root = document.documentElement;
-  const currentTheme = root.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  const newTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   root.setAttribute('data-theme', newTheme);
-  
-  // Optional: Save preference
   localStorage.setItem('theme', newTheme);
-}
-
-// Initialize theme on page load
-function initializeTheme() {
-  // Check saved preference
-  const savedTheme = localStorage.getItem('theme');
-  
-  if (savedTheme) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  } else {
-    // Use system preference (handled by CSS)
-    // Optionally, you can explicitly set it:
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (systemPrefersDark) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  }
-}
-
-// Listen for system theme changes
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-  // Only apply if user hasn't set a preference
-  if (!localStorage.getItem('theme')) {
-    document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-  }
-});
-```
-
-### React/TypeScript Implementation
-```typescript
-import { useEffect, useState } from 'react';
-
-export function useTheme() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-
-  useEffect(() => {
-    // Initialize theme
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-    
-    setTheme(initialTheme);
-    document.documentElement.setAttribute('data-theme', initialTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
-
-  return { theme, toggleTheme };
 }
 ```
 
@@ -497,49 +229,16 @@ export function useTheme() {
 
 # Spacing System
 
-## Available Spacing Variables
-
 ```scss
---spacing-nav-item-size: 32px;       // Size of navigation items
---spacing-nav-padding: 12px;         // Padding around navigation
---spacing-nav-size: calc(...);       // Calculated total navigation size
---content-padding: 48px;             // Standard content padding
-```
-
-## Usage Guidelines
-
-### Navigation Spacing
-```css
-.nav-item {
-  width: var(--spacing-nav-item-size);
-  height: var(--spacing-nav-item-size);
-  padding: var(--spacing-nav-padding);
-}
-
-.sidebar {
-  width: var(--spacing-nav-size);
-}
-```
-
-### Content Padding
-```css
-.main-content {
-  padding: var(--content-padding);
-}
-
-/* Responsive adjustment */
-@media (max-width: 768px) {
-  .main-content {
-    padding: calc(var(--content-padding) / 2);
-  }
-}
+--spacing-nav-item-size: 32px;
+--spacing-nav-padding: 12px;
+--spacing-nav-size: calc(...);
+--content-padding: 48px;
 ```
 
 ---
 
 # Typography System
-
-## Font Family Variables
 
 ```scss
 --ff-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -547,105 +246,19 @@ export function useTheme() {
 --ff-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
 ```
 
-## Usage Guidelines
-
-### Font Families
-
-```css
-/* Default sans-serif (applied to body by default) */
-.text {
-  font-family: var(--ff-sans);
-}
-
-/* Serif for special content */
-.article-title {
-  font-family: var(--ff-serif);
-}
-
-/* Monospace for code */
-.code {
-  font-family: var(--ff-mono);
-}
-```
-
-### Material Symbols
-
-The system includes configuration for Material Symbols icons:
-
-```css
-.material-symbols-outlined {
-  font-variation-settings:
-    "FILL" 0,
-    "wght" 300,
-    "GRAD" 0,
-    "opsz" 24;
-}
-```
-
-**Usage:**
-```html
-<span class="material-symbols-outlined">home</span>
-<span class="material-symbols-outlined">settings</span>
-```
-
-### Font Smoothing
-
-Font smoothing is automatically applied to all text:
-- `-webkit-font-smoothing: antialiased` for Webkit browsers
-- `-moz-osx-font-smoothing: grayscale` for Firefox on macOS
-
 ---
 
 # Shadow System
-
-## Available Shadow Variables
 
 ```scss
 --pop-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
 ```
 
-## Usage Guidelines
-
-### Pop Shadow
-
-Use for elevated elements like cards, dropdowns, and modals:
-
-```css
-.card-elevated {
-  box-shadow: var(--pop-shadow);
-}
-
-.dropdown-menu {
-  box-shadow: var(--pop-shadow);
-  background-color: var(--color-bg-main);
-}
-
-.modal {
-  box-shadow: var(--pop-shadow);
-}
-```
-
-### Custom Shadows
-
-For custom shadow effects, maintain consistency with the 0.16 opacity:
-
-```css
-/* Light shadow */
-.card-subtle {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
-/* Strong shadow */
-.modal-overlay {
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.24);
-}
-```
+Use for elevated elements (cards, dropdowns, modals).
 
 ---
 
 # Z-Index System
-
-## Available Z-Index Variables
 
 ```scss
 --z-index-nav: 1000;          // Navigation bars, sidebars
@@ -653,125 +266,7 @@ For custom shadow effects, maintain consistency with the 0.16 opacity:
 --z-index-popup-main: 3000;   // Primary popups (modals, dialogs)
 ```
 
-## Usage Guidelines
-
-### Z-Index Hierarchy
-
-```css
-/* Navigation */
-.navbar {
-  z-index: var(--z-index-nav);
-}
-
-.sidebar {
-  z-index: var(--z-index-nav);
-}
-
-/* Secondary Popups */
-.dropdown {
-  z-index: var(--z-index-popup-sec);
-}
-
-.tooltip {
-  z-index: var(--z-index-popup-sec);
-}
-
-/* Primary Popups */
-.modal {
-  z-index: var(--z-index-popup-main);
-}
-
-.dialog {
-  z-index: var(--z-index-popup-main);
-}
-```
-
-### Best Practices
-
-1. **Always use z-index variables** - Never use arbitrary z-index values
-2. **Respect the hierarchy** - Don't stack unrelated elements unnecessarily
-3. **Use relative positioning** - Z-index only works on positioned elements
-
-```css
-/* ✅ Correct */
-.modal {
-  position: fixed;
-  z-index: var(--z-index-popup-main);
-}
-
-/* ❌ Incorrect */
-.element {
-  z-index: 9999; /* Don't use arbitrary values */
-}
-```
-
----
-
-# Complete Integration Example
-
-## Full Component with All Variables
-
-```css
-.feature-card {
-  /* Spacing */
-  padding: calc(var(--content-padding) / 2);
-  margin-bottom: 24px;
-  
-  /* Colors */
-  background-color: var(--color-bg-main);
-  color: var(--color-main);
-  border: 1px solid var(--color-border-main);
-  
-  /* Typography */
-  font-family: var(--ff-sans);
-  
-  /* Shadow */
-  box-shadow: var(--pop-shadow);
-  
-  /* Layout */
-  position: relative;
-  z-index: 1;
-}
-
-.feature-card:hover {
-  border-color: var(--color-border-darken-trans);
-  transform: translateY(-2px);
-}
-
-.feature-card__title {
-  color: var(--color-main);
-  font-family: var(--ff-sans);
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.feature-card__description {
-  color: var(--color-sec);
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-.feature-card__code {
-  font-family: var(--ff-mono);
-  background-color: var(--color-bg-sec-2);
-  padding: 12px;
-  border-radius: 4px;
-  border: 1px solid var(--color-border-main-trans);
-}
-
-.feature-card__badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background-color: var(--brand-color);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  z-index: var(--z-index-popup-sec);
-}
-```
+Always use z-index variables; never use arbitrary values.
 
 ---
 
@@ -779,22 +274,21 @@ For custom shadow effects, maintain consistency with the 0.16 opacity:
 
 ## All Available Variables
 
-### Colors
-- `--brand-color`, `--color-semantic-active`
-- `--color-main`, `--color-sec`, `--color-sec-trans`, `--color-neg`, `--color-neg-trans`
-- `--color-bg-main`, `--color-bg-sec`, `--color-bg-sec-trans`, `--color-bg-sec-2`, `--color-bg-sec-2-trans`
-- `--color-border-main`, `--color-border-main-trans`, `--color-border-darken-trans`
+**Colors:**
+- Brand & Semantic: `--brand-color`, `--color-semantic-active`, `--color-semantic-success`, `--color-semantic-warning`, `--color-semantic-error`
+- Text: `--color-main`, `--color-sec`, `--color-sec-trans`, `--color-neg`, `--color-neg-trans`
+- Background: `--color-bg-main`, `--color-bg-sec`, `--color-bg-sec-trans`, `--color-bg-sec-2`, `--color-bg-sec-2-trans`
+- Border: `--color-border-main`, `--color-border-main-trans`, `--color-border-darken-trans`
 
-### Spacing
-- `--spacing-nav-item-size`, `--spacing-nav-padding`, `--spacing-nav-size`
-- `--content-padding`
+**Spacing:**
+- `--spacing-nav-item-size`, `--spacing-nav-padding`, `--spacing-nav-size`, `--content-padding`
 
-### Typography
+**Typography:**
 - `--ff-sans`, `--ff-serif`, `--ff-mono`
 
-### Shadows
+**Shadows:**
 - `--pop-shadow`
 
-### Z-Index
+**Z-Index:**
 - `--z-index-nav`, `--z-index-popup-sec`, `--z-index-popup-main`
 

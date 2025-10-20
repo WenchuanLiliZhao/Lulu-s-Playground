@@ -7,7 +7,7 @@ export interface AppLayoutProps {
   isTesting?: boolean;
 }
 
-const AppLayout: React.FC<AppLayoutProps> = ({
+export const AppLayout: React.FC<AppLayoutProps> = ({
   children,
   isTesting = false,
 }) => {
@@ -111,5 +111,3 @@ const AppLayout: React.FC<AppLayoutProps> = ({
     </div>
   );
 };
-
-export default AppLayout;

@@ -1,9 +1,7 @@
 // 首先，通过 SCSS 的 `@mixin` 分别设置 light mode 以及 dark mode 的配色方案：
 
 :root {
-  --brand-color: #FF4646;
-
-  --color-semantic-active: royalblue;
+  --brand-color: var(--hot-heat-4);
 }
 
 @mixin light-theme {
@@ -25,6 +23,11 @@
   --color-border-main-trans: rgba(0, 0, 0, 0.08);
 
   --color-border-darken-trans: rgba(0, 0, 0, 0.16);
+
+  --color-semantic-active: var(--indigo-5);
+  --color-semantic-success: var(--wilderness-4);
+  --color-semantic-warning: var(--amber-4);
+  --color-semantic-error: var(--hot-heat-4);
 }
 
 @mixin dark-theme {
@@ -47,6 +50,11 @@
   --color-border-main-trans: rgba(255, 255, 255, 0.08);
 
   --color-border-darken-trans: rgba(255, 255, 255, 0.16);
+
+  --color-semantic-active: var(--indigo-5);
+  --color-semantic-success: var(--wilderness-4);
+  --color-semantic-warning: var(--amber-4);
+  --color-semantic-error: var(--hot-heat-4);
 }
 
 // 其次，通过 SCSS 的 `@include` 将它们分别引用到 light mode 以及 dark mode 中：

@@ -1,12 +1,40 @@
 import { forwardRef, useRef, useCallback } from 'react'
+import type { ButtonHTMLAttributes } from 'react'
 import { Button } from '../../ui/Button'
 import { ClickCounter } from '../../utils'
-import type { ClickCounterButtonProps } from './ClickCounterButton.types'
+
+export interface ClickCounterButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Label for console logging
+   */
+  label?: string
+  /**
+   * Callback function called after click count updates
+   */
+  onCountChange?: (count: number) => void
+  /**
+   * Button variant style
+   */
+  variant?: 'primary' | 'secondary' | 'outline'
+  /**
+   * Button size
+   */
+  size?: 'small' | 'medium' | 'large'
+  /**
+   * Full width button
+   */
+  fullWidth?: boolean
+  /**
+   * Optional className
+   */
+  className?: string
+}
 
 /**
  * Enhanced button component that tracks and logs click counts to console
  */
-const ClickCounterButton = forwardRef<
+export const ClickCounterButton = forwardRef<
   HTMLButtonElement,
   ClickCounterButtonProps
 >(
@@ -20,6 +48,7 @@ const ClickCounterButton = forwardRef<
       size = 'medium',
       fullWidth = false,
       disabled = false,
+      className,
       ...rest
     },
     ref
@@ -52,6 +81,7 @@ const ClickCounterButton = forwardRef<
         size={size}
         fullWidth={fullWidth}
         disabled={disabled}
+        className={className}
         {...rest}
       >
         {children}
@@ -61,6 +91,4 @@ const ClickCounterButton = forwardRef<
 )
 
 ClickCounterButton.displayName = 'ClickCounterButton'
-
-export default ClickCounterButton
 

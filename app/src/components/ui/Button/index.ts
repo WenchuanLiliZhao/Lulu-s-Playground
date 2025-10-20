@@ -1,4 +1,4 @@
-export { default } from './Button'
-export { default as Button } from './Button'
-export type { ButtonProps } from './Button.types'
+export { Button } from './_component'
+export { Button as default } from './_component'
+export type { ButtonProps } from './_component'
 

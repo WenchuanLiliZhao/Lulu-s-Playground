@@ -1,0 +1,26 @@
+.scale {
+  background: var(--color-bg-main);
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid var(--color-border-main);
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-main);
+}
+
+.original {
+  font-size: 0.95rem;
+  color: var(--color-sec);
+  margin-bottom: 20px;
+  font-family: var(--ff-mono);
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+}
+

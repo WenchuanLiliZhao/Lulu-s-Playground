@@ -1,6 +1,6 @@
 import styles from "./_styles.module.scss";
 
-interface IconProps {
+export interface IconProps {
   icon: string;
   className?: string;
 }

@@ -1,0 +1,57 @@
+---
+description: When generating components (excluding `utils/`)
+alwaysApply: false
+---
+
+# Component Structure Rule
+
+## File Structure
+
+```
+ComponentName/
+  ├── index.ts              # Public exports
+  ├── _component.tsx        # Component implementation
+  └── _styles.module.scss   # Component styles
+```
+
+## File Templates
+
+### `_component.tsx`
+```tsx
+import styles from "./_styles.module.scss";
+
+export interface ComponentNameProps {
+  className?: string;
+  // other props...
+}
+
+export const ComponentName = ({ className, ...props }: ComponentNameProps) => {
+  return (
+    <div className={`${styles["container"]} ${className}`}>
+      {/* Component JSX */}
+    </div>
+  );
+};
+```
+
+### `_styles.module.scss`
+```scss
+.container {
+  // styles here
+}
+```
+
+### `index.ts`
+```ts
+export { ComponentName } from './_component'
+export { ComponentName as default } from './_component'
+export type { ComponentNameProps } from './_component'
+```
+
+## Key Rules
+
+1. Folder name: **PascalCase** (e.g., `Icon`, `Button`)
+2. Internal files: **prefix with `_`** (`_component.tsx`, `_styles.module.scss`)
+3. Props interface: **export inline** in `_component.tsx`
+4. Component export: **named arrow function**
+5. Always include **optional `className` prop**
