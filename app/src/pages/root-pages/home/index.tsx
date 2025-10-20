@@ -1,6 +1,7 @@
 import AppLayout from "../../../components/ui/AppLayout";
 import type { PageProps } from "../../_page-types";
 import { Link } from "react-router";
+import { PlaygroundPages } from "../../playground";
 
 const Home: PageProps = {
   title: "Home",
@@ -39,22 +40,21 @@ const Home: PageProps = {
           }}
         >
           <h2 style={{ marginBottom: "15px" }}>Playground Demos</h2>
-          <ul>
-            <li style={{ marginBottom: "10px" }}>
-              <Link 
-                to="/demo-color-chart" 
-                style={{ 
-                  color: "var(--brand-color)", 
-                  textDecoration: "none",
-                  fontWeight: 600
-                }}
-              >
-                Color Chart Demo →
-              </Link>
-              <p style={{ fontSize: "0.9rem", color: "var(--color-sec)", marginTop: "5px" }}>
-                18 beautiful color palettes with full scale gradients
-              </p>
-            </li>
+          <ul style={{ listStyle: "none", padding: 0 }}>
+            {Object.values(PlaygroundPages).map((page) => (
+              <li key={page.slug} style={{ marginBottom: "10px" }}>
+                <Link 
+                  to={`/${page.slug}`}
+                  style={{ 
+                    color: "var(--brand-color)", 
+                    textDecoration: "none",
+                    fontWeight: 600
+                  }}
+                >
+                  {page.title} →
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

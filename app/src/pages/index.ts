@@ -1,7 +1,7 @@
 import { RootPages } from "./root-pages";
-import * as Playground from "./playground";
+import { PlaygroundPages } from "./playground";
 
 export const Pages = {
   ...RootPages,
-  ...Playground,
+  ...PlaygroundPages,
 }

@@ -7,7 +7,7 @@ All pages within the playground follow this structure:
 
 ```
 PageName/
-  ├── index.tsx
+  ├── index.tsx #note: not `ts`
   ├── data/ #when necessary
   └── components/
 ```
