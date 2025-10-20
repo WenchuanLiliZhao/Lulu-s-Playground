@@ -2,12 +2,15 @@
  * Lululemon UI - Design System
  * 
  * This is the entry point for the npm package.
- * Only components are exported from this file.
+ * Exports UI components, utilities, and enhanced components.
  */
 
-// Export all components
-export * from './components'
+// Export UI components
+export * from './components/ui'
 
-// Re-export types for convenience
-export type { ButtonProps } from './components/Button'
+// Export utilities
+export * from './components/utils'
+
+// Export enhanced components
+export * from './components/enhanced'
 

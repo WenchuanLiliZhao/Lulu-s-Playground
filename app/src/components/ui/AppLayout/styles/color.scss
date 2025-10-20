@@ -1,0 +1,81 @@
+// 首先，通过 SCSS 的 `@mixin` 分别设置 light mode 以及 dark mode 的配色方案：
+
+:root {
+  --brand-color: #FF4646;
+
+  --color-semantic-active: royalblue;
+}
+
+@mixin light-theme {
+  --color-text-main: #1a1a1a;
+  --color-text-sec: #858585;
+  --color-text-sec-trans: rgba(0, 0, 0, 0.48);
+  --color-text-neg: #ADADAD;
+  --color-text-neg-trans: rgba(0, 0, 0, 0.32);
+
+  --color-bg-main: white;
+
+  --color-bg-sec: #fafafa;
+  --color-bg-sec-trans: rgba(0, 0, 0, 0.02);
+
+  --color-bg-sec-2: #f5f5f5;
+  --color-bg-sec-2-trans: rgba(0, 0, 0, 0.04);
+
+  --color-border-main: #ebebeb;
+  --color-border-main-trans: rgba(0, 0, 0, 0.08);
+
+  --color-border-darken-trans: rgba(0, 0, 0, 0.16);
+}
+
+@mixin dark-theme {
+  --color-text-main: #eaeaea;
+  --color-text-sec: #b3b3b3;
+  --color-text-sec-trans: rgba(255, 255, 255, 0.48);
+
+  --color-text-neg: #4d4d4d;
+  --color-text-neg-trans: rgba(255, 255, 255, 0.32);
+
+  --color-bg-main: #121212;
+
+  --color-bg-sec: #1e1e1e;
+  --color-bg-sec-trans: rgba(255, 255, 255, 0.02);
+
+  --color-bg-sec-2: #2a2a2a;
+  --color-bg-sec-2-trans: rgba(255, 255, 255, 0.04);
+
+  --color-border-main: #333333;
+  --color-border-main-trans: rgba(255, 255, 255, 0.08);
+
+  --color-border-darken-trans: rgba(255, 255, 255, 0.16);
+}
+
+// 其次，通过 SCSS 的 `@include` 将它们分别引用到 light mode 以及 dark mode 中：
+
+:root {
+  @include light-theme;
+}
+
+:root[data-theme="dark"] {
+  @include dark-theme;
+}
+
+// 为了安全起见，我们增加一组 system theme detection 设置：
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    @include light-theme;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include dark-theme;
+  }
+}
+
+
+
+html,
+body {
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+}
