@@ -196,6 +196,7 @@ const DataSearch = () => {
                 <option value="100">100/page</option>
                 <option value="200">200/page</option>
               </select>
+              <Icon icon="arrow_drop_down" className={styles.selectIcon} />
             </div>
 
             <div className={styles.pageNumbers}>
