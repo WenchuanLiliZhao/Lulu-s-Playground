@@ -20,10 +20,10 @@ export interface TimeRange {
 
 export interface CalendarProps {
   /**
-   * Year to display
+   * Initial year to display
    * @default current year
    */
-  year?: number
+  initialYear?: number
   /**
    * Optional className
    */
@@ -235,14 +235,21 @@ const MonthCalendar = ({
 }
 
 export const Calendar = ({
-  year = new Date().getFullYear(),
+  initialYear = new Date().getFullYear(),
   className = '',
   breakpoint = 600,
   timeRanges = [],
 }: CalendarProps) => {
+  const [year, setYear] = useState(initialYear)
   const [isCompact, setIsCompact] = useState(false)
   const [currentResponsiveConfig, setCurrentResponsiveConfig] = useState<repsonsivenessProps>(responsiveness[0])
   const containerRef = useRef<HTMLDivElement>(null)
+  
+  const currentYear = new Date().getFullYear()
+  
+  const handlePreviousYear = () => setYear(year - 1)
+  const handleNextYear = () => setYear(year + 1)
+  const handleToday = () => setYear(currentYear)
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -280,11 +287,36 @@ export const Calendar = ({
         isCompact ? styles.compact : styles.desktop
       } ${className}`}
     >
-      <div 
-        className={styles.yearHeader}
-        style={{ fontSize: `${currentResponsiveConfig.yearFontSize}px` }}
-      >
-        {year}
+      <div className={styles.headerWrapper}>
+        <div className={styles.yearControls}>
+          <button 
+            className={styles.yearButton}
+            onClick={handlePreviousYear}
+            aria-label="Previous year"
+          >
+            ←
+          </button>
+          <div 
+            className={styles.yearHeader}
+            style={{ fontSize: `${currentResponsiveConfig.yearFontSize}px` }}
+          >
+            {year}
+          </div>
+          <button 
+            className={styles.yearButton}
+            onClick={handleNextYear}
+            aria-label="Next year"
+          >
+            →
+          </button>
+        </div>
+        <button 
+          className={styles.todayButton}
+          onClick={handleToday}
+          disabled={year === currentYear}
+        >
+          Today
+        </button>
       </div>
       <div 
         className={styles.grid}

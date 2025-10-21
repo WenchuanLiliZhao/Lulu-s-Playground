@@ -7,29 +7,28 @@ import { COLOR_SCALES } from '../../../styles/colors'
 
 const CalendarDebug = () => {
   const currentYear = new Date().getFullYear()
-  const [year, setYear] = useState(currentYear)
   const [containerWidth, setContainerWidth] = useState(100)
   const [showTimeRanges, setShowTimeRanges] = useState(false)
 
-  // Example time ranges for demonstration
+  // Example time ranges for demonstration (using current year)
   const exampleTimeRanges: TimeRange[] = [
     {
-      interval: [new Date(year, 0, 1), new Date(year, 0, 7)],
+      interval: [new Date(currentYear, 0, 1), new Date(currentYear, 0, 7)],
       color: "white", // Light color for text
       backgroundColor: COLOR_SCALES.wilderness.colors[4], // Green
     },
     {
-      interval: [new Date(year, 1, 14), new Date(year, 1, 14)],
+      interval: [new Date(currentYear, 1, 14), new Date(currentYear, 1, 14)],
       color: "white", // Light color for text
       backgroundColor: COLOR_SCALES.rosewood.colors[4], // Pink/Rose
     },
     {
-      interval: [new Date(year, 6, 1), new Date(year, 6, 31)],
+      interval: [new Date(currentYear, 6, 1), new Date(currentYear, 6, 31)],
       color: "white", // Light color for text
       backgroundColor: COLOR_SCALES.orange.colors[4], // Orange
     },
     {
-      interval: [new Date(year, 11, 24), new Date(year, 11, 31)],
+      interval: [new Date(currentYear, 11, 24), new Date(currentYear, 11, 31)],
       color: "white", // Light color for text
       backgroundColor: COLOR_SCALES.daydream.colors[4], // Blue
     },
@@ -48,18 +47,6 @@ const CalendarDebug = () => {
       </div>
 
       <div className={styles.controls}>
-        <div className={styles.controlGroup}>
-          <label htmlFor="year">Year:</label>
-          <input
-            id="year"
-            type="number"
-            value={year}
-            onChange={(e) => setYear(Number(e.target.value))}
-            min="1900"
-            max="2100"
-          />
-        </div>
-
         <div className={styles.controlGroup}>
           <label htmlFor="containerWidth">
             Container Width: {containerWidth}%
@@ -133,7 +120,6 @@ const CalendarDebug = () => {
           style={{ width: `${containerWidth}%` }}
         >
           <Calendar
-            year={year}
             timeRanges={showTimeRanges ? exampleTimeRanges : undefined}
           />
         </div>
@@ -146,8 +132,9 @@ const CalendarDebug = () => {
           <li><strong>Multiple breakpoints:</strong> Adapts font sizes, gaps, and columns based on container width</li>
           <li><strong>Dynamic column layouts:</strong> 2/3/4 columns depending on available space</li>
           <li><strong>Responsive typography:</strong> Font sizes scale automatically with container size</li>
-          <li><strong>Today highlight:</strong> Current day is highlighted in red</li>
-          <li><strong>Year selection:</strong> View any year from 1900 to 2100</li>
+          <li><strong>Today highlight:</strong> Current day is highlighted with a dot indicator</li>
+          <li><strong>Year navigation:</strong> Use arrow buttons to navigate between years</li>
+          <li><strong>Today button:</strong> Quickly return to the current year</li>
           <li><strong>Time ranges:</strong> Highlight specific date ranges with custom colors</li>
         </ul>
         

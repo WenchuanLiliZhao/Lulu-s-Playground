@@ -5,12 +5,82 @@
   line-height: 1.25;
 }
 
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.yearControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  justify-content: center;
+}
+
 .yearHeader {
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 2rem;
   color: var(--color-main);
+  min-width: 5rem;
+}
+
+.yearButton {
+  background: var(--color-bg-sec);
+  border: 1px solid var(--color-border-main);
+  border-radius: 6px;
+  color: var(--color-main);
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+
+  &:hover {
+    background: var(--color-bg-sec-2);
+    border-color: var(--color-semantic-active);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.todayButton {
+  background: var(--color-semantic-active);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background: var(--color-bg-sec);
+    color: var(--color-neg);
+    cursor: not-allowed;
+    border: 1px solid var(--color-border-main);
+  }
 }
 
 .grid {
@@ -136,9 +206,31 @@
 
 // Media query fallback for very small screens
 @media (max-width: 480px) {
+  .headerWrapper {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .yearControls {
+    width: 100%;
+    gap: 0.75rem;
+  }
+
   .yearHeader {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+  }
+
+  .yearButton {
+    font-size: 1.25rem;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .todayButton {
+    width: 100%;
+    padding: 0.625rem 1rem;
   }
 
   .month {
