@@ -1,0 +1,82 @@
+---
+description: When implementing responsive components that need to adapt to container size changes
+alwaysApply: false
+---
+# Responsive Design Guidelines
+
+## Container-Based Responsiveness
+
+All responsive components **must** use listener-based approaches rather than CSS `@media` queries. This ensures components adapt to their container size, not viewport size, enabling true component-level responsiveness.
+
+### Implementation Requirements
+
+1. **Use ResizeObserver API**: Implement a `ResizeObserver` to monitor the component's container dimensions
+2. **Dynamic State Management**: Update component state based on observed width/height changes
+3. **Breakpoint Configuration**: Define breakpoints relative to container size, not viewport
+4. **Cleanup**: Always disconnect observers in cleanup functions to prevent memory leaks
+
+### Pattern Example
+
+```typescript
+useEffect(() => {
+  if (!containerRef.current) return
+
+  const resizeObserver = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      const width = entry.contentRect.width
+      // Update state based on width
+      updateResponsiveState(width)
+    }
+  })
+
+  resizeObserver.observe(containerRef.current)
+
+  return () => resizeObserver.disconnect()
+}, [dependencies])
+```
+
+### Benefits
+
+- Components work correctly in any layout context
+- True component reusability
+- No dependency on viewport dimensions
+- Supports complex nested layouts
+# Responsive Design Guidelines
+
+## Container-Based Responsiveness
+
+All responsive components **must** use listener-based approaches rather than CSS `@media` queries. This ensures components adapt to their container size, not viewport size, enabling true component-level responsiveness.
+
+### Implementation Requirements
+
+1. **Use ResizeObserver API**: Implement a `ResizeObserver` to monitor the component's container dimensions
+2. **Dynamic State Management**: Update component state based on observed width/height changes
+3. **Breakpoint Configuration**: Define breakpoints relative to container size, not viewport
+4. **Cleanup**: Always disconnect observers in cleanup functions to prevent memory leaks
+
+### Pattern Example
+
+```typescript
+useEffect(() => {
+  if (!containerRef.current) return
+
+  const resizeObserver = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      const width = entry.contentRect.width
+      // Update state based on width
+      updateResponsiveState(width)
+    }
+  })
+
+  resizeObserver.observe(containerRef.current)
+
+  return () => resizeObserver.disconnect()
+}, [dependencies])
+```
+
+### Benefits
+
+- Components work correctly in any layout context
+- True component reusability
+- No dependency on viewport dimensions
+- Supports complex nested layouts

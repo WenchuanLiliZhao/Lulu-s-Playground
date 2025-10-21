@@ -3,7 +3,7 @@ import { Calendar, type TimeRange, responsiveness } from '../../../components/ui
 import AppLayout from '../../../components/ui/AppLayout'
 import type { PageProps } from '../../_page-types'
 import styles from './styles.module.scss'
-import { COLOR_SCALES } from '../../../styles/colors'
+import { COLOR_SCALES } from '../../../styles/color-chart'
 
 const CalendarDebug = () => {
   const currentYear = new Date().getFullYear()

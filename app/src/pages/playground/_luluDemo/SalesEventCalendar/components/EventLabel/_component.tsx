@@ -5,6 +5,7 @@ export interface EventLabelProps {
   backgroundColor: string
   color: string
   className?: string
+  fullWidth?: boolean
 }
 
 export const EventLabel = ({
@@ -12,10 +13,11 @@ export const EventLabel = ({
   backgroundColor,
   color,
   className = '',
+  fullWidth = false,
 }: EventLabelProps) => {
   return (
     <div
-      className={`${styles.container} ${className}`}
+      className={`${styles.container} ${fullWidth ? styles.fullWidth : ''} ${className}`}
       style={{ backgroundColor, color }}
     >
       {name}

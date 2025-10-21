@@ -87,7 +87,8 @@
 }
 
 .channelRetail {
-  background: linear-gradient(135deg, #9b87f5 0%, #7e69db 100%);
+  // Color from COLOR_SCALES.purple.colors[5]
+  background: #A855F7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,7 +99,8 @@
 }
 
 .channelEC {
-  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  // Color from COLOR_SCALES.daydream.colors[3]
+  background: #5990C2;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,4 +1,4 @@
-import { getAllColorScales, type ColorScale } from '../../../../styles/colors';
+import { getAllColorScales, type ColorScale } from '../../../../../styles/color-chart';
 
 export interface ColorScaleData {
   title: string;

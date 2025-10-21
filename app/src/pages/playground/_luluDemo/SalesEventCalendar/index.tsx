@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
-import AppLayout from '../../../components/ui/AppLayout'
-import { Calendar, Switch } from '../../../components/ui'
-import type { PageProps } from '../../_page-types'
+import AppLayout from '../../../../components/ui/AppLayout'
+import { Calendar, Switch } from '../../../../components/ui'
+import type { PageProps } from '../../../_page-types'
 import { EventLabel } from './components'
 import {
   events2025,
@@ -10,6 +10,7 @@ import {
   getEventsInMonth,
   getEventsByChannel,
 } from './data/eventData'
+import { COLOR_SCALES } from '../../../../styles/color-chart'
 import styles from './styles.module.scss'
 
 const SalesEventCalendar = () => {
@@ -173,6 +174,7 @@ const SalesEventCalendar = () => {
                   name={event.name}
                   backgroundColor={event.backgroundColor}
                   color={event.color}
+                  fullWidth={true}
                 />
               ))}
             </div>
@@ -185,8 +187,8 @@ const SalesEventCalendar = () => {
                 <EventLabel
                   key={index}
                   name={holiday.name}
-                  backgroundColor="#FFF8DC"
-                  color="#D2691E"
+                  backgroundColor={COLOR_SCALES.zest.colors[2]}
+                  color="#ffffff"
                 />
               ))}
             </div>

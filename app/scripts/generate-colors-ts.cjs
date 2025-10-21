@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 
 const SCSS_FILE = path.join(__dirname, '../src/styles/color-chart.scss');
-const TS_OUTPUT_FILE = path.join(__dirname, '../src/styles/colors.ts');
+const TS_OUTPUT_FILE = path.join(__dirname, '../src/styles/color-chart.ts');
 
 /**
  * Parse SCSS file and extract color scales

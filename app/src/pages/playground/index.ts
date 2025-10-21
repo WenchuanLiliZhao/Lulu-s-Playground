@@ -1,12 +1,8 @@
-import DataSearchPage from "./CDD/DataSearch";
-import Demo_ColorChart from "./Demo_ColorChart";
-import LodaDashboard from "./loda-dashboard";
-import SalesEventCalendar from "./SalesEventCalendar";
+import { LuluDemoPages } from "./_luluDemo";
+import { CDDPages } from "./CDD";
+
 
 export const PlaygroundPages = {
-  Demo_ColorChart,
-  LodaDashboard,
-  SalesEventCalendar,
-  
-  DataSearchPage,
+  ...CDDPages,
+  ...LuluDemoPages,
 }

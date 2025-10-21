@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
-import AppLayout from "../../../components/ui/AppLayout";
-import type { PageProps } from "../../_page-types";
+import AppLayout from "../../../../components/ui/AppLayout";
+import type { PageProps } from "../../../_page-types";
 import { ColorScale, Notification } from './components';
 import { colorScales } from './data/colorData';
 import styles from './styles.module.scss';
