@@ -13,6 +13,20 @@ export interface SearchBarProps {
    * Use this to create separate history instances
    */
   storageKey?: string;
+  /**
+   * Show a search button next to the input field
+   */
+  showSearchButton?: boolean;
+  /**
+   * Text to display on the search button
+   * @default "Search"
+   */
+  searchButtonText?: string;
+  /**
+   * Callback when the search button is clicked
+   * If not provided, will use the onSearch callback with current query
+   */
+  onSearchButtonClick?: () => void;
 }
 
 const SEARCH_HISTORY_KEY = "search_history";
@@ -25,6 +39,9 @@ export const SearchBar = ({
   defaultValue = "",
   className = "",
   storageKey = SEARCH_HISTORY_KEY,
+  showSearchButton = false,
+  searchButtonText = "Search",
+  onSearchButtonClick,
 }: SearchBarProps) => {
   const [query, setQuery] = useState(defaultValue);
   const [isFocused, setIsFocused] = useState(false);
@@ -94,69 +111,93 @@ export const SearchBar = ({
     executeSearch(historyItem);
   };
 
+  // Handle search button click
+  const handleSearchButtonClick = () => {
+    if (onSearchButtonClick) {
+      onSearchButtonClick();
+    } else {
+      executeSearch(query);
+    }
+  };
+
   return (
     <div
-      className={`${styles["search-bar"]} ${styles[`size-${size}`]} ${
-        isFocused ? styles["focused"] : ""
-      } ${className}`}
+      className={`${styles["search-bar-wrapper"]} ${styles[`size-${size}`]} ${showSearchButton ? styles["with-button"] : ""}`}
     >
-      {/* Render a search icon */}
-      <Icon icon={"search"} />
+      <div
+        className={`${styles["search-bar"]} ${
+          isFocused ? styles["focused"] : ""
+        } ${className}`}
+      >
+        {/* Render a search icon */}
+        <Icon icon={"search"} />
 
-      {/* Render the input field for search queries */}
-      <input
-        type="text"
-        value={query}
-        onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        placeholder={placeholder}
-        className={styles.input}
-      />
+        {/* Render the input field for search queries */}
+        <input
+          type="text"
+          value={query}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          placeholder={placeholder}
+          className={styles.input}
+        />
 
-      {/* Render the search history box when input is empty and focused */}
-      {query === "" && isFocused && (
-        <div
-          className={`${styles["hint-box"]} ${
-            isFocused ? styles["focused"] : ""
-          }`}
-        >
-          {/* Search history header with clear button */}
-          <div className={styles["history-header"]}>
-            <div className={styles["hint-group-title"]}>
-              Search History
-            </div>
-            {searchHistory.length > 0 && (
-              <button
-                className={styles["clear-btn"]}
-                onClick={clearHistory}
-                aria-label="Clear search history"
-              >
-                <Icon icon="clear" />
-              </button>
-            )}
-          </div>
-
-          {/* Render search history tags */}
-          <div className={styles["history-tags"]}>
-            {searchHistory.length === 0 ? (
-              <div className={styles["no-history"]}>
-                No search history
+        {/* Render the search history box when input is empty and focused */}
+        {query === "" && isFocused && (
+          <div
+            className={`${styles["hint-box"]} ${
+              isFocused ? styles["focused"] : ""
+            }`}
+          >
+            {/* Search history header with clear button */}
+            <div className={styles["history-header"]}>
+              <div className={styles["hint-group-title"]}>
+                Search History
               </div>
-            ) : (
-              searchHistory.map((item: string, index: number) => (
-                <button 
-                  key={index} 
-                  className={styles["history-tag"]}
-                  onClick={() => handleHistoryTagClick(item)}
+              {searchHistory.length > 0 && (
+                <button
+                  className={styles["clear-btn"]}
+                  onClick={clearHistory}
+                  aria-label="Clear search history"
                 >
-                  {item}
+                  <Icon icon="clear" />
                 </button>
-              ))
-            )}
+              )}
+            </div>
+
+            {/* Render search history tags */}
+            <div className={styles["history-tags"]}>
+              {searchHistory.length === 0 ? (
+                <div className={styles["no-history"]}>
+                  No search history
+                </div>
+              ) : (
+                searchHistory.map((item: string, index: number) => (
+                  <button 
+                    key={index} 
+                    className={styles["history-tag"]}
+                    onClick={() => handleHistoryTagClick(item)}
+                  >
+                    {item}
+                  </button>
+                ))
+              )}
+            </div>
           </div>
-        </div>
+        )}
+      </div>
+
+      {/* Render search button if enabled */}
+      {showSearchButton && (
+        <button 
+          className={styles["search-button"]}
+          onClick={handleSearchButtonClick}
+          aria-label={searchButtonText}
+        >
+          {searchButtonText}
+        </button>
       )}
     </div>
   );

@@ -3,6 +3,7 @@ import DataDictionary from "./CDD/DataDictionary";
 import UniSearch from "./CDD/uni-search";
 import LodaDashboard from "./loda-dashboard";
 import SalesEventCalendar from "./SalesEventCalendar";
+import DataSearch from "./CDD/DataSearch";
 
 export const PlaygroundPages = {
   Demo_ColorChart,
@@ -10,4 +11,5 @@ export const PlaygroundPages = {
   UniSearch,
   LodaDashboard,
   SalesEventCalendar,
+  DataSearch,
 }

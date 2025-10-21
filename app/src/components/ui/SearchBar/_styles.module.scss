@@ -1,3 +1,40 @@
+.search-bar-wrapper {
+  display: contents;
+
+  &.with-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+
+    .search-bar {
+      flex: 1;
+    }
+  }
+
+  // Size variants define CSS variables that can be used by both search-bar and button
+  &.size-default {
+    --search-bar-height: 44px;
+    --search-bar-font-size: 16px;
+    --search-bar-border-radius: 8px;
+    --search-bar-gap: 8px;
+  }
+
+  &.size-nav {
+    --search-bar-height: var(--spacing-nav-item-size, 36px);
+    --search-bar-font-size: 14px;
+    --search-bar-border-radius: 4px;
+    --search-bar-gap: 6px;
+  }
+
+  &.size-small {
+    --search-bar-height: 32px;
+    --search-bar-font-size: 14px;
+    --search-bar-border-radius: 4px;
+    --search-bar-gap: 6px;
+  }
+}
+
 .search-bar {
   display: flex;
   align-items: center;
@@ -6,34 +43,14 @@
   padding: 0 8px;
   border: 1px solid var(--color-border-main-trans);
 
-  height: var(--search-bar-height);
-  font-size: 16px;
-  border-radius: 8px;
+  height: var(--search-bar-height, 44px);
+  font-size: var(--search-bar-font-size, 16px);
+  border-radius: var(--search-bar-border-radius, 8px);
+  gap: var(--search-bar-gap, 8px);
   transition: border-color 0.2s ease, background-color 0.2s ease;
 
   &.focused {
     border-color: var(--color-semantic-active);
-  }
-
-  &.size-default {
-    --search-bar-height: 44px;
-    font-size: 16px;
-    border-radius: 8px;
-    gap: 8px;
-  }
-
-  &.size-nav {
-    --search-bar-height: var(--spacing-nav-item-size, 36px);
-    font-size: 14px;
-    border-radius: 4px;
-    gap: 6px;
-  }
-
-  &.size-small {
-    --search-bar-height: 32px;
-    font-size: 14px;
-    border-radius: 4px;
-    gap: 6px;
   }
 
   &:hover {
@@ -57,6 +74,29 @@
     &::placeholder {
       color: var(--color-neg);
     }
+  }
+}
+
+.search-button {
+  padding: 0 24px;
+  height: var(--search-bar-height, 44px);
+  background-color: var(--color-bg-sec);
+  border: 1px solid var(--color-border-main);
+  border-radius: var(--search-bar-border-radius, 8px);
+  font-size: var(--search-bar-font-size, 14px);
+  font-weight: 500;
+  color: var(--color-main);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: var(--color-bg-sec-2);
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 }
 

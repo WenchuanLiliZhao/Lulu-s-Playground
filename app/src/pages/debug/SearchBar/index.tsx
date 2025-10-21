@@ -340,6 +340,79 @@ const SearchBarDebug = () => {
         />
       </section>
 
+      {/* With Search Button - Default Size */}
+      <section style={{ marginBottom: "48px" }}>
+        <h2 style={{ marginBottom: "16px" }}>With Search Button (Default Size)</h2>
+        <p style={{ marginBottom: "12px", color: "var(--color-neg)", fontSize: "14px" }}>
+          Search bar with integrated search button.
+        </p>
+        <SearchBar
+          placeholder="Search..."
+          onSearch={handleSearch}
+          showSearchButton={true}
+        />
+      </section>
+
+      {/* With Search Button - Nav Size */}
+      <section style={{ marginBottom: "48px" }}>
+        <h2 style={{ marginBottom: "16px" }}>With Search Button (Nav Size)</h2>
+        <p style={{ marginBottom: "12px", color: "var(--color-neg)", fontSize: "14px" }}>
+          Compact search bar with button for navigation bars.
+        </p>
+        <SearchBar
+          placeholder="Search..."
+          size="nav"
+          onSearch={handleSearch}
+          showSearchButton={true}
+        />
+      </section>
+
+      {/* With Search Button - Small Size */}
+      <section style={{ marginBottom: "48px" }}>
+        <h2 style={{ marginBottom: "16px" }}>With Search Button (Small Size)</h2>
+        <p style={{ marginBottom: "12px", color: "var(--color-neg)", fontSize: "14px" }}>
+          Small search bar with button for tight spaces.
+        </p>
+        <SearchBar
+          placeholder="Search..."
+          size="small"
+          onSearch={handleSearch}
+          showSearchButton={true}
+        />
+      </section>
+
+      {/* With Custom Button Text */}
+      <section style={{ marginBottom: "48px" }}>
+        <h2 style={{ marginBottom: "16px" }}>With Custom Button Text</h2>
+        <p style={{ marginBottom: "12px", color: "var(--color-neg)", fontSize: "14px" }}>
+          Search bar with customized button label.
+        </p>
+        <SearchBar
+          placeholder="Enter search query..."
+          onSearch={handleSearch}
+          showSearchButton={true}
+          searchButtonText="Go"
+        />
+      </section>
+
+      {/* With Custom Button Click Handler */}
+      <section style={{ marginBottom: "48px" }}>
+        <h2 style={{ marginBottom: "16px" }}>With Custom Button Click Handler</h2>
+        <p style={{ marginBottom: "12px", color: "var(--color-neg)", fontSize: "14px" }}>
+          Search bar with custom button click logic that shows an alert.
+        </p>
+        <SearchBar
+          placeholder="Try clicking the button..."
+          onSearch={handleSearch}
+          showSearchButton={true}
+          searchButtonText="Custom Action"
+          onSearchButtonClick={() => {
+            alert("Custom button click handler executed!");
+            handleSearch("Custom button clicked");
+          }}
+        />
+      </section>
+
       {/* Usage Instructions */}
       <section style={{ marginTop: "64px", padding: "24px", backgroundColor: "var(--color-bg-sec-trans)", borderRadius: "8px" }}>
         <h2>Usage Instructions</h2>
@@ -351,6 +424,9 @@ const SearchBarDebug = () => {
           <li>Use the clear button to remove all history</li>
           <li>History is saved to localStorage (max 10 items)</li>
           <li>Use custom <code>storageKey</code> prop to create separate history instances</li>
+          <li>Set <code>showSearchButton</code> to true to display an integrated search button</li>
+          <li>Customize button text with <code>searchButtonText</code> prop</li>
+          <li>Use <code>onSearchButtonClick</code> for custom button click behavior</li>
         </ul>
       </section>
     </div>
