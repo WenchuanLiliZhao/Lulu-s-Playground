@@ -38,6 +38,7 @@ const SalesEventCalendar_V1 = () => {
           <Calendar
             initialYear={currentYear}
             timeRanges={timeRanges}
+            headerMode={["switch", 1, 2]}
           />
         </div>
 

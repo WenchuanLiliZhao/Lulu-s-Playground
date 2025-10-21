@@ -37,6 +37,13 @@ export interface CalendarProps {
    * Array of time ranges with custom colors
    */
   timeRanges?: TimeRange[]
+  /**
+   * Header mode for year selection
+   * - "default": arrow buttons with year display
+   * - ["switch", x, y]: year switch from (current year - x) to (current year + y)
+   * @default "default"
+   */
+  headerMode?: "default" | ["switch", number, number]
 }
 
 interface MonthData {
@@ -198,7 +205,10 @@ const MonthCalendar = ({
           }
 
           const cellDate = new Date(actualYear, actualMonth, dayCell.day)
-          const rangeStyle = getDateRangeStyle(cellDate, timeRanges)
+          // Only apply range styles to dates in the current month
+          const rangeStyle = dayCell.isCurrentMonth 
+            ? getDateRangeStyle(cellDate, timeRanges)
+            : null
 
           const isToday = isTodayInThisMonth &&
             dayCell.isCurrentMonth &&
@@ -239,6 +249,7 @@ export const Calendar = ({
   className = '',
   breakpoint = 600,
   timeRanges = [],
+  headerMode = "default",
 }: CalendarProps) => {
   const [year, setYear] = useState(initialYear)
   const [isCompact, setIsCompact] = useState(false)
@@ -250,6 +261,15 @@ export const Calendar = ({
   const handlePreviousYear = () => setYear(year - 1)
   const handleNextYear = () => setYear(year + 1)
   const handleToday = () => setYear(currentYear)
+  const handleYearChange = (newYear: number) => setYear(newYear)
+
+  // Calculate year options for switch mode
+  const yearOptions = headerMode !== "default" 
+    ? Array.from(
+        { length: headerMode[2] + headerMode[1] + 1 }, 
+        (_, i) => currentYear - headerMode[1] + i
+      )
+    : []
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -288,35 +308,66 @@ export const Calendar = ({
       } ${className}`}
     >
       <div className={styles.headerWrapper}>
-        <div className={styles.yearControls}>
-          <button 
-            className={styles.yearButton}
-            onClick={handlePreviousYear}
-            aria-label="Previous year"
-          >
-            ←
-          </button>
-          <div 
-            className={styles.yearHeader}
-            style={{ fontSize: `${currentResponsiveConfig.yearFontSize}px` }}
-          >
-            {year}
-          </div>
-          <button 
-            className={styles.yearButton}
-            onClick={handleNextYear}
-            aria-label="Next year"
-          >
-            →
-          </button>
-        </div>
-        <button 
-          className={styles.todayButton}
-          onClick={handleToday}
-          disabled={year === currentYear}
-        >
-          Today
-        </button>
+        {headerMode === "default" ? (
+          // Default mode: arrow buttons with year display
+          <>
+            <div className={styles.yearControls}>
+              <button 
+                className={styles.yearButton}
+                onClick={handlePreviousYear}
+                aria-label="Previous year"
+              >
+                ←
+              </button>
+              <div 
+                className={styles.yearHeader}
+                style={{ fontSize: `${currentResponsiveConfig.yearFontSize}px` }}
+              >
+                {year}
+              </div>
+              <button 
+                className={styles.yearButton}
+                onClick={handleNextYear}
+                aria-label="Next year"
+              >
+                →
+              </button>
+            </div>
+            <button 
+              className={styles.todayButton}
+              onClick={handleToday}
+              disabled={year === currentYear}
+            >
+              Today
+            </button>
+          </>
+        ) : (
+          // Switch mode: year dropdown/switch with today button
+          <>
+            <div className={styles.yearSwitchContainer}>
+              <div className={styles.yearSwitchWrapper}>
+                {yearOptions.map((yearOption) => (
+                  <button
+                    key={yearOption}
+                    className={`${styles.yearSwitchOption} ${
+                      yearOption === year ? styles.yearSwitchOptionActive : ''
+                    }`}
+                    onClick={() => handleYearChange(yearOption)}
+                  >
+                    {yearOption}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <button 
+              className={styles.todayButton}
+              onClick={handleToday}
+              disabled={year === currentYear}
+            >
+              Today
+            </button>
+          </>
+        )}
       </div>
       <div 
         className={styles.grid}

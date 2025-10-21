@@ -9,6 +9,9 @@ const CalendarDebug = () => {
   const currentYear = new Date().getFullYear()
   const [containerWidth, setContainerWidth] = useState(100)
   const [showTimeRanges, setShowTimeRanges] = useState(false)
+  const [headerMode, setHeaderMode] = useState<"default" | "switch">("default")
+  const [switchRangeStart, setSwitchRangeStart] = useState(2)
+  const [switchRangeEnd, setSwitchRangeEnd] = useState(2)
 
   // Example time ranges for demonstration (using current year)
   const exampleTimeRanges: TimeRange[] = [
@@ -73,6 +76,50 @@ const CalendarDebug = () => {
           </label>
         </div>
 
+        <div className={styles.controlGroup}>
+          <label htmlFor="headerMode">Header Mode</label>
+          <select
+            id="headerMode"
+            value={headerMode}
+            onChange={(e) => setHeaderMode(e.target.value as "default" | "switch")}
+          >
+            <option value="default">Default (Arrow Buttons)</option>
+            <option value="switch">Switch (Year Range)</option>
+          </select>
+        </div>
+
+        {headerMode === "switch" && (
+          <>
+            <div className={styles.controlGroup}>
+              <label htmlFor="switchRangeStart">
+                Years Before Current: {switchRangeStart}
+              </label>
+              <input
+                id="switchRangeStart"
+                type="range"
+                min="0"
+                max="10"
+                value={switchRangeStart}
+                onChange={(e) => setSwitchRangeStart(Number(e.target.value))}
+              />
+            </div>
+
+            <div className={styles.controlGroup}>
+              <label htmlFor="switchRangeEnd">
+                Years After Current: {switchRangeEnd}
+              </label>
+              <input
+                id="switchRangeEnd"
+                type="range"
+                min="0"
+                max="10"
+                value={switchRangeEnd}
+                onChange={(e) => setSwitchRangeEnd(Number(e.target.value))}
+              />
+            </div>
+          </>
+        )}
+
         <div className={styles.responsivenessDisplay}>
           <h3>Responsiveness Configuration</h3>
           <div className={styles.tableWrapper}>
@@ -121,6 +168,11 @@ const CalendarDebug = () => {
         >
           <Calendar
             timeRanges={showTimeRanges ? exampleTimeRanges : undefined}
+            headerMode={
+              headerMode === "switch" 
+                ? ["switch", switchRangeStart, switchRangeEnd] 
+                : "default"
+            }
           />
         </div>
       </div>
@@ -133,11 +185,25 @@ const CalendarDebug = () => {
           <li><strong>Dynamic column layouts:</strong> 2/3/4 columns depending on available space</li>
           <li><strong>Responsive typography:</strong> Font sizes scale automatically with container size</li>
           <li><strong>Today highlight:</strong> Current day is highlighted with a dot indicator</li>
-          <li><strong>Year navigation:</strong> Use arrow buttons to navigate between years</li>
-          <li><strong>Today button:</strong> Quickly return to the current year</li>
+          <li><strong>Year navigation:</strong> Use arrow buttons to navigate between years (default mode)</li>
+          <li><strong>Year switch mode:</strong> Display a year range selector with customizable range</li>
+          <li><strong>Today button:</strong> Quickly return to the current year (available in both modes)</li>
           <li><strong>Time ranges:</strong> Highlight specific date ranges with custom colors</li>
         </ul>
         
+        {headerMode === "switch" && (
+          <div className={styles.timeRangeInfo}>
+            <h3>Current Header Mode: Switch</h3>
+            <p>
+              Showing years from <strong>{currentYear - switchRangeStart}</strong> to{' '}
+              <strong>{currentYear + switchRangeEnd}</strong>
+            </p>
+            <p>
+              The active year is highlighted with the semantic active color. Click any year to switch to that year's calendar.
+            </p>
+          </div>
+        )}
+
         {showTimeRanges && (
           <div className={styles.timeRangeInfo}>
             <h3>Active Time Ranges</h3>
