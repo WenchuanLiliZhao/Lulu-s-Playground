@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import AppLayout from "../../../../components/ui/AppLayout";
 import { SearchBar } from "../../../../components/ui/SearchBar";
 import { Icon } from "../../../../components/ui/Icon";
@@ -7,6 +7,43 @@ import { DataCard, FilterSection } from "./components";
 import { dataItems, filterGroups, tabOptions } from "./data/searchData";
 import styles from "./styles.module.scss";
 
+// Responsive configuration for pagination
+interface PaginationResponsiveConfig {
+  breakpoint: number;
+  layout: "full" | "compact" | "minimal";
+  fontSize: number;
+  gap: number;
+  showInfo: boolean;
+  showJump: boolean;
+}
+
+const paginationResponsiveness: PaginationResponsiveConfig[] = [
+  {
+    breakpoint: 0,
+    layout: "minimal",
+    fontSize: 12,
+    gap: 8,
+    showInfo: false,
+    showJump: false,
+  },
+  {
+    breakpoint: 480,
+    layout: "compact",
+    fontSize: 13,
+    gap: 12,
+    showInfo: false,
+    showJump: false,
+  },
+  {
+    breakpoint: 720,
+    layout: "full",
+    fontSize: 13,
+    gap: 16,
+    showInfo: true,
+    showJump: true,
+  },
+];
+
 const DataSearch = () => {
   const [searchQuery, setSearchQuery] = useState("data");
   const [activeTab, setActiveTab] = useState(0);
@@ -14,6 +51,12 @@ const DataSearch = () => {
   const totalPages = 102;
   const totalItems = 5076;
   const itemsPerPage = 50;
+  
+  // Pagination responsive state
+  const [paginationConfig, setPaginationConfig] = useState<PaginationResponsiveConfig>(
+    paginationResponsiveness[paginationResponsiveness.length - 1]
+  );
+  const paginationRef = useRef<HTMLDivElement>(null);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -35,6 +78,33 @@ const DataSearch = () => {
     if (currentPage < totalPages) pages.push(totalPages);
     return pages;
   };
+
+  // ResizeObserver for pagination responsiveness
+  useEffect(() => {
+    if (!paginationRef.current) return;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const width = entry.contentRect.width;
+        
+        // Find the appropriate responsive config
+        let config = paginationResponsiveness[0];
+        for (let i = paginationResponsiveness.length - 1; i >= 0; i--) {
+          if (width >= paginationResponsiveness[i].breakpoint) {
+            config = paginationResponsiveness[i];
+            break;
+          }
+        }
+        setPaginationConfig(config);
+      }
+    });
+
+    resizeObserver.observe(paginationRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -96,12 +166,25 @@ const DataSearch = () => {
         </div>
 
         {/* Bottom Pagination */}
-        <div className={styles.pagination}>
-          <div className={styles.paginationInfo}>
-            Total {totalItems} results
-          </div>
+        <div 
+          ref={paginationRef}
+          className={`${styles.pagination} ${styles[paginationConfig.layout]}`}
+          style={{
+            fontSize: `${paginationConfig.fontSize}px`,
+          }}
+        >
+          {paginationConfig.showInfo && (
+            <div className={styles.paginationInfo}>
+              Total {totalItems} results
+            </div>
+          )}
 
-          <div className={styles.paginationControls}>
+          <div 
+            className={styles.paginationControls}
+            style={{
+              gap: `${paginationConfig.gap}px`,
+            }}
+          >
             <div className={styles.perPageSelector}>
               <select
                 className={styles.select}
@@ -151,26 +234,28 @@ const DataSearch = () => {
               </button>
             </div>
 
-            <div className={styles.pageJump}>
-              <span className={styles.jumpLabel}>Jump to</span>
-              <input
-                type="number"
-                className={styles.pageInput}
-                min="1"
-                max={totalPages}
-                defaultValue={currentPage}
-                aria-label="Jump to page"
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    const value = parseInt((e.target as HTMLInputElement).value);
-                    if (value >= 1 && value <= totalPages) {
-                      handlePageChange(value);
+            {paginationConfig.showJump && (
+              <div className={styles.pageJump}>
+                <span className={styles.jumpLabel}>Jump to</span>
+                <input
+                  type="number"
+                  className={styles.pageInput}
+                  min="1"
+                  max={totalPages}
+                  defaultValue={currentPage}
+                  aria-label="Jump to page"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      const value = parseInt((e.target as HTMLInputElement).value);
+                      if (value >= 1 && value <= totalPages) {
+                        handlePageChange(value);
+                      }
                     }
-                  }
-                }}
-              />
-              <span className={styles.jumpLabel}>page</span>
-            </div>
+                  }}
+                />
+                <span className={styles.jumpLabel}>page</span>
+              </div>
+            )}
           </div>
         </div>
       </main>
@@ -182,7 +267,7 @@ const DataSearchPage: PageProps = {
   title: "Data Search",
   slug: "data-search",
   content: (
-    <AppLayout isTesting={true}>
+    <AppLayout isTesting={false}>
       <DataSearch />
     </AppLayout>
   ),
