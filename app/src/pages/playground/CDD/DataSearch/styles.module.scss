@@ -211,7 +211,7 @@
   color: var(--color-main);
   cursor: pointer;
 
-  &:hover:not(:disabled) {
+  &:hover:not(:disabled):not(.active) {
     background-color: var(--color-bg-sec);
     border-color: var(--color-border-darken-trans);
   }
@@ -221,6 +221,7 @@
     border-color: var(--color-semantic-active);
     color: white;
     font-weight: 500;
+    cursor: default;
   }
 
   &:disabled {
