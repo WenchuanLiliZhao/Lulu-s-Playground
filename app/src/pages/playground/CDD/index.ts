@@ -1,2 +1,1 @@
-export * from './DataDictionary';
-export * from './uni-search';
+export * from './DataSearch';
