@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Calendar, type TimeRange } from '../../../components/ui/Calendar'
+import { Calendar, type TimeRange, responsiveness } from '../../../components/ui/Calendar'
 import AppLayout from '../../../components/ui/AppLayout'
 import type { PageProps } from '../../_page-types'
 import styles from './styles.module.scss'
@@ -9,7 +9,6 @@ const CalendarDebug = () => {
   const currentYear = new Date().getFullYear()
   const [year, setYear] = useState(currentYear)
   const [containerWidth, setContainerWidth] = useState(100)
-  const [breakpoint, setBreakpoint] = useState(600)
   const [showTimeRanges, setShowTimeRanges] = useState(false)
 
   // Example time ranges for demonstration
@@ -76,19 +75,6 @@ const CalendarDebug = () => {
         </div>
 
         <div className={styles.controlGroup}>
-          <label htmlFor="breakpoint">Breakpoint: {breakpoint}px</label>
-          <input
-            id="breakpoint"
-            type="range"
-            min="300"
-            max="1000"
-            step="50"
-            value={breakpoint}
-            onChange={(e) => setBreakpoint(Number(e.target.value))}
-          />
-        </div>
-
-        <div className={styles.controlGroup}>
           <label htmlFor="showTimeRanges">
             <input
               id="showTimeRanges"
@@ -100,11 +86,39 @@ const CalendarDebug = () => {
           </label>
         </div>
 
+        <div className={styles.responsivenessDisplay}>
+          <h3>Responsiveness Configuration</h3>
+          <div className={styles.tableWrapper}>
+            <table>
+              <thead>
+                <tr>
+                  <th>Breakpoint</th>
+                  <th>Year Font</th>
+                  <th>Month Font</th>
+                  <th>Week Font</th>
+                  <th>Cell Font</th>
+                  <th>Gap</th>
+                  <th>Columns</th>
+                </tr>
+              </thead>
+              <tbody>
+                {responsiveness.map((config, index) => (
+                  <tr key={index}>
+                    <td>{config.breakpoint}px+</td>
+                    <td>{config.yearFontSize}px</td>
+                    <td>{config.monthFontSize}px</td>
+                    <td>{config.weekFontSize}px</td>
+                    <td>{config.cellFontSize}px</td>
+                    <td>{config.gap}px</td>
+                    <td>{config.monthColCount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <div className={styles.info}>
-          <p>
-            <strong>Current Layout:</strong>{' '}
-            {containerWidth < 60 ? '3x4 Grid (Compact/Mobile)' : '4x3 Grid (Desktop)'}
-          </p>
           <p>
             <strong>Tip:</strong> Adjust the container width slider to see the
             layout switch based on the component's own size, not the viewport.
@@ -120,7 +134,6 @@ const CalendarDebug = () => {
         >
           <Calendar
             year={year}
-            breakpoint={breakpoint}
             timeRanges={showTimeRanges ? exampleTimeRanges : undefined}
           />
         </div>
@@ -130,9 +143,9 @@ const CalendarDebug = () => {
         <h2>Component Features</h2>
         <ul>
           <li><strong>Self-aware responsive design:</strong> Uses ResizeObserver instead of @media queries</li>
-          <li><strong>Desktop layout:</strong> 4 columns × 3 rows (like macOS Calendar)</li>
-          <li><strong>Mobile layout:</strong> 3 columns × 4 rows (like iOS Calendar)</li>
-          <li><strong>Configurable breakpoint:</strong> Customize when to switch layouts</li>
+          <li><strong>Multiple breakpoints:</strong> Adapts font sizes, gaps, and columns based on container width</li>
+          <li><strong>Dynamic column layouts:</strong> 2/3/4 columns depending on available space</li>
+          <li><strong>Responsive typography:</strong> Font sizes scale automatically with container size</li>
           <li><strong>Today highlight:</strong> Current day is highlighted in red</li>
           <li><strong>Year selection:</strong> View any year from 1900 to 2100</li>
           <li><strong>Time ranges:</strong> Highlight specific date ranges with custom colors</li>

@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import styles from './_styles.module.scss'
-
-
-// 
+import { responsiveness, type repsonsivenessProps } from './_config'
 
 
 export interface TimeRange {
@@ -114,10 +112,12 @@ const MonthCalendar = ({
   month,
   year,
   timeRanges,
+  responsiveConfig,
 }: {
   month: number
   year: number
   timeRanges?: TimeRange[]
+  responsiveConfig: repsonsivenessProps
 }) => {
   const monthData = getMonthData(month, year)
   const days: DayCell[] = []
@@ -159,10 +159,19 @@ const MonthCalendar = ({
 
   return (
     <div className={styles.month}>
-      <div className={styles.monthHeader}>{MONTH_NAMES[month]}</div>
+      <div 
+        className={styles.monthHeader}
+        style={{ fontSize: `${responsiveConfig.monthFontSize}px` }}
+      >
+        {MONTH_NAMES[month]}
+      </div>
       <div className={styles.dayNames}>
         {DAY_NAMES.map((day) => (
-          <div key={day} className={styles.dayName}>
+          <div 
+            key={day} 
+            className={styles.dayName}
+            style={{ fontSize: `${responsiveConfig.weekFontSize}px` }}
+          >
             {day}
           </div>
         ))}
@@ -191,28 +200,32 @@ const MonthCalendar = ({
           const cellDate = new Date(actualYear, actualMonth, dayCell.day)
           const rangeStyle = getDateRangeStyle(cellDate, timeRanges)
 
+          const isToday = isTodayInThisMonth &&
+            dayCell.isCurrentMonth &&
+            dayCell.day === currentDay
+
           return (
             <div
               key={index}
               className={`${styles.day} ${
                 !dayCell.isCurrentMonth ? styles.otherMonth : ''
               } ${
-                isTodayInThisMonth &&
-                dayCell.isCurrentMonth &&
-                dayCell.day === currentDay
+                isToday
                   ? styles.today
                   : ''
               }`}
-              style={
-                rangeStyle
+              style={{
+                fontSize: `${responsiveConfig.cellFontSize}px`,
+                ...(rangeStyle
                   ? {
                       color: rangeStyle.color,
                       backgroundColor: rangeStyle.backgroundColor,
                     }
-                  : undefined
-              }
+                  : {}),
+              }}
             >
-              {dayCell.day}
+              <span className={styles.dayNumber}>{dayCell.day}</span>
+              {isToday && <span className={styles.todayDot}></span>}
             </div>
           )
         })}
@@ -228,6 +241,7 @@ export const Calendar = ({
   timeRanges = [],
 }: CalendarProps) => {
   const [isCompact, setIsCompact] = useState(false)
+  const [currentResponsiveConfig, setCurrentResponsiveConfig] = useState<repsonsivenessProps>(responsiveness[0])
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -237,6 +251,16 @@ export const Calendar = ({
       for (const entry of entries) {
         const width = entry.contentRect.width
         setIsCompact(width < breakpoint)
+        
+        // Find the appropriate responsive config
+        let config = responsiveness[0]
+        for (let i = responsiveness.length - 1; i >= 0; i--) {
+          if (width >= responsiveness[i].breakpoint) {
+            config = responsiveness[i]
+            break
+          }
+        }
+        setCurrentResponsiveConfig(config)
       }
     })
 
@@ -256,14 +280,26 @@ export const Calendar = ({
         isCompact ? styles.compact : styles.desktop
       } ${className}`}
     >
-      <div className={styles.yearHeader}>{year}</div>
-      <div className={styles.grid}>
+      <div 
+        className={styles.yearHeader}
+        style={{ fontSize: `${currentResponsiveConfig.yearFontSize}px` }}
+      >
+        {year}
+      </div>
+      <div 
+        className={styles.grid}
+        style={{
+          gap: `${currentResponsiveConfig.gap}px`,
+          gridTemplateColumns: `repeat(${currentResponsiveConfig.monthColCount}, 1fr)`,
+        }}
+      >
         {months.map((month) => (
           <MonthCalendar
             key={month}
             month={month}
             year={year}
             timeRanges={timeRanges}
+            responsiveConfig={currentResponsiveConfig}
           />
         ))}
       </div>
