@@ -11,7 +11,7 @@ interface NotificationState {
   type: 'success' | 'error' | 'info';
 }
 
-const ColorChart = () => {
+const ColorChart_V0 = () => {
   const [notification, setNotification] = useState<NotificationState | null>(null);
 
   const showNotification = useCallback((message: string, type: 'success' | 'error' | 'info' = 'success') => {
@@ -76,14 +76,14 @@ const ColorChart = () => {
   );
 };
 
-const ColorChartPage: PageProps = {
-  title: "Color Chart Demo",
-  slug: "demo-color-chart",
+const ColorChartPage_V0: PageProps = {
+  title: "Color Chart Demo V0",
+  slug: "demo-color-chart-v0",
   content: (
     <AppLayout isTesting={true}>
-      <ColorChart />
+      <ColorChart_V0 />
     </AppLayout>
   ),
 };
 
-export default ColorChartPage;
+export default ColorChartPage_V0;

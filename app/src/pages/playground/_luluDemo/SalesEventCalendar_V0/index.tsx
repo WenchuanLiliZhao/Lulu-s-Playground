@@ -13,7 +13,7 @@ import {
 import { COLOR_SCALES } from '../../../../styles/color-chart'
 import styles from './styles.module.scss'
 
-const SalesEventCalendar = () => {
+const SalesEventCalendar_V0 = () => {
   const [currentYear] = useState(2025)
   const currentDate = new Date()
   const currentMonth = currentDate.getMonth()
@@ -199,15 +199,15 @@ const SalesEventCalendar = () => {
   )
 }
 
-const SalesEventCalendarPage: PageProps = {
-  title: 'Sales Event Calendar',
-  slug: 'sales-event-calendar',
+const SalesEventCalendarPage_V0: PageProps = {
+  title: 'Sales Event Calendar V0',
+  slug: 'sales-event-calendar-v0',
   content: (
     <AppLayout isTesting={true}>
-      <SalesEventCalendar />
+      <SalesEventCalendar_V0 />
     </AppLayout>
   ),
 }
 
-export default SalesEventCalendarPage
+export default SalesEventCalendarPage_V0
 

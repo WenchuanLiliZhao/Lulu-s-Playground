@@ -1,0 +1,75 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-bg-main);
+  padding: 24px;
+}
+
+.eventLabels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+  min-height: 32px;
+}
+
+.mainSection {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calendarWrapper {
+  background: var(--color-bg-sec);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--color-border-main);
+}
+
+.sidePanel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.listSection {
+  background: var(--color-bg-sec);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--color-border-main);
+}
+
+.listTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-main);
+  margin: 0 0 12px 0;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .mainSection {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Override responsive behavior when in scaled viewport mode
+// This ensures the layout remains fixed regardless of browser window size
+[data-scaled-viewport="true"] {
+  .mainSection {
+    grid-template-columns: 1fr 320px !important;
+  }
+  
+  .container {
+    padding: 24px !important;
+  }
+}
+

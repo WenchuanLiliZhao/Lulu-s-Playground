@@ -238,4 +238,39 @@
   }
 }
 
+// Override responsive behavior when in scaled viewport mode
+// This prevents the calendar from changing layout based on browser window size
+[data-scaled-viewport="true"] {
+  .headerWrapper {
+    flex-direction: row !important;
+    gap: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .yearControls {
+    width: auto !important;
+    gap: 1rem !important;
+  }
+
+  .yearHeader {
+    font-size: 2rem !important;
+  }
+
+  .yearButton {
+    font-size: 1.5rem !important;
+    padding: 0.5rem 1rem !important;
+    min-width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+
+  .todayButton {
+    width: auto !important;
+    padding: 0.5rem 1.25rem !important;
+  }
+
+  .month {
+    padding: 0.75rem !important;
+  }
+}
+
 
