@@ -6,6 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Lulu's Playground</title>
+    <!-- Prevent theme flash by applying theme before page renders -->
+    <script>
+      (function() {
+        try {
+          const THEME_STORAGE_KEY = 'lulu-theme-preference';
+          const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+          const themeMode = (storedTheme === 'light' || storedTheme === 'dark' || storedTheme === 'system') 
+            ? storedTheme 
+            : 'system';
+          
+          let resolvedTheme = themeMode;
+          if (themeMode === 'system') {
+            resolvedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          
+          document.documentElement.setAttribute('data-theme', resolvedTheme);
+          document.documentElement.classList.add('theme-' + resolvedTheme);
+        } catch (e) {
+          // Fallback to system theme if there's an error
+          const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', systemTheme);
+          document.documentElement.classList.add('theme-' + systemTheme);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
