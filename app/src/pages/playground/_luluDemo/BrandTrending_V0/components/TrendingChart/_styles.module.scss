@@ -1,0 +1,72 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background-color: var(--color-bg-main);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.svg {
+  display: block;
+}
+
+.chartBackground {
+  fill: var(--color-bg-sec-trans);
+}
+
+.gridLines {
+  .gridLine {
+    stroke: var(--color-border-main-trans);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+  }
+}
+
+.axisLabel {
+  fill: var(--color-sec);
+  font-size: 12px;
+  font-family: var(--ff-sans);
+}
+
+.axisTitle {
+  fill: var(--color-main);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--ff-sans);
+}
+
+.lines {
+  .line {
+    transition: opacity 0.2s ease;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .dataPoint {
+    transition: r 0.2s ease;
+    cursor: pointer;
+    
+    &:hover {
+      r: 6;
+    }
+  }
+}
+
+.legend {
+  .legendLine {
+    stroke-linecap: round;
+  }
+
+  .legendText {
+    fill: var(--color-main);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--ff-sans);
+  }
+}
+

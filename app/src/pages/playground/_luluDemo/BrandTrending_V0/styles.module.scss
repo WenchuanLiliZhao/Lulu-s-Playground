@@ -1,0 +1,138 @@
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  background-color: var(--color-bg-sec-trans);
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.mainTitle {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-main);
+  margin: 0 0 12px 0;
+  font-family: var(--ff-sans);
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--color-sec);
+  margin: 0;
+  font-family: var(--ff-sans);
+}
+
+.chartSection {
+  margin-bottom: 48px;
+}
+
+.chartWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.infoSection {
+  margin-bottom: 48px;
+}
+
+.methodologySection {
+  margin-bottom: 48px;
+}
+
+.insightsSection {
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-main);
+  margin: 0 0 24px 0;
+  font-family: var(--ff-sans);
+}
+
+.insightsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.insightCard {
+  background-color: var(--color-bg-main);
+  border: 1px solid var(--color-border-main);
+  border-radius: 8px;
+  padding: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.insightTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-main);
+  margin: 0 0 12px 0;
+  font-family: var(--ff-sans);
+}
+
+.insightText {
+  font-size: 14px;
+  color: var(--color-sec);
+  margin: 0;
+  line-height: 1.6;
+  font-family: var(--ff-sans);
+}
+
+.noteSection {
+  margin-bottom: 24px;
+}
+
+.note {
+  background-color: var(--color-bg-sec);
+  border-left: 4px solid var(--brand-color);
+  border-radius: 4px;
+  padding: 20px 24px;
+}
+
+.noteTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-main);
+  margin: 0 0 12px 0;
+  font-family: var(--ff-sans);
+}
+
+.noteText {
+  font-size: 14px;
+  color: var(--color-sec);
+  margin: 0;
+  line-height: 1.6;
+  font-family: var(--ff-sans);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  .mainTitle {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .insightsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
