@@ -38,11 +38,17 @@ export const events2025: EventData[] = [
   // August
   
   // September
+  { name: 'FY25 EC SBD', interval: [new Date(2025, 8, 15), new Date(2025, 8, 22)], color: '#8B4789', backgroundColor: '#F3E5F5', channel: 'EC' },
+  { name: 'FY25 Retail Autumn', interval: [new Date(2025, 8, 23), new Date(2025, 8, 30)], color: '#D2691E', backgroundColor: '#FFF8DC', channel: 'Retail' },
   
   // October
   { name: 'FY25 EC SML', interval: [new Date(2025, 9, 1), new Date(2025, 9, 5)], color: '#FF6347', backgroundColor: '#FFE4E1', channel: 'EC' },
+  { name: 'FY25 Retail FF', interval: [new Date(2025, 9, 10), new Date(2025, 9, 20)], color: '#CD853F', backgroundColor: '#FFEFD5', channel: 'Retail' },
+  { name: 'FY26 EC Pre-D11', interval: [new Date(2025, 9, 25), new Date(2025, 9, 31)], color: '#1E90FF', backgroundColor: '#E6F3FF', channel: 'EC' },
   
   // November
+  { name: 'FY26 EC Pre-D11', interval: [new Date(2025, 10, 1), new Date(2025, 10, 5)], color: '#1E90FF', backgroundColor: '#E6F3FF', channel: 'EC' },
+  { name: 'FY26 Retail BF', interval: [new Date(2025, 10, 20), new Date(2025, 10, 30)], color: '#2F4F4F', backgroundColor: '#E8F4F8', channel: 'Retail' },
   
   // December
   { name: 'FY25 EC D11', interval: [new Date(2025, 11, 1), new Date(2025, 11, 1)], color: '#4169E1', backgroundColor: '#E6F0FF', channel: 'EC' },

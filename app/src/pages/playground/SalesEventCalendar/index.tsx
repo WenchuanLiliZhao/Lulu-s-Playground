@@ -72,7 +72,7 @@ const SalesEventCalendar = () => {
         <Switch
           options={['Calendar', 'Trending']}
           initialSelected={0}
-          onChange={(index, value) => console.log('Switched to:', value)}
+          onChange={(_index, value) => console.log('Switched to:', value)}
         />
       </header>
 
@@ -114,54 +114,42 @@ const SalesEventCalendar = () => {
         <div className={styles.statCard}>
           <div className={styles.statLabel}>Event in Progress</div>
           <div className={styles.eventLabels}>
-            {getUniqueEvents(currentMonthEvents).length > 0 ? (
-              getUniqueEvents(currentMonthEvents).map((event, index) => (
-                <EventLabel
-                  key={index}
-                  name={event.name}
-                  backgroundColor={event.backgroundColor}
-                  color={event.color}
-                />
-              ))
-            ) : (
-              <span className={styles.noEvents}>No events</span>
-            )}
+            {getUniqueEvents(currentMonthEvents).map((event, index) => (
+              <EventLabel
+                key={index}
+                name={event.name}
+                backgroundColor={event.backgroundColor}
+                color={event.color}
+              />
+            ))}
           </div>
         </div>
 
         <div className={styles.statCard}>
           <div className={styles.statLabel}>Event Coming Soon</div>
           <div className={styles.eventLabels}>
-            {getUniqueEvents(nextMonthEvents).length > 0 ? (
-              getUniqueEvents(nextMonthEvents).map((event, index) => (
-                <EventLabel
-                  key={index}
-                  name={event.name}
-                  backgroundColor={event.backgroundColor}
-                  color={event.color}
-                />
-              ))
-            ) : (
-              <span className={styles.noEvents}>FY25 EC D11</span>
-            )}
+            {getUniqueEvents(nextMonthEvents).map((event, index) => (
+              <EventLabel
+                key={index}
+                name={event.name}
+                backgroundColor={event.backgroundColor}
+                color={event.color}
+              />
+            ))}
           </div>
         </div>
 
         <div className={styles.statCard}>
           <div className={styles.statLabel}>Last Event</div>
           <div className={styles.eventLabels}>
-            {getUniqueEvents(lastMonthEvents).length > 0 ? (
-              getUniqueEvents(lastMonthEvents).map((event, index) => (
-                <EventLabel
-                  key={index}
-                  name={event.name}
-                  backgroundColor={event.backgroundColor}
-                  color={event.color}
-                />
-              ))
-            ) : (
-              <span className={styles.noEvents}>FY25 EC SBD</span>
-            )}
+            {getUniqueEvents(lastMonthEvents).map((event, index) => (
+              <EventLabel
+                key={index}
+                name={event.name}
+                backgroundColor={event.backgroundColor}
+                color={event.color}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -178,7 +166,7 @@ const SalesEventCalendar = () => {
         <div className={styles.sidePanel}>
           <div className={styles.listSection}>
             <h3 className={styles.listTitle}>All Events</h3>
-            <div className={styles.eventList}>
+            <div className={styles.eventLabels}>
               {getUniqueEvents(events2025).map((event, index) => (
                 <EventLabel
                   key={index}
@@ -192,11 +180,14 @@ const SalesEventCalendar = () => {
 
           <div className={styles.listSection}>
             <h3 className={styles.listTitle}>Holiday</h3>
-            <div className={styles.holidayList}>
+            <div className={styles.eventLabels}>
               {holidays.map((holiday, index) => (
-                <div key={index} className={styles.holidayItem}>
-                  {holiday.name}
-                </div>
+                <EventLabel
+                  key={index}
+                  name={holiday.name}
+                  backgroundColor="#FFF8DC"
+                  color="#D2691E"
+                />
               ))}
             </div>
           </div>
