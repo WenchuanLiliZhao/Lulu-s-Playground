@@ -70,11 +70,26 @@ $container-padding-mobile: 16px;                // Container padding on mobile
   border: 1px solid var(--color-border-main);
 }
 
+.listHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
 .listTitle {
   font-size: 16px;
   font-weight: 600;
   color: var(--color-main);
-  margin: 0 0 12px 0;
+  margin: 0;
+}
+
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px;
 }
 
 .tableContainer {

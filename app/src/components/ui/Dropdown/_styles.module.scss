@@ -1,0 +1,85 @@
+@import '../../../styles/color-use.scss';
+
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-border-main);
+  border-radius: 6px;
+  background-color: var(--color-bg-main);
+  color: var(--color-main);
+  font-size: 14px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  
+  &:hover {
+    background-color: var(--color-bg-sec);
+    border-color: var(--color-border-darken-trans);
+  }
+  
+  &.active {
+    background-color: var(--color-semantic-active);
+    color: white;
+    border-color: var(--color-semantic-active);
+    
+    &:hover {
+      background-color: var(--color-semantic-active);
+      box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.1);
+    }
+    
+    .icon {
+      color: white;
+    }
+  }
+  
+  &.open {
+    border-color: var(--color-semantic-active);
+    
+    &:not(.active) {
+      background-color: var(--color-bg-sec);
+    }
+  }
+}
+
+.triggerContent {
+  flex: 1;
+}
+
+.icon {
+  font-size: 20px !important;
+  color: var(--color-sec);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 200px;
+  background-color: var(--color-bg-main);
+  border: 1px solid var(--color-border-main);
+  border-radius: 6px;
+  box-shadow: var(--pop-shadow);
+  padding: 8px;
+  z-index: var(--z-index-popup-sec);
+  
+  animation: dropdownFadeIn 0.15s ease-out;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

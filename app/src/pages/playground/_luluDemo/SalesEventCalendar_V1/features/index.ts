@@ -6,4 +6,5 @@
  */
 
 export * from './calendarHighlight'
+export * from './eventFilter'
 

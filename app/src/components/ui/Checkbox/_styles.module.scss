@@ -1,0 +1,55 @@
+@import '../../../styles/color-use.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  
+  &:focus {
+    outline: none;
+    
+    .checkbox {
+      border-color: var(--color-semantic-active);
+    }
+  }
+  
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--color-border-main);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: var(--color-bg-main);
+  
+  &.checked {
+    background-color: var(--color-semantic-active);
+    border-color: var(--color-semantic-active);
+  }
+  
+  .container:not(.disabled):hover & {
+    border-color: var(--color-semantic-active);
+  }
+}
+
+.checkIcon {
+  font-size: 14px !important;
+  color: white;
+}
+
+.label {
+  font-size: 14px;
+  color: var(--color-main);
+}
+

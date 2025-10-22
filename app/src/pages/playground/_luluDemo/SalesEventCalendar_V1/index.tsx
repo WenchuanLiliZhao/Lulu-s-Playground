@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import AppLayout from '../../../../components/ui/AppLayout'
-import { Calendar, Label } from '../../../../components/ui'
+import { Calendar, Label, Dropdown, Checkbox } from '../../../../components/ui'
 import type { PageProps } from '../../../_page-types'
 import {
   events2025,
@@ -8,13 +8,21 @@ import {
   convertEventsToTimeRanges,
   convertHolidaysToTimeRanges,
 } from './data/eventData'
-import { useCalendarHighlight, highlightStyles } from './features'
+import { useCalendarHighlight, highlightStyles, useEventFilter } from './features'
 import styles from './styles.module.scss'
 
 type EventStatus = 'In progress' | 'Last' | 'Incoming'
 
 const SalesEventCalendar_V1 = () => {
   const [currentYear] = useState(2025)
+  
+  // Use the event filter feature
+  const {
+    filterState,
+    filteredEvents,
+    isFilterActive,
+    toggleChannel,
+  } = useEventFilter(events2025)
   
   // Use the calendar highlight feature
   const {
@@ -27,10 +35,10 @@ const SalesEventCalendar_V1 = () => {
   // Convert events and holidays to time ranges for calendar
   const timeRanges = useMemo(
     () => [
-      ...convertEventsToTimeRanges(events2025),
+      ...convertEventsToTimeRanges(filteredEvents),
       ...convertHolidaysToTimeRanges(holidays),
     ],
-    []
+    [filteredEvents]
   )
 
   // Get unique events (avoid duplicates for display)
@@ -72,7 +80,7 @@ const SalesEventCalendar_V1 = () => {
       return 'Last'
     }
 
-    const uniqueEvents = getUniqueEvents(events2025)
+    const uniqueEvents = getUniqueEvents(filteredEvents)
     return uniqueEvents.map(event => ({
       name: event.name,
       backgroundColor: event.backgroundColor,
@@ -82,7 +90,7 @@ const SalesEventCalendar_V1 = () => {
       status: getEventStatus(event.interval),
       interval: event.interval,
     }))
-  }, [])
+  }, [filteredEvents])
 
   return (
     <div className={styles.container}>
@@ -98,7 +106,26 @@ const SalesEventCalendar_V1 = () => {
 
         <div className={styles.sidePanel}>
           <div className={styles.listSection}>
-            <h3 className={styles.listTitle}>All Events ({eventsWithStatus.length})</h3>
+            <div className={styles.listHeader}>
+              <h3 className={styles.listTitle}>All Events ({eventsWithStatus.length})</h3>
+              <Dropdown 
+                trigger="Channel Filter" 
+                isActive={isFilterActive}
+              >
+                <div className={styles.filterOptions}>
+                  <Checkbox
+                    label="Retail Events"
+                    checked={filterState.retail}
+                    onChange={() => toggleChannel('Retail')}
+                  />
+                  <Checkbox
+                    label="EC Events"
+                    checked={filterState.ec}
+                    onChange={() => toggleChannel('EC')}
+                  />
+                </div>
+              </Dropdown>
+            </div>
             <div className={styles.tableContainer}>
               <table className={styles.eventsTable}>
                 <thead>
