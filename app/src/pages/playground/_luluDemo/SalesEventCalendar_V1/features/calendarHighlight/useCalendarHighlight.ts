@@ -40,13 +40,13 @@ export const useCalendarHighlight = (currentYear: number) => {
       if (!monthContainer) return
 
       // Get month name from header
-      let monthHeader = monthContainer.querySelector('[class*="_monthHeader_"]')
-      if (!monthHeader) {
-        monthHeader = monthContainer.querySelector('[class*="monthHeader"]')
+      let monthNameElement = monthContainer.querySelector('[class*="_monthName_"]')
+      if (!monthNameElement) {
+        monthNameElement = monthContainer.querySelector('[class*="monthName"]')
       }
-      if (!monthHeader) return
+      if (!monthNameElement) return
 
-      const monthName = monthHeader.textContent
+      const monthName = monthNameElement.textContent
       if (!monthName) return
 
       const monthIndex = [

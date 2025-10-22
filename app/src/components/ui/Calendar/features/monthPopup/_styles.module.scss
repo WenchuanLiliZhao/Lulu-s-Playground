@@ -1,0 +1,271 @@
+@use '../../../../../styles/color-use' as *;
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  // background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.2s ease-out;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popup {
+  background-color: var(--color-bg-main);
+  border-radius: 16px;
+  border: 1px solid var(--color-border-main);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.popupEnter {
+  opacity: 0;
+  transform: scale(0.3);
+  transform-origin: var(--origin-x) var(--origin-y);
+}
+
+.popupEnterActive {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.popupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--color-border-main);
+  background-color: var(--color-bg-sec);
+}
+
+.popupTitle {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-main);
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--color-main);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    background-color: var(--color-bg-sec-2);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.popupContent {
+  padding: 32px 32px 16px 32px;
+  overflow: visible;
+  flex: 1;
+  min-height: 0;
+}
+
+.dayNames {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.dayName {
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-secondary);
+  padding: 12px 0;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: default;
+  position: relative;
+  overflow: visible;
+  transition: all 0.2s;
+  color: var(--color-main);
+
+  &:hover {
+    transform: scale(1.05);
+    z-index: 101;
+  }
+
+  &.otherMonth {
+    opacity: 0.3;
+  }
+
+  &.today {
+    .dayNumber {
+      font-weight: 700;
+    }
+  }
+}
+
+.rangeBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  border-radius: 12px;
+}
+
+.dayNumber {
+  position: relative;
+  z-index: 1;
+}
+
+.todayDot {
+  position: absolute;
+  bottom: 8px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-bg-main);
+  border: 1px solid var(--color-border-main);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 200;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: tooltipFadeIn 0.2s ease-out;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--color-border-main);
+  }
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.tooltipItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+
+  &:not(:last-child) {
+    margin-bottom: 4px;
+  }
+}
+
+.tooltipDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tooltipText {
+  font-size: 14px;
+  color: var(--color-main);
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .popup {
+    width: 95vw;
+    max-height: 95vh;
+  }
+
+  .popupHeader {
+    padding: 16px 20px;
+  }
+
+  .popupTitle {
+    font-size: 24px;
+  }
+
+  .popupContent {
+    padding: 20px;
+  }
+
+  .dayName {
+    font-size: 14px;
+    padding: 8px 0;
+  }
+
+  .day {
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .days {
+    gap: 6px;
+  }
+}
+

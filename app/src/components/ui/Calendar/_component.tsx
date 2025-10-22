@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import styles from './_styles.module.scss'
 import { responsiveness, type repsonsivenessProps } from './_config'
+import { MonthPopup, useMonthPopup } from './features'
+import { IconButton } from '../IconButton'
 
 
 export interface TimeRange {
@@ -130,13 +132,16 @@ const MonthCalendar = ({
   year,
   timeRanges,
   responsiveConfig,
+  onExpandClick,
 }: {
   month: number
   year: number
   timeRanges?: TimeRange[]
   responsiveConfig: repsonsivenessProps
+  onExpandClick?: (month: number, year: number, element: HTMLElement) => void
 }) => {
   const [hoveredDay, setHoveredDay] = useState<number | null>(null)
+  const monthRef = useRef<HTMLDivElement>(null)
   const monthData = getMonthData(month, year)
   const days: DayCell[] = []
 
@@ -175,13 +180,35 @@ const MonthCalendar = ({
     today.getMonth() === month && today.getFullYear() === year
   const currentDay = today.getDate()
 
+  const handleExpandClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (onExpandClick && monthRef.current) {
+      onExpandClick(month, year, monthRef.current)
+    }
+  }
+
   return (
-    <div className={styles.month}>
-      <div 
-        className={styles.monthHeader}
-        style={{ fontSize: `${responsiveConfig.monthFontSize}px` }}
-      >
-        {MONTH_NAMES[month]}
+    <div 
+      ref={monthRef}
+      className={styles.month}
+    >
+      <div className={styles.monthHeader}>
+        <span 
+          className={styles.monthName}
+          style={{ fontSize: `${responsiveConfig.monthFontSize}px` }}
+        >
+          {MONTH_NAMES[month]}
+        </span>
+        {onExpandClick && (
+          <IconButton
+            icon="open_in_full"
+            // size="small"
+            variant="outline"
+            className={styles.expandButton}
+            onClick={handleExpandClick}
+            aria-label={`Expand ${MONTH_NAMES[month]}`}
+          />
+        )}
       </div>
       <div className={styles.dayNames}>
         {DAY_NAMES.map((day) => (
@@ -305,6 +332,7 @@ export const Calendar = ({
   const [isCompact, setIsCompact] = useState(false)
   const [currentResponsiveConfig, setCurrentResponsiveConfig] = useState<repsonsivenessProps>(responsiveness[0])
   const containerRef = useRef<HTMLDivElement>(null)
+  const { popupState, openPopup, closePopup } = useMonthPopup()
   
   const currentYear = new Date().getFullYear()
   
@@ -414,7 +442,7 @@ export const Calendar = ({
               onClick={handleToday}
               disabled={year === currentYear}
             >
-              Today
+              This Year
             </button>
           </>
         )}
@@ -433,9 +461,20 @@ export const Calendar = ({
             year={year}
             timeRanges={timeRanges}
             responsiveConfig={currentResponsiveConfig}
+            onExpandClick={openPopup}
           />
         ))}
       </div>
+
+      {popupState.isOpen && popupState.month !== null && popupState.year !== null && (
+        <MonthPopup
+          month={popupState.month}
+          year={popupState.year}
+          timeRanges={timeRanges}
+          sourceElement={popupState.sourceElement}
+          onClose={closePopup}
+        />
+      )}
     </div>
   )
 }

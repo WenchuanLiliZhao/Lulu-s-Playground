@@ -1,5 +1,6 @@
 import type { TimeRange } from '../../../../../components/ui/Calendar'
 import { COLOR_SCALES } from '../../../../../styles/color-chart'
+import { getCssVar } from '../../../../../styles/color-use'
 
 export interface EventData {
   name: string
@@ -65,8 +66,8 @@ export interface HolidayData {
   backgroundOpacity: number
 }
 
-const holidayColor = '#ffffff'
-const holidayBackgroundOpacity = 0.4
+const holidayColor = getCssVar("colorMain")
+const holidayBackgroundOpacity = 0.16
 
 export const holidays: HolidayData[] = [
   { name: "New Year's Day", date: new Date(2025, 0, 1), color: holidayColor, backgroundColor: COLOR_SCALES.hotHeat.colors[4], backgroundOpacity: holidayBackgroundOpacity },

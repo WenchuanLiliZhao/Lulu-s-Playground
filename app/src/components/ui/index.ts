@@ -1,5 +1,6 @@
 export * from './Button'
 export * from './Icon'
+export * from './IconButton'
 export * from './SearchBar'
 export * from './AppLayout'
 export * from './Calendar'

@@ -168,7 +168,9 @@ const SalesEventCalendar_V1 = () => {
           </div>
 
           <div className={styles.listSection}>
-            <h3 className={styles.listTitle}>Holidays ({holidays.length})</h3>
+            <div className={styles.listHeader}>
+              <h3 className={styles.listTitle}>Holidays ({holidays.length})</h3>
+            </div>
             <div className={styles.eventLabels}>
               {holidays.map((holiday, index) => (
                 <div

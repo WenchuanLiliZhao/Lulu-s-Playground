@@ -63,13 +63,16 @@
 :global {
   .highlightedDate {
     // Target the rangeBackground inside the highlighted date
-    [class*="_rangeBackground_"] {
+    // Use multiple selector patterns to ensure compatibility
+    [class*="_rangeBackground_"],
+    [class*="rangeBackground"] {
       opacity: 1 !important;
       transition: opacity 0.2s ease;
     }
 
     // Target the dayNumber inside the highlighted date
-    [class*="_dayNumber_"] {
+    [class*="_dayNumber_"],
+    [class*="dayNumber"] {
       color: white !important;
       transition: color 0.2s ease;
     }

@@ -12,6 +12,7 @@ A full-year calendar component with self-aware responsive design using ResizeObs
 - **Year selection**: View any year from 1900 to 2100
 - **Time ranges**: Highlight specific date ranges with custom text and background colors
 - **Tooltip on hover**: Hover over any day to see the names of all time ranges it belongs to
+- **Interactive month popup**: Click any month to view it in a larger popup with smooth zoom animation
 
 ## Usage
 
@@ -88,6 +89,19 @@ The component uses `ResizeObserver` to monitor its own size and automatically sw
 - **Width < breakpoint**: 3×4 grid (Mobile layout)
 
 This approach allows the component to adapt based on its container size rather than the viewport, making it perfect for use in sidebars, modals, or any constrained space.
+
+## Interactive Features
+
+### Month Popup
+
+Hover over any month card to reveal an expand button in the top-right corner. Click the button to open an expanded popup view of that month. The popup features:
+- **Hover-to-Reveal**: Expand button appears on month card hover
+- **Zoom Animation**: Smooth scale animation originating from the clicked month
+- **Full Details**: All time ranges and events are preserved
+- **Easy Dismissal**: Press `ESC` or click outside to close
+- **Responsive**: Adapts to different screen sizes
+
+See [features/monthPopup/README.md](./features/monthPopup/README.md) for detailed documentation.
 
 ## Debug Page
 

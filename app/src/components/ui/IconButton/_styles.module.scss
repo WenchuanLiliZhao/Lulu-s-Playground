@@ -1,0 +1,99 @@
+@use '../../../styles/color-use' as *;
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-main);
+  padding: 0;
+  position: relative;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-semantic-active);
+    outline-offset: 2px;
+  }
+
+  // Sizes
+  &.small {
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+  }
+
+  &.medium {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+
+  &.large {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  // Variants
+  &.default {
+    &:not(:disabled):hover {
+      background: var(--color-bg-sec-2);
+      transform: scale(1.05);
+    }
+
+    &:not(:disabled):active {
+      transform: scale(0.98);
+    }
+  }
+
+  &.primary {
+    background: var(--color-semantic-active);
+    color: white;
+
+    &:not(:disabled):hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    &:not(:disabled):active {
+      transform: scale(0.98);
+    }
+  }
+
+  &.ghost {
+    background: transparent;
+    
+    &:not(:disabled):hover {
+      background: var(--color-bg-sec);
+      transform: scale(1.05);
+    }
+
+    &:not(:disabled):active {
+      transform: scale(0.98);
+    }
+  }
+
+  &.outline {
+    background: transparent;
+    border: 1px solid var(--color-border-main);
+    
+    &:not(:disabled):hover {
+      background: var(--color-bg-sec);
+      border-color: var(--color-semantic-active);
+      transform: scale(1.05);
+    }
+
+    &:not(:disabled):active {
+      transform: scale(0.98);
+    }
+  }
+}
+
