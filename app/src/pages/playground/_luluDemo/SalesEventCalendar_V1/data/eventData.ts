@@ -66,7 +66,7 @@ export interface HolidayData {
 }
 
 const holidayColor = '#ffffff'
-const holidayBackgroundOpacity = 0.64
+const holidayBackgroundOpacity = 0.4
 
 export const holidays: HolidayData[] = [
   { name: "New Year's Day", date: new Date(2025, 0, 1), color: holidayColor, backgroundColor: COLOR_SCALES.hotHeat.colors[4], backgroundOpacity: holidayBackgroundOpacity },

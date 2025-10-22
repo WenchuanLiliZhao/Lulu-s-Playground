@@ -4,6 +4,25 @@
 
 This demo showcases a sales event calendar with interactive hover functionality that highlights date ranges when hovering over events and holidays.
 
+## Project Structure
+
+```
+SalesEventCalendar_V1/
+├── index.tsx                      # Main component
+├── styles.module.scss             # Main component styles
+├── README.md                      # This file
+├── components/                    # Local components
+│   └── EventLabel/
+├── data/                          # Data and types
+│   └── eventData.ts
+└── features/                      # Feature modules
+    └── calendarHighlight/         # ✨ Hover highlight feature
+        ├── useCalendarHighlight.ts    # Custom hook
+        ├── _styles.module.scss        # Feature styles
+        ├── index.ts                   # Exports
+        └── README.md                  # Feature docs
+```
+
 ## Features
 
 ### Interactive Date Highlighting
@@ -19,54 +38,105 @@ When you hover over:
 
 ### Implementation Details
 
-#### Approach
+#### Modular Architecture
 
-The hover functionality is implemented without modifying the `Calendar` component by:
+The hover functionality is **encapsulated in a separate feature module** (`features/calendarHighlight/`) for better maintainability and reusability:
 
-1. **State Management**: Using React state (`hoveredDateRange`) to track the currently hovered date range
-2. **DOM Manipulation**: Using `useEffect` to dynamically add/remove CSS classes to calendar day cells
-3. **Event Handlers**: Adding `onMouseEnter` and `onMouseLeave` handlers to table rows and holiday labels
-4. **CSS Styling**: Using global CSS classes to override Calendar's internal styles
+```typescript
+// Using the feature in the main component
+import { useCalendarHighlight, highlightStyles } from './features/calendarHighlight'
 
-#### Key Components
-
-- **hoveredDateRange state**: Stores the current hovered date range as `[Date, Date]` or `null`
-- **calendarWrapperRef**: Reference to the calendar wrapper for DOM manipulation
-- **useEffect hook**: Monitors `hoveredDateRange` and applies/removes the `highlightedDate` class to matching date cells
-- **Event handlers**:
-  - `handleEventHover`: Triggered when hovering over an event row
-  - `handleHolidayHover`: Triggered when hovering over a holiday label
-  - `handleMouseLeave`: Triggered when mouse leaves, resets the hover state
-
-#### CSS Implementation
-
-The highlighting effect uses global CSS classes:
-
-```scss
-:global {
-  .highlightedDate {
-    [class*="_rangeBackground_"] {
-      opacity: 0 !important;
-    }
-    [class*="_dayNumber_"] {
-      color: white !important;
-    }
-  }
-}
+const {
+  calendarWrapperRef,
+  handleEventHover,
+  handleHolidayHover,
+  handleMouseLeave,
+} = useCalendarHighlight(currentYear)
 ```
 
-This approach leverages CSS attribute selectors to target Calendar's CSS module classes without hardcoding exact class names.
+#### Key Benefits
 
-## Technical Constraints
+1. ✅ **Separation of Concerns**: Highlight logic is isolated from the main component
+2. ✅ **Reusability**: Can be easily used in other calendar-based demos
+3. ✅ **Maintainability**: Styles and logic are in dedicated files
+4. ✅ **Type Safety**: Full TypeScript support
+5. ✅ **No Calendar Modifications**: Works without changing the Calendar component
 
-✅ **No Calendar Component Modifications**: The `Calendar` component remains unchanged
-✅ **Encapsulated in Demo**: All logic is contained within the demo folder
-✅ **Maintainable**: Uses React best practices and doesn't rely on fragile DOM assumptions
+#### How It Works
+
+1. **Custom Hook** (`useCalendarHighlight.ts`):
+   - Manages hover state
+   - Performs DOM queries to find calendar date cells
+   - Dynamically adds/removes CSS classes
+   - Provides event handlers for parent component
+
+2. **Isolated Styles** (`_styles.module.scss`):
+   - `.eventRow` - Styles for event table rows
+   - `.holidayLabelWrapper` - Styles for holiday labels
+   - Global `.highlightedDate` - Applied to calendar dates
+
+3. **Clean Integration**:
+   ```tsx
+   <tr 
+     onMouseEnter={() => handleEventHover(event.interval)}
+     onMouseLeave={handleMouseLeave}
+     className={highlightStyles.eventRow}
+   >
+   ```
+
+For detailed API documentation, see [`features/calendarHighlight/README.md`](./features/calendarHighlight/README.md).
 
 ## Usage
 
-1. Navigate to the Sales Event Calendar V1 page
+1. Navigate to the Sales Event Calendar V1 page at http://localhost:5178
 2. Hover over any row in the "All Events" table
 3. Hover over any label in the "Holiday" section
-4. Observe the corresponding dates in the calendar change appearance
+4. Observe the synchronized highlighting:
+   - Event/Holiday label background becomes transparent
+   - Label text turns white
+   - Corresponding calendar dates mirror the same effect
+
+## Code Example
+
+```tsx
+// Main component usage
+const SalesEventCalendar_V1 = () => {
+  const [currentYear] = useState(2025)
+  
+  // Initialize the highlight feature
+  const {
+    calendarWrapperRef,
+    handleEventHover,
+    handleHolidayHover,
+    handleMouseLeave,
+  } = useCalendarHighlight(currentYear)
+
+  return (
+    <div>
+      {/* Attach ref to calendar wrapper */}
+      <div ref={calendarWrapperRef}>
+        <Calendar {...props} />
+      </div>
+
+      {/* Add handlers to event rows */}
+      <tr 
+        onMouseEnter={() => handleEventHover(event.interval)}
+        onMouseLeave={handleMouseLeave}
+        className={highlightStyles.eventRow}
+      >
+        <td><Label>{event.name}</Label></td>
+      </tr>
+
+      {/* Add handlers to holiday labels */}
+      <div 
+        onMouseEnter={() => handleHolidayHover(holiday.date)}
+        onMouseLeave={handleMouseLeave}
+        className={highlightStyles.holidayLabelWrapper}
+      >
+        <Label>{holiday.name}</Label>
+      </div>
+    </div>
+  )
+}
+```
 

@@ -1,0 +1,78 @@
+/**
+ * Calendar Highlight Feature Styles
+ * 
+ * This module handles the hover interaction styles for synchronizing
+ * event/holiday labels with their corresponding dates in the calendar.
+ * 
+ * Features:
+ * - Event row hover effects
+ * - Holiday label hover effects
+ * - Calendar date highlight effects
+ */
+
+// ============================================================================
+// Event Row Hover Styles
+// ============================================================================
+.eventRow {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    // Target the Label component's background layer inside the row
+    :global([class*="_background_"]) {
+      opacity: 1 !important;
+      transition: opacity 0.2s ease;
+    }
+    
+    // Target the Label component's content to change text color
+    :global([class*="_content_"]) {
+      color: white !important;
+      transition: color 0.2s ease;
+    }
+  }
+}
+
+// ============================================================================
+// Holiday Label Wrapper Hover Styles
+// ============================================================================
+.holidayLabelWrapper {
+  display: inline-flex;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    // Target the Label component's background layer
+    :global([class*="_background_"]) {
+      opacity: 1 !important;
+      transition: opacity 0.2s ease;
+    }
+    
+    // Target the Label component's content to change text color
+    :global([class*="_content_"]) {
+      color: white !important;
+      transition: color 0.2s ease;
+    }
+  }
+}
+
+// ============================================================================
+// Calendar Date Highlight Styles (Global)
+// ============================================================================
+// These styles are applied dynamically via JavaScript when hovering
+// over events or holidays to highlight corresponding dates in the calendar
+:global {
+  .highlightedDate {
+    // Target the rangeBackground inside the highlighted date
+    [class*="_rangeBackground_"] {
+      opacity: 1 !important;
+      transition: opacity 0.2s ease;
+    }
+
+    // Target the dayNumber inside the highlighted date
+    [class*="_dayNumber_"] {
+      color: white !important;
+      transition: color 0.2s ease;
+    }
+  }
+}
+

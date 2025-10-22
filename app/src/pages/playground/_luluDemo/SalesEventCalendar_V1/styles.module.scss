@@ -34,43 +34,6 @@ $container-padding-mobile: 16px;                // Container padding on mobile
   min-height: 32px;
 }
 
-.eventRow {
-  cursor: pointer;
-  transition: background-color 0.15s ease;
-
-  &:hover {
-    // Target the Label component's background layer inside the row
-    :global([class*="_background_"]) {
-      opacity: 1 !important;
-      transition: opacity 0.2s ease;
-    }
-    // Target the Label component's content to change text color
-    :global([class*="_content_"]) {
-      color: white !important;
-      transition: color 0.2s ease;
-    }
-  }
-}
-
-.holidayLabelWrapper {
-  display: inline-flex;
-  cursor: pointer;
-  transition: all 0.15s ease;
-
-  &:hover {
-    // Target the Label component's background layer
-    :global([class*="_background_"]) {
-      opacity: 1 !important;
-      transition: opacity 0.2s ease;
-    }
-    // Target the Label component's content to change text color
-    :global([class*="_content_"]) {
-      color: white !important;
-      transition: color 0.2s ease;
-    }
-  }
-}
-
 .mainSection {
   display: grid;
   grid-template-columns: $mainSection-gridColumns;
@@ -223,23 +186,6 @@ $container-padding-mobile: 16px;                // Container padding on mobile
 
   .mainSection {
     grid-template-columns: 1fr;
-  }
-}
-
-// Highlighted date styling for hover interaction
-:global {
-  .highlightedDate {
-    // Target the rangeBackground inside the highlighted date
-    [class*="_rangeBackground_"] {
-      opacity: 1 !important;
-      transition: opacity 0.2s ease;
-    }
-
-    // Target the dayNumber inside the highlighted date
-    [class*="_dayNumber_"] {
-      color: white !important;
-      transition: color 0.2s ease;
-    }
   }
 }
 
