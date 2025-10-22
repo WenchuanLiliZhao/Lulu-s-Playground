@@ -98,7 +98,7 @@ const SalesEventCalendar_V1 = () => {
 
         <div className={styles.sidePanel}>
           <div className={styles.listSection}>
-            <h3 className={styles.listTitle}>All Events</h3>
+            <h3 className={styles.listTitle}>All Events ({eventsWithStatus.length})</h3>
             <div className={styles.tableContainer}>
               <table className={styles.eventsTable}>
                 <thead>
@@ -141,7 +141,7 @@ const SalesEventCalendar_V1 = () => {
           </div>
 
           <div className={styles.listSection}>
-            <h3 className={styles.listTitle}>Holiday</h3>
+            <h3 className={styles.listTitle}>Holidays ({holidays.length})</h3>
             <div className={styles.eventLabels}>
               {holidays.map((holiday, index) => (
                 <div
