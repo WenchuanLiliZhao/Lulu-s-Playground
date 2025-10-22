@@ -23,6 +23,10 @@ export interface TimeRange {
    * @default 1
    */
   backgroundOpacity?: number
+  /**
+   * Name of the time range (displayed in tooltip on hover)
+   */
+  name?: string
 }
 
 export interface CalendarProps {
@@ -132,6 +136,7 @@ const MonthCalendar = ({
   timeRanges?: TimeRange[]
   responsiveConfig: repsonsivenessProps
 }) => {
+  const [hoveredDay, setHoveredDay] = useState<number | null>(null)
   const monthData = getMonthData(month, year)
   const days: DayCell[] = []
 
@@ -220,6 +225,11 @@ const MonthCalendar = ({
             dayCell.isCurrentMonth &&
             dayCell.day === currentDay
 
+          // Get ranges with names for tooltip
+          const rangesWithNames = matchingRanges.filter(range => range.name)
+
+          const showTooltip = hoveredDay === index && rangesWithNames.length > 0
+
           return (
             <div
               key={index}
@@ -233,6 +243,8 @@ const MonthCalendar = ({
               style={{
                 fontSize: `${responsiveConfig.cellFontSize}px`,
               }}
+              onMouseEnter={() => setHoveredDay(index)}
+              onMouseLeave={() => setHoveredDay(null)}
             >
               {/* Render background layers for each matching time range */}
               {matchingRanges.map((range, rangeIndex) => (
@@ -256,6 +268,24 @@ const MonthCalendar = ({
                 {dayCell.day}
               </span>
               {isToday && <span className={styles.todayDot}></span>}
+              
+              {/* Tooltip */}
+              {showTooltip && (
+                <div className={styles.tooltip}>
+                  {rangesWithNames.map((range, i) => (
+                    <div key={i} className={styles.tooltipItem}>
+                      <span 
+                        className={styles.tooltipDot}
+                        style={{
+                          backgroundColor: range.backgroundColor,
+                          opacity: range.backgroundOpacity ?? 1,
+                        }}
+                      />
+                      <span className={styles.tooltipText}>{range.name}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )
         })}

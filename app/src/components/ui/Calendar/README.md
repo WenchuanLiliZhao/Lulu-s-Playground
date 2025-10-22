@@ -11,6 +11,7 @@ A full-year calendar component with self-aware responsive design using ResizeObs
 - **Today highlight**: Current day is highlighted in red
 - **Year selection**: View any year from 1900 to 2100
 - **Time ranges**: Highlight specific date ranges with custom text and background colors
+- **Tooltip on hover**: Hover over any day to see the names of all time ranges it belongs to
 
 ## Usage
 
@@ -34,11 +35,13 @@ const timeRanges: TimeRange[] = [
     interval: [new Date(2025, 0, 1), new Date(2025, 0, 7)],
     color: COLOR_SCALES.wilderness.colors[8],
     backgroundColor: COLOR_SCALES.wilderness.colors[4],
+    name: 'New Year Week',
   },
   {
     interval: [new Date(2025, 11, 24), new Date(2025, 11, 31)],
     color: COLOR_SCALES.daydream.colors[8],
     backgroundColor: COLOR_SCALES.daydream.colors[4],
+    name: 'Holiday Season',
   },
 ]
 
@@ -70,8 +73,10 @@ const timeRanges: TimeRange[] = [
 ```typescript
 interface TimeRange {
   interval: [Date, Date]  // [start date, end date] (inclusive)
-  color: string           // Text color (e.g., '#ffffff')
+  color?: string          // Text color (e.g., '#ffffff')
   backgroundColor: string // Background color (e.g., '#4CAF50')
+  backgroundOpacity?: number // Opacity of the background (default: 1)
+  name?: string           // Name displayed in tooltip on hover
 }
 ```
 

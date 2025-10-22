@@ -219,6 +219,7 @@ $range-background-opacity: 0.32;
   position: relative;
   min-height: 0;
   height: 100%;
+  overflow: visible; // Allow tooltip to show outside
 
   &:hover {
     background: var(--color-bg-sec-2);
@@ -384,6 +385,83 @@ $range-background-opacity: 0.32;
 
   .month {
     padding: 0.75rem !important;
+  }
+}
+
+// Tooltip styles
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: var(--color-bg-main);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+  font-size: 12px;
+  line-height: 1.4;
+  animation: tooltipFadeIn 0.2s ease-in-out;
+
+  // Arrow pointing down
+  &::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    // border-top-color: var(--color-border);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-1px);
+    border: 6px solid transparent;
+    border-top-color: var(--color-bg-main);
+  }
+}
+
+.tooltipItem {
+  display: flex;
+  align-items: center;
+  color: var(--color-main);
+  padding: 2px 0;
+
+  &:not(:last-child) {
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+}
+
+.tooltipDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 1000px;
+  flex-shrink: 0;
+  margin-right: 6px;
+}
+
+.tooltipText {
+  line-height: 1.4;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 }
 

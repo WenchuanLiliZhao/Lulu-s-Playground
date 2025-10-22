@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import AppLayout from '../../../../components/ui/AppLayout'
 import { Calendar, Label } from '../../../../components/ui'
 import type { PageProps } from '../../../_page-types'
@@ -7,6 +7,7 @@ import {
   holidays,
   convertEventsToTimeRanges,
   convertHolidaysToTimeRanges,
+  type HolidayData,
 } from './data/eventData'
 import styles from './styles.module.scss'
 
@@ -14,6 +15,8 @@ type EventStatus = 'In progress' | 'Last' | 'Incoming'
 
 const SalesEventCalendar_V1 = () => {
   const [currentYear] = useState(2025)
+  const [hoveredDateRange, setHoveredDateRange] = useState<[Date, Date] | null>(null)
+  const calendarWrapperRef = useRef<HTMLDivElement>(null)
 
   // Convert events and holidays to time ranges for calendar
   const timeRanges = useMemo(
@@ -71,14 +74,119 @@ const SalesEventCalendar_V1 = () => {
       color: event.color,
       money: event.money || 0,
       status: getEventStatus(event.interval),
+      interval: event.interval,
     }))
   }, [])
+
+  // Effect to highlight date ranges in calendar when hovering
+  useEffect(() => {
+    const calendarWrapper = calendarWrapperRef.current
+    if (!calendarWrapper || !hoveredDateRange) return
+
+    const [startDate, endDate] = hoveredDateRange
+    const startTime = new Date(startDate).setHours(0, 0, 0, 0)
+    const endTime = new Date(endDate).setHours(0, 0, 0, 0)
+
+    console.log('Highlighting dates from', new Date(startTime), 'to', new Date(endTime))
+
+    // Find all day cells in the calendar
+    // Try multiple selectors to find the correct one
+    let dayCells = calendarWrapper.querySelectorAll('[class*="_day_"]')
+    console.log('Found day cells with [class*="_day_"]:', dayCells.length)
+    
+    // If that doesn't work, try finding by the actual structure
+    if (dayCells.length === 0) {
+      dayCells = calendarWrapper.querySelectorAll('[class*="day"]')
+      console.log('Found day cells with [class*="day"]:', dayCells.length)
+    }
+    
+    let highlightedCount = 0
+    dayCells.forEach((dayCell) => {
+      // Get the month container
+      let monthContainer = dayCell.closest('[class*="_month_"]')
+      if (!monthContainer) {
+        monthContainer = dayCell.closest('[class*="month"]')
+      }
+      if (!monthContainer) return
+
+      // Get month name from header
+      let monthHeader = monthContainer.querySelector('[class*="_monthHeader_"]')
+      if (!monthHeader) {
+        monthHeader = monthContainer.querySelector('[class*="monthHeader"]')
+      }
+      if (!monthHeader) return
+
+      const monthName = monthHeader.textContent
+      if (!monthName) return
+
+      const monthIndex = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ].indexOf(monthName)
+
+      if (monthIndex === -1) return
+
+      // Get day number from the cell
+      let dayNumber = dayCell.querySelector('[class*="_dayNumber_"]')
+      if (!dayNumber) {
+        dayNumber = dayCell.querySelector('[class*="dayNumber"]')
+      }
+      if (!dayNumber || !dayNumber.textContent) return
+
+      const day = parseInt(dayNumber.textContent)
+      if (isNaN(day)) return
+
+      // Check if this cell is in "other month" (grayed out)
+      const isOtherMonth = dayCell.className.includes('otherMonth')
+      if (isOtherMonth) return
+
+      // Create date for this cell
+      const cellDate = new Date(currentYear, monthIndex, day).setHours(0, 0, 0, 0)
+
+      // Check if this date is in the hovered range
+      if (cellDate >= startTime && cellDate <= endTime) {
+        dayCell.classList.add('highlightedDate')
+        highlightedCount++
+      }
+    })
+
+    console.log('Highlighted', highlightedCount, 'dates')
+
+    // Cleanup function to remove highlights
+    return () => {
+      if (calendarWrapper) {
+        let dayCells = calendarWrapper.querySelectorAll('[class*="_day_"]')
+        if (dayCells.length === 0) {
+          dayCells = calendarWrapper.querySelectorAll('[class*="day"]')
+        }
+        dayCells.forEach((dayCell) => {
+          dayCell.classList.remove('highlightedDate')
+        })
+      }
+    }
+  }, [hoveredDateRange, currentYear])
+
+  // Event handlers for hover
+  const handleEventHover = (event: typeof eventsWithStatus[0]) => {
+    console.log('Event hovered:', event.name, event.interval)
+    setHoveredDateRange(event.interval)
+  }
+
+  const handleHolidayHover = (holiday: HolidayData) => {
+    console.log('Holiday hovered:', holiday.name, holiday.date)
+    setHoveredDateRange([holiday.date, holiday.date])
+  }
+
+  const handleMouseLeave = () => {
+    console.log('Mouse left')
+    setHoveredDateRange(null)
+  }
 
   return (
     <div className={styles.container}>
       {/* Main Section - Calendar and Lists */}
       <section className={styles.mainSection}>
-        <div className={styles.calendarWrapper}>
+        <div className={styles.calendarWrapper} ref={calendarWrapperRef}>
           <Calendar
             initialYear={currentYear}
             timeRanges={timeRanges}
@@ -100,7 +208,12 @@ const SalesEventCalendar_V1 = () => {
                 </thead>
                 <tbody>
                   {eventsWithStatus.map((event, index) => (
-                    <tr key={index}>
+                    <tr 
+                      key={index}
+                      onMouseEnter={() => handleEventHover(event)}
+                      onMouseLeave={handleMouseLeave}
+                      className={styles.eventRow}
+                    >
                       <td>
                         <span className={`${styles.statusBadge} ${styles[`status${event.status.replace(' ', '')}`]}`}>
                           {event.status}
@@ -129,14 +242,20 @@ const SalesEventCalendar_V1 = () => {
             <h3 className={styles.listTitle}>Holiday</h3>
             <div className={styles.eventLabels}>
               {holidays.map((holiday, index) => (
-                <Label
+                <div
                   key={index}
-                  backgroundColor={holiday.backgroundColor}
-                  color={holiday.color}
-                  backgroundOpacity={holiday.backgroundOpacity}
+                  onMouseEnter={() => handleHolidayHover(holiday)}
+                  onMouseLeave={handleMouseLeave}
+                  className={styles.holidayLabelWrapper}
                 >
-                  {holiday.name}
-                </Label>
+                  <Label
+                    backgroundColor={holiday.backgroundColor}
+                    color={holiday.color}
+                    backgroundOpacity={holiday.backgroundOpacity}
+                  >
+                    {holiday.name}
+                  </Label>
+                </div>
               ))}
             </div>
           </div>

@@ -70,6 +70,7 @@ export const convertEventsToTimeRanges = (events: EventData[]): TimeRange[] => {
     interval: event.interval,
     color: event.color,
     backgroundColor: event.backgroundColor,
+    name: event.name,
   }))
 }
 

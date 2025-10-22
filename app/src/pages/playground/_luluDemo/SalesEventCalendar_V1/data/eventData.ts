@@ -84,6 +84,7 @@ export const convertEventsToTimeRanges = (events: EventData[]): TimeRange[] => {
     ...(event.color && { color: event.color }),
     backgroundColor: event.backgroundColor,
     ...(event.backgroundOpacity !== undefined && { backgroundOpacity: event.backgroundOpacity }),
+    name: event.name,
   }))
 }
 
@@ -93,6 +94,7 @@ export const convertHolidaysToTimeRanges = (holidays: HolidayData[]): TimeRange[
     color: holiday.color,
     backgroundColor: holiday.backgroundColor,
     backgroundOpacity: holiday.backgroundOpacity,
+    name: holiday.name,
   }))
 }
 
