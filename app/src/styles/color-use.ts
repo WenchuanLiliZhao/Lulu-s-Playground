@@ -15,6 +15,8 @@ export interface ThemeColors {
   colorSecTrans: string;
   colorNeg: string;
   colorNegTrans: string;
+  colorDisabled: string;
+  colorDisabledTrans: string;
   colorBgMain: string;
   colorBgSec: string;
   colorBgSecTrans: string;
@@ -27,6 +29,7 @@ export interface ThemeColors {
   colorSemanticSuccess: string;
   colorSemanticWarning: string;
   colorSemanticError: string;
+  colorSemanticErrorTextEm: string;
 }
 
 /**
@@ -43,6 +46,8 @@ export const LIGHT_THEME: ThemeColors = {
     colorSecTrans: 'rgba(0, 0, 0, 0.48)',
     colorNeg: '#ADADAD',
     colorNegTrans: 'rgba(0, 0, 0, 0.32)',
+    colorDisabled: '#C2C2C2',
+    colorDisabledTrans: 'rgba(0, 0, 0, 0.24)',
     colorBgMain: 'white',
     colorBgSec: '#fafafa',
     colorBgSecTrans: 'rgba(0, 0, 0, 0.02)',
@@ -54,7 +59,8 @@ export const LIGHT_THEME: ThemeColors = {
     colorSemanticActive: 'var(--indigo-5)',
     colorSemanticSuccess: 'var(--wilderness-4)',
     colorSemanticWarning: 'var(--amber-4)',
-    colorSemanticError: 'var(--hot-heat-4)'
+    colorSemanticError: 'var(--hot-heat-4)',
+    colorSemanticErrorTextEm: 'var(--hot-heat-3)'
 } as const;
 
 /**
@@ -66,6 +72,8 @@ export const DARK_THEME: ThemeColors = {
     colorSecTrans: 'rgba(255, 255, 255, 0.48)',
     colorNeg: '#4d4d4d',
     colorNegTrans: 'rgba(255, 255, 255, 0.32)',
+    colorDisabled: '#3D3D3D',
+    colorDisabledTrans: 'rgba(255, 255, 255, 0.24)',
     colorBgMain: '#121212',
     colorBgSec: '#1e1e1e',
     colorBgSecTrans: 'rgba(255, 255, 255, 0.02)',
@@ -77,7 +85,8 @@ export const DARK_THEME: ThemeColors = {
     colorSemanticActive: 'var(--indigo-5)',
     colorSemanticSuccess: 'var(--wilderness-4)',
     colorSemanticWarning: 'var(--amber-4)',
-    colorSemanticError: 'var(--hot-heat-4)'
+    colorSemanticError: 'var(--hot-heat-4)',
+    colorSemanticErrorTextEm: 'var(--hot-heat-5)'
 } as const;
 
 /**
@@ -90,6 +99,8 @@ export const CSS_VAR_NAMES = {
   colorSecTrans: '--color-sec-trans',
   colorNeg: '--color-neg',
   colorNegTrans: '--color-neg-trans',
+  colorDisabled: '--color-disabled',
+  colorDisabledTrans: '--color-disabled-trans',
   colorBgMain: '--color-bg-main',
   colorBgSec: '--color-bg-sec',
   colorBgSecTrans: '--color-bg-sec-trans',
@@ -101,7 +112,8 @@ export const CSS_VAR_NAMES = {
   colorSemanticActive: '--color-semantic-active',
   colorSemanticSuccess: '--color-semantic-success',
   colorSemanticWarning: '--color-semantic-warning',
-  colorSemanticError: '--color-semantic-error'
+  colorSemanticError: '--color-semantic-error',
+  colorSemanticErrorTextEm: '--color-semantic-error-text-em'
 } as const;
 
 /**

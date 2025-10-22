@@ -226,11 +226,14 @@ $range-background-opacity: 0.32;
   }
 
   &.otherMonth {
-    color: var(--color-neg);
     background: transparent;
 
     &:hover {
       background: var(--color-bg-sec-trans);
+    }
+
+    .dayNumber {
+      color: var(--color-disabled);
     }
   }
 
