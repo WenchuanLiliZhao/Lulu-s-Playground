@@ -77,17 +77,19 @@ const getMonthData = (month: number, year: number): MonthData => {
 }
 
 /**
- * Check if a date falls within any of the time ranges and return the styling
+ * Get all time ranges that contain the given date
  */
-const getDateRangeStyle = (
+const getDateRanges = (
   date: Date,
   timeRanges?: TimeRange[]
-): { color?: string; backgroundColor?: string } | null => {
-  if (!timeRanges || timeRanges.length === 0) return null
+): TimeRange[] => {
+  if (!timeRanges || timeRanges.length === 0) return []
 
   // Normalize the date to midnight for comparison
   const normalizedDate = new Date(date)
   normalizedDate.setHours(0, 0, 0, 0)
+
+  const matchingRanges: TimeRange[] = []
 
   for (const range of timeRanges) {
     const [start, end] = range.interval
@@ -100,14 +102,11 @@ const getDateRangeStyle = (
       normalizedDate >= normalizedStart &&
       normalizedDate <= normalizedEnd
     ) {
-      return {
-        color: range.color,
-        backgroundColor: range.backgroundColor,
-      }
+      matchingRanges.push(range)
     }
   }
 
-  return null
+  return matchingRanges
 }
 
 interface DayCell {
@@ -206,9 +205,9 @@ const MonthCalendar = ({
 
           const cellDate = new Date(actualYear, actualMonth, dayCell.day)
           // Only apply range styles to dates in the current month
-          const rangeStyle = dayCell.isCurrentMonth 
-            ? getDateRangeStyle(cellDate, timeRanges)
-            : null
+          const matchingRanges = dayCell.isCurrentMonth 
+            ? getDateRanges(cellDate, timeRanges)
+            : []
 
           const isToday = isTodayInThisMonth &&
             dayCell.isCurrentMonth &&
@@ -226,15 +225,26 @@ const MonthCalendar = ({
               }`}
               style={{
                 fontSize: `${responsiveConfig.cellFontSize}px`,
-                ...(rangeStyle
-                  ? {
-                      color: rangeStyle.color,
-                      backgroundColor: rangeStyle.backgroundColor,
-                    }
-                  : {}),
               }}
             >
-              <span className={styles.dayNumber}>{dayCell.day}</span>
+              {/* Render background layers for each matching time range */}
+              {matchingRanges.map((range, rangeIndex) => (
+                <div
+                  key={rangeIndex}
+                  className={styles.rangeBackground}
+                  style={{
+                    backgroundColor: range.backgroundColor,
+                  }}
+                />
+              ))}
+              <span 
+                className={styles.dayNumber}
+                style={{
+                  color: matchingRanges.length > 0 ? matchingRanges[0].color : undefined,
+                }}
+              >
+                {dayCell.day}
+              </span>
               {isToday && <span className={styles.todayDot}></span>}
             </div>
           )

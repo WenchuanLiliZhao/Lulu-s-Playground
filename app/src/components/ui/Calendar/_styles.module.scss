@@ -1,3 +1,7 @@
+// Time range background opacity
+// Used for overlapping time range layers in day cells
+$range-background-opacity: 0.32;
+
 .container {
   width: 100%;
   height: 100%;
@@ -230,8 +234,26 @@
   }
 }
 
+.rangeBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: $range-background-opacity;
+}
+
+// Export SASS variable for use in TypeScript
+:export {
+  rangeBackgroundOpacity: $range-background-opacity;
+}
+
 .dayNumber {
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .todayDot {
@@ -243,6 +265,7 @@
   height: 4px;
   border-radius: 50%;
   background-color: currentColor;
+  z-index: 1;
 }
 
 // Additional responsive adjustments for very small containers
