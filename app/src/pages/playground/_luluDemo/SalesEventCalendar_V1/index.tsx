@@ -6,8 +6,8 @@ import {
   events2025,
   holidays,
   convertEventsToTimeRanges,
+  convertHolidaysToTimeRanges,
 } from './data/eventData'
-import { COLOR_SCALES } from '../../../../styles/color-chart'
 import styles from './styles.module.scss'
 
 type EventStatus = 'In progress' | 'Last' | 'Incoming'
@@ -15,9 +15,12 @@ type EventStatus = 'In progress' | 'Last' | 'Incoming'
 const SalesEventCalendar_V1 = () => {
   const [currentYear] = useState(2025)
 
-  // Convert events to time ranges for calendar
+  // Convert events and holidays to time ranges for calendar
   const timeRanges = useMemo(
-    () => convertEventsToTimeRanges(events2025),
+    () => [
+      ...convertEventsToTimeRanges(events2025),
+      ...convertHolidaysToTimeRanges(holidays),
+    ],
     []
   )
 
@@ -64,6 +67,7 @@ const SalesEventCalendar_V1 = () => {
     return uniqueEvents.map(event => ({
       name: event.name,
       backgroundColor: event.backgroundColor,
+      backgroundOpacity: event.backgroundOpacity,
       color: event.color,
       money: event.money || 0,
       status: getEventStatus(event.interval),
@@ -106,7 +110,7 @@ const SalesEventCalendar_V1 = () => {
                         <Label
                           backgroundColor={event.backgroundColor}
                           color={event.color}
-                          backgroundOpacity={0.32}
+                          backgroundOpacity={event.backgroundOpacity}
                         >
                           {event.name}
                         </Label>
@@ -127,9 +131,9 @@ const SalesEventCalendar_V1 = () => {
               {holidays.map((holiday, index) => (
                 <Label
                   key={index}
-                  backgroundColor={COLOR_SCALES.zest.colors[2]}
-                  color="#ffffff"
-                  backgroundOpacity={1}
+                  backgroundColor={holiday.backgroundColor}
+                  color={holiday.color}
+                  backgroundOpacity={holiday.backgroundOpacity}
                 >
                   {holiday.name}
                 </Label>

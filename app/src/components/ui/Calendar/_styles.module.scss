@@ -263,6 +263,7 @@ $range-background-opacity: 0.32;
   display: block;
   position: relative;
   z-index: 1;
+  color: var(--color-main); // Default color from theme
 }
 
 .todayDot {

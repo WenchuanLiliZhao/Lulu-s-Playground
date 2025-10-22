@@ -10,12 +10,19 @@ export interface TimeRange {
   interval: [Date, Date]
   /**
    * Color of the day text
+   * If not provided, uses the theme's default text color (var(--color-main))
+   * When provided, this color will override the default with higher specificity
    */
-  color: string
+  color?: string
   /**
    * Background color of the day cell
    */
   backgroundColor: string
+  /**
+   * Opacity of the background color
+   * @default 1
+   */
+  backgroundOpacity?: number
 }
 
 export interface CalendarProps {
@@ -234,14 +241,17 @@ const MonthCalendar = ({
                   className={styles.rangeBackground}
                   style={{
                     backgroundColor: range.backgroundColor,
+                    opacity: range.backgroundOpacity ?? 1,
                   }}
                 />
               ))}
               <span 
                 className={styles.dayNumber}
-                style={{
-                  color: matchingRanges.length > 0 ? matchingRanges[0].color : undefined,
-                }}
+                style={(() => {
+                  // Find the first range with an explicit color
+                  const rangeWithColor = matchingRanges.find(range => range.color);
+                  return rangeWithColor?.color ? { color: rangeWithColor.color } : undefined;
+                })()}
               >
                 {dayCell.day}
               </span>
