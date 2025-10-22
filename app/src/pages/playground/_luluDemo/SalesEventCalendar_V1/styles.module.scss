@@ -1,8 +1,29 @@
+// ============================================================================
+// LAYOUT PARAMETERS - Main Section Configuration (for debugging)
+// ============================================================================
+// Grid layout
+$mainSection-gridColumns: 1fr 400px;           // Main calendar area + side panel width
+$mainSection-gap: 24px;                         // Gap between calendar and side panel
+
+// Responsive breakpoint
+$mainSection-responsive-breakpoint: 1200px;    // Switch to single column below this width
+
+// Side panel dimensions
+$sidePanel-width: 320px;                        // Fixed width of side panel
+$sidePanel-gap: 20px;                           // Gap between sections in side panel
+
+// Container padding
+$container-padding: 24px;                       // Overall container padding
+$container-padding-mobile: 16px;                // Container padding on mobile
+// ============================================================================
+
 .container {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background: var(--color-bg-main);
-  padding: 24px;
+  padding: $container-padding;
+  display: flex;
+  flex-direction: column;
 }
 
 .eventLabels {
@@ -15,10 +36,12 @@
 
 .mainSection {
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 24px;
+  grid-template-columns: $mainSection-gridColumns;
+  gap: $mainSection-gap;
+  flex: 1;
+  min-height: 0;
   
-  @media (max-width: 1200px) {
+  @media (max-width: $mainSection-responsive-breakpoint) {
     grid-template-columns: 1fr;
   }
 }
@@ -28,12 +51,16 @@
   border-radius: 12px;
   padding: 24px;
   border: 1px solid var(--color-border-main);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
 }
 
 .sidePanel {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: $sidePanel-gap;
 }
 
 .listSection {
@@ -50,10 +77,111 @@
   margin: 0 0 12px 0;
 }
 
+.tableContainer {
+  overflow-x: auto;
+  margin-top: 8px;
+}
+
+.eventsTable {
+  width: 100%;
+  border-collapse: collapse;
+  
+  thead {
+
+    tr {
+      border-bottom: 1px solid var(--color-border-main);
+      margin-bottom: 12px;
+      
+      th {
+        padding: 8px 12px;
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.25;
+        font-weight: 600;
+        color: var(--color-sec);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        
+        &:first-child {
+          padding-left: 0;
+          width: 100px;
+        }
+        
+        &:last-child {
+          text-align: right;
+          padding-right: 0;
+          width: 90px;
+        }
+      }
+    }
+  }
+  
+  tbody {
+    tr {
+      // border-bottom: 1px solid var(--color-border-main-trans);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      &:hover {
+        background-color: var(--color-bg-sec-trans);
+      }
+      
+      td {
+        // padding: 12px;
+        vertical-align: middle;
+        
+        &:first-child {
+          padding-left: 0;
+        }
+        
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.statusInprogress {
+  background-color: var(--color-semantic-active);
+  color: white;
+}
+
+.statusLast {
+  background-color: var(--color-bg-sec-2);
+  color: var(--color-sec);
+}
+
+.statusIncoming {
+  background-color: var(--color-semantic-success);
+  color: white;
+}
+
+.moneyCell {
+  text-align: right;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--color-main);
+  font-variant-numeric: tabular-nums;
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
   .container {
-    padding: 16px;
+    padding: $container-padding-mobile;
   }
 
   .mainSection {
@@ -65,11 +193,11 @@
 // This ensures the layout remains fixed regardless of browser window size
 [data-scaled-viewport="true"] {
   .mainSection {
-    grid-template-columns: 1fr 320px !important;
+    grid-template-columns: $mainSection-gridColumns !important;
   }
   
   .container {
-    padding: 24px !important;
+    padding: $container-padding !important;
   }
 }
 
