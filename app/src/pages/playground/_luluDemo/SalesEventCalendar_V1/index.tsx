@@ -96,14 +96,6 @@ const SalesEventCalendar_V1 = () => {
     <div className={styles.container}>
       {/* Main Section - Calendar and Lists */}
       <section className={styles.mainSection}>
-        <div className={styles.calendarWrapper} ref={calendarWrapperRef}>
-          <Calendar
-            initialYear={currentYear}
-            timeRanges={timeRanges}
-            headerMode={["switch", 1, 2]}
-          />
-        </div>
-
         <div className={styles.sidePanel}>
           <div className={styles.listSection}>
             <div className={styles.listHeader}>
@@ -190,6 +182,14 @@ const SalesEventCalendar_V1 = () => {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className={styles.calendarWrapper} ref={calendarWrapperRef}>
+          <Calendar
+            initialYear={currentYear}
+            timeRanges={timeRanges}
+            headerMode={["switch", 1, 2]}
+          />
         </div>
       </section>
     </div>

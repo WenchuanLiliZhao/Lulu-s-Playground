@@ -2,7 +2,7 @@
 // LAYOUT PARAMETERS - Main Section Configuration (for debugging)
 // ============================================================================
 // Grid layout
-$mainSection-gridColumns: 1fr 400px;           // Main calendar area + side panel width
+$mainSection-gridColumns: 400px 1fr;           // Main calendar area + side panel width
 $mainSection-gap: 24px;                         // Gap between calendar and side panel
 
 // Responsive breakpoint
