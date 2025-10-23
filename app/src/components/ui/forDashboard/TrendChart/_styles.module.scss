@@ -1,0 +1,149 @@
+// Configurable parameters
+$x-axis-label-font-size: 12px !default;
+$y-axis-label-font-size: 12px !default;
+$chart-title-font-size: 18px !default;
+$chart-padding: 24px !default;
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-main);
+  padding: $chart-padding;
+  border-radius: 8px;
+  border: 1px solid var(--color-border-main);
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: $chart-title-font-size;
+  font-weight: 600;
+  color: var(--color-main);
+  margin-bottom: 16px;
+  font-family: var(--ff-sans);
+}
+
+.chartWrapper {
+  flex: 1;
+  width: 100%;
+  min-height: 0; // Important for flex children
+  overflow: visible; // Allow Y-axis text to show if it extends beyond bounds
+
+  // Recharts custom styling
+  :global {
+    // Ensure SVG doesn't clip Y-axis labels
+    .recharts-wrapper {
+      overflow: visible !important;
+      
+      svg {
+        overflow: visible !important;
+        outline: none !important;
+        
+        &:focus,
+        &:focus-visible {
+          outline: none !important;
+        }
+      }
+    }
+    
+    // Remove outline from recharts surface
+    .recharts-surface {
+      outline: none !important;
+      
+      &:focus,
+      &:focus-visible {
+        outline: none !important;
+      }
+    }
+    .recharts-cartesian-axis-tick {
+      font-family: var(--ff-sans);
+      
+      &-value {
+        fill: var(--color-sec);
+      }
+    }
+
+    // X-axis specific styling
+    .recharts-xAxis {
+      .recharts-cartesian-axis-tick-value {
+        font-size: $x-axis-label-font-size;
+      }
+    }
+
+    // Y-axis specific styling
+    .recharts-yAxis {
+      .recharts-cartesian-axis-tick-value {
+        font-size: $y-axis-label-font-size;
+      }
+    }
+
+    // Grid styling
+    .recharts-cartesian-grid-horizontal,
+    .recharts-cartesian-grid-vertical {
+      line {
+        stroke: var(--color-border-main);
+      }
+    }
+
+    // Axis lines
+    .recharts-cartesian-axis-line {
+      stroke: var(--color-border-main);
+    }
+
+    .recharts-cartesian-axis-tick-line {
+      stroke: var(--color-border-main);
+    }
+
+    // Tooltip styling
+    .recharts-tooltip-wrapper {
+      .recharts-default-tooltip {
+        background-color: var(--color-bg-main) !important;
+        border: 1px solid var(--color-border-main) !important;
+        border-radius: 4px;
+        box-shadow: var(--pop-shadow);
+        padding: 12px;
+
+        .recharts-tooltip-label {
+          color: var(--color-main);
+          font-weight: 600;
+          margin-bottom: 8px;
+          font-family: var(--ff-sans);
+        }
+
+        .recharts-tooltip-item-list {
+          .recharts-tooltip-item {
+            color: var(--color-sec) !important;
+            font-family: var(--ff-sans);
+            
+            .recharts-tooltip-item-value {
+              color: var(--color-main) !important;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    // Legend styling
+    .recharts-legend-wrapper {
+      .recharts-legend-item {
+        font-family: var(--ff-sans);
+        
+        .recharts-legend-item-text {
+          color: var(--color-main) !important;
+          font-size: 14px;
+        }
+      }
+    }
+
+    // Line dots
+    .recharts-line {
+      .recharts-line-dot {
+        fill: var(--color-main) !important;
+        stroke: var(--color-bg-main);
+      }
+    }
+  }
+}
+
