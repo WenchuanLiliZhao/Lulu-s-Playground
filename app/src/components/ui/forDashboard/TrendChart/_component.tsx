@@ -11,13 +11,6 @@ import {
 import styles from './_styles.module.scss'
 
 export interface TrendChartDataPoint {
-  /**
-   * Unique identifier for the data point (used internally for key)
-   */
-  id: string
-  /**
-   * Display label for X-axis
-   */
   name: string
   [key: string]: string | number
 }
@@ -58,6 +51,31 @@ export interface TrendChartProps {
    */
   animationDuration?: number
   /**
+   * X-axis tick interval (0 = show all, 'preserveStartEnd' = auto with start/end, number = skip)
+   * @default 0
+   */
+  xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd'
+  /**
+   * X-axis label angle in degrees
+   * @default -45
+   */
+  xAxisAngle?: number
+  /**
+   * X-axis height to accommodate rotated labels
+   * @default 80
+   */
+  xAxisHeight?: number
+  /**
+   * Chart margin bottom (distance from X-axis labels to SVG bottom)
+   * @default 0
+   */
+  marginBottom?: number
+  /**
+   * X-axis tick margin (distance from axis line to labels)
+   * @default 8
+   */
+  xAxisTickMargin?: number
+  /**
    * Optional className
    */
   className?: string
@@ -70,6 +88,11 @@ export const TrendChart = ({
   showGrid = true,
   showLegend = true,
   animationDuration = 1500,
+  xAxisInterval = 0,
+  xAxisAngle = -45,
+  xAxisHeight = 80,
+  marginBottom = 0,
+  xAxisTickMargin = 8,
   className = '',
 }: TrendChartProps) => {
   const containerClasses = [styles.container, className]
@@ -88,24 +111,20 @@ export const TrendChart = ({
               top: 5,
               right: 30,
               left: 0,
-              bottom: 5,
+              bottom: marginBottom,
             }}
           >
-            {showGrid && <CartesianGrid strokeDasharray="3 3" />}
+            {showGrid && <CartesianGrid strokeDasharray="3 3" verticalFill={[]} />}
             <XAxis 
-              dataKey="id" 
-              tickFormatter={(value) => {
-                const point = data.find(d => d.id === value)
-                return point?.name || value
-              }}
+              dataKey="name" 
+              interval={xAxisInterval}
+              angle={xAxisAngle}
+              textAnchor="end"
+              height={xAxisHeight}
+              tickMargin={xAxisTickMargin}
             />
             <YAxis width={60} orientation="left" />
-            <Tooltip 
-              labelFormatter={(value) => {
-                const point = data.find(d => d.id === value)
-                return point?.name || value
-              }}
-            />
+            <Tooltip />
             {showLegend && <Legend verticalAlign="top" height={36} />}
             {lines.map((line) => (
               <Line

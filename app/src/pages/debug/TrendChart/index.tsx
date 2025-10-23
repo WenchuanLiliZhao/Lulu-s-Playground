@@ -10,6 +10,12 @@ const TrendChartDebug = () => {
   const [showGrid, setShowGrid] = useState(true)
   const [showLegend, setShowLegend] = useState(true)
   const [animationDuration, setAnimationDuration] = useState(1500)
+  const [xAxisInterval, setXAxisInterval] = useState<number>(0)
+  const [xAxisAngle, setXAxisAngle] = useState(-45)
+  const [xAxisHeight, setXAxisHeight] = useState(80)
+  const [marginBottom, setMarginBottom] = useState(0)
+  const [xAxisTickMargin, setXAxisTickMargin] = useState(8)
+  const [containerHeight, setContainerHeight] = useState(500)
 
   const data = generateTrendData(dataPoints)
 
@@ -26,7 +32,7 @@ const TrendChartDebug = () => {
         </p>
       </div>
 
-      <div className={styles.chartContainer}>
+      <div className={styles.chartContainer} style={{ height: `${containerHeight}px` }}>
         <TrendChart
           title="Revenue & User Growth"
           data={data}
@@ -34,10 +40,33 @@ const TrendChartDebug = () => {
           showGrid={showGrid}
           showLegend={showLegend}
           animationDuration={animationDuration}
+          xAxisInterval={xAxisInterval}
+          xAxisAngle={xAxisAngle}
+          xAxisHeight={xAxisHeight}
+          marginBottom={marginBottom}
+          xAxisTickMargin={xAxisTickMargin}
         />
       </div>
 
       <div className={styles.controls}>
+        <div className={styles.controlGroup}>
+          <label htmlFor="containerHeight">
+            Chart Container Height: {containerHeight}px
+          </label>
+          <input
+            id="containerHeight"
+            type="range"
+            min="200"
+            max="800"
+            step="50"
+            value={containerHeight}
+            onChange={(e) => setContainerHeight(Number(e.target.value))}
+          />
+          <span className={styles.hint}>
+            🎯 Adjust container height to test component's responsive behavior
+          </span>
+        </div>
+
         <div className={styles.controlGroup}>
           <label htmlFor="dataPoints">
             Data Points: {dataPoints} months
@@ -91,6 +120,93 @@ const TrendChartDebug = () => {
           </label>
         </div>
 
+        <div className={styles.controlGroup}>
+          <label htmlFor="xAxisInterval">
+            X-Axis Tick Interval: {xAxisInterval === 0 ? 'Show All' : `Skip ${xAxisInterval}`}
+          </label>
+          <input
+            id="xAxisInterval"
+            type="range"
+            min="0"
+            max="5"
+            step="1"
+            value={xAxisInterval}
+            onChange={(e) => setXAxisInterval(Number(e.target.value))}
+          />
+          <span className={styles.hint}>
+            0 = show all ticks/grid lines, higher = skip more
+          </span>
+        </div>
+
+        <div className={styles.controlGroup}>
+          <label htmlFor="xAxisAngle">
+            X-Axis Label Angle: {xAxisAngle}°
+          </label>
+          <input
+            id="xAxisAngle"
+            type="range"
+            min="-90"
+            max="0"
+            step="15"
+            value={xAxisAngle}
+            onChange={(e) => setXAxisAngle(Number(e.target.value))}
+          />
+        </div>
+
+        <div className={styles.controlGroup}>
+          <label htmlFor="xAxisHeight">
+            X-Axis Height: {xAxisHeight}px
+          </label>
+          <input
+            id="xAxisHeight"
+            type="range"
+            min="20"
+            max="120"
+            step="5"
+            value={xAxisHeight}
+            onChange={(e) => setXAxisHeight(Number(e.target.value))}
+          />
+          <span className={styles.hint}>
+            ⚡ Key control: Vertical space reserved for X-axis (reduce to move labels closer to bottom)
+          </span>
+        </div>
+
+        <div className={styles.controlGroup}>
+          <label htmlFor="xAxisTickMargin">
+            X-Axis Tick Margin: {xAxisTickMargin}px
+          </label>
+          <input
+            id="xAxisTickMargin"
+            type="range"
+            min="-20"
+            max="30"
+            step="2"
+            value={xAxisTickMargin}
+            onChange={(e) => setXAxisTickMargin(Number(e.target.value))}
+          />
+          <span className={styles.hint}>
+            Distance from axis line to labels (negative values move labels upward)
+          </span>
+        </div>
+
+        <div className={styles.controlGroup}>
+          <label htmlFor="marginBottom">
+            Chart Margin Bottom: {marginBottom}px
+          </label>
+          <input
+            id="marginBottom"
+            type="range"
+            min="-150"
+            max="50"
+            step="5"
+            value={marginBottom}
+            onChange={(e) => setMarginBottom(Number(e.target.value))}
+          />
+          <span className={styles.hint}>
+            Internal chart spacing to X-axis area
+          </span>
+        </div>
+
         <div className={styles.info}>
           <p>
             <strong>Tip:</strong> The chart uses the design system's color
@@ -131,6 +247,28 @@ const TrendChartDebug = () => {
           <li>
             <strong>Grid and legend:</strong> Optional grid lines and legend
             display
+          </li>
+          <li>
+            <strong>X-axis customization:</strong> Control tick interval (show all
+            or skip), label angle, and axis height
+          </li>
+        </ul>
+
+        <h3>X-Axis Controls</h3>
+        <p>
+          The debug page includes controls for X-axis behavior:
+        </p>
+        <ul>
+          <li>
+            <strong>Tick Interval:</strong> 0 = show all grid lines and labels,
+            higher values = skip more ticks (useful for dense data)
+          </li>
+          <li>
+            <strong>Label Angle:</strong> Rotate labels from 0° (horizontal) to
+            -90° (vertical) to prevent overlapping
+          </li>
+          <li>
+            <strong>Axis Height:</strong> Adjust vertical space for rotated labels
           </li>
         </ul>
 
