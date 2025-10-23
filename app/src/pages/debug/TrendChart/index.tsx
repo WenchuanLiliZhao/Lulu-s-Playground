@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TrendChart } from '../../../components/ui/forDashboard/TrendChart'
+import { TrendChart, TREND_CHART_DEFAULTS } from '../../../components/ui/forDashboard/TrendChart'
 import AppLayout from '../../../components/ui/AppLayout'
 import type { PageProps } from '../../_page-types'
 import { generateTrendData, chartLines } from './data'
@@ -7,14 +7,14 @@ import styles from './styles.module.scss'
 
 const TrendChartDebug = () => {
   const [dataPoints, setDataPoints] = useState(12)
-  const [showGrid, setShowGrid] = useState(true)
-  const [showLegend, setShowLegend] = useState(true)
-  const [animationDuration, setAnimationDuration] = useState(1500)
-  const [xAxisInterval, setXAxisInterval] = useState<number>(0)
-  const [xAxisAngle, setXAxisAngle] = useState(-45)
-  const [xAxisHeight, setXAxisHeight] = useState(80)
-  const [marginBottom, setMarginBottom] = useState(0)
-  const [xAxisTickMargin, setXAxisTickMargin] = useState(8)
+  const [showGrid, setShowGrid] = useState(TREND_CHART_DEFAULTS.showGrid)
+  const [showLegend, setShowLegend] = useState(TREND_CHART_DEFAULTS.showLegend)
+  const [animationDuration, setAnimationDuration] = useState(TREND_CHART_DEFAULTS.animationDuration)
+  const [xAxisInterval, setXAxisInterval] = useState<number>(TREND_CHART_DEFAULTS.xAxisInterval)
+  const [xAxisAngle, setXAxisAngle] = useState(TREND_CHART_DEFAULTS.xAxisAngle)
+  const [xAxisHeight, setXAxisHeight] = useState(TREND_CHART_DEFAULTS.xAxisHeight)
+  const [marginBottom, setMarginBottom] = useState(TREND_CHART_DEFAULTS.marginBottom)
+  const [xAxisTickMargin, setXAxisTickMargin] = useState(TREND_CHART_DEFAULTS.xAxisTickMargin)
   const [containerHeight, setContainerHeight] = useState(500)
 
   const data = generateTrendData(dataPoints)
@@ -51,7 +51,7 @@ const TrendChartDebug = () => {
       <div className={styles.controls}>
         <div className={styles.controlGroup}>
           <label htmlFor="containerHeight">
-            Chart Container Height: {containerHeight}px
+            Container Height <code>(containerHeight)</code>: {containerHeight}px
           </label>
           <input
             id="containerHeight"
@@ -63,13 +63,13 @@ const TrendChartDebug = () => {
             onChange={(e) => setContainerHeight(Number(e.target.value))}
           />
           <span className={styles.hint}>
-            🎯 Adjust container height to test component's responsive behavior
+            🎯 Test component's height responsiveness
           </span>
         </div>
 
         <div className={styles.controlGroup}>
           <label htmlFor="dataPoints">
-            Data Points: {dataPoints} months
+            Data Points <code>(data)</code>: {dataPoints} months
           </label>
           <input
             id="dataPoints"
@@ -83,7 +83,7 @@ const TrendChartDebug = () => {
 
         <div className={styles.controlGroup}>
           <label htmlFor="animationDuration">
-            Animation Duration: {animationDuration}ms
+            Animation Duration <code>(animationDuration)</code>: {animationDuration}ms
           </label>
           <input
             id="animationDuration"
@@ -104,7 +104,7 @@ const TrendChartDebug = () => {
               checked={showGrid}
               onChange={(e) => setShowGrid(e.target.checked)}
             />
-            {' '}Show Grid
+            {' '}Show Grid <code>(showGrid)</code>
           </label>
         </div>
 
@@ -116,13 +116,13 @@ const TrendChartDebug = () => {
               checked={showLegend}
               onChange={(e) => setShowLegend(e.target.checked)}
             />
-            {' '}Show Legend
+            {' '}Show Legend <code>(showLegend)</code>
           </label>
         </div>
 
         <div className={styles.controlGroup}>
           <label htmlFor="xAxisInterval">
-            X-Axis Tick Interval: {xAxisInterval === 0 ? 'Show All' : `Skip ${xAxisInterval}`}
+            X-Axis Tick Interval <code>(xAxisInterval)</code>: {xAxisInterval === 0 ? 'Show All' : `Skip ${xAxisInterval}`}
           </label>
           <input
             id="xAxisInterval"
@@ -140,7 +140,7 @@ const TrendChartDebug = () => {
 
         <div className={styles.controlGroup}>
           <label htmlFor="xAxisAngle">
-            X-Axis Label Angle: {xAxisAngle}°
+            X-Axis Label Angle <code>(xAxisAngle)</code>: {xAxisAngle}°
           </label>
           <input
             id="xAxisAngle"
@@ -155,7 +155,7 @@ const TrendChartDebug = () => {
 
         <div className={styles.controlGroup}>
           <label htmlFor="xAxisHeight">
-            X-Axis Height: {xAxisHeight}px
+            X-Axis Height <code>(xAxisHeight)</code>: {xAxisHeight}px
           </label>
           <input
             id="xAxisHeight"
@@ -167,13 +167,13 @@ const TrendChartDebug = () => {
             onChange={(e) => setXAxisHeight(Number(e.target.value))}
           />
           <span className={styles.hint}>
-            ⚡ Key control: Vertical space reserved for X-axis (reduce to move labels closer to bottom)
+            ⚡ Key control: Vertical space reserved for X-axis
           </span>
         </div>
 
         <div className={styles.controlGroup}>
           <label htmlFor="xAxisTickMargin">
-            X-Axis Tick Margin: {xAxisTickMargin}px
+            X-Axis Tick Margin <code>(xAxisTickMargin)</code>: {xAxisTickMargin}px
           </label>
           <input
             id="xAxisTickMargin"
@@ -185,13 +185,13 @@ const TrendChartDebug = () => {
             onChange={(e) => setXAxisTickMargin(Number(e.target.value))}
           />
           <span className={styles.hint}>
-            Distance from axis line to labels (negative values move labels upward)
+            Distance from axis line to labels
           </span>
         </div>
 
         <div className={styles.controlGroup}>
           <label htmlFor="marginBottom">
-            Chart Margin Bottom: {marginBottom}px
+            Chart Margin Bottom <code>(marginBottom)</code>: {marginBottom}px
           </label>
           <input
             id="marginBottom"

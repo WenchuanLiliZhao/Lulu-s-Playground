@@ -9,6 +9,7 @@ import {
   Legend,
 } from 'recharts'
 import styles from './_styles.module.scss'
+import { TREND_CHART_DEFAULTS } from './_defaults'
 
 export interface TrendChartDataPoint {
   name: string
@@ -85,14 +86,14 @@ export const TrendChart = ({
   title,
   data,
   lines,
-  showGrid = true,
-  showLegend = true,
-  animationDuration = 1500,
-  xAxisInterval = 0,
-  xAxisAngle = -45,
-  xAxisHeight = 80,
-  marginBottom = 0,
-  xAxisTickMargin = 8,
+  showGrid = TREND_CHART_DEFAULTS.showGrid,
+  showLegend = TREND_CHART_DEFAULTS.showLegend,
+  animationDuration = TREND_CHART_DEFAULTS.animationDuration,
+  xAxisInterval = TREND_CHART_DEFAULTS.xAxisInterval,
+  xAxisAngle = TREND_CHART_DEFAULTS.xAxisAngle,
+  xAxisHeight = TREND_CHART_DEFAULTS.xAxisHeight,
+  marginBottom = TREND_CHART_DEFAULTS.marginBottom,
+  xAxisTickMargin = TREND_CHART_DEFAULTS.xAxisTickMargin,
   className = '',
 }: TrendChartProps) => {
   const containerClasses = [styles.container, className]
