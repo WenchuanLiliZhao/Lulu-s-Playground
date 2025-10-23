@@ -19,9 +19,9 @@ import { TrendChart } from '@lululemon-ui'
 import type { TrendChartDataPoint, TrendChartLine } from '@lululemon-ui'
 
 const data: TrendChartDataPoint[] = [
-  { name: 'Jan', revenue: 12000, users: 2400 },
-  { name: 'Feb', revenue: 13500, users: 2800 },
-  { name: 'Mar', revenue: 15000, users: 3200 },
+  { id: '2024-01', name: 'Jan', revenue: 12000, users: 2400 },
+  { id: '2024-02', name: 'Feb', revenue: 13500, users: 2800 },
+  { id: '2024-03', name: 'Mar', revenue: 15000, users: 3200 },
 ]
 
 const lines: TrendChartLine[] = [
@@ -73,10 +73,13 @@ function MyComponent() {
 
 ```typescript
 interface TrendChartDataPoint {
-  name: string              // X-axis label
+  id: string                // Unique identifier (e.g., "2024-01", "2024-02")
+  name: string              // Display label for X-axis (e.g., "Jan", "Feb")
   [key: string]: string | number  // Data values (dynamic keys)
 }
 ```
+
+**Important**: The `id` field must be unique for each data point to ensure correct tooltip display and data mapping, especially when dealing with duplicate labels (e.g., multiple "Jan" across different years).
 
 ### TrendChartLine
 

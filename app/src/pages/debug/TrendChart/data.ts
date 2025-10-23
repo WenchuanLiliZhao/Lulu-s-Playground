@@ -7,17 +7,33 @@ export const generateTrendData = (months = 12): TrendChartDataPoint[] => {
   const startDate = new Date()
   startDate.setMonth(startDate.getMonth() - months + 1)
 
+  // Check if data spans multiple years
+  const endDate = new Date(startDate)
+  endDate.setMonth(startDate.getMonth() + months - 1)
+  const spansMultipleYears = startDate.getFullYear() !== endDate.getFullYear()
+
   for (let i = 0; i < months; i++) {
     const currentDate = new Date(startDate)
     currentDate.setMonth(startDate.getMonth() + i)
 
     const month = currentDate.toLocaleString('default', { month: 'short' })
+    const year = currentDate.getFullYear()
+    
+    // Create unique ID using timestamp or index with date
+    const id = `${year}-${String(currentDate.getMonth() + 1).padStart(2, '0')}`
+    
+    // Include year in name if data spans multiple years or if months > 12
+    const name = spansMultipleYears || months > 12 
+      ? `${month} ${year}` 
+      : month
+
     const revenue = Math.floor(Math.random() * 5000) + 10000
     const users = Math.floor(Math.random() * 1000) + 2000
     const orders = Math.floor(Math.random() * 500) + 800
 
     data.push({
-      name: month,
+      id,
+      name,
       revenue,
       users,
       orders,

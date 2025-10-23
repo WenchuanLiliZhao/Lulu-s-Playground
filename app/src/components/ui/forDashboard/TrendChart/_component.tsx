@@ -11,6 +11,13 @@ import {
 import styles from './_styles.module.scss'
 
 export interface TrendChartDataPoint {
+  /**
+   * Unique identifier for the data point (used internally for key)
+   */
+  id: string
+  /**
+   * Display label for X-axis
+   */
   name: string
   [key: string]: string | number
 }
@@ -85,9 +92,20 @@ export const TrendChart = ({
             }}
           >
             {showGrid && <CartesianGrid strokeDasharray="3 3" />}
-            <XAxis dataKey="name" />
+            <XAxis 
+              dataKey="id" 
+              tickFormatter={(value) => {
+                const point = data.find(d => d.id === value)
+                return point?.name || value
+              }}
+            />
             <YAxis width={60} orientation="left" />
-            <Tooltip />
+            <Tooltip 
+              labelFormatter={(value) => {
+                const point = data.find(d => d.id === value)
+                return point?.name || value
+              }}
+            />
             {showLegend && <Legend verticalAlign="top" height={36} />}
             {lines.map((line) => (
               <Line

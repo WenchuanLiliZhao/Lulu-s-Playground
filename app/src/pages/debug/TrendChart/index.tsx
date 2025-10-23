@@ -166,11 +166,17 @@ const TrendChartDebug = () => {
         <pre>
           <code>
 {`{
+  id: string,        // Unique identifier (e.g., "2024-01")
   name: string,      // X-axis label (e.g., month name)
   [key: string]: number | string  // Data values
 }`}
           </code>
         </pre>
+        <p>
+          <strong>Note:</strong> The <code>id</code> field ensures each data
+          point is uniquely identified, preventing tooltip issues when multiple
+          data points share the same display name (e.g., "Jul 2024" and "Jul 2025").
+        </p>
       </section>
     </div>
   )
