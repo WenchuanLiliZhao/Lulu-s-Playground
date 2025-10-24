@@ -20,7 +20,7 @@ $chart-padding: 24px;
   padding: $container-padding;
   display: flex;
   flex-direction: column;
-  overflow: hidden; // Prevent container scroll
+  // overflow: hidden; // Prevent container scroll
 }
 
 .chartsGrid {
@@ -40,7 +40,7 @@ $chart-padding: 24px;
   flex-direction: column;
   min-height: 280px; // Ensure container has minimum height for ResponsiveContainer
   height: 100%;
-  overflow: hidden; // Prevent internal scroll
+  // overflow: hidden; // Prevent internal scroll
 }
 
 // Responsive adjustments

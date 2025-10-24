@@ -103,8 +103,6 @@
 
 .calendar {
   position: absolute;
-  top: calc(var(--date-picker-height) + 8px);
-  left: 0;
   width: var(--calendar-width);
   background-color: var(--color-bg-main);
   border: 1px solid var(--color-border-main);
@@ -112,13 +110,43 @@
   box-shadow: var(--pop-shadow);
   padding: 16px;
   z-index: var(--z-index-popup-sec);
-  animation: slideDown 0.2s ease;
+  
+  // Vertical positioning
+  &.vertical-bottom {
+    top: calc(var(--date-picker-height) + 8px);
+    animation: slideDown 0.2s ease;
+  }
+  
+  &.vertical-top {
+    bottom: calc(var(--date-picker-height) + 8px);
+    animation: slideUp 0.2s ease;
+  }
+  
+  // Horizontal positioning
+  &.horizontal-left {
+    left: 0;
+  }
+  
+  &.horizontal-right {
+    right: 0;
+  }
 }
 
 @keyframes slideDown {
   from {
     opacity: 0;
     transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
   to {
     opacity: 1;

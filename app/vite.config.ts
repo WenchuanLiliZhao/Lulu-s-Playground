@@ -10,5 +10,8 @@ export default defineConfig({
         api: 'modern-compiler' // Use modern Sass API
       }
     }
+  },
+  build: {
+    outDir: 'playground-dist',
   }
 })

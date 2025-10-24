@@ -34,6 +34,13 @@ export interface DatePickerProps {
    * Disabled state
    */
   disabled?: boolean
+  /**
+   * Positioning strategy for the calendar dropdown:
+   * - `true`: Position relative to the nearest scrollable parent container (recommended for complex layouts)
+   * - `false`: Position relative to the viewport/screen
+   * @default true
+   */
+  useContainerBounds?: boolean
 }
 
 const MONTH_NAMES = [
@@ -78,6 +85,105 @@ const getMonthData = (month: number, year: number): MonthData => {
   return { month, year, firstDay, daysInMonth }
 }
 
+/**
+ * Position utilities for dropdown positioning
+ */
+
+interface BoundingBox {
+  top: number
+  left: number
+  right: number
+  bottom: number
+  width: number
+  height: number
+}
+
+interface PositionConfig {
+  vertical: 'top' | 'bottom'
+  horizontal: 'left' | 'right'
+}
+
+/**
+ * Get viewport bounds
+ */
+const getViewportBounds = (): BoundingBox => ({
+  top: 0,
+  left: 0,
+  right: window.innerWidth,
+  bottom: window.innerHeight,
+  width: window.innerWidth,
+  height: window.innerHeight,
+})
+
+/**
+ * Find the nearest scrollable ancestor or return viewport bounds
+ * @param element - The element to start searching from
+ * @returns The bounds of the scrollable container or viewport
+ */
+const getScrollableContainer = (element: HTMLElement | null): BoundingBox => {
+  if (!element) {
+    return getViewportBounds()
+  }
+
+  let current = element.parentElement
+  
+  while (current) {
+    const style = window.getComputedStyle(current)
+    const overflow = style.overflow + style.overflowY + style.overflowX
+    
+    // Check if element is scrollable
+    if (/(auto|scroll)/.test(overflow)) {
+      const rect = current.getBoundingClientRect()
+      return {
+        top: rect.top,
+        left: rect.left,
+        right: rect.right,
+        bottom: rect.bottom,
+        width: rect.width,
+        height: rect.height,
+      }
+    }
+    
+    current = current.parentElement
+  }
+  
+  // If no scrollable container found, return viewport bounds
+  return getViewportBounds()
+}
+
+/**
+ * Calculate optimal dropdown position based on available space
+ * @param triggerRect - Bounding rect of the trigger element
+ * @param dropdownRect - Bounding rect of the dropdown element
+ * @param bounds - Bounds to calculate position within (container or viewport)
+ * @returns Optimal position configuration
+ */
+const calculateDropdownPosition = (
+  triggerRect: DOMRect,
+  dropdownRect: DOMRect,
+  bounds: BoundingBox
+): PositionConfig => {
+  // Calculate vertical position relative to bounds
+  const spaceBelow = bounds.bottom - triggerRect.bottom
+  const spaceAbove = triggerRect.top - bounds.top
+  const dropdownHeight = dropdownRect.height || 400 // fallback height
+  
+  const vertical = spaceBelow >= dropdownHeight || spaceBelow >= spaceAbove
+    ? 'bottom'
+    : 'top'
+
+  // Calculate horizontal position relative to bounds
+  const spaceRight = bounds.right - triggerRect.left
+  const spaceLeft = triggerRect.right - bounds.left
+  const dropdownWidth = dropdownRect.width || 320 // fallback width
+  
+  const horizontal = spaceRight >= dropdownWidth || spaceRight >= spaceLeft
+    ? 'left'
+    : 'right'
+
+  return { vertical, horizontal }
+}
+
 export const DatePicker = ({
   value = null,
   onChange,
@@ -86,6 +192,7 @@ export const DatePicker = ({
   className = '',
   size = 'default',
   disabled = false,
+  useContainerBounds = true,
 }: DatePickerProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [currentMonth, setCurrentMonth] = useState(
@@ -94,7 +201,29 @@ export const DatePicker = ({
   const [currentYear, setCurrentYear] = useState(
     value ? value.getFullYear() : new Date().getFullYear()
   )
+  const [position, setPosition] = useState<PositionConfig>({ 
+    vertical: 'bottom', 
+    horizontal: 'left' 
+  })
   const containerRef = useRef<HTMLDivElement>(null)
+  const calendarRef = useRef<HTMLDivElement>(null)
+
+  // Calculate optimal position for calendar dropdown
+  useEffect(() => {
+    if (isOpen && containerRef.current && calendarRef.current) {
+      const triggerRect = containerRef.current.getBoundingClientRect()
+      const dropdownRect = calendarRef.current.getBoundingClientRect()
+      
+      // Get bounds - either from scrollable container or viewport
+      const bounds = useContainerBounds
+        ? getScrollableContainer(containerRef.current)
+        : getViewportBounds()
+
+      // Calculate optimal position
+      const optimalPosition = calculateDropdownPosition(triggerRect, dropdownRect, bounds)
+      setPosition(optimalPosition)
+    }
+  }, [isOpen, useContainerBounds])
 
   // Close calendar when clicking outside
   useEffect(() => {
@@ -233,7 +362,10 @@ export const DatePicker = ({
       </div>
 
       {isOpen && (
-        <div className={styles.calendar}>
+        <div 
+          ref={calendarRef}
+          className={`${styles.calendar} ${styles[`vertical-${position.vertical}`]} ${styles[`horizontal-${position.horizontal}`]}`}
+        >
           <div className={styles.calendarHeader}>
             <button
               className={styles.navButton}
