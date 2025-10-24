@@ -1,7 +1,7 @@
 /**
  * Minimum spacing between x-axis data points in pixels
  */
-const MIN_GRID_SPACE_PX = 32
+const MIN_GRID_SPACE_PX = 4
 
 /**
  * Calculate appropriate x-axis interval to ensure minimum spacing between data points

@@ -59,7 +59,7 @@ export const TrendView = ({ zoomLevel }: TrendViewProps) => {
           interval: calculatedInterval, 
           angle: -45, 
           height: 70, 
-          showDots: false 
+          showDots: true 
         }
       case 'month':
         return { 
