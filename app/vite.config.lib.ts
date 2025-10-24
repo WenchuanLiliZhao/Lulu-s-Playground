@@ -8,9 +8,10 @@ export default defineConfig({
   plugins: [
     react(),
     dts({
-      include: ['src/components/**/*', 'src/index.ts', 'src/styles/**/*'],
-      exclude: ['src/playground', 'src/debug', '**/*.test.tsx', '**/*.test.ts'],
+      entryRoot: 'src',
       outDir: 'dist',
+      insertTypesEntry: true,
+      tsconfigPath: './tsconfig.lib.json',
     }),
   ],
   publicDir: false, // Disable copying public directory

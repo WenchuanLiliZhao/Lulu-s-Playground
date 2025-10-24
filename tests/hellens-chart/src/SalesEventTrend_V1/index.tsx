@@ -1,10 +1,10 @@
-import { useSearchParams } from 'react-router'
-import { AppLayout } from 'lululemon-ui'
-import type { PageProps } from '../../../_page-types'
+import { useSearchParams } from 'react-router-dom'
 import { Navigation, type ViewMode, type ZoomLevel } from './components'
 import { CalendarView } from './views/CalendarView'
 import { TrendView } from './views/TrendView'
 import styles from './styles.module.scss'
+import { AppLayout } from 'lululemon-ui';
+import type { PageProps } from './data/_pageProps'
 
 const SalesEventTrend_V1 = () => {
   const [searchParams, setSearchParams] = useSearchParams()

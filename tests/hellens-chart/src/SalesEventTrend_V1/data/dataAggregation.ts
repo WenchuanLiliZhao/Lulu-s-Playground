@@ -1,4 +1,4 @@
-import type { TrendChartDataPoint } from '../../../../../components/ui/forDashboard/TrendChart'
+import type { TrendChartDataPoint } from 'lululemon-ui'
 import type { ZoomLevel } from '../components/Navigation'
 
 /**

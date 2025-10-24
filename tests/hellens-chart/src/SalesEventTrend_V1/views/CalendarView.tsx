@@ -1,13 +1,14 @@
 import { useState, useMemo } from 'react'
-import { Calendar, Label, Dropdown, Checkbox } from '../../../../../components/ui'
+import { Calendar, Label, Dropdown, Checkbox } from "lululemon-ui"
 import {
   events2025,
   holidays,
   convertEventsToTimeRanges,
   convertHolidaysToTimeRanges,
-} from '../../SalesEventCalendar_V1/data/eventData'
-import { useCalendarHighlight, highlightStyles, useEventFilter } from '../../SalesEventCalendar_V1/features'
+} from '../data/eventData'
+
 import styles from './CalendarView.module.scss'
+import { highlightStyles, useCalendarHighlight, useEventFilter } from '../features'
 
 type EventStatus = 'In progress' | 'Last' | 'Incoming'
 

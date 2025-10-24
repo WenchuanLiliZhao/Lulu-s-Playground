@@ -1,4 +1,4 @@
-import type { TrendChartDataPoint } from '../../../../../components/ui/forDashboard/TrendChart'
+import type { TrendChartDataPoint } from 'lululemon-ui'
 
 /**
  * Static daily sales data for 2023-2025

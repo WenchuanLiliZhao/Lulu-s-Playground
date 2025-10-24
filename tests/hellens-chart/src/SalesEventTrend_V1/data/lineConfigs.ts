@@ -1,5 +1,5 @@
-import type { TrendChartLine } from '../../../../../components/ui/forDashboard/TrendChart'
-import { COLOR_SCALES } from '../../../../../styles/color-chart'
+import type { TrendChartLine } from 'lululemon-ui'
+import { COLOR_SCALES } from 'lululemon-ui'
 
 /**
  * Line configurations for sales chart

@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { TrendChart, type TrendChartDataPoint } from '../../../../../components/ui/forDashboard/TrendChart'
+import { TrendChart, type TrendChartDataPoint } from 'lululemon-ui'
 import type { ZoomLevel } from '../components/Navigation'
 import {
   dailySalesData,
