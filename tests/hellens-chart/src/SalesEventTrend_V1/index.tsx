@@ -54,7 +54,7 @@ const SalesEventTrendPage_V1: PageProps = {
   title: 'Sales Event Trend V1',
   slug: 'sales-event-trend-v1',
   content: (
-    <AppLayout isTesting={true} viewportMode={["scaled-from", 1800, 1100]}>
+    <AppLayout isTesting={false} viewportMode={["scaled-from", 1800, 1100]}>
       <SalesEventTrend_V1 />
     </AppLayout>
   ),
