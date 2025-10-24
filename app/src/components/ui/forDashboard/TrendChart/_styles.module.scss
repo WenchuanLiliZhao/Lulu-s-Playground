@@ -18,12 +18,34 @@ $chart-border: none !default;
   box-sizing: border-box;
 }
 
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
 .title {
   font-size: $chart-title-font-size;
   font-weight: 600;
   color: var(--color-main);
-  margin-bottom: 16px;
+  margin: 0;
   font-family: var(--ff-sans);
+}
+
+.dateFilters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  .dateSeparator {
+    color: var(--color-sec);
+    font-size: 14px;
+    padding: 0 4px;
+  }
 }
 
 .chartWrapper {

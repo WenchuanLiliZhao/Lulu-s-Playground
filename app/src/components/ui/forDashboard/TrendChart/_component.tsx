@@ -1,3 +1,4 @@
+import { useState, useMemo } from 'react'
 import {
   LineChart,
   Line,
@@ -10,10 +11,13 @@ import {
 } from 'recharts'
 import styles from './_styles.module.scss'
 import { TREND_CHART_DEFAULTS } from './_defaults'
+import { DatePicker } from '../../DatePicker'
 
 export interface TrendChartDataPoint {
   name: string
-  [key: string]: string | number
+  id?: string
+  date?: Date
+  [key: string]: string | number | Date | undefined
 }
 
 export interface TrendChartLine {
@@ -80,6 +84,23 @@ export interface TrendChartProps {
    * Optional className
    */
   className?: string
+  /**
+   * Enable date range filtering
+   * @default false
+   */
+  enableDateFilter?: boolean
+  /**
+   * Function to extract date from data point (required if enableDateFilter is true)
+   */
+  getDateFromDataPoint?: (dataPoint: TrendChartDataPoint) => Date
+  /**
+   * Initial start date for date filter
+   */
+  initialStartDate?: Date | null
+  /**
+   * Initial end date for date filter
+   */
+  initialEndDate?: Date | null
 }
 
 export const TrendChart = ({
@@ -95,19 +116,71 @@ export const TrendChart = ({
   marginBottom = TREND_CHART_DEFAULTS.marginBottom,
   xAxisTickMargin = TREND_CHART_DEFAULTS.xAxisTickMargin,
   className = '',
+  enableDateFilter = false,
+  getDateFromDataPoint,
+  initialStartDate = null,
+  initialEndDate = null,
 }: TrendChartProps) => {
+  const [startDate, setStartDate] = useState<Date | null>(initialStartDate)
+  const [endDate, setEndDate] = useState<Date | null>(initialEndDate)
+
   const containerClasses = [styles.container, className]
     .filter(Boolean)
     .join(' ')
 
+  // Filter data based on selected date range
+  const filteredData = useMemo(() => {
+    if (!enableDateFilter || !getDateFromDataPoint) {
+      return data
+    }
+
+    if (!startDate && !endDate) {
+      return data
+    }
+
+    return data.filter((dataPoint) => {
+      const pointDate = getDateFromDataPoint(dataPoint)
+      
+      if (startDate && endDate) {
+        return pointDate >= startDate && pointDate <= endDate
+      } else if (startDate) {
+        return pointDate >= startDate
+      } else if (endDate) {
+        return pointDate <= endDate
+      }
+      
+      return true
+    })
+  }, [data, startDate, endDate, enableDateFilter, getDateFromDataPoint])
+
   return (
     <div className={containerClasses}>
-      {title && <h2 className={styles.title}>{title}</h2>}
+      <div className={styles.header}>
+        {title && <h2 className={styles.title}>{title}</h2>}
+        
+        {enableDateFilter && (
+          <div className={styles.dateFilters}>
+            <DatePicker
+              value={startDate}
+              onChange={setStartDate}
+              placeholder="Start date"
+              size="small"
+            />
+            <span className={styles.dateSeparator}>to</span>
+            <DatePicker
+              value={endDate}
+              onChange={setEndDate}
+              placeholder="End date"
+              size="small"
+            />
+          </div>
+        )}
+      </div>
 
       <div className={styles.chartWrapper}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-            data={data}
+            data={filteredData}
             margin={{
               top: 5,
               right: 30,

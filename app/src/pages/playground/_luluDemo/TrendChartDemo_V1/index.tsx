@@ -1,5 +1,5 @@
 import AppLayout from '../../../../components/ui/AppLayout'
-import { TrendChart } from '../../../../components/ui/forDashboard/TrendChart'
+import { TrendChart, type TrendChartDataPoint } from '../../../../components/ui/forDashboard/TrendChart'
 import type { PageProps } from '../../../_page-types'
 import {
   quarterlySalesData,
@@ -10,6 +10,15 @@ import {
 import styles from './styles.module.scss'
 
 const TrendChartDemo_V1 = () => {
+  // Helper function to extract date from data point
+  const getDateFromDataPoint = (dataPoint: TrendChartDataPoint): Date => {
+    return dataPoint.date as Date
+  }
+
+  // Default date range: March 1, 2024 to September 30, 2024
+  const defaultStartDate = new Date(2024, 2, 1) // March 1, 2024
+  const defaultEndDate = new Date(2024, 8, 30)   // September 30, 2024
+
   return (
     <div className={styles.container}>
       <div className={styles.chartsGrid}>
@@ -25,6 +34,10 @@ const TrendChartDemo_V1 = () => {
             xAxisInterval={0}
             xAxisAngle={-45}
             xAxisHeight={60}
+            enableDateFilter={true}
+            getDateFromDataPoint={getDateFromDataPoint}
+            initialStartDate={defaultStartDate}
+            initialEndDate={defaultEndDate}
           />
         </div>
 
@@ -40,6 +53,10 @@ const TrendChartDemo_V1 = () => {
             xAxisInterval={0}
             xAxisAngle={-45}
             xAxisHeight={60}
+            enableDateFilter={true}
+            getDateFromDataPoint={getDateFromDataPoint}
+            initialStartDate={defaultStartDate}
+            initialEndDate={defaultEndDate}
           />
         </div>
       </div>
