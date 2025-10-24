@@ -11,7 +11,7 @@ import {
 } from 'recharts'
 import styles from './_styles.module.scss'
 import { TREND_CHART_DEFAULTS } from './_defaults'
-import { DatePicker } from '../../DatePicker'
+import { DateFilter } from '../../DateFilter'
 
 export interface TrendChartDataPoint {
   name: string
@@ -60,6 +60,18 @@ export interface TrendChartProps {
    * @default 0
    */
   xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd'
+  /**
+   * Whether to show dots on the line chart
+   * @default true
+   */
+  showDots?: boolean
+  /**
+   * Dot display interval (0 = show all dots, number = show every nth dot)
+   * If not provided, defaults to xAxisInterval to keep dots and labels in sync
+   * Only applies when showDots is true
+   * @default undefined (uses xAxisInterval)
+   */
+  dotInterval?: number
   /**
    * X-axis label angle in degrees
    * @default -45
@@ -111,6 +123,8 @@ export const TrendChart = ({
   showLegend = TREND_CHART_DEFAULTS.showLegend,
   animationDuration = TREND_CHART_DEFAULTS.animationDuration,
   xAxisInterval = TREND_CHART_DEFAULTS.xAxisInterval,
+  showDots = true,
+  dotInterval,
   xAxisAngle = TREND_CHART_DEFAULTS.xAxisAngle,
   xAxisHeight = TREND_CHART_DEFAULTS.xAxisHeight,
   marginBottom = TREND_CHART_DEFAULTS.marginBottom,
@@ -127,6 +141,54 @@ export const TrendChart = ({
   const containerClasses = [styles.container, className]
     .filter(Boolean)
     .join(' ')
+
+  // Use dotInterval if provided, otherwise sync with xAxisInterval
+  const effectiveDotInterval = dotInterval !== undefined 
+    ? dotInterval 
+    : (typeof xAxisInterval === 'number' ? xAxisInterval : 0)
+
+  // Custom dot renderer that respects the interval and showDots setting
+  const renderDot = (props: { cx?: number; cy?: number; stroke?: string; strokeWidth?: number; index?: number }) => {
+    const { cx, cy, stroke, strokeWidth, index = 0 } = props
+    
+    // If showDots is false, don't render any dots
+    if (!showDots) {
+      return <circle cx={cx} cy={cy} r={0} fill="none" stroke="none" />
+    }
+    
+    // Only show dots at specified intervals
+    if (effectiveDotInterval === 0 || index % (effectiveDotInterval + 1) === 0) {
+      return (
+        <circle
+          key={`dot-${index}`}
+          cx={cx}
+          cy={cy}
+          r={4}
+          fill="#fff"
+          stroke={stroke}
+          strokeWidth={strokeWidth || 2}
+        />
+      )
+    }
+    
+    // Return invisible dot to maintain structure
+    return <circle cx={cx} cy={cy} r={0} fill="none" stroke="none" />
+  }
+
+  // Active dot renderer (always show on hover)
+  const renderActiveDot = (props: { cx?: number; cy?: number; stroke?: string; strokeWidth?: number }) => {
+    const { cx, cy, stroke, strokeWidth } = props
+    return (
+      <circle
+        cx={cx}
+        cy={cy}
+        r={6}
+        fill="#fff"
+        stroke={stroke}
+        strokeWidth={strokeWidth || 2}
+      />
+    )
+  }
 
   // Filter data based on selected date range
   const filteredData = useMemo(() => {
@@ -159,21 +221,13 @@ export const TrendChart = ({
         {title && <h2 className={styles.title}>{title}</h2>}
         
         {enableDateFilter && (
-          <div className={styles.dateFilters}>
-            <DatePicker
-              value={startDate}
-              onChange={setStartDate}
-              placeholder="Start date"
-              size="small"
-            />
-            <span className={styles.dateSeparator}>to</span>
-            <DatePicker
-              value={endDate}
-              onChange={setEndDate}
-              placeholder="End date"
-              size="small"
-            />
-          </div>
+          <DateFilter
+            startDate={startDate}
+            endDate={endDate}
+            onStartDateChange={setStartDate}
+            onEndDateChange={setEndDate}
+            size="small"
+          />
         )}
       </div>
 
@@ -208,8 +262,8 @@ export const TrendChart = ({
                 name={line.name}
                 stroke={line.color}
                 strokeWidth={line.strokeWidth ?? 2}
-                dot={{ r: 4, strokeWidth: 2 }}
-                activeDot={{ r: 6, strokeWidth: 2 }}
+                dot={(props) => renderDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 2 })}
+                activeDot={(props) => renderActiveDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 2 })}
                 animationDuration={animationDuration}
               />
             ))}

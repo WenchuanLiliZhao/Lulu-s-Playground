@@ -35,19 +35,6 @@ $chart-border: none !default;
   font-family: var(--ff-sans);
 }
 
-.dateFilters {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-
-  .dateSeparator {
-    color: var(--color-sec);
-    font-size: 14px;
-    padding: 0 4px;
-  }
-}
-
 .chartWrapper {
   flex: 1;
   width: 100%;
