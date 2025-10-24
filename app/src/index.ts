@@ -17,3 +17,10 @@ export * from './components/utils'
 // Export enhanced components
 export * from './components/enhanced'
 
+// Export styles
+export * from './styles/color-chart'
+export * from './styles/color-use'
+
+export type { ThemeMode } from './components/utils'
+export type { ColorThemeMode } from './styles/color-use'
+

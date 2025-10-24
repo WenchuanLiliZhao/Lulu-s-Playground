@@ -151,7 +151,7 @@ export function getCssVar(colorKey: keyof ThemeColors, fallback?: string): strin
 /**
  * Type for theme mode
  */
-export type ThemeMode = 'light' | 'dark';
+export type ColorThemeMode = 'light' | 'dark';
 
 /**
  * All available color keys

@@ -8,16 +8,23 @@ export default defineConfig({
   plugins: [
     react(),
     dts({
-      include: ['src/components/**/*', 'src/lib-entry.ts', 'src/styles/**/*'],
+      include: ['src/components/**/*', 'src/index.ts', 'src/styles/**/*'],
       exclude: ['src/playground', 'src/debug', '**/*.test.tsx', '**/*.test.ts'],
       outDir: 'dist',
       insertTypesEntry: true,
     }),
   ],
   publicDir: false, // Disable copying public directory
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler' // Use modern Sass API
+      }
+    }
+  },
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/lib-entry.ts'),
+      entry: resolve(__dirname, 'src/index.ts'),
       name: 'LululemonUI',
       formats: ['es', 'umd'],
       fileName: (format) => `lululemon-ui.${format}.js`,
