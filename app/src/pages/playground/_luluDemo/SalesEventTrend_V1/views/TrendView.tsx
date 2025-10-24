@@ -23,7 +23,7 @@ export const TrendView = ({ zoomLevel }: TrendViewProps) => {
 
   // Global default date range (independent of zoom level)
   // This ensures user's time interval selection persists across zoom level changes
-  const defaultStartDate = useMemo(() => new Date(2023, 0, 1), []) // Jan 1, 2023
+  const defaultStartDate = useMemo(() => new Date(2025, 0, 1), []) // Jan 1, 2023
   const defaultEndDate = useMemo(() => new Date(2025, 11, 31), []) // Dec 31, 2025
 
   // Aggregate data based on zoom level

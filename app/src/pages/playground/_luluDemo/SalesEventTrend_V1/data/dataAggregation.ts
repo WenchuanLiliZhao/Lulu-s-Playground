@@ -187,7 +187,6 @@ function getWeekNumber(date: Date): number {
  * Gets appropriate date range based on zoom level
  */
 export function getDateRangeForZoomLevel(
-  zoomLevel: ZoomLevel,
   baseStartDate: Date,
   baseEndDate: Date
 ): { startDate: Date; endDate: Date } {

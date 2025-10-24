@@ -14,7 +14,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2022-12-31T16:00:00.000Z'),
     gmv: 452,
     transaction: 32,
-    netSales: 384,
+    netSales: 291,
   },
   {
     id: '2023-01-02',
@@ -22,7 +22,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-01T16:00:00.000Z'),
     gmv: 425,
     transaction: 30,
-    netSales: 361,
+    netSales: 511,
   },
   {
     id: '2023-01-03',
@@ -30,7 +30,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-02T16:00:00.000Z'),
     gmv: 360,
     transaction: 25,
-    netSales: 306,
+    netSales: 411,
   },
   {
     id: '2023-01-04',
@@ -38,7 +38,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-03T16:00:00.000Z'),
     gmv: 414,
     transaction: 29,
-    netSales: 352,
+    netSales: 551,
   },
   {
     id: '2023-01-05',
@@ -46,7 +46,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-04T16:00:00.000Z'),
     gmv: 397,
     transaction: 28,
-    netSales: 337,
+    netSales: 385,
   },
   {
     id: '2023-01-06',
@@ -54,7 +54,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-05T16:00:00.000Z'),
     gmv: 440,
     transaction: 31,
-    netSales: 374,
+    netSales: 529,
   },
   {
     id: '2023-01-07',
@@ -62,7 +62,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-06T16:00:00.000Z'),
     gmv: 588,
     transaction: 41,
-    netSales: 500,
+    netSales: 302,
   },
   {
     id: '2023-01-08',
@@ -70,7 +70,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-07T16:00:00.000Z'),
     gmv: 541,
     transaction: 38,
-    netSales: 460,
+    netSales: 335,
   },
   {
     id: '2023-01-09',
@@ -78,7 +78,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-08T16:00:00.000Z'),
     gmv: 425,
     transaction: 30,
-    netSales: 361,
+    netSales: 400,
   },
   {
     id: '2023-01-10',
@@ -86,7 +86,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-09T16:00:00.000Z'),
     gmv: 397,
     transaction: 28,
-    netSales: 337,
+    netSales: 485,
   },
   {
     id: '2023-01-11',
@@ -94,7 +94,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-10T16:00:00.000Z'),
     gmv: 515,
     transaction: 36,
-    netSales: 438,
+    netSales: 404,
   },
   {
     id: '2023-01-12',
@@ -102,7 +102,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-11T16:00:00.000Z'),
     gmv: 510,
     transaction: 36,
-    netSales: 434,
+    netSales: 404,
   },
   {
     id: '2023-01-13',
@@ -110,7 +110,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-12T16:00:00.000Z'),
     gmv: 498,
     transaction: 35,
-    netSales: 423,
+    netSales: 474,
   },
   {
     id: '2023-01-14',
@@ -118,7 +118,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-13T16:00:00.000Z'),
     gmv: 684,
     transaction: 48,
-    netSales: 581,
+    netSales: 255,
   },
   {
     id: '2023-01-15',
@@ -126,7 +126,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-14T16:00:00.000Z'),
     gmv: 618,
     transaction: 43,
-    netSales: 525,
+    netSales: 293,
   },
   {
     id: '2023-01-16',
@@ -134,7 +134,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-15T16:00:00.000Z'),
     gmv: 484,
     transaction: 34,
-    netSales: 411,
+    netSales: 451,
   },
   {
     id: '2023-01-17',
@@ -142,7 +142,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-16T16:00:00.000Z'),
     gmv: 397,
     transaction: 28,
-    netSales: 337,
+    netSales: 307,
   },
   {
     id: '2023-01-18',
@@ -150,7 +150,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-17T16:00:00.000Z'),
     gmv: 463,
     transaction: 32,
-    netSales: 394,
+    netSales: 346,
   },
   {
     id: '2023-01-19',
@@ -158,7 +158,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-18T16:00:00.000Z'),
     gmv: 521,
     transaction: 36,
-    netSales: 443,
+    netSales: 412,
   },
   {
     id: '2023-01-20',
@@ -166,7 +166,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-19T16:00:00.000Z'),
     gmv: 507,
     transaction: 35,
-    netSales: 431,
+    netSales: 325,
   },
   {
     id: '2023-01-21',
@@ -174,15 +174,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-20T16:00:00.000Z'),
     gmv: 610,
     transaction: 43,
-    netSales: 519,
+    netSales: 203,
   },
   {
     id: '2023-01-22',
     name: '23/1/22',
     date: new Date('2023-01-21T16:00:00.000Z'),
     gmv: 650,
-    transaction: 45,
-    netSales: 553,
+    transaction: 46,
+    netSales: 206,
   },
   {
     id: '2023-01-23',
@@ -190,7 +190,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-22T16:00:00.000Z'),
     gmv: 382,
     transaction: 27,
-    netSales: 325,
+    netSales: 264,
   },
   {
     id: '2023-01-24',
@@ -198,7 +198,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-23T16:00:00.000Z'),
     gmv: 480,
     transaction: 34,
-    netSales: 408,
+    netSales: 382,
   },
   {
     id: '2023-01-25',
@@ -206,7 +206,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-24T16:00:00.000Z'),
     gmv: 415,
     transaction: 29,
-    netSales: 353,
+    netSales: 393,
   },
   {
     id: '2023-01-26',
@@ -214,7 +214,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-25T16:00:00.000Z'),
     gmv: 424,
     transaction: 30,
-    netSales: 360,
+    netSales: 364,
   },
   {
     id: '2023-01-27',
@@ -222,7 +222,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-26T16:00:00.000Z'),
     gmv: 428,
     transaction: 30,
-    netSales: 364,
+    netSales: 317,
   },
   {
     id: '2023-01-28',
@@ -230,7 +230,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-27T16:00:00.000Z'),
     gmv: 515,
     transaction: 36,
-    netSales: 438,
+    netSales: 272,
   },
   {
     id: '2023-01-29',
@@ -238,7 +238,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-28T16:00:00.000Z'),
     gmv: 502,
     transaction: 35,
-    netSales: 427,
+    netSales: 254,
   },
   {
     id: '2023-01-30',
@@ -246,7 +246,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-29T16:00:00.000Z'),
     gmv: 356,
     transaction: 25,
-    netSales: 303,
+    netSales: 475,
   },
   {
     id: '2023-01-31',
@@ -254,7 +254,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-30T16:00:00.000Z'),
     gmv: 352,
     transaction: 25,
-    netSales: 299,
+    netSales: 385,
   },
   {
     id: '2023-02-01',
@@ -262,7 +262,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-01-31T16:00:00.000Z'),
     gmv: 486,
     transaction: 34,
-    netSales: 413,
+    netSales: 480,
   },
   {
     id: '2023-02-02',
@@ -270,7 +270,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-01T16:00:00.000Z'),
     gmv: 368,
     transaction: 26,
-    netSales: 313,
+    netSales: 476,
   },
   {
     id: '2023-02-03',
@@ -278,7 +278,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-02T16:00:00.000Z'),
     gmv: 478,
     transaction: 33,
-    netSales: 406,
+    netSales: 502,
   },
   {
     id: '2023-02-04',
@@ -286,7 +286,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-03T16:00:00.000Z'),
     gmv: 609,
     transaction: 43,
-    netSales: 518,
+    netSales: 423,
   },
   {
     id: '2023-02-05',
@@ -294,7 +294,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-04T16:00:00.000Z'),
     gmv: 515,
     transaction: 36,
-    netSales: 438,
+    netSales: 400,
   },
   {
     id: '2023-02-06',
@@ -302,7 +302,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-05T16:00:00.000Z'),
     gmv: 407,
     transaction: 28,
-    netSales: 346,
+    netSales: 566,
   },
   {
     id: '2023-02-07',
@@ -310,7 +310,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-06T16:00:00.000Z'),
     gmv: 456,
     transaction: 32,
-    netSales: 388,
+    netSales: 481,
   },
   {
     id: '2023-02-08',
@@ -318,7 +318,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-07T16:00:00.000Z'),
     gmv: 479,
     transaction: 34,
-    netSales: 407,
+    netSales: 534,
   },
   {
     id: '2023-02-09',
@@ -326,7 +326,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-08T16:00:00.000Z'),
     gmv: 464,
     transaction: 32,
-    netSales: 394,
+    netSales: 521,
   },
   {
     id: '2023-02-10',
@@ -334,7 +334,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-09T16:00:00.000Z'),
     gmv: 526,
     transaction: 37,
-    netSales: 447,
+    netSales: 653,
   },
   {
     id: '2023-02-11',
@@ -342,7 +342,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-10T16:00:00.000Z'),
     gmv: 662,
     transaction: 46,
-    netSales: 563,
+    netSales: 315,
   },
   {
     id: '2023-02-12',
@@ -350,7 +350,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-11T16:00:00.000Z'),
     gmv: 623,
     transaction: 44,
-    netSales: 530,
+    netSales: 391,
   },
   {
     id: '2023-02-13',
@@ -358,7 +358,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-12T16:00:00.000Z'),
     gmv: 408,
     transaction: 29,
-    netSales: 347,
+    netSales: 491,
   },
   {
     id: '2023-02-14',
@@ -366,7 +366,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-13T16:00:00.000Z'),
     gmv: 426,
     transaction: 30,
-    netSales: 362,
+    netSales: 471,
   },
   {
     id: '2023-02-15',
@@ -374,7 +374,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-14T16:00:00.000Z'),
     gmv: 455,
     transaction: 32,
-    netSales: 387,
+    netSales: 443,
   },
   {
     id: '2023-02-16',
@@ -382,7 +382,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-15T16:00:00.000Z'),
     gmv: 420,
     transaction: 29,
-    netSales: 357,
+    netSales: 437,
   },
   {
     id: '2023-02-17',
@@ -390,7 +390,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-16T16:00:00.000Z'),
     gmv: 528,
     transaction: 37,
-    netSales: 449,
+    netSales: 455,
   },
   {
     id: '2023-02-18',
@@ -398,7 +398,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-17T16:00:00.000Z'),
     gmv: 542,
     transaction: 38,
-    netSales: 461,
+    netSales: 274,
   },
   {
     id: '2023-02-19',
@@ -406,7 +406,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-18T16:00:00.000Z'),
     gmv: 690,
     transaction: 48,
-    netSales: 587,
+    netSales: 289,
   },
   {
     id: '2023-02-20',
@@ -414,7 +414,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-19T16:00:00.000Z'),
     gmv: 409,
     transaction: 29,
-    netSales: 348,
+    netSales: 315,
   },
   {
     id: '2023-02-21',
@@ -422,7 +422,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-20T16:00:00.000Z'),
     gmv: 444,
     transaction: 31,
-    netSales: 377,
+    netSales: 358,
   },
   {
     id: '2023-02-22',
@@ -430,7 +430,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-21T16:00:00.000Z'),
     gmv: 518,
     transaction: 36,
-    netSales: 440,
+    netSales: 391,
   },
   {
     id: '2023-02-23',
@@ -438,7 +438,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-22T16:00:00.000Z'),
     gmv: 403,
     transaction: 28,
-    netSales: 343,
+    netSales: 326,
   },
   {
     id: '2023-02-24',
@@ -446,7 +446,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-23T16:00:00.000Z'),
     gmv: 422,
     transaction: 30,
-    netSales: 359,
+    netSales: 319,
   },
   {
     id: '2023-02-25',
@@ -454,7 +454,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-24T16:00:00.000Z'),
     gmv: 517,
     transaction: 36,
-    netSales: 439,
+    netSales: 309,
   },
   {
     id: '2023-02-26',
@@ -462,7 +462,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-25T16:00:00.000Z'),
     gmv: 556,
     transaction: 39,
-    netSales: 473,
+    netSales: 231,
   },
   {
     id: '2023-02-27',
@@ -470,7 +470,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-26T16:00:00.000Z'),
     gmv: 405,
     transaction: 28,
-    netSales: 344,
+    netSales: 346,
   },
   {
     id: '2023-02-28',
@@ -478,7 +478,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-27T16:00:00.000Z'),
     gmv: 415,
     transaction: 29,
-    netSales: 353,
+    netSales: 501,
   },
   {
     id: '2023-03-01',
@@ -486,7 +486,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-02-28T16:00:00.000Z'),
     gmv: 418,
     transaction: 29,
-    netSales: 355,
+    netSales: 535,
   },
   {
     id: '2023-03-02',
@@ -494,7 +494,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-01T16:00:00.000Z'),
     gmv: 453,
     transaction: 32,
-    netSales: 385,
+    netSales: 484,
   },
   {
     id: '2023-03-03',
@@ -502,7 +502,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-02T16:00:00.000Z'),
     gmv: 517,
     transaction: 36,
-    netSales: 439,
+    netSales: 666,
   },
   {
     id: '2023-03-04',
@@ -510,7 +510,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-03T16:00:00.000Z'),
     gmv: 666,
     transaction: 47,
-    netSales: 566,
+    netSales: 442,
   },
   {
     id: '2023-03-05',
@@ -518,7 +518,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-04T16:00:00.000Z'),
     gmv: 659,
     transaction: 46,
-    netSales: 560,
+    netSales: 397,
   },
   {
     id: '2023-03-06',
@@ -526,15 +526,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-05T16:00:00.000Z'),
     gmv: 501,
     transaction: 35,
-    netSales: 426,
+    netSales: 733,
   },
   {
     id: '2023-03-07',
     name: '23/3/7',
     date: new Date('2023-03-06T16:00:00.000Z'),
     gmv: 536,
-    transaction: 37,
-    netSales: 456,
+    transaction: 38,
+    netSales: 514,
   },
   {
     id: '2023-03-08',
@@ -542,7 +542,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-07T16:00:00.000Z'),
     gmv: 532,
     transaction: 37,
-    netSales: 452,
+    netSales: 587,
   },
   {
     id: '2023-03-09',
@@ -550,7 +550,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-08T16:00:00.000Z'),
     gmv: 419,
     transaction: 29,
-    netSales: 356,
+    netSales: 550,
   },
   {
     id: '2023-03-10',
@@ -558,7 +558,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-09T16:00:00.000Z'),
     gmv: 488,
     transaction: 34,
-    netSales: 415,
+    netSales: 637,
   },
   {
     id: '2023-03-11',
@@ -566,7 +566,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-10T16:00:00.000Z'),
     gmv: 709,
     transaction: 50,
-    netSales: 603,
+    netSales: 451,
   },
   {
     id: '2023-03-12',
@@ -574,7 +574,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-11T16:00:00.000Z'),
     gmv: 672,
     transaction: 47,
-    netSales: 571,
+    netSales: 441,
   },
   {
     id: '2023-03-13',
@@ -582,7 +582,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-12T16:00:00.000Z'),
     gmv: 439,
     transaction: 31,
-    netSales: 373,
+    netSales: 641,
   },
   {
     id: '2023-03-14',
@@ -590,7 +590,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-13T16:00:00.000Z'),
     gmv: 475,
     transaction: 33,
-    netSales: 404,
+    netSales: 469,
   },
   {
     id: '2023-03-15',
@@ -598,7 +598,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-14T16:00:00.000Z'),
     gmv: 482,
     transaction: 34,
-    netSales: 410,
+    netSales: 437,
   },
   {
     id: '2023-03-16',
@@ -606,7 +606,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-15T16:00:00.000Z'),
     gmv: 453,
     transaction: 32,
-    netSales: 385,
+    netSales: 462,
   },
   {
     id: '2023-03-17',
@@ -614,7 +614,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-16T16:00:00.000Z'),
     gmv: 455,
     transaction: 32,
-    netSales: 387,
+    netSales: 383,
   },
   {
     id: '2023-03-18',
@@ -622,7 +622,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-17T16:00:00.000Z'),
     gmv: 681,
     transaction: 48,
-    netSales: 579,
+    netSales: 328,
   },
   {
     id: '2023-03-19',
@@ -630,7 +630,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-18T16:00:00.000Z'),
     gmv: 554,
     transaction: 39,
-    netSales: 471,
+    netSales: 276,
   },
   {
     id: '2023-03-20',
@@ -638,7 +638,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-19T16:00:00.000Z'),
     gmv: 465,
     transaction: 33,
-    netSales: 395,
+    netSales: 509,
   },
   {
     id: '2023-03-21',
@@ -646,7 +646,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-20T16:00:00.000Z'),
     gmv: 463,
     transaction: 32,
-    netSales: 394,
+    netSales: 462,
   },
   {
     id: '2023-03-22',
@@ -654,7 +654,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-21T16:00:00.000Z'),
     gmv: 534,
     transaction: 37,
-    netSales: 454,
+    netSales: 344,
   },
   {
     id: '2023-03-23',
@@ -662,7 +662,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-22T16:00:00.000Z'),
     gmv: 547,
     transaction: 38,
-    netSales: 465,
+    netSales: 487,
   },
   {
     id: '2023-03-24',
@@ -670,7 +670,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-23T16:00:00.000Z'),
     gmv: 407,
     transaction: 28,
-    netSales: 346,
+    netSales: 420,
   },
   {
     id: '2023-03-25',
@@ -678,7 +678,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-24T16:00:00.000Z'),
     gmv: 611,
     transaction: 43,
-    netSales: 519,
+    netSales: 339,
   },
   {
     id: '2023-03-26',
@@ -686,7 +686,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-25T16:00:00.000Z'),
     gmv: 596,
     transaction: 42,
-    netSales: 507,
+    netSales: 284,
   },
   {
     id: '2023-03-27',
@@ -694,7 +694,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-26T16:00:00.000Z'),
     gmv: 398,
     transaction: 28,
-    netSales: 338,
+    netSales: 499,
   },
   {
     id: '2023-03-28',
@@ -702,7 +702,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-27T16:00:00.000Z'),
     gmv: 488,
     transaction: 34,
-    netSales: 415,
+    netSales: 447,
   },
   {
     id: '2023-03-29',
@@ -710,7 +710,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-28T16:00:00.000Z'),
     gmv: 411,
     transaction: 29,
-    netSales: 349,
+    netSales: 532,
   },
   {
     id: '2023-03-30',
@@ -718,7 +718,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-29T16:00:00.000Z'),
     gmv: 438,
     transaction: 31,
-    netSales: 372,
+    netSales: 581,
   },
   {
     id: '2023-03-31',
@@ -726,7 +726,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-30T16:00:00.000Z'),
     gmv: 469,
     transaction: 33,
-    netSales: 399,
+    netSales: 597,
   },
   {
     id: '2023-04-01',
@@ -734,7 +734,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-03-31T16:00:00.000Z'),
     gmv: 621,
     transaction: 43,
-    netSales: 528,
+    netSales: 431,
   },
   {
     id: '2023-04-02',
@@ -742,7 +742,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-01T16:00:00.000Z'),
     gmv: 652,
     transaction: 46,
-    netSales: 554,
+    netSales: 369,
   },
   {
     id: '2023-04-03',
@@ -750,7 +750,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-02T16:00:00.000Z'),
     gmv: 512,
     transaction: 36,
-    netSales: 435,
+    netSales: 518,
   },
   {
     id: '2023-04-04',
@@ -758,7 +758,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-03T16:00:00.000Z'),
     gmv: 521,
     transaction: 36,
-    netSales: 443,
+    netSales: 572,
   },
   {
     id: '2023-04-05',
@@ -766,7 +766,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-04T16:00:00.000Z'),
     gmv: 428,
     transaction: 30,
-    netSales: 364,
+    netSales: 711,
   },
   {
     id: '2023-04-06',
@@ -774,7 +774,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-05T16:00:00.000Z'),
     gmv: 519,
     transaction: 36,
-    netSales: 441,
+    netSales: 635,
   },
   {
     id: '2023-04-07',
@@ -782,7 +782,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-06T16:00:00.000Z'),
     gmv: 485,
     transaction: 34,
-    netSales: 412,
+    netSales: 569,
   },
   {
     id: '2023-04-08',
@@ -790,7 +790,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-07T16:00:00.000Z'),
     gmv: 554,
     transaction: 39,
-    netSales: 471,
+    netSales: 441,
   },
   {
     id: '2023-04-09',
@@ -798,7 +798,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-08T16:00:00.000Z'),
     gmv: 603,
     transaction: 42,
-    netSales: 513,
+    netSales: 480,
   },
   {
     id: '2023-04-10',
@@ -806,7 +806,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-09T16:00:00.000Z'),
     gmv: 447,
     transaction: 31,
-    netSales: 380,
+    netSales: 565,
   },
   {
     id: '2023-04-11',
@@ -814,7 +814,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-10T16:00:00.000Z'),
     gmv: 542,
     transaction: 38,
-    netSales: 461,
+    netSales: 615,
   },
   {
     id: '2023-04-12',
@@ -822,7 +822,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-11T16:00:00.000Z'),
     gmv: 441,
     transaction: 31,
-    netSales: 375,
+    netSales: 704,
   },
   {
     id: '2023-04-13',
@@ -830,7 +830,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-12T16:00:00.000Z'),
     gmv: 478,
     transaction: 33,
-    netSales: 406,
+    netSales: 648,
   },
   {
     id: '2023-04-14',
@@ -838,7 +838,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-13T16:00:00.000Z'),
     gmv: 515,
     transaction: 36,
-    netSales: 438,
+    netSales: 646,
   },
   {
     id: '2023-04-15',
@@ -846,7 +846,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-14T16:00:00.000Z'),
     gmv: 636,
     transaction: 45,
-    netSales: 541,
+    netSales: 324,
   },
   {
     id: '2023-04-16',
@@ -854,7 +854,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-15T16:00:00.000Z'),
     gmv: 665,
     transaction: 47,
-    netSales: 565,
+    netSales: 351,
   },
   {
     id: '2023-04-17',
@@ -862,7 +862,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-16T16:00:00.000Z'),
     gmv: 535,
     transaction: 37,
-    netSales: 455,
+    netSales: 421,
   },
   {
     id: '2023-04-18',
@@ -870,7 +870,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-17T16:00:00.000Z'),
     gmv: 476,
     transaction: 33,
-    netSales: 405,
+    netSales: 530,
   },
   {
     id: '2023-04-19',
@@ -878,7 +878,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-18T16:00:00.000Z'),
     gmv: 512,
     transaction: 36,
-    netSales: 435,
+    netSales: 390,
   },
   {
     id: '2023-04-20',
@@ -886,7 +886,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-19T16:00:00.000Z'),
     gmv: 501,
     transaction: 35,
-    netSales: 426,
+    netSales: 392,
   },
   {
     id: '2023-04-21',
@@ -894,7 +894,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-20T16:00:00.000Z'),
     gmv: 546,
     transaction: 38,
-    netSales: 464,
+    netSales: 397,
   },
   {
     id: '2023-04-22',
@@ -902,7 +902,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-21T16:00:00.000Z'),
     gmv: 597,
     transaction: 42,
-    netSales: 507,
+    netSales: 334,
   },
   {
     id: '2023-04-23',
@@ -910,7 +910,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-22T16:00:00.000Z'),
     gmv: 660,
     transaction: 46,
-    netSales: 561,
+    netSales: 268,
   },
   {
     id: '2023-04-24',
@@ -918,7 +918,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-23T16:00:00.000Z'),
     gmv: 509,
     transaction: 36,
-    netSales: 433,
+    netSales: 450,
   },
   {
     id: '2023-04-25',
@@ -926,7 +926,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-24T16:00:00.000Z'),
     gmv: 547,
     transaction: 38,
-    netSales: 465,
+    netSales: 513,
   },
   {
     id: '2023-04-26',
@@ -934,7 +934,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-25T16:00:00.000Z'),
     gmv: 507,
     transaction: 35,
-    netSales: 431,
+    netSales: 467,
   },
   {
     id: '2023-04-27',
@@ -942,7 +942,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-26T16:00:00.000Z'),
     gmv: 456,
     transaction: 32,
-    netSales: 388,
+    netSales: 380,
   },
   {
     id: '2023-04-28',
@@ -950,7 +950,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-27T16:00:00.000Z'),
     gmv: 451,
     transaction: 32,
-    netSales: 383,
+    netSales: 407,
   },
   {
     id: '2023-04-29',
@@ -958,15 +958,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-28T16:00:00.000Z'),
     gmv: 683,
     transaction: 48,
-    netSales: 581,
+    netSales: 391,
   },
   {
     id: '2023-04-30',
     name: '23/4/30',
     date: new Date('2023-04-29T16:00:00.000Z'),
     gmv: 650,
-    transaction: 45,
-    netSales: 553,
+    transaction: 46,
+    netSales: 286,
   },
   {
     id: '2023-05-01',
@@ -974,7 +974,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-04-30T16:00:00.000Z'),
     gmv: 466,
     transaction: 33,
-    netSales: 396,
+    netSales: 481,
   },
   {
     id: '2023-05-02',
@@ -982,7 +982,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-01T16:00:00.000Z'),
     gmv: 465,
     transaction: 33,
-    netSales: 395,
+    netSales: 546,
   },
   {
     id: '2023-05-03',
@@ -990,7 +990,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-02T16:00:00.000Z'),
     gmv: 534,
     transaction: 37,
-    netSales: 454,
+    netSales: 463,
   },
   {
     id: '2023-05-04',
@@ -998,7 +998,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-03T16:00:00.000Z'),
     gmv: 455,
     transaction: 32,
-    netSales: 387,
+    netSales: 693,
   },
   {
     id: '2023-05-05',
@@ -1006,7 +1006,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-04T16:00:00.000Z'),
     gmv: 543,
     transaction: 38,
-    netSales: 462,
+    netSales: 697,
   },
   {
     id: '2023-05-06',
@@ -1014,7 +1014,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-05T16:00:00.000Z'),
     gmv: 755,
     transaction: 53,
-    netSales: 642,
+    netSales: 385,
   },
   {
     id: '2023-05-07',
@@ -1022,7 +1022,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-06T16:00:00.000Z'),
     gmv: 715,
     transaction: 50,
-    netSales: 608,
+    netSales: 456,
   },
   {
     id: '2023-05-08',
@@ -1030,7 +1030,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-07T16:00:00.000Z'),
     gmv: 445,
     transaction: 31,
-    netSales: 378,
+    netSales: 675,
   },
   {
     id: '2023-05-09',
@@ -1038,7 +1038,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-08T16:00:00.000Z'),
     gmv: 478,
     transaction: 33,
-    netSales: 406,
+    netSales: 670,
   },
   {
     id: '2023-05-10',
@@ -1046,7 +1046,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-09T16:00:00.000Z'),
     gmv: 452,
     transaction: 32,
-    netSales: 384,
+    netSales: 486,
   },
   {
     id: '2023-05-11',
@@ -1054,7 +1054,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-10T16:00:00.000Z'),
     gmv: 585,
     transaction: 41,
-    netSales: 497,
+    netSales: 601,
   },
   {
     id: '2023-05-12',
@@ -1062,7 +1062,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-11T16:00:00.000Z'),
     gmv: 462,
     transaction: 32,
-    netSales: 393,
+    netSales: 465,
   },
   {
     id: '2023-05-13',
@@ -1070,7 +1070,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-12T16:00:00.000Z'),
     gmv: 610,
     transaction: 43,
-    netSales: 519,
+    netSales: 299,
   },
   {
     id: '2023-05-14',
@@ -1078,7 +1078,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-13T16:00:00.000Z'),
     gmv: 709,
     transaction: 50,
-    netSales: 603,
+    netSales: 320,
   },
   {
     id: '2023-05-15',
@@ -1086,7 +1086,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-14T16:00:00.000Z'),
     gmv: 546,
     transaction: 38,
-    netSales: 464,
+    netSales: 616,
   },
   {
     id: '2023-05-16',
@@ -1094,7 +1094,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-15T16:00:00.000Z'),
     gmv: 508,
     transaction: 36,
-    netSales: 432,
+    netSales: 515,
   },
   {
     id: '2023-05-17',
@@ -1110,7 +1110,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-17T16:00:00.000Z'),
     gmv: 503,
     transaction: 35,
-    netSales: 428,
+    netSales: 453,
   },
   {
     id: '2023-05-19',
@@ -1118,7 +1118,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-18T16:00:00.000Z'),
     gmv: 498,
     transaction: 35,
-    netSales: 423,
+    netSales: 398,
   },
   {
     id: '2023-05-20',
@@ -1126,7 +1126,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-19T16:00:00.000Z'),
     gmv: 598,
     transaction: 42,
-    netSales: 508,
+    netSales: 271,
   },
   {
     id: '2023-05-21',
@@ -1134,7 +1134,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-20T16:00:00.000Z'),
     gmv: 735,
     transaction: 51,
-    netSales: 625,
+    netSales: 262,
   },
   {
     id: '2023-05-22',
@@ -1142,7 +1142,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-21T16:00:00.000Z'),
     gmv: 535,
     transaction: 37,
-    netSales: 455,
+    netSales: 344,
   },
   {
     id: '2023-05-23',
@@ -1150,7 +1150,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-22T16:00:00.000Z'),
     gmv: 519,
     transaction: 36,
-    netSales: 441,
+    netSales: 366,
   },
   {
     id: '2023-05-24',
@@ -1158,7 +1158,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-23T16:00:00.000Z'),
     gmv: 494,
     transaction: 35,
-    netSales: 420,
+    netSales: 368,
   },
   {
     id: '2023-05-25',
@@ -1166,7 +1166,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-24T16:00:00.000Z'),
     gmv: 439,
     transaction: 31,
-    netSales: 373,
+    netSales: 495,
   },
   {
     id: '2023-05-26',
@@ -1174,7 +1174,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-25T16:00:00.000Z'),
     gmv: 488,
     transaction: 34,
-    netSales: 415,
+    netSales: 417,
   },
   {
     id: '2023-05-27',
@@ -1182,7 +1182,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-26T16:00:00.000Z'),
     gmv: 709,
     transaction: 50,
-    netSales: 603,
+    netSales: 324,
   },
   {
     id: '2023-05-28',
@@ -1190,7 +1190,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-27T16:00:00.000Z'),
     gmv: 556,
     transaction: 39,
-    netSales: 473,
+    netSales: 309,
   },
   {
     id: '2023-05-29',
@@ -1198,7 +1198,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-28T16:00:00.000Z'),
     gmv: 459,
     transaction: 32,
-    netSales: 390,
+    netSales: 477,
   },
   {
     id: '2023-05-30',
@@ -1206,7 +1206,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-29T16:00:00.000Z'),
     gmv: 415,
     transaction: 29,
-    netSales: 353,
+    netSales: 434,
   },
   {
     id: '2023-05-31',
@@ -1214,7 +1214,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-30T16:00:00.000Z'),
     gmv: 440,
     transaction: 31,
-    netSales: 374,
+    netSales: 631,
   },
   {
     id: '2023-06-01',
@@ -1222,7 +1222,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-05-31T16:00:00.000Z'),
     gmv: 537,
     transaction: 38,
-    netSales: 456,
+    netSales: 548,
   },
   {
     id: '2023-06-02',
@@ -1230,7 +1230,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-01T16:00:00.000Z'),
     gmv: 477,
     transaction: 33,
-    netSales: 405,
+    netSales: 468,
   },
   {
     id: '2023-06-03',
@@ -1238,7 +1238,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-02T16:00:00.000Z'),
     gmv: 648,
     transaction: 45,
-    netSales: 551,
+    netSales: 414,
   },
   {
     id: '2023-06-04',
@@ -1246,7 +1246,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-03T16:00:00.000Z'),
     gmv: 633,
     transaction: 44,
-    netSales: 538,
+    netSales: 386,
   },
   {
     id: '2023-06-05',
@@ -1254,7 +1254,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-04T16:00:00.000Z'),
     gmv: 552,
     transaction: 39,
-    netSales: 469,
+    netSales: 555,
   },
   {
     id: '2023-06-06',
@@ -1262,7 +1262,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-05T16:00:00.000Z'),
     gmv: 566,
     transaction: 40,
-    netSales: 481,
+    netSales: 584,
   },
   {
     id: '2023-06-07',
@@ -1270,7 +1270,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-06T16:00:00.000Z'),
     gmv: 581,
     transaction: 41,
-    netSales: 494,
+    netSales: 456,
   },
   {
     id: '2023-06-08',
@@ -1278,7 +1278,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-07T16:00:00.000Z'),
     gmv: 467,
     transaction: 33,
-    netSales: 397,
+    netSales: 534,
   },
   {
     id: '2023-06-09',
@@ -1286,7 +1286,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-08T16:00:00.000Z'),
     gmv: 617,
     transaction: 43,
-    netSales: 524,
+    netSales: 457,
   },
   {
     id: '2023-06-10',
@@ -1294,7 +1294,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-09T16:00:00.000Z'),
     gmv: 666,
     transaction: 47,
-    netSales: 566,
+    netSales: 385,
   },
   {
     id: '2023-06-11',
@@ -1302,7 +1302,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-10T16:00:00.000Z'),
     gmv: 713,
     transaction: 50,
-    netSales: 606,
+    netSales: 316,
   },
   {
     id: '2023-06-12',
@@ -1310,7 +1310,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-11T16:00:00.000Z'),
     gmv: 551,
     transaction: 39,
-    netSales: 468,
+    netSales: 618,
   },
   {
     id: '2023-06-13',
@@ -1318,7 +1318,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-12T16:00:00.000Z'),
     gmv: 568,
     transaction: 40,
-    netSales: 483,
+    netSales: 427,
   },
   {
     id: '2023-06-14',
@@ -1326,7 +1326,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-13T16:00:00.000Z'),
     gmv: 593,
     transaction: 42,
-    netSales: 504,
+    netSales: 484,
   },
   {
     id: '2023-06-15',
@@ -1334,7 +1334,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-14T16:00:00.000Z'),
     gmv: 568,
     transaction: 40,
-    netSales: 483,
+    netSales: 394,
   },
   {
     id: '2023-06-16',
@@ -1342,7 +1342,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-15T16:00:00.000Z'),
     gmv: 617,
     transaction: 43,
-    netSales: 524,
+    netSales: 441,
   },
   {
     id: '2023-06-17',
@@ -1350,7 +1350,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-16T16:00:00.000Z'),
     gmv: 748,
     transaction: 52,
-    netSales: 636,
+    netSales: 280,
   },
   {
     id: '2023-06-18',
@@ -1358,7 +1358,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-17T16:00:00.000Z'),
     gmv: 784,
     transaction: 55,
-    netSales: 666,
+    netSales: 247,
   },
   {
     id: '2023-06-19',
@@ -1366,7 +1366,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-18T16:00:00.000Z'),
     gmv: 502,
     transaction: 35,
-    netSales: 427,
+    netSales: 456,
   },
   {
     id: '2023-06-20',
@@ -1374,7 +1374,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-19T16:00:00.000Z'),
     gmv: 605,
     transaction: 42,
-    netSales: 514,
+    netSales: 348,
   },
   {
     id: '2023-06-21',
@@ -1382,7 +1382,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-20T16:00:00.000Z'),
     gmv: 512,
     transaction: 36,
-    netSales: 435,
+    netSales: 443,
   },
   {
     id: '2023-06-22',
@@ -1390,7 +1390,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-21T16:00:00.000Z'),
     gmv: 541,
     transaction: 38,
-    netSales: 460,
+    netSales: 435,
   },
   {
     id: '2023-06-23',
@@ -1398,7 +1398,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-22T16:00:00.000Z'),
     gmv: 525,
     transaction: 37,
-    netSales: 446,
+    netSales: 415,
   },
   {
     id: '2023-06-24',
@@ -1406,7 +1406,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-23T16:00:00.000Z'),
     gmv: 718,
     transaction: 50,
-    netSales: 610,
+    netSales: 288,
   },
   {
     id: '2023-06-25',
@@ -1414,7 +1414,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-24T16:00:00.000Z'),
     gmv: 766,
     transaction: 54,
-    netSales: 651,
+    netSales: 250,
   },
   {
     id: '2023-06-26',
@@ -1422,7 +1422,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-25T16:00:00.000Z'),
     gmv: 554,
     transaction: 39,
-    netSales: 471,
+    netSales: 373,
   },
   {
     id: '2023-06-27',
@@ -1430,7 +1430,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-26T16:00:00.000Z'),
     gmv: 524,
     transaction: 37,
-    netSales: 445,
+    netSales: 381,
   },
   {
     id: '2023-06-28',
@@ -1438,7 +1438,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-27T16:00:00.000Z'),
     gmv: 498,
     transaction: 35,
-    netSales: 423,
+    netSales: 371,
   },
   {
     id: '2023-06-29',
@@ -1446,7 +1446,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-28T16:00:00.000Z'),
     gmv: 437,
     transaction: 31,
-    netSales: 371,
+    netSales: 389,
   },
   {
     id: '2023-06-30',
@@ -1454,7 +1454,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-29T16:00:00.000Z'),
     gmv: 417,
     transaction: 29,
-    netSales: 354,
+    netSales: 393,
   },
   {
     id: '2023-07-01',
@@ -1462,7 +1462,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-06-30T16:00:00.000Z'),
     gmv: 596,
     transaction: 42,
-    netSales: 507,
+    netSales: 270,
   },
   {
     id: '2023-07-02',
@@ -1470,7 +1470,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-01T16:00:00.000Z'),
     gmv: 608,
     transaction: 43,
-    netSales: 517,
+    netSales: 283,
   },
   {
     id: '2023-07-03',
@@ -1478,7 +1478,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-02T16:00:00.000Z'),
     gmv: 510,
     transaction: 36,
-    netSales: 434,
+    netSales: 367,
   },
   {
     id: '2023-07-04',
@@ -1486,7 +1486,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-03T16:00:00.000Z'),
     gmv: 505,
     transaction: 35,
-    netSales: 429,
+    netSales: 525,
   },
   {
     id: '2023-07-05',
@@ -1494,7 +1494,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-04T16:00:00.000Z'),
     gmv: 481,
     transaction: 34,
-    netSales: 409,
+    netSales: 440,
   },
   {
     id: '2023-07-06',
@@ -1502,7 +1502,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-05T16:00:00.000Z'),
     gmv: 466,
     transaction: 33,
-    netSales: 396,
+    netSales: 439,
   },
   {
     id: '2023-07-07',
@@ -1510,7 +1510,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-06T16:00:00.000Z'),
     gmv: 581,
     transaction: 41,
-    netSales: 494,
+    netSales: 436,
   },
   {
     id: '2023-07-08',
@@ -1518,7 +1518,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-07T16:00:00.000Z'),
     gmv: 807,
     transaction: 56,
-    netSales: 686,
+    netSales: 284,
   },
   {
     id: '2023-07-09',
@@ -1526,7 +1526,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-08T16:00:00.000Z'),
     gmv: 771,
     transaction: 54,
-    netSales: 655,
+    netSales: 352,
   },
   {
     id: '2023-07-10',
@@ -1534,7 +1534,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-09T16:00:00.000Z'),
     gmv: 608,
     transaction: 43,
-    netSales: 517,
+    netSales: 467,
   },
   {
     id: '2023-07-11',
@@ -1542,7 +1542,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-10T16:00:00.000Z'),
     gmv: 541,
     transaction: 38,
-    netSales: 460,
+    netSales: 541,
   },
   {
     id: '2023-07-12',
@@ -1550,7 +1550,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-11T16:00:00.000Z'),
     gmv: 563,
     transaction: 39,
-    netSales: 479,
+    netSales: 533,
   },
   {
     id: '2023-07-13',
@@ -1558,7 +1558,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-12T16:00:00.000Z'),
     gmv: 626,
     transaction: 44,
-    netSales: 532,
+    netSales: 405,
   },
   {
     id: '2023-07-14',
@@ -1566,7 +1566,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-13T16:00:00.000Z'),
     gmv: 576,
     transaction: 40,
-    netSales: 490,
+    netSales: 466,
   },
   {
     id: '2023-07-15',
@@ -1574,7 +1574,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-14T16:00:00.000Z'),
     gmv: 716,
     transaction: 50,
-    netSales: 609,
+    netSales: 220,
   },
   {
     id: '2023-07-16',
@@ -1582,7 +1582,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-15T16:00:00.000Z'),
     gmv: 673,
     transaction: 47,
-    netSales: 572,
+    netSales: 259,
   },
   {
     id: '2023-07-17',
@@ -1590,7 +1590,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-16T16:00:00.000Z'),
     gmv: 526,
     transaction: 37,
-    netSales: 447,
+    netSales: 347,
   },
   {
     id: '2023-07-18',
@@ -1598,7 +1598,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-17T16:00:00.000Z'),
     gmv: 608,
     transaction: 43,
-    netSales: 517,
+    netSales: 376,
   },
   {
     id: '2023-07-19',
@@ -1606,7 +1606,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-18T16:00:00.000Z'),
     gmv: 532,
     transaction: 37,
-    netSales: 452,
+    netSales: 309,
   },
   {
     id: '2023-07-20',
@@ -1614,7 +1614,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-19T16:00:00.000Z'),
     gmv: 607,
     transaction: 42,
-    netSales: 516,
+    netSales: 326,
   },
   {
     id: '2023-07-21',
@@ -1622,7 +1622,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-20T16:00:00.000Z'),
     gmv: 514,
     transaction: 36,
-    netSales: 437,
+    netSales: 281,
   },
   {
     id: '2023-07-22',
@@ -1630,7 +1630,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-21T16:00:00.000Z'),
     gmv: 813,
     transaction: 57,
-    netSales: 691,
+    netSales: 246,
   },
   {
     id: '2023-07-23',
@@ -1638,7 +1638,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-22T16:00:00.000Z'),
     gmv: 717,
     transaction: 50,
-    netSales: 609,
+    netSales: 209,
   },
   {
     id: '2023-07-24',
@@ -1646,7 +1646,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-23T16:00:00.000Z'),
     gmv: 588,
     transaction: 41,
-    netSales: 500,
+    netSales: 272,
   },
   {
     id: '2023-07-25',
@@ -1654,7 +1654,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-24T16:00:00.000Z'),
     gmv: 541,
     transaction: 38,
-    netSales: 460,
+    netSales: 357,
   },
   {
     id: '2023-07-26',
@@ -1662,7 +1662,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-25T16:00:00.000Z'),
     gmv: 553,
     transaction: 39,
-    netSales: 470,
+    netSales: 340,
   },
   {
     id: '2023-07-27',
@@ -1670,7 +1670,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-26T16:00:00.000Z'),
     gmv: 572,
     transaction: 40,
-    netSales: 486,
+    netSales: 400,
   },
   {
     id: '2023-07-28',
@@ -1678,7 +1678,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-27T16:00:00.000Z'),
     gmv: 479,
     transaction: 34,
-    netSales: 407,
+    netSales: 433,
   },
   {
     id: '2023-07-29',
@@ -1686,7 +1686,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-28T16:00:00.000Z'),
     gmv: 737,
     transaction: 52,
-    netSales: 626,
+    netSales: 222,
   },
   {
     id: '2023-07-30',
@@ -1694,7 +1694,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-29T16:00:00.000Z'),
     gmv: 710,
     transaction: 50,
-    netSales: 604,
+    netSales: 277,
   },
   {
     id: '2023-07-31',
@@ -1702,7 +1702,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-30T16:00:00.000Z'),
     gmv: 437,
     transaction: 31,
-    netSales: 371,
+    netSales: 495,
   },
   {
     id: '2023-08-01',
@@ -1710,7 +1710,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-07-31T16:00:00.000Z'),
     gmv: 603,
     transaction: 42,
-    netSales: 513,
+    netSales: 424,
   },
   {
     id: '2023-08-02',
@@ -1718,7 +1718,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-01T16:00:00.000Z'),
     gmv: 602,
     transaction: 42,
-    netSales: 512,
+    netSales: 341,
   },
   {
     id: '2023-08-03',
@@ -1726,7 +1726,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-02T16:00:00.000Z'),
     gmv: 535,
     transaction: 37,
-    netSales: 455,
+    netSales: 373,
   },
   {
     id: '2023-08-04',
@@ -1734,7 +1734,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-03T16:00:00.000Z'),
     gmv: 601,
     transaction: 42,
-    netSales: 511,
+    netSales: 408,
   },
   {
     id: '2023-08-05',
@@ -1742,7 +1742,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-04T16:00:00.000Z'),
     gmv: 651,
     transaction: 46,
-    netSales: 553,
+    netSales: 271,
   },
   {
     id: '2023-08-06',
@@ -1750,7 +1750,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-05T16:00:00.000Z'),
     gmv: 670,
     transaction: 47,
-    netSales: 570,
+    netSales: 246,
   },
   {
     id: '2023-08-07',
@@ -1758,7 +1758,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-06T16:00:00.000Z'),
     gmv: 644,
     transaction: 45,
-    netSales: 547,
+    netSales: 346,
   },
   {
     id: '2023-08-08',
@@ -1766,7 +1766,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-07T16:00:00.000Z'),
     gmv: 529,
     transaction: 37,
-    netSales: 450,
+    netSales: 476,
   },
   {
     id: '2023-08-09',
@@ -1774,7 +1774,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-08T16:00:00.000Z'),
     gmv: 596,
     transaction: 42,
-    netSales: 507,
+    netSales: 424,
   },
   {
     id: '2023-08-10',
@@ -1782,7 +1782,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-09T16:00:00.000Z'),
     gmv: 671,
     transaction: 47,
-    netSales: 570,
+    netSales: 378,
   },
   {
     id: '2023-08-11',
@@ -1790,7 +1790,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-10T16:00:00.000Z'),
     gmv: 621,
     transaction: 43,
-    netSales: 528,
+    netSales: 447,
   },
   {
     id: '2023-08-12',
@@ -1798,7 +1798,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-11T16:00:00.000Z'),
     gmv: 847,
     transaction: 59,
-    netSales: 720,
+    netSales: 257,
   },
   {
     id: '2023-08-13',
@@ -1806,7 +1806,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-12T16:00:00.000Z'),
     gmv: 800,
     transaction: 56,
-    netSales: 680,
+    netSales: 267,
   },
   {
     id: '2023-08-14',
@@ -1814,7 +1814,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-13T16:00:00.000Z'),
     gmv: 649,
     transaction: 45,
-    netSales: 552,
+    netSales: 403,
   },
   {
     id: '2023-08-15',
@@ -1822,7 +1822,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-14T16:00:00.000Z'),
     gmv: 519,
     transaction: 36,
-    netSales: 441,
+    netSales: 338,
   },
   {
     id: '2023-08-16',
@@ -1830,7 +1830,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-15T16:00:00.000Z'),
     gmv: 676,
     transaction: 47,
-    netSales: 575,
+    netSales: 300,
   },
   {
     id: '2023-08-17',
@@ -1838,7 +1838,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-16T16:00:00.000Z'),
     gmv: 528,
     transaction: 37,
-    netSales: 449,
+    netSales: 303,
   },
   {
     id: '2023-08-18',
@@ -1846,15 +1846,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-17T16:00:00.000Z'),
     gmv: 567,
     transaction: 40,
-    netSales: 482,
+    netSales: 258,
   },
   {
     id: '2023-08-19',
     name: '23/8/19',
     date: new Date('2023-08-18T16:00:00.000Z'),
     gmv: 850,
-    transaction: 59,
-    netSales: 723,
+    transaction: 60,
+    netSales: 203,
   },
   {
     id: '2023-08-20',
@@ -1862,7 +1862,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-19T16:00:00.000Z'),
     gmv: 782,
     transaction: 55,
-    netSales: 665,
+    netSales: 195,
   },
   {
     id: '2023-08-21',
@@ -1870,7 +1870,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-20T16:00:00.000Z'),
     gmv: 656,
     transaction: 46,
-    netSales: 558,
+    netSales: 299,
   },
   {
     id: '2023-08-22',
@@ -1878,7 +1878,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-21T16:00:00.000Z'),
     gmv: 554,
     transaction: 39,
-    netSales: 471,
+    netSales: 295,
   },
   {
     id: '2023-08-23',
@@ -1886,7 +1886,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-22T16:00:00.000Z'),
     gmv: 523,
     transaction: 37,
-    netSales: 445,
+    netSales: 287,
   },
   {
     id: '2023-08-24',
@@ -1894,7 +1894,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-23T16:00:00.000Z'),
     gmv: 628,
     transaction: 44,
-    netSales: 534,
+    netSales: 303,
   },
   {
     id: '2023-08-25',
@@ -1902,7 +1902,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-24T16:00:00.000Z'),
     gmv: 483,
     transaction: 34,
-    netSales: 411,
+    netSales: 261,
   },
   {
     id: '2023-08-26',
@@ -1910,7 +1910,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-25T16:00:00.000Z'),
     gmv: 660,
     transaction: 46,
-    netSales: 561,
+    netSales: 163,
   },
   {
     id: '2023-08-27',
@@ -1918,7 +1918,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-26T16:00:00.000Z'),
     gmv: 644,
     transaction: 45,
-    netSales: 547,
+    netSales: 218,
   },
   {
     id: '2023-08-28',
@@ -1926,15 +1926,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-27T16:00:00.000Z'),
     gmv: 476,
     transaction: 33,
-    netSales: 405,
+    netSales: 358,
   },
   {
     id: '2023-08-29',
     name: '23/8/29',
     date: new Date('2023-08-28T16:00:00.000Z'),
     gmv: 507,
-    transaction: 36,
-    netSales: 431,
+    transaction: 35,
+    netSales: 359,
   },
   {
     id: '2023-08-30',
@@ -1942,7 +1942,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-29T16:00:00.000Z'),
     gmv: 541,
     transaction: 38,
-    netSales: 460,
+    netSales: 377,
   },
   {
     id: '2023-08-31',
@@ -1950,7 +1950,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-30T16:00:00.000Z'),
     gmv: 581,
     transaction: 41,
-    netSales: 494,
+    netSales: 420,
   },
   {
     id: '2023-09-01',
@@ -1958,7 +1958,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-08-31T16:00:00.000Z'),
     gmv: 558,
     transaction: 39,
-    netSales: 474,
+    netSales: 313,
   },
   {
     id: '2023-09-02',
@@ -1966,7 +1966,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-01T16:00:00.000Z'),
     gmv: 729,
     transaction: 51,
-    netSales: 620,
+    netSales: 261,
   },
   {
     id: '2023-09-03',
@@ -1974,7 +1974,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-02T16:00:00.000Z'),
     gmv: 680,
     transaction: 48,
-    netSales: 578,
+    netSales: 197,
   },
   {
     id: '2023-09-04',
@@ -1982,7 +1982,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-03T16:00:00.000Z'),
     gmv: 491,
     transaction: 34,
-    netSales: 417,
+    netSales: 351,
   },
   {
     id: '2023-09-05',
@@ -1990,7 +1990,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-04T16:00:00.000Z'),
     gmv: 580,
     transaction: 41,
-    netSales: 493,
+    netSales: 296,
   },
   {
     id: '2023-09-06',
@@ -1998,7 +1998,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-05T16:00:00.000Z'),
     gmv: 554,
     transaction: 39,
-    netSales: 471,
+    netSales: 320,
   },
   {
     id: '2023-09-07',
@@ -2006,7 +2006,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-06T16:00:00.000Z'),
     gmv: 654,
     transaction: 46,
-    netSales: 556,
+    netSales: 404,
   },
   {
     id: '2023-09-08',
@@ -2014,7 +2014,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-07T16:00:00.000Z'),
     gmv: 636,
     transaction: 45,
-    netSales: 541,
+    netSales: 412,
   },
   {
     id: '2023-09-09',
@@ -2022,7 +2022,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-08T16:00:00.000Z'),
     gmv: 864,
     transaction: 60,
-    netSales: 734,
+    netSales: 200,
   },
   {
     id: '2023-09-10',
@@ -2030,7 +2030,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-09T16:00:00.000Z'),
     gmv: 845,
     transaction: 59,
-    netSales: 718,
+    netSales: 280,
   },
   {
     id: '2023-09-11',
@@ -2038,7 +2038,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-10T16:00:00.000Z'),
     gmv: 598,
     transaction: 42,
-    netSales: 508,
+    netSales: 329,
   },
   {
     id: '2023-09-12',
@@ -2046,7 +2046,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-11T16:00:00.000Z'),
     gmv: 693,
     transaction: 49,
-    netSales: 589,
+    netSales: 378,
   },
   {
     id: '2023-09-13',
@@ -2054,7 +2054,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-12T16:00:00.000Z'),
     gmv: 573,
     transaction: 40,
-    netSales: 487,
+    netSales: 388,
   },
   {
     id: '2023-09-14',
@@ -2062,7 +2062,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-13T16:00:00.000Z'),
     gmv: 571,
     transaction: 40,
-    netSales: 485,
+    netSales: 266,
   },
   {
     id: '2023-09-15',
@@ -2070,7 +2070,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-14T16:00:00.000Z'),
     gmv: 570,
     transaction: 40,
-    netSales: 485,
+    netSales: 281,
   },
   {
     id: '2023-09-16',
@@ -2078,7 +2078,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-15T16:00:00.000Z'),
     gmv: 856,
     transaction: 60,
-    netSales: 728,
+    netSales: 227,
   },
   {
     id: '2023-09-17',
@@ -2086,7 +2086,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-16T16:00:00.000Z'),
     gmv: 889,
     transaction: 62,
-    netSales: 756,
+    netSales: 214,
   },
   {
     id: '2023-09-18',
@@ -2094,15 +2094,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-17T16:00:00.000Z'),
     gmv: 588,
     transaction: 41,
-    netSales: 500,
+    netSales: 288,
   },
   {
     id: '2023-09-19',
     name: '23/9/19',
     date: new Date('2023-09-18T16:00:00.000Z'),
     gmv: 664,
-    transaction: 47,
-    netSales: 564,
+    transaction: 46,
+    netSales: 302,
   },
   {
     id: '2023-09-20',
@@ -2110,7 +2110,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-19T16:00:00.000Z'),
     gmv: 601,
     transaction: 42,
-    netSales: 511,
+    netSales: 228,
   },
   {
     id: '2023-09-21',
@@ -2118,7 +2118,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-20T16:00:00.000Z'),
     gmv: 518,
     transaction: 36,
-    netSales: 440,
+    netSales: 287,
   },
   {
     id: '2023-09-22',
@@ -2126,7 +2126,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-21T16:00:00.000Z'),
     gmv: 548,
     transaction: 38,
-    netSales: 466,
+    netSales: 212,
   },
   {
     id: '2023-09-23',
@@ -2134,7 +2134,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-22T16:00:00.000Z'),
     gmv: 744,
     transaction: 52,
-    netSales: 632,
+    netSales: 131,
   },
   {
     id: '2023-09-24',
@@ -2142,7 +2142,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-23T16:00:00.000Z'),
     gmv: 812,
     transaction: 57,
-    netSales: 690,
+    netSales: 168,
   },
   {
     id: '2023-09-25',
@@ -2150,7 +2150,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-24T16:00:00.000Z'),
     gmv: 577,
     transaction: 40,
-    netSales: 490,
+    netSales: 293,
   },
   {
     id: '2023-09-26',
@@ -2158,7 +2158,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-25T16:00:00.000Z'),
     gmv: 596,
     transaction: 42,
-    netSales: 507,
+    netSales: 296,
   },
   {
     id: '2023-09-27',
@@ -2166,7 +2166,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-26T16:00:00.000Z'),
     gmv: 523,
     transaction: 37,
-    netSales: 445,
+    netSales: 272,
   },
   {
     id: '2023-09-28',
@@ -2174,7 +2174,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-27T16:00:00.000Z'),
     gmv: 628,
     transaction: 44,
-    netSales: 534,
+    netSales: 325,
   },
   {
     id: '2023-09-29',
@@ -2182,15 +2182,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-28T16:00:00.000Z'),
     gmv: 517,
     transaction: 36,
-    netSales: 439,
+    netSales: 256,
   },
   {
     id: '2023-09-30',
     name: '23/9/30',
     date: new Date('2023-09-29T16:00:00.000Z'),
     gmv: 707,
-    transaction: 50,
-    netSales: 601,
+    transaction: 49,
+    netSales: 164,
   },
   {
     id: '2023-10-01',
@@ -2198,7 +2198,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-09-30T16:00:00.000Z'),
     gmv: 705,
     transaction: 49,
-    netSales: 599,
+    netSales: 162,
   },
   {
     id: '2023-10-02',
@@ -2206,7 +2206,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-01T16:00:00.000Z'),
     gmv: 543,
     transaction: 38,
-    netSales: 462,
+    netSales: 259,
   },
   {
     id: '2023-10-03',
@@ -2214,7 +2214,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-02T16:00:00.000Z'),
     gmv: 518,
     transaction: 36,
-    netSales: 440,
+    netSales: 329,
   },
   {
     id: '2023-10-04',
@@ -2222,7 +2222,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-03T16:00:00.000Z'),
     gmv: 525,
     transaction: 37,
-    netSales: 446,
+    netSales: 388,
   },
   {
     id: '2023-10-05',
@@ -2230,7 +2230,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-04T16:00:00.000Z'),
     gmv: 612,
     transaction: 43,
-    netSales: 520,
+    netSales: 339,
   },
   {
     id: '2023-10-06',
@@ -2238,7 +2238,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-05T16:00:00.000Z'),
     gmv: 634,
     transaction: 44,
-    netSales: 539,
+    netSales: 295,
   },
   {
     id: '2023-10-07',
@@ -2246,15 +2246,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-06T16:00:00.000Z'),
     gmv: 894,
     transaction: 63,
-    netSales: 760,
+    netSales: 259,
   },
   {
     id: '2023-10-08',
     name: '23/10/8',
     date: new Date('2023-10-07T16:00:00.000Z'),
     gmv: 679,
-    transaction: 47,
-    netSales: 577,
+    transaction: 48,
+    netSales: 205,
   },
   {
     id: '2023-10-09',
@@ -2262,7 +2262,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-08T16:00:00.000Z'),
     gmv: 697,
     transaction: 49,
-    netSales: 592,
+    netSales: 373,
   },
   {
     id: '2023-10-10',
@@ -2270,7 +2270,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-09T16:00:00.000Z'),
     gmv: 660,
     transaction: 46,
-    netSales: 561,
+    netSales: 328,
   },
   {
     id: '2023-10-11',
@@ -2278,7 +2278,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-10T16:00:00.000Z'),
     gmv: 669,
     transaction: 47,
-    netSales: 569,
+    netSales: 279,
   },
   {
     id: '2023-10-12',
@@ -2286,7 +2286,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-11T16:00:00.000Z'),
     gmv: 569,
     transaction: 40,
-    netSales: 484,
+    netSales: 303,
   },
   {
     id: '2023-10-13',
@@ -2294,7 +2294,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-12T16:00:00.000Z'),
     gmv: 570,
     transaction: 40,
-    netSales: 485,
+    netSales: 307,
   },
   {
     id: '2023-10-14',
@@ -2302,7 +2302,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-13T16:00:00.000Z'),
     gmv: 815,
     transaction: 57,
-    netSales: 693,
+    netSales: 178,
   },
   {
     id: '2023-10-15',
@@ -2310,7 +2310,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-14T16:00:00.000Z'),
     gmv: 753,
     transaction: 53,
-    netSales: 640,
+    netSales: 179,
   },
   {
     id: '2023-10-16',
@@ -2318,7 +2318,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-15T16:00:00.000Z'),
     gmv: 646,
     transaction: 45,
-    netSales: 549,
+    netSales: 267,
   },
   {
     id: '2023-10-17',
@@ -2326,7 +2326,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-16T16:00:00.000Z'),
     gmv: 601,
     transaction: 42,
-    netSales: 511,
+    netSales: 272,
   },
   {
     id: '2023-10-18',
@@ -2334,7 +2334,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-17T16:00:00.000Z'),
     gmv: 603,
     transaction: 42,
-    netSales: 513,
+    netSales: 243,
   },
   {
     id: '2023-10-19',
@@ -2342,7 +2342,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-18T16:00:00.000Z'),
     gmv: 548,
     transaction: 38,
-    netSales: 466,
+    netSales: 270,
   },
   {
     id: '2023-10-20',
@@ -2350,7 +2350,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-19T16:00:00.000Z'),
     gmv: 532,
     transaction: 37,
-    netSales: 452,
+    netSales: 205,
   },
   {
     id: '2023-10-21',
@@ -2358,7 +2358,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-20T16:00:00.000Z'),
     gmv: 774,
     transaction: 54,
-    netSales: 658,
+    netSales: 180,
   },
   {
     id: '2023-10-22',
@@ -2366,7 +2366,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-21T16:00:00.000Z'),
     gmv: 839,
     transaction: 59,
-    netSales: 713,
+    netSales: 147,
   },
   {
     id: '2023-10-23',
@@ -2374,15 +2374,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-22T16:00:00.000Z'),
     gmv: 629,
     transaction: 44,
-    netSales: 535,
+    netSales: 212,
   },
   {
     id: '2023-10-24',
     name: '23/10/24',
     date: new Date('2023-10-23T16:00:00.000Z'),
     gmv: 650,
-    transaction: 45,
-    netSales: 553,
+    transaction: 46,
+    netSales: 190,
   },
   {
     id: '2023-10-25',
@@ -2390,7 +2390,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-24T16:00:00.000Z'),
     gmv: 550,
     transaction: 39,
-    netSales: 468,
+    netSales: 240,
   },
   {
     id: '2023-10-26',
@@ -2398,7 +2398,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-25T16:00:00.000Z'),
     gmv: 606,
     transaction: 42,
-    netSales: 515,
+    netSales: 286,
   },
   {
     id: '2023-10-27',
@@ -2406,7 +2406,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-26T16:00:00.000Z'),
     gmv: 628,
     transaction: 44,
-    netSales: 534,
+    netSales: 227,
   },
   {
     id: '2023-10-28',
@@ -2414,7 +2414,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-27T16:00:00.000Z'),
     gmv: 825,
     transaction: 58,
-    netSales: 701,
+    netSales: 165,
   },
   {
     id: '2023-10-29',
@@ -2422,7 +2422,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-28T16:00:00.000Z'),
     gmv: 767,
     transaction: 54,
-    netSales: 652,
+    netSales: 201,
   },
   {
     id: '2023-10-30',
@@ -2430,7 +2430,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-29T16:00:00.000Z'),
     gmv: 588,
     transaction: 41,
-    netSales: 500,
+    netSales: 308,
   },
   {
     id: '2023-10-31',
@@ -2438,7 +2438,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-30T16:00:00.000Z'),
     gmv: 469,
     transaction: 33,
-    netSales: 399,
+    netSales: 245,
   },
   {
     id: '2023-11-01',
@@ -2446,7 +2446,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-10-31T16:00:00.000Z'),
     gmv: 588,
     transaction: 41,
-    netSales: 500,
+    netSales: 375,
   },
   {
     id: '2023-11-02',
@@ -2454,7 +2454,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-01T16:00:00.000Z'),
     gmv: 653,
     transaction: 46,
-    netSales: 555,
+    netSales: 386,
   },
   {
     id: '2023-11-03',
@@ -2462,7 +2462,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-02T16:00:00.000Z'),
     gmv: 549,
     transaction: 38,
-    netSales: 467,
+    netSales: 386,
   },
   {
     id: '2023-11-04',
@@ -2470,7 +2470,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-03T16:00:00.000Z'),
     gmv: 885,
     transaction: 62,
-    netSales: 752,
+    netSales: 213,
   },
   {
     id: '2023-11-05',
@@ -2478,7 +2478,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-04T16:00:00.000Z'),
     gmv: 676,
     transaction: 47,
-    netSales: 575,
+    netSales: 214,
   },
   {
     id: '2023-11-06',
@@ -2486,7 +2486,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-05T16:00:00.000Z'),
     gmv: 658,
     transaction: 46,
-    netSales: 559,
+    netSales: 331,
   },
   {
     id: '2023-11-07',
@@ -2494,7 +2494,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-06T16:00:00.000Z'),
     gmv: 589,
     transaction: 41,
-    netSales: 501,
+    netSales: 422,
   },
   {
     id: '2023-11-08',
@@ -2502,7 +2502,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-07T16:00:00.000Z'),
     gmv: 643,
     transaction: 45,
-    netSales: 547,
+    netSales: 351,
   },
   {
     id: '2023-11-09',
@@ -2510,7 +2510,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-08T16:00:00.000Z'),
     gmv: 552,
     transaction: 39,
-    netSales: 469,
+    netSales: 305,
   },
   {
     id: '2023-11-10',
@@ -2518,7 +2518,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-09T16:00:00.000Z'),
     gmv: 646,
     transaction: 45,
-    netSales: 549,
+    netSales: 349,
   },
   {
     id: '2023-11-11',
@@ -2526,7 +2526,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-10T16:00:00.000Z'),
     gmv: 751,
     transaction: 53,
-    netSales: 638,
+    netSales: 219,
   },
   {
     id: '2023-11-12',
@@ -2534,7 +2534,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-11T16:00:00.000Z'),
     gmv: 769,
     transaction: 54,
-    netSales: 654,
+    netSales: 206,
   },
   {
     id: '2023-11-13',
@@ -2542,7 +2542,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-12T16:00:00.000Z'),
     gmv: 686,
     transaction: 48,
-    netSales: 583,
+    netSales: 342,
   },
   {
     id: '2023-11-14',
@@ -2550,7 +2550,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-13T16:00:00.000Z'),
     gmv: 602,
     transaction: 42,
-    netSales: 512,
+    netSales: 369,
   },
   {
     id: '2023-11-15',
@@ -2558,7 +2558,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-14T16:00:00.000Z'),
     gmv: 690,
     transaction: 48,
-    netSales: 587,
+    netSales: 248,
   },
   {
     id: '2023-11-16',
@@ -2566,7 +2566,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-15T16:00:00.000Z'),
     gmv: 726,
     transaction: 51,
-    netSales: 617,
+    netSales: 248,
   },
   {
     id: '2023-11-17',
@@ -2574,7 +2574,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-16T16:00:00.000Z'),
     gmv: 562,
     transaction: 39,
-    netSales: 478,
+    netSales: 293,
   },
   {
     id: '2023-11-18',
@@ -2582,7 +2582,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-17T16:00:00.000Z'),
     gmv: 818,
     transaction: 57,
-    netSales: 695,
+    netSales: 165,
   },
   {
     id: '2023-11-19',
@@ -2590,7 +2590,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-18T16:00:00.000Z'),
     gmv: 955,
     transaction: 67,
-    netSales: 812,
+    netSales: 147,
   },
   {
     id: '2023-11-20',
@@ -2598,7 +2598,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-19T16:00:00.000Z'),
     gmv: 622,
     transaction: 44,
-    netSales: 529,
+    netSales: 287,
   },
   {
     id: '2023-11-21',
@@ -2606,7 +2606,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-20T16:00:00.000Z'),
     gmv: 598,
     transaction: 42,
-    netSales: 508,
+    netSales: 281,
   },
   {
     id: '2023-11-22',
@@ -2614,7 +2614,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-21T16:00:00.000Z'),
     gmv: 605,
     transaction: 42,
-    netSales: 514,
+    netSales: 266,
   },
   {
     id: '2023-11-23',
@@ -2622,7 +2622,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-22T16:00:00.000Z'),
     gmv: 533,
     transaction: 37,
-    netSales: 453,
+    netSales: 216,
   },
   {
     id: '2023-11-24',
@@ -2630,7 +2630,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-23T16:00:00.000Z'),
     gmv: 689,
     transaction: 48,
-    netSales: 586,
+    netSales: 245,
   },
   {
     id: '2023-11-25',
@@ -2638,7 +2638,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-24T16:00:00.000Z'),
     gmv: 890,
     transaction: 62,
-    netSales: 757,
+    netSales: 162,
   },
   {
     id: '2023-11-26',
@@ -2646,7 +2646,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-25T16:00:00.000Z'),
     gmv: 810,
     transaction: 57,
-    netSales: 689,
+    netSales: 148,
   },
   {
     id: '2023-11-27',
@@ -2654,7 +2654,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-26T16:00:00.000Z'),
     gmv: 539,
     transaction: 38,
-    netSales: 458,
+    netSales: 281,
   },
   {
     id: '2023-11-28',
@@ -2662,7 +2662,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-27T16:00:00.000Z'),
     gmv: 623,
     transaction: 44,
-    netSales: 530,
+    netSales: 308,
   },
   {
     id: '2023-11-29',
@@ -2670,7 +2670,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-28T16:00:00.000Z'),
     gmv: 564,
     transaction: 39,
-    netSales: 479,
+    netSales: 304,
   },
   {
     id: '2023-11-30',
@@ -2678,7 +2678,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-29T16:00:00.000Z'),
     gmv: 636,
     transaction: 45,
-    netSales: 541,
+    netSales: 327,
   },
   {
     id: '2023-12-01',
@@ -2686,7 +2686,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-11-30T16:00:00.000Z'),
     gmv: 584,
     transaction: 41,
-    netSales: 496,
+    netSales: 349,
   },
   {
     id: '2023-12-02',
@@ -2694,7 +2694,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-01T16:00:00.000Z'),
     gmv: 745,
     transaction: 52,
-    netSales: 633,
+    netSales: 206,
   },
   {
     id: '2023-12-03',
@@ -2702,7 +2702,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-02T16:00:00.000Z'),
     gmv: 768,
     transaction: 54,
-    netSales: 653,
+    netSales: 211,
   },
   {
     id: '2023-12-04',
@@ -2710,7 +2710,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-03T16:00:00.000Z'),
     gmv: 702,
     transaction: 49,
-    netSales: 597,
+    netSales: 325,
   },
   {
     id: '2023-12-05',
@@ -2718,7 +2718,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-04T16:00:00.000Z'),
     gmv: 669,
     transaction: 47,
-    netSales: 569,
+    netSales: 429,
   },
   {
     id: '2023-12-06',
@@ -2726,7 +2726,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-05T16:00:00.000Z'),
     gmv: 641,
     transaction: 45,
-    netSales: 545,
+    netSales: 340,
   },
   {
     id: '2023-12-07',
@@ -2734,7 +2734,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-06T16:00:00.000Z'),
     gmv: 572,
     transaction: 40,
-    netSales: 486,
+    netSales: 354,
   },
   {
     id: '2023-12-08',
@@ -2742,15 +2742,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-07T16:00:00.000Z'),
     gmv: 624,
     transaction: 44,
-    netSales: 530,
+    netSales: 449,
   },
   {
     id: '2023-12-09',
     name: '23/12/9',
     date: new Date('2023-12-08T16:00:00.000Z'),
     gmv: 807,
-    transaction: 57,
-    netSales: 686,
+    transaction: 56,
+    netSales: 248,
   },
   {
     id: '2023-12-10',
@@ -2758,7 +2758,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-09T16:00:00.000Z'),
     gmv: 976,
     transaction: 68,
-    netSales: 830,
+    netSales: 273,
   },
   {
     id: '2023-12-11',
@@ -2766,7 +2766,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-10T16:00:00.000Z'),
     gmv: 601,
     transaction: 42,
-    netSales: 511,
+    netSales: 422,
   },
   {
     id: '2023-12-12',
@@ -2774,7 +2774,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-11T16:00:00.000Z'),
     gmv: 725,
     transaction: 51,
-    netSales: 616,
+    netSales: 319,
   },
   {
     id: '2023-12-13',
@@ -2782,7 +2782,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-12T16:00:00.000Z'),
     gmv: 653,
     transaction: 46,
-    netSales: 555,
+    netSales: 327,
   },
   {
     id: '2023-12-14',
@@ -2790,7 +2790,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-13T16:00:00.000Z'),
     gmv: 652,
     transaction: 46,
-    netSales: 554,
+    netSales: 363,
   },
   {
     id: '2023-12-15',
@@ -2798,7 +2798,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-14T16:00:00.000Z'),
     gmv: 642,
     transaction: 45,
-    netSales: 546,
+    netSales: 326,
   },
   {
     id: '2023-12-16',
@@ -2806,7 +2806,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-15T16:00:00.000Z'),
     gmv: 853,
     transaction: 60,
-    netSales: 725,
+    netSales: 202,
   },
   {
     id: '2023-12-17',
@@ -2814,7 +2814,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-16T16:00:00.000Z'),
     gmv: 907,
     transaction: 63,
-    netSales: 771,
+    netSales: 189,
   },
   {
     id: '2023-12-18',
@@ -2822,7 +2822,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-17T16:00:00.000Z'),
     gmv: 662,
     transaction: 46,
-    netSales: 563,
+    netSales: 273,
   },
   {
     id: '2023-12-19',
@@ -2830,7 +2830,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-18T16:00:00.000Z'),
     gmv: 705,
     transaction: 49,
-    netSales: 599,
+    netSales: 323,
   },
   {
     id: '2023-12-20',
@@ -2838,7 +2838,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-19T16:00:00.000Z'),
     gmv: 566,
     transaction: 40,
-    netSales: 481,
+    netSales: 289,
   },
   {
     id: '2023-12-21',
@@ -2846,7 +2846,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-20T16:00:00.000Z'),
     gmv: 626,
     transaction: 44,
-    netSales: 532,
+    netSales: 236,
   },
   {
     id: '2023-12-22',
@@ -2854,7 +2854,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-21T16:00:00.000Z'),
     gmv: 668,
     transaction: 47,
-    netSales: 568,
+    netSales: 235,
   },
   {
     id: '2023-12-23',
@@ -2862,7 +2862,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-22T16:00:00.000Z'),
     gmv: 751,
     transaction: 53,
-    netSales: 638,
+    netSales: 190,
   },
   {
     id: '2023-12-24',
@@ -2870,7 +2870,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-23T16:00:00.000Z'),
     gmv: 725,
     transaction: 51,
-    netSales: 616,
+    netSales: 199,
   },
   {
     id: '2023-12-25',
@@ -2878,7 +2878,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-24T16:00:00.000Z'),
     gmv: 718,
     transaction: 50,
-    netSales: 610,
+    netSales: 324,
   },
   {
     id: '2023-12-26',
@@ -2886,7 +2886,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-25T16:00:00.000Z'),
     gmv: 557,
     transaction: 39,
-    netSales: 473,
+    netSales: 237,
   },
   {
     id: '2023-12-27',
@@ -2894,7 +2894,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-26T16:00:00.000Z'),
     gmv: 535,
     transaction: 37,
-    netSales: 455,
+    netSales: 262,
   },
   {
     id: '2023-12-28',
@@ -2902,7 +2902,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-27T16:00:00.000Z'),
     gmv: 675,
     transaction: 47,
-    netSales: 574,
+    netSales: 350,
   },
   {
     id: '2023-12-29',
@@ -2910,7 +2910,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-28T16:00:00.000Z'),
     gmv: 599,
     transaction: 42,
-    netSales: 509,
+    netSales: 392,
   },
   {
     id: '2023-12-30',
@@ -2918,7 +2918,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-29T16:00:00.000Z'),
     gmv: 812,
     transaction: 57,
-    netSales: 690,
+    netSales: 258,
   },
   {
     id: '2023-12-31',
@@ -2926,7 +2926,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-30T16:00:00.000Z'),
     gmv: 671,
     transaction: 47,
-    netSales: 570,
+    netSales: 195,
   },
   {
     id: '2024-01-01',
@@ -2934,7 +2934,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2023-12-31T16:00:00.000Z'),
     gmv: 514,
     transaction: 36,
-    netSales: 437,
+    netSales: 402,
   },
   {
     id: '2024-01-02',
@@ -2942,7 +2942,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-01T16:00:00.000Z'),
     gmv: 528,
     transaction: 37,
-    netSales: 449,
+    netSales: 473,
   },
   {
     id: '2024-01-03',
@@ -2950,7 +2950,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-02T16:00:00.000Z'),
     gmv: 504,
     transaction: 35,
-    netSales: 428,
+    netSales: 422,
   },
   {
     id: '2024-01-04',
@@ -2958,7 +2958,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-03T16:00:00.000Z'),
     gmv: 482,
     transaction: 34,
-    netSales: 410,
+    netSales: 435,
   },
   {
     id: '2024-01-05',
@@ -2966,7 +2966,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-04T16:00:00.000Z'),
     gmv: 488,
     transaction: 34,
-    netSales: 415,
+    netSales: 589,
   },
   {
     id: '2024-01-06',
@@ -2974,7 +2974,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-05T16:00:00.000Z'),
     gmv: 625,
     transaction: 44,
-    netSales: 531,
+    netSales: 303,
   },
   {
     id: '2024-01-07',
@@ -2982,7 +2982,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-06T16:00:00.000Z'),
     gmv: 690,
     transaction: 48,
-    netSales: 587,
+    netSales: 376,
   },
   {
     id: '2024-01-08',
@@ -2990,7 +2990,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-07T16:00:00.000Z'),
     gmv: 578,
     transaction: 40,
-    netSales: 491,
+    netSales: 598,
   },
   {
     id: '2024-01-09',
@@ -2998,7 +2998,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-08T16:00:00.000Z'),
     gmv: 518,
     transaction: 36,
-    netSales: 440,
+    netSales: 527,
   },
   {
     id: '2024-01-10',
@@ -3006,7 +3006,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-09T16:00:00.000Z'),
     gmv: 554,
     transaction: 39,
-    netSales: 471,
+    netSales: 502,
   },
   {
     id: '2024-01-11',
@@ -3014,7 +3014,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-10T16:00:00.000Z'),
     gmv: 446,
     transaction: 31,
-    netSales: 379,
+    netSales: 507,
   },
   {
     id: '2024-01-12',
@@ -3022,7 +3022,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-11T16:00:00.000Z'),
     gmv: 599,
     transaction: 42,
-    netSales: 509,
+    netSales: 510,
   },
   {
     id: '2024-01-13',
@@ -3030,7 +3030,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-12T16:00:00.000Z'),
     gmv: 769,
     transaction: 54,
-    netSales: 654,
+    netSales: 319,
   },
   {
     id: '2024-01-14',
@@ -3038,7 +3038,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-13T16:00:00.000Z'),
     gmv: 639,
     transaction: 45,
-    netSales: 543,
+    netSales: 277,
   },
   {
     id: '2024-01-15',
@@ -3046,7 +3046,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-14T16:00:00.000Z'),
     gmv: 512,
     transaction: 36,
-    netSales: 435,
+    netSales: 371,
   },
   {
     id: '2024-01-16',
@@ -3054,7 +3054,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-15T16:00:00.000Z'),
     gmv: 592,
     transaction: 41,
-    netSales: 503,
+    netSales: 356,
   },
   {
     id: '2024-01-17',
@@ -3062,7 +3062,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-16T16:00:00.000Z'),
     gmv: 586,
     transaction: 41,
-    netSales: 498,
+    netSales: 497,
   },
   {
     id: '2024-01-18',
@@ -3070,7 +3070,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-17T16:00:00.000Z'),
     gmv: 472,
     transaction: 33,
-    netSales: 401,
+    netSales: 439,
   },
   {
     id: '2024-01-19',
@@ -3078,7 +3078,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-18T16:00:00.000Z'),
     gmv: 469,
     transaction: 33,
-    netSales: 399,
+    netSales: 368,
   },
   {
     id: '2024-01-20',
@@ -3086,7 +3086,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-19T16:00:00.000Z'),
     gmv: 756,
     transaction: 53,
-    netSales: 643,
+    netSales: 235,
   },
   {
     id: '2024-01-21',
@@ -3094,7 +3094,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-20T16:00:00.000Z'),
     gmv: 614,
     transaction: 43,
-    netSales: 522,
+    netSales: 233,
   },
   {
     id: '2024-01-22',
@@ -3102,7 +3102,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-21T16:00:00.000Z'),
     gmv: 499,
     transaction: 35,
-    netSales: 424,
+    netSales: 339,
   },
   {
     id: '2024-01-23',
@@ -3110,7 +3110,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-22T16:00:00.000Z'),
     gmv: 446,
     transaction: 31,
-    netSales: 379,
+    netSales: 377,
   },
   {
     id: '2024-01-24',
@@ -3118,7 +3118,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-23T16:00:00.000Z'),
     gmv: 511,
     transaction: 36,
-    netSales: 434,
+    netSales: 335,
   },
   {
     id: '2024-01-25',
@@ -3126,7 +3126,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-24T16:00:00.000Z'),
     gmv: 517,
     transaction: 36,
-    netSales: 439,
+    netSales: 449,
   },
   {
     id: '2024-01-26',
@@ -3134,7 +3134,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-25T16:00:00.000Z'),
     gmv: 479,
     transaction: 34,
-    netSales: 407,
+    netSales: 356,
   },
   {
     id: '2024-01-27',
@@ -3142,7 +3142,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-26T16:00:00.000Z'),
     gmv: 710,
     transaction: 50,
-    netSales: 604,
+    netSales: 295,
   },
   {
     id: '2024-01-28',
@@ -3150,7 +3150,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-27T16:00:00.000Z'),
     gmv: 550,
     transaction: 39,
-    netSales: 468,
+    netSales: 325,
   },
   {
     id: '2024-01-29',
@@ -3158,7 +3158,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-28T16:00:00.000Z'),
     gmv: 441,
     transaction: 31,
-    netSales: 375,
+    netSales: 360,
   },
   {
     id: '2024-01-30',
@@ -3166,7 +3166,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-29T16:00:00.000Z'),
     gmv: 504,
     transaction: 35,
-    netSales: 428,
+    netSales: 524,
   },
   {
     id: '2024-01-31',
@@ -3174,7 +3174,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-30T16:00:00.000Z'),
     gmv: 437,
     transaction: 31,
-    netSales: 371,
+    netSales: 495,
   },
   {
     id: '2024-02-01',
@@ -3182,7 +3182,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-01-31T16:00:00.000Z'),
     gmv: 555,
     transaction: 39,
-    netSales: 472,
+    netSales: 468,
   },
   {
     id: '2024-02-02',
@@ -3190,7 +3190,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-01T16:00:00.000Z'),
     gmv: 531,
     transaction: 37,
-    netSales: 451,
+    netSales: 468,
   },
   {
     id: '2024-02-03',
@@ -3198,7 +3198,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-02T16:00:00.000Z'),
     gmv: 673,
     transaction: 47,
-    netSales: 572,
+    netSales: 322,
   },
   {
     id: '2024-02-04',
@@ -3206,7 +3206,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-03T16:00:00.000Z'),
     gmv: 604,
     transaction: 42,
-    netSales: 513,
+    netSales: 388,
   },
   {
     id: '2024-02-05',
@@ -3214,7 +3214,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-04T16:00:00.000Z'),
     gmv: 533,
     transaction: 37,
-    netSales: 453,
+    netSales: 677,
   },
   {
     id: '2024-02-06',
@@ -3222,7 +3222,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-05T16:00:00.000Z'),
     gmv: 566,
     transaction: 40,
-    netSales: 481,
+    netSales: 594,
   },
   {
     id: '2024-02-07',
@@ -3230,7 +3230,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-06T16:00:00.000Z'),
     gmv: 554,
     transaction: 39,
-    netSales: 471,
+    netSales: 755,
   },
   {
     id: '2024-02-08',
@@ -3238,7 +3238,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-07T16:00:00.000Z'),
     gmv: 487,
     transaction: 34,
-    netSales: 414,
+    netSales: 733,
   },
   {
     id: '2024-02-09',
@@ -3246,7 +3246,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-08T16:00:00.000Z'),
     gmv: 597,
     transaction: 42,
-    netSales: 507,
+    netSales: 607,
   },
   {
     id: '2024-02-10',
@@ -3254,7 +3254,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-09T16:00:00.000Z'),
     gmv: 683,
     transaction: 48,
-    netSales: 581,
+    netSales: 422,
   },
   {
     id: '2024-02-11',
@@ -3262,7 +3262,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-10T16:00:00.000Z'),
     gmv: 692,
     transaction: 48,
-    netSales: 588,
+    netSales: 355,
   },
   {
     id: '2024-02-12',
@@ -3270,7 +3270,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-11T16:00:00.000Z'),
     gmv: 479,
     transaction: 34,
-    netSales: 407,
+    netSales: 637,
   },
   {
     id: '2024-02-13',
@@ -3278,7 +3278,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-12T16:00:00.000Z'),
     gmv: 545,
     transaction: 38,
-    netSales: 463,
+    netSales: 672,
   },
   {
     id: '2024-02-14',
@@ -3286,7 +3286,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-13T16:00:00.000Z'),
     gmv: 597,
     transaction: 42,
-    netSales: 507,
+    netSales: 480,
   },
   {
     id: '2024-02-15',
@@ -3294,7 +3294,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-14T16:00:00.000Z'),
     gmv: 491,
     transaction: 34,
-    netSales: 417,
+    netSales: 582,
   },
   {
     id: '2024-02-16',
@@ -3302,7 +3302,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-15T16:00:00.000Z'),
     gmv: 547,
     transaction: 38,
-    netSales: 465,
+    netSales: 503,
   },
   {
     id: '2024-02-17',
@@ -3310,7 +3310,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-16T16:00:00.000Z'),
     gmv: 811,
     transaction: 57,
-    netSales: 689,
+    netSales: 345,
   },
   {
     id: '2024-02-18',
@@ -3318,7 +3318,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-17T16:00:00.000Z'),
     gmv: 781,
     transaction: 55,
-    netSales: 664,
+    netSales: 282,
   },
   {
     id: '2024-02-19',
@@ -3326,7 +3326,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-18T16:00:00.000Z'),
     gmv: 596,
     transaction: 42,
-    netSales: 507,
+    netSales: 485,
   },
   {
     id: '2024-02-20',
@@ -3334,7 +3334,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-19T16:00:00.000Z'),
     gmv: 516,
     transaction: 36,
-    netSales: 439,
+    netSales: 468,
   },
   {
     id: '2024-02-21',
@@ -3342,15 +3342,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-20T16:00:00.000Z'),
     gmv: 601,
     transaction: 42,
-    netSales: 511,
+    netSales: 484,
   },
   {
     id: '2024-02-22',
     name: '24/2/22',
     date: new Date('2024-02-21T16:00:00.000Z'),
     gmv: 507,
-    transaction: 36,
-    netSales: 431,
+    transaction: 35,
+    netSales: 393,
   },
   {
     id: '2024-02-23',
@@ -3358,7 +3358,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-22T16:00:00.000Z'),
     gmv: 586,
     transaction: 41,
-    netSales: 498,
+    netSales: 440,
   },
   {
     id: '2024-02-24',
@@ -3366,7 +3366,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-23T16:00:00.000Z'),
     gmv: 638,
     transaction: 45,
-    netSales: 542,
+    netSales: 312,
   },
   {
     id: '2024-02-25',
@@ -3374,7 +3374,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-24T16:00:00.000Z'),
     gmv: 582,
     transaction: 41,
-    netSales: 495,
+    netSales: 300,
   },
   {
     id: '2024-02-26',
@@ -3382,7 +3382,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-25T16:00:00.000Z'),
     gmv: 443,
     transaction: 31,
-    netSales: 377,
+    netSales: 409,
   },
   {
     id: '2024-02-27',
@@ -3390,7 +3390,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-26T16:00:00.000Z'),
     gmv: 537,
     transaction: 38,
-    netSales: 456,
+    netSales: 378,
   },
   {
     id: '2024-02-28',
@@ -3398,7 +3398,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-27T16:00:00.000Z'),
     gmv: 544,
     transaction: 38,
-    netSales: 462,
+    netSales: 497,
   },
   {
     id: '2024-02-29',
@@ -3406,7 +3406,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-28T16:00:00.000Z'),
     gmv: 466,
     transaction: 33,
-    netSales: 396,
+    netSales: 563,
   },
   {
     id: '2024-03-01',
@@ -3414,7 +3414,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-02-29T16:00:00.000Z'),
     gmv: 542,
     transaction: 38,
-    netSales: 461,
+    netSales: 566,
   },
   {
     id: '2024-03-02',
@@ -3422,7 +3422,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-01T16:00:00.000Z'),
     gmv: 651,
     transaction: 46,
-    netSales: 553,
+    netSales: 466,
   },
   {
     id: '2024-03-03',
@@ -3430,7 +3430,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-02T16:00:00.000Z'),
     gmv: 623,
     transaction: 44,
-    netSales: 530,
+    netSales: 389,
   },
   {
     id: '2024-03-04',
@@ -3438,7 +3438,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-03T16:00:00.000Z'),
     gmv: 547,
     transaction: 38,
-    netSales: 465,
+    netSales: 763,
   },
   {
     id: '2024-03-05',
@@ -3446,7 +3446,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-04T16:00:00.000Z'),
     gmv: 544,
     transaction: 38,
-    netSales: 462,
+    netSales: 674,
   },
   {
     id: '2024-03-06',
@@ -3454,7 +3454,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-05T16:00:00.000Z'),
     gmv: 603,
     transaction: 42,
-    netSales: 513,
+    netSales: 820,
   },
   {
     id: '2024-03-07',
@@ -3462,7 +3462,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-06T16:00:00.000Z'),
     gmv: 501,
     transaction: 35,
-    netSales: 426,
+    netSales: 562,
   },
   {
     id: '2024-03-08',
@@ -3470,7 +3470,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-07T16:00:00.000Z'),
     gmv: 500,
     transaction: 35,
-    netSales: 425,
+    netSales: 757,
   },
   {
     id: '2024-03-09',
@@ -3478,7 +3478,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-08T16:00:00.000Z'),
     gmv: 653,
     transaction: 46,
-    netSales: 555,
+    netSales: 545,
   },
   {
     id: '2024-03-10',
@@ -3486,7 +3486,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-09T16:00:00.000Z'),
     gmv: 727,
     transaction: 51,
-    netSales: 618,
+    netSales: 472,
   },
   {
     id: '2024-03-11',
@@ -3494,7 +3494,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-10T16:00:00.000Z'),
     gmv: 614,
     transaction: 43,
-    netSales: 522,
+    netSales: 613,
   },
   {
     id: '2024-03-12',
@@ -3502,7 +3502,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-11T16:00:00.000Z'),
     gmv: 511,
     transaction: 36,
-    netSales: 434,
+    netSales: 736,
   },
   {
     id: '2024-03-13',
@@ -3510,7 +3510,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-12T16:00:00.000Z'),
     gmv: 562,
     transaction: 39,
-    netSales: 478,
+    netSales: 649,
   },
   {
     id: '2024-03-14',
@@ -3518,7 +3518,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-13T16:00:00.000Z'),
     gmv: 567,
     transaction: 40,
-    netSales: 482,
+    netSales: 538,
   },
   {
     id: '2024-03-15',
@@ -3526,7 +3526,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-14T16:00:00.000Z'),
     gmv: 548,
     transaction: 38,
-    netSales: 466,
+    netSales: 526,
   },
   {
     id: '2024-03-16',
@@ -3534,7 +3534,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-15T16:00:00.000Z'),
     gmv: 769,
     transaction: 54,
-    netSales: 654,
+    netSales: 437,
   },
   {
     id: '2024-03-17',
@@ -3542,7 +3542,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-16T16:00:00.000Z'),
     gmv: 690,
     transaction: 48,
-    netSales: 587,
+    netSales: 388,
   },
   {
     id: '2024-03-18',
@@ -3550,7 +3550,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-17T16:00:00.000Z'),
     gmv: 519,
     transaction: 36,
-    netSales: 441,
+    netSales: 489,
   },
   {
     id: '2024-03-19',
@@ -3558,7 +3558,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-18T16:00:00.000Z'),
     gmv: 563,
     transaction: 39,
-    netSales: 479,
+    netSales: 467,
   },
   {
     id: '2024-03-20',
@@ -3566,7 +3566,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-19T16:00:00.000Z'),
     gmv: 534,
     transaction: 37,
-    netSales: 454,
+    netSales: 480,
   },
   {
     id: '2024-03-21',
@@ -3574,7 +3574,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-20T16:00:00.000Z'),
     gmv: 513,
     transaction: 36,
-    netSales: 436,
+    netSales: 399,
   },
   {
     id: '2024-03-22',
@@ -3582,7 +3582,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-21T16:00:00.000Z'),
     gmv: 634,
     transaction: 44,
-    netSales: 539,
+    netSales: 492,
   },
   {
     id: '2024-03-23',
@@ -3590,7 +3590,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-22T16:00:00.000Z'),
     gmv: 691,
     transaction: 48,
-    netSales: 587,
+    netSales: 261,
   },
   {
     id: '2024-03-24',
@@ -3598,7 +3598,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-23T16:00:00.000Z'),
     gmv: 657,
     transaction: 46,
-    netSales: 558,
+    netSales: 326,
   },
   {
     id: '2024-03-25',
@@ -3606,7 +3606,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-24T16:00:00.000Z'),
     gmv: 462,
     transaction: 32,
-    netSales: 393,
+    netSales: 568,
   },
   {
     id: '2024-03-26',
@@ -3614,7 +3614,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-25T16:00:00.000Z'),
     gmv: 517,
     transaction: 36,
-    netSales: 439,
+    netSales: 403,
   },
   {
     id: '2024-03-27',
@@ -3622,7 +3622,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-26T16:00:00.000Z'),
     gmv: 492,
     transaction: 34,
-    netSales: 418,
+    netSales: 523,
   },
   {
     id: '2024-03-28',
@@ -3630,7 +3630,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-27T16:00:00.000Z'),
     gmv: 462,
     transaction: 32,
-    netSales: 393,
+    netSales: 567,
   },
   {
     id: '2024-03-29',
@@ -3638,7 +3638,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-28T16:00:00.000Z'),
     gmv: 482,
     transaction: 34,
-    netSales: 410,
+    netSales: 539,
   },
   {
     id: '2024-03-30',
@@ -3646,7 +3646,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-29T16:00:00.000Z'),
     gmv: 591,
     transaction: 41,
-    netSales: 502,
+    netSales: 435,
   },
   {
     id: '2024-03-31',
@@ -3654,7 +3654,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-30T16:00:00.000Z'),
     gmv: 655,
     transaction: 46,
-    netSales: 557,
+    netSales: 426,
   },
   {
     id: '2024-04-01',
@@ -3662,7 +3662,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-03-31T16:00:00.000Z'),
     gmv: 579,
     transaction: 41,
-    netSales: 492,
+    netSales: 510,
   },
   {
     id: '2024-04-02',
@@ -3670,7 +3670,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-01T16:00:00.000Z'),
     gmv: 460,
     transaction: 32,
-    netSales: 391,
+    netSales: 696,
   },
   {
     id: '2024-04-03',
@@ -3678,7 +3678,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-02T16:00:00.000Z'),
     gmv: 542,
     transaction: 38,
-    netSales: 461,
+    netSales: 688,
   },
   {
     id: '2024-04-04',
@@ -3686,7 +3686,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-03T16:00:00.000Z'),
     gmv: 588,
     transaction: 41,
-    netSales: 500,
+    netSales: 668,
   },
   {
     id: '2024-04-05',
@@ -3694,7 +3694,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-04T16:00:00.000Z'),
     gmv: 563,
     transaction: 39,
-    netSales: 479,
+    netSales: 617,
   },
   {
     id: '2024-04-06',
@@ -3702,7 +3702,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-05T16:00:00.000Z'),
     gmv: 629,
     transaction: 44,
-    netSales: 535,
+    netSales: 388,
   },
   {
     id: '2024-04-07',
@@ -3710,7 +3710,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-06T16:00:00.000Z'),
     gmv: 730,
     transaction: 51,
-    netSales: 621,
+    netSales: 539,
   },
   {
     id: '2024-04-08',
@@ -3718,7 +3718,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-07T16:00:00.000Z'),
     gmv: 519,
     transaction: 36,
-    netSales: 441,
+    netSales: 798,
   },
   {
     id: '2024-04-09',
@@ -3726,15 +3726,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-08T16:00:00.000Z'),
     gmv: 542,
     transaction: 38,
-    netSales: 461,
+    netSales: 652,
   },
   {
     id: '2024-04-10',
     name: '24/4/10',
     date: new Date('2024-04-09T16:00:00.000Z'),
     gmv: 636,
-    transaction: 44,
-    netSales: 541,
+    transaction: 45,
+    netSales: 795,
   },
   {
     id: '2024-04-11',
@@ -3742,7 +3742,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-10T16:00:00.000Z'),
     gmv: 666,
     transaction: 47,
-    netSales: 566,
+    netSales: 662,
   },
   {
     id: '2024-04-12',
@@ -3750,7 +3750,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-11T16:00:00.000Z'),
     gmv: 588,
     transaction: 41,
-    netSales: 500,
+    netSales: 663,
   },
   {
     id: '2024-04-13',
@@ -3758,7 +3758,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-12T16:00:00.000Z'),
     gmv: 698,
     transaction: 49,
-    netSales: 593,
+    netSales: 390,
   },
   {
     id: '2024-04-14',
@@ -3766,7 +3766,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-13T16:00:00.000Z'),
     gmv: 812,
     transaction: 57,
-    netSales: 690,
+    netSales: 473,
   },
   {
     id: '2024-04-15',
@@ -3774,7 +3774,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-14T16:00:00.000Z'),
     gmv: 635,
     transaction: 44,
-    netSales: 540,
+    netSales: 488,
   },
   {
     id: '2024-04-16',
@@ -3782,7 +3782,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-15T16:00:00.000Z'),
     gmv: 615,
     transaction: 43,
-    netSales: 523,
+    netSales: 674,
   },
   {
     id: '2024-04-17',
@@ -3790,7 +3790,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-16T16:00:00.000Z'),
     gmv: 566,
     transaction: 40,
-    netSales: 481,
+    netSales: 595,
   },
   {
     id: '2024-04-18',
@@ -3798,7 +3798,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-17T16:00:00.000Z'),
     gmv: 543,
     transaction: 38,
-    netSales: 462,
+    netSales: 508,
   },
   {
     id: '2024-04-19',
@@ -3806,7 +3806,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-18T16:00:00.000Z'),
     gmv: 642,
     transaction: 45,
-    netSales: 546,
+    netSales: 552,
   },
   {
     id: '2024-04-20',
@@ -3814,7 +3814,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-19T16:00:00.000Z'),
     gmv: 708,
     transaction: 50,
-    netSales: 602,
+    netSales: 389,
   },
   {
     id: '2024-04-21',
@@ -3822,7 +3822,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-20T16:00:00.000Z'),
     gmv: 688,
     transaction: 48,
-    netSales: 585,
+    netSales: 271,
   },
   {
     id: '2024-04-22',
@@ -3830,7 +3830,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-21T16:00:00.000Z'),
     gmv: 650,
     transaction: 46,
-    netSales: 553,
+    netSales: 470,
   },
   {
     id: '2024-04-23',
@@ -3838,7 +3838,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-22T16:00:00.000Z'),
     gmv: 525,
     transaction: 37,
-    netSales: 446,
+    netSales: 485,
   },
   {
     id: '2024-04-24',
@@ -3846,7 +3846,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-23T16:00:00.000Z'),
     gmv: 492,
     transaction: 34,
-    netSales: 418,
+    netSales: 505,
   },
   {
     id: '2024-04-25',
@@ -3854,7 +3854,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-24T16:00:00.000Z'),
     gmv: 498,
     transaction: 35,
-    netSales: 423,
+    netSales: 582,
   },
   {
     id: '2024-04-26',
@@ -3862,7 +3862,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-25T16:00:00.000Z'),
     gmv: 602,
     transaction: 42,
-    netSales: 512,
+    netSales: 443,
   },
   {
     id: '2024-04-27',
@@ -3870,7 +3870,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-26T16:00:00.000Z'),
     gmv: 779,
     transaction: 55,
-    netSales: 662,
+    netSales: 415,
   },
   {
     id: '2024-04-28',
@@ -3878,7 +3878,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-27T16:00:00.000Z'),
     gmv: 757,
     transaction: 53,
-    netSales: 643,
+    netSales: 387,
   },
   {
     id: '2024-04-29',
@@ -3886,7 +3886,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-28T16:00:00.000Z'),
     gmv: 601,
     transaction: 42,
-    netSales: 511,
+    netSales: 636,
   },
   {
     id: '2024-04-30',
@@ -3894,7 +3894,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-29T16:00:00.000Z'),
     gmv: 503,
     transaction: 35,
-    netSales: 428,
+    netSales: 607,
   },
   {
     id: '2024-05-01',
@@ -3902,7 +3902,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-04-30T16:00:00.000Z'),
     gmv: 594,
     transaction: 42,
-    netSales: 505,
+    netSales: 506,
   },
   {
     id: '2024-05-02',
@@ -3910,7 +3910,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-01T16:00:00.000Z'),
     gmv: 490,
     transaction: 34,
-    netSales: 417,
+    netSales: 602,
   },
   {
     id: '2024-05-03',
@@ -3918,7 +3918,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-02T16:00:00.000Z'),
     gmv: 600,
     transaction: 42,
-    netSales: 510,
+    netSales: 727,
   },
   {
     id: '2024-05-04',
@@ -3926,15 +3926,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-03T16:00:00.000Z'),
     gmv: 748,
     transaction: 52,
-    netSales: 636,
+    netSales: 516,
   },
   {
     id: '2024-05-05',
     name: '24/5/5',
     date: new Date('2024-05-04T16:00:00.000Z'),
     gmv: 721,
-    transaction: 51,
-    netSales: 613,
+    transaction: 50,
+    netSales: 430,
   },
   {
     id: '2024-05-06',
@@ -3942,7 +3942,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-05T16:00:00.000Z'),
     gmv: 637,
     transaction: 45,
-    netSales: 541,
+    netSales: 694,
   },
   {
     id: '2024-05-07',
@@ -3950,7 +3950,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-06T16:00:00.000Z'),
     gmv: 574,
     transaction: 40,
-    netSales: 488,
+    netSales: 793,
   },
   {
     id: '2024-05-08',
@@ -3958,7 +3958,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-07T16:00:00.000Z'),
     gmv: 628,
     transaction: 44,
-    netSales: 534,
+    netSales: 614,
   },
   {
     id: '2024-05-09',
@@ -3966,7 +3966,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-08T16:00:00.000Z'),
     gmv: 572,
     transaction: 40,
-    netSales: 486,
+    netSales: 555,
   },
   {
     id: '2024-05-10',
@@ -3974,7 +3974,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-09T16:00:00.000Z'),
     gmv: 676,
     transaction: 47,
-    netSales: 575,
+    netSales: 601,
   },
   {
     id: '2024-05-11',
@@ -3982,7 +3982,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-10T16:00:00.000Z'),
     gmv: 776,
     transaction: 54,
-    netSales: 660,
+    netSales: 360,
   },
   {
     id: '2024-05-12',
@@ -3990,7 +3990,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-11T16:00:00.000Z'),
     gmv: 862,
     transaction: 60,
-    netSales: 733,
+    netSales: 467,
   },
   {
     id: '2024-05-13',
@@ -3998,7 +3998,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-12T16:00:00.000Z'),
     gmv: 616,
     transaction: 43,
-    netSales: 524,
+    netSales: 629,
   },
   {
     id: '2024-05-14',
@@ -4006,7 +4006,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-13T16:00:00.000Z'),
     gmv: 559,
     transaction: 39,
-    netSales: 475,
+    netSales: 617,
   },
   {
     id: '2024-05-15',
@@ -4014,7 +4014,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-14T16:00:00.000Z'),
     gmv: 542,
     transaction: 38,
-    netSales: 461,
+    netSales: 654,
   },
   {
     id: '2024-05-16',
@@ -4022,7 +4022,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-15T16:00:00.000Z'),
     gmv: 581,
     transaction: 41,
-    netSales: 494,
+    netSales: 490,
   },
   {
     id: '2024-05-17',
@@ -4030,7 +4030,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-16T16:00:00.000Z'),
     gmv: 626,
     transaction: 44,
-    netSales: 532,
+    netSales: 530,
   },
   {
     id: '2024-05-18',
@@ -4038,7 +4038,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-17T16:00:00.000Z'),
     gmv: 704,
     transaction: 49,
-    netSales: 598,
+    netSales: 369,
   },
   {
     id: '2024-05-19',
@@ -4046,7 +4046,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-18T16:00:00.000Z'),
     gmv: 878,
     transaction: 61,
-    netSales: 746,
+    netSales: 340,
   },
   {
     id: '2024-05-20',
@@ -4054,7 +4054,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-19T16:00:00.000Z'),
     gmv: 646,
     transaction: 45,
-    netSales: 549,
+    netSales: 450,
   },
   {
     id: '2024-05-21',
@@ -4062,7 +4062,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-20T16:00:00.000Z'),
     gmv: 671,
     transaction: 47,
-    netSales: 570,
+    netSales: 401,
   },
   {
     id: '2024-05-22',
@@ -4070,7 +4070,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-21T16:00:00.000Z'),
     gmv: 656,
     transaction: 46,
-    netSales: 558,
+    netSales: 382,
   },
   {
     id: '2024-05-23',
@@ -4078,7 +4078,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-22T16:00:00.000Z'),
     gmv: 609,
     transaction: 43,
-    netSales: 518,
+    netSales: 454,
   },
   {
     id: '2024-05-24',
@@ -4086,7 +4086,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-23T16:00:00.000Z'),
     gmv: 645,
     transaction: 45,
-    netSales: 548,
+    netSales: 555,
   },
   {
     id: '2024-05-25',
@@ -4094,7 +4094,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-24T16:00:00.000Z'),
     gmv: 823,
     transaction: 58,
-    netSales: 700,
+    netSales: 270,
   },
   {
     id: '2024-05-26',
@@ -4102,7 +4102,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-25T16:00:00.000Z'),
     gmv: 708,
     transaction: 50,
-    netSales: 602,
+    netSales: 337,
   },
   {
     id: '2024-05-27',
@@ -4110,7 +4110,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-26T16:00:00.000Z'),
     gmv: 488,
     transaction: 34,
-    netSales: 415,
+    netSales: 466,
   },
   {
     id: '2024-05-28',
@@ -4118,7 +4118,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-27T16:00:00.000Z'),
     gmv: 616,
     transaction: 43,
-    netSales: 524,
+    netSales: 510,
   },
   {
     id: '2024-05-29',
@@ -4126,7 +4126,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-28T16:00:00.000Z'),
     gmv: 534,
     transaction: 37,
-    netSales: 454,
+    netSales: 512,
   },
   {
     id: '2024-05-30',
@@ -4134,7 +4134,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-29T16:00:00.000Z'),
     gmv: 496,
     transaction: 35,
-    netSales: 422,
+    netSales: 679,
   },
   {
     id: '2024-05-31',
@@ -4142,7 +4142,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-30T16:00:00.000Z'),
     gmv: 552,
     transaction: 39,
-    netSales: 469,
+    netSales: 569,
   },
   {
     id: '2024-06-01',
@@ -4150,7 +4150,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-05-31T16:00:00.000Z'),
     gmv: 665,
     transaction: 47,
-    netSales: 565,
+    netSales: 311,
   },
   {
     id: '2024-06-02',
@@ -4158,7 +4158,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-01T16:00:00.000Z'),
     gmv: 699,
     transaction: 49,
-    netSales: 594,
+    netSales: 307,
   },
   {
     id: '2024-06-03',
@@ -4166,7 +4166,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-02T16:00:00.000Z'),
     gmv: 516,
     transaction: 36,
-    netSales: 439,
+    netSales: 512,
   },
   {
     id: '2024-06-04',
@@ -4174,7 +4174,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-03T16:00:00.000Z'),
     gmv: 553,
     transaction: 39,
-    netSales: 470,
+    netSales: 523,
   },
   {
     id: '2024-06-05',
@@ -4182,7 +4182,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-04T16:00:00.000Z'),
     gmv: 654,
     transaction: 46,
-    netSales: 556,
+    netSales: 642,
   },
   {
     id: '2024-06-06',
@@ -4190,15 +4190,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-05T16:00:00.000Z'),
     gmv: 604,
     transaction: 42,
-    netSales: 513,
+    netSales: 584,
   },
   {
     id: '2024-06-07',
     name: '24/6/7',
     date: new Date('2024-06-06T16:00:00.000Z'),
     gmv: 664,
-    transaction: 47,
-    netSales: 564,
+    transaction: 46,
+    netSales: 508,
   },
   {
     id: '2024-06-08',
@@ -4206,7 +4206,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-07T16:00:00.000Z'),
     gmv: 904,
     transaction: 63,
-    netSales: 768,
+    netSales: 398,
   },
   {
     id: '2024-06-09',
@@ -4214,7 +4214,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-08T16:00:00.000Z'),
     gmv: 888,
     transaction: 62,
-    netSales: 755,
+    netSales: 472,
   },
   {
     id: '2024-06-10',
@@ -4222,7 +4222,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-09T16:00:00.000Z'),
     gmv: 609,
     transaction: 43,
-    netSales: 518,
+    netSales: 693,
   },
   {
     id: '2024-06-11',
@@ -4230,7 +4230,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-10T16:00:00.000Z'),
     gmv: 646,
     transaction: 45,
-    netSales: 549,
+    netSales: 502,
   },
   {
     id: '2024-06-12',
@@ -4238,7 +4238,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-11T16:00:00.000Z'),
     gmv: 589,
     transaction: 41,
-    netSales: 501,
+    netSales: 652,
   },
   {
     id: '2024-06-13',
@@ -4246,7 +4246,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-12T16:00:00.000Z'),
     gmv: 604,
     transaction: 42,
-    netSales: 513,
+    netSales: 548,
   },
   {
     id: '2024-06-14',
@@ -4254,7 +4254,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-13T16:00:00.000Z'),
     gmv: 591,
     transaction: 41,
-    netSales: 502,
+    netSales: 518,
   },
   {
     id: '2024-06-15',
@@ -4262,7 +4262,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-14T16:00:00.000Z'),
     gmv: 801,
     transaction: 56,
-    netSales: 681,
+    netSales: 325,
   },
   {
     id: '2024-06-16',
@@ -4270,7 +4270,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-15T16:00:00.000Z'),
     gmv: 898,
     transaction: 63,
-    netSales: 763,
+    netSales: 290,
   },
   {
     id: '2024-06-17',
@@ -4278,7 +4278,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-16T16:00:00.000Z'),
     gmv: 708,
     transaction: 50,
-    netSales: 602,
+    netSales: 425,
   },
   {
     id: '2024-06-18',
@@ -4286,7 +4286,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-17T16:00:00.000Z'),
     gmv: 593,
     transaction: 42,
-    netSales: 504,
+    netSales: 501,
   },
   {
     id: '2024-06-19',
@@ -4294,7 +4294,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-18T16:00:00.000Z'),
     gmv: 688,
     transaction: 48,
-    netSales: 585,
+    netSales: 431,
   },
   {
     id: '2024-06-20',
@@ -4302,7 +4302,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-19T16:00:00.000Z'),
     gmv: 650,
     transaction: 46,
-    netSales: 553,
+    netSales: 439,
   },
   {
     id: '2024-06-21',
@@ -4310,7 +4310,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-20T16:00:00.000Z'),
     gmv: 543,
     transaction: 38,
-    netSales: 462,
+    netSales: 482,
   },
   {
     id: '2024-06-22',
@@ -4318,7 +4318,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-21T16:00:00.000Z'),
     gmv: 684,
     transaction: 48,
-    netSales: 581,
+    netSales: 282,
   },
   {
     id: '2024-06-23',
@@ -4326,7 +4326,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-22T16:00:00.000Z'),
     gmv: 730,
     transaction: 51,
-    netSales: 621,
+    netSales: 279,
   },
   {
     id: '2024-06-24',
@@ -4334,7 +4334,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-23T16:00:00.000Z'),
     gmv: 603,
     transaction: 42,
-    netSales: 513,
+    netSales: 381,
   },
   {
     id: '2024-06-25',
@@ -4342,7 +4342,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-24T16:00:00.000Z'),
     gmv: 604,
     transaction: 42,
-    netSales: 513,
+    netSales: 468,
   },
   {
     id: '2024-06-26',
@@ -4350,7 +4350,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-25T16:00:00.000Z'),
     gmv: 664,
     transaction: 46,
-    netSales: 564,
+    netSales: 507,
   },
   {
     id: '2024-06-27',
@@ -4358,7 +4358,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-26T16:00:00.000Z'),
     gmv: 549,
     transaction: 38,
-    netSales: 467,
+    netSales: 507,
   },
   {
     id: '2024-06-28',
@@ -4366,7 +4366,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-27T16:00:00.000Z'),
     gmv: 611,
     transaction: 43,
-    netSales: 519,
+    netSales: 447,
   },
   {
     id: '2024-06-29',
@@ -4374,7 +4374,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-28T16:00:00.000Z'),
     gmv: 740,
     transaction: 52,
-    netSales: 629,
+    netSales: 391,
   },
   {
     id: '2024-06-30',
@@ -4382,7 +4382,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-29T16:00:00.000Z'),
     gmv: 745,
     transaction: 52,
-    netSales: 633,
+    netSales: 317,
   },
   {
     id: '2024-07-01',
@@ -4390,7 +4390,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-06-30T16:00:00.000Z'),
     gmv: 604,
     transaction: 42,
-    netSales: 513,
+    netSales: 543,
   },
   {
     id: '2024-07-02',
@@ -4398,7 +4398,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-01T16:00:00.000Z'),
     gmv: 524,
     transaction: 37,
-    netSales: 445,
+    netSales: 488,
   },
   {
     id: '2024-07-03',
@@ -4406,7 +4406,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-02T16:00:00.000Z'),
     gmv: 634,
     transaction: 44,
-    netSales: 539,
+    netSales: 499,
   },
   {
     id: '2024-07-04',
@@ -4414,7 +4414,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-03T16:00:00.000Z'),
     gmv: 629,
     transaction: 44,
-    netSales: 535,
+    netSales: 590,
   },
   {
     id: '2024-07-05',
@@ -4422,7 +4422,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-04T16:00:00.000Z'),
     gmv: 594,
     transaction: 42,
-    netSales: 505,
+    netSales: 429,
   },
   {
     id: '2024-07-06',
@@ -4430,7 +4430,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-05T16:00:00.000Z'),
     gmv: 828,
     transaction: 58,
-    netSales: 704,
+    netSales: 345,
   },
   {
     id: '2024-07-07',
@@ -4438,7 +4438,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-06T16:00:00.000Z'),
     gmv: 715,
     transaction: 50,
-    netSales: 608,
+    netSales: 329,
   },
   {
     id: '2024-07-08',
@@ -4446,7 +4446,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-07T16:00:00.000Z'),
     gmv: 579,
     transaction: 41,
-    netSales: 492,
+    netSales: 604,
   },
   {
     id: '2024-07-09',
@@ -4454,7 +4454,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-08T16:00:00.000Z'),
     gmv: 574,
     transaction: 40,
-    netSales: 488,
+    netSales: 462,
   },
   {
     id: '2024-07-10',
@@ -4462,7 +4462,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-09T16:00:00.000Z'),
     gmv: 662,
     transaction: 46,
-    netSales: 563,
+    netSales: 572,
   },
   {
     id: '2024-07-11',
@@ -4470,7 +4470,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-10T16:00:00.000Z'),
     gmv: 608,
     transaction: 43,
-    netSales: 517,
+    netSales: 452,
   },
   {
     id: '2024-07-12',
@@ -4478,7 +4478,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-11T16:00:00.000Z'),
     gmv: 567,
     transaction: 40,
-    netSales: 482,
+    netSales: 605,
   },
   {
     id: '2024-07-13',
@@ -4486,7 +4486,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-12T16:00:00.000Z'),
     gmv: 732,
     transaction: 51,
-    netSales: 622,
+    netSales: 394,
   },
   {
     id: '2024-07-14',
@@ -4494,7 +4494,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-13T16:00:00.000Z'),
     gmv: 872,
     transaction: 61,
-    netSales: 741,
+    netSales: 331,
   },
   {
     id: '2024-07-15',
@@ -4502,7 +4502,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-14T16:00:00.000Z'),
     gmv: 645,
     transaction: 45,
-    netSales: 548,
+    netSales: 427,
   },
   {
     id: '2024-07-16',
@@ -4510,7 +4510,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-15T16:00:00.000Z'),
     gmv: 696,
     transaction: 49,
-    netSales: 592,
+    netSales: 368,
   },
   {
     id: '2024-07-17',
@@ -4518,7 +4518,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-16T16:00:00.000Z'),
     gmv: 749,
     transaction: 52,
-    netSales: 637,
+    netSales: 492,
   },
   {
     id: '2024-07-18',
@@ -4526,7 +4526,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-17T16:00:00.000Z'),
     gmv: 590,
     transaction: 41,
-    netSales: 502,
+    netSales: 407,
   },
   {
     id: '2024-07-19',
@@ -4534,7 +4534,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-18T16:00:00.000Z'),
     gmv: 624,
     transaction: 44,
-    netSales: 530,
+    netSales: 427,
   },
   {
     id: '2024-07-20',
@@ -4542,7 +4542,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-19T16:00:00.000Z'),
     gmv: 883,
     transaction: 62,
-    netSales: 751,
+    netSales: 243,
   },
   {
     id: '2024-07-21',
@@ -4550,7 +4550,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-20T16:00:00.000Z'),
     gmv: 911,
     transaction: 64,
-    netSales: 774,
+    netSales: 287,
   },
   {
     id: '2024-07-22',
@@ -4558,7 +4558,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-21T16:00:00.000Z'),
     gmv: 550,
     transaction: 39,
-    netSales: 468,
+    netSales: 411,
   },
   {
     id: '2024-07-23',
@@ -4566,7 +4566,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-22T16:00:00.000Z'),
     gmv: 577,
     transaction: 40,
-    netSales: 490,
+    netSales: 364,
   },
   {
     id: '2024-07-24',
@@ -4574,7 +4574,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-23T16:00:00.000Z'),
     gmv: 606,
     transaction: 42,
-    netSales: 515,
+    netSales: 357,
   },
   {
     id: '2024-07-25',
@@ -4582,7 +4582,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-24T16:00:00.000Z'),
     gmv: 610,
     transaction: 43,
-    netSales: 519,
+    netSales: 303,
   },
   {
     id: '2024-07-26',
@@ -4590,7 +4590,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-25T16:00:00.000Z'),
     gmv: 691,
     transaction: 48,
-    netSales: 587,
+    netSales: 387,
   },
   {
     id: '2024-07-27',
@@ -4598,7 +4598,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-26T16:00:00.000Z'),
     gmv: 885,
     transaction: 62,
-    netSales: 752,
+    netSales: 260,
   },
   {
     id: '2024-07-28',
@@ -4606,7 +4606,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-27T16:00:00.000Z'),
     gmv: 872,
     transaction: 61,
-    netSales: 741,
+    netSales: 321,
   },
   {
     id: '2024-07-29',
@@ -4614,7 +4614,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-28T16:00:00.000Z'),
     gmv: 541,
     transaction: 38,
-    netSales: 460,
+    netSales: 474,
   },
   {
     id: '2024-07-30',
@@ -4622,7 +4622,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-29T16:00:00.000Z'),
     gmv: 595,
     transaction: 42,
-    netSales: 506,
+    netSales: 419,
   },
   {
     id: '2024-07-31',
@@ -4630,7 +4630,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-30T16:00:00.000Z'),
     gmv: 567,
     transaction: 40,
-    netSales: 482,
+    netSales: 562,
   },
   {
     id: '2024-08-01',
@@ -4638,7 +4638,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-07-31T16:00:00.000Z'),
     gmv: 602,
     transaction: 42,
-    netSales: 512,
+    netSales: 449,
   },
   {
     id: '2024-08-02',
@@ -4646,7 +4646,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-01T16:00:00.000Z'),
     gmv: 636,
     transaction: 45,
-    netSales: 541,
+    netSales: 358,
   },
   {
     id: '2024-08-03',
@@ -4654,7 +4654,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-02T16:00:00.000Z'),
     gmv: 923,
     transaction: 65,
-    netSales: 785,
+    netSales: 309,
   },
   {
     id: '2024-08-04',
@@ -4662,7 +4662,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-03T16:00:00.000Z'),
     gmv: 714,
     transaction: 50,
-    netSales: 607,
+    netSales: 281,
   },
   {
     id: '2024-08-05',
@@ -4670,7 +4670,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-04T16:00:00.000Z'),
     gmv: 706,
     transaction: 49,
-    netSales: 600,
+    netSales: 490,
   },
   {
     id: '2024-08-06',
@@ -4678,7 +4678,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-05T16:00:00.000Z'),
     gmv: 691,
     transaction: 48,
-    netSales: 587,
+    netSales: 455,
   },
   {
     id: '2024-08-07',
@@ -4686,7 +4686,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-06T16:00:00.000Z'),
     gmv: 565,
     transaction: 40,
-    netSales: 480,
+    netSales: 492,
   },
   {
     id: '2024-08-08',
@@ -4694,7 +4694,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-07T16:00:00.000Z'),
     gmv: 721,
     transaction: 50,
-    netSales: 613,
+    netSales: 472,
   },
   {
     id: '2024-08-09',
@@ -4702,7 +4702,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-08T16:00:00.000Z'),
     gmv: 594,
     transaction: 42,
-    netSales: 505,
+    netSales: 402,
   },
   {
     id: '2024-08-10',
@@ -4710,7 +4710,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-09T16:00:00.000Z'),
     gmv: 948,
     transaction: 66,
-    netSales: 806,
+    netSales: 309,
   },
   {
     id: '2024-08-11',
@@ -4718,7 +4718,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-10T16:00:00.000Z'),
     gmv: 1008,
     transaction: 71,
-    netSales: 857,
+    netSales: 324,
   },
   {
     id: '2024-08-12',
@@ -4726,7 +4726,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-11T16:00:00.000Z'),
     gmv: 674,
     transaction: 47,
-    netSales: 573,
+    netSales: 486,
   },
   {
     id: '2024-08-13',
@@ -4734,7 +4734,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-12T16:00:00.000Z'),
     gmv: 591,
     transaction: 41,
-    netSales: 502,
+    netSales: 472,
   },
   {
     id: '2024-08-14',
@@ -4742,7 +4742,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-13T16:00:00.000Z'),
     gmv: 625,
     transaction: 44,
-    netSales: 531,
+    netSales: 388,
   },
   {
     id: '2024-08-15',
@@ -4750,7 +4750,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-14T16:00:00.000Z'),
     gmv: 743,
     transaction: 52,
-    netSales: 632,
+    netSales: 365,
   },
   {
     id: '2024-08-16',
@@ -4758,7 +4758,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-15T16:00:00.000Z'),
     gmv: 780,
     transaction: 55,
-    netSales: 663,
+    netSales: 360,
   },
   {
     id: '2024-08-17',
@@ -4766,7 +4766,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-16T16:00:00.000Z'),
     gmv: 1013,
     transaction: 71,
-    netSales: 861,
+    netSales: 222,
   },
   {
     id: '2024-08-18',
@@ -4774,7 +4774,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-17T16:00:00.000Z'),
     gmv: 929,
     transaction: 65,
-    netSales: 790,
+    netSales: 195,
   },
   {
     id: '2024-08-19',
@@ -4782,7 +4782,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-18T16:00:00.000Z'),
     gmv: 760,
     transaction: 53,
-    netSales: 646,
+    netSales: 268,
   },
   {
     id: '2024-08-20',
@@ -4790,7 +4790,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-19T16:00:00.000Z'),
     gmv: 637,
     transaction: 45,
-    netSales: 541,
+    netSales: 322,
   },
   {
     id: '2024-08-21',
@@ -4798,7 +4798,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-20T16:00:00.000Z'),
     gmv: 604,
     transaction: 42,
-    netSales: 513,
+    netSales: 377,
   },
   {
     id: '2024-08-22',
@@ -4806,7 +4806,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-21T16:00:00.000Z'),
     gmv: 670,
     transaction: 47,
-    netSales: 570,
+    netSales: 368,
   },
   {
     id: '2024-08-23',
@@ -4814,7 +4814,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-22T16:00:00.000Z'),
     gmv: 624,
     transaction: 44,
-    netSales: 530,
+    netSales: 291,
   },
   {
     id: '2024-08-24',
@@ -4822,7 +4822,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-23T16:00:00.000Z'),
     gmv: 757,
     transaction: 53,
-    netSales: 643,
+    netSales: 221,
   },
   {
     id: '2024-08-25',
@@ -4830,7 +4830,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-24T16:00:00.000Z'),
     gmv: 914,
     transaction: 64,
-    netSales: 777,
+    netSales: 216,
   },
   {
     id: '2024-08-26',
@@ -4838,7 +4838,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-25T16:00:00.000Z'),
     gmv: 611,
     transaction: 43,
-    netSales: 519,
+    netSales: 268,
   },
   {
     id: '2024-08-27',
@@ -4846,7 +4846,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-26T16:00:00.000Z'),
     gmv: 694,
     transaction: 49,
-    netSales: 590,
+    netSales: 338,
   },
   {
     id: '2024-08-28',
@@ -4854,7 +4854,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-27T16:00:00.000Z'),
     gmv: 645,
     transaction: 45,
-    netSales: 548,
+    netSales: 324,
   },
   {
     id: '2024-08-29',
@@ -4862,7 +4862,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-28T16:00:00.000Z'),
     gmv: 640,
     transaction: 45,
-    netSales: 544,
+    netSales: 365,
   },
   {
     id: '2024-08-30',
@@ -4870,7 +4870,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-29T16:00:00.000Z'),
     gmv: 678,
     transaction: 47,
-    netSales: 576,
+    netSales: 447,
   },
   {
     id: '2024-08-31',
@@ -4878,7 +4878,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-30T16:00:00.000Z'),
     gmv: 818,
     transaction: 57,
-    netSales: 695,
+    netSales: 300,
   },
   {
     id: '2024-09-01',
@@ -4886,7 +4886,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-08-31T16:00:00.000Z'),
     gmv: 851,
     transaction: 60,
-    netSales: 723,
+    netSales: 279,
   },
   {
     id: '2024-09-02',
@@ -4894,7 +4894,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-01T16:00:00.000Z'),
     gmv: 726,
     transaction: 51,
-    netSales: 617,
+    netSales: 424,
   },
   {
     id: '2024-09-03',
@@ -4902,7 +4902,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-02T16:00:00.000Z'),
     gmv: 556,
     transaction: 39,
-    netSales: 473,
+    netSales: 358,
   },
   {
     id: '2024-09-04',
@@ -4910,7 +4910,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-03T16:00:00.000Z'),
     gmv: 703,
     transaction: 49,
-    netSales: 598,
+    netSales: 383,
   },
   {
     id: '2024-09-05',
@@ -4918,7 +4918,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-04T16:00:00.000Z'),
     gmv: 565,
     transaction: 40,
-    netSales: 480,
+    netSales: 400,
   },
   {
     id: '2024-09-06',
@@ -4926,7 +4926,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-05T16:00:00.000Z'),
     gmv: 655,
     transaction: 46,
-    netSales: 557,
+    netSales: 341,
   },
   {
     id: '2024-09-07',
@@ -4934,7 +4934,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-06T16:00:00.000Z'),
     gmv: 957,
     transaction: 67,
-    netSales: 813,
+    netSales: 274,
   },
   {
     id: '2024-09-08',
@@ -4942,7 +4942,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-07T16:00:00.000Z'),
     gmv: 772,
     transaction: 54,
-    netSales: 656,
+    netSales: 282,
   },
   {
     id: '2024-09-09',
@@ -4950,7 +4950,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-08T16:00:00.000Z'),
     gmv: 627,
     transaction: 44,
-    netSales: 533,
+    netSales: 480,
   },
   {
     id: '2024-09-10',
@@ -4958,7 +4958,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-09T16:00:00.000Z'),
     gmv: 784,
     transaction: 55,
-    netSales: 666,
+    netSales: 370,
   },
   {
     id: '2024-09-11',
@@ -4966,7 +4966,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-10T16:00:00.000Z'),
     gmv: 676,
     transaction: 47,
-    netSales: 575,
+    netSales: 316,
   },
   {
     id: '2024-09-12',
@@ -4974,7 +4974,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-11T16:00:00.000Z'),
     gmv: 728,
     transaction: 51,
-    netSales: 619,
+    netSales: 378,
   },
   {
     id: '2024-09-13',
@@ -4982,7 +4982,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-12T16:00:00.000Z'),
     gmv: 607,
     transaction: 42,
-    netSales: 516,
+    netSales: 375,
   },
   {
     id: '2024-09-14',
@@ -4990,7 +4990,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-13T16:00:00.000Z'),
     gmv: 978,
     transaction: 68,
-    netSales: 831,
+    netSales: 229,
   },
   {
     id: '2024-09-15',
@@ -4998,7 +4998,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-14T16:00:00.000Z'),
     gmv: 959,
     transaction: 67,
-    netSales: 815,
+    netSales: 204,
   },
   {
     id: '2024-09-16',
@@ -5006,7 +5006,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-15T16:00:00.000Z'),
     gmv: 664,
     transaction: 46,
-    netSales: 564,
+    netSales: 378,
   },
   {
     id: '2024-09-17',
@@ -5014,7 +5014,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-16T16:00:00.000Z'),
     gmv: 640,
     transaction: 45,
-    netSales: 544,
+    netSales: 256,
   },
   {
     id: '2024-09-18',
@@ -5022,7 +5022,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-17T16:00:00.000Z'),
     gmv: 652,
     transaction: 46,
-    netSales: 554,
+    netSales: 291,
   },
   {
     id: '2024-09-19',
@@ -5030,7 +5030,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-18T16:00:00.000Z'),
     gmv: 675,
     transaction: 47,
-    netSales: 574,
+    netSales: 329,
   },
   {
     id: '2024-09-20',
@@ -5038,7 +5038,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-19T16:00:00.000Z'),
     gmv: 762,
     transaction: 53,
-    netSales: 648,
+    netSales: 270,
   },
   {
     id: '2024-09-21',
@@ -5046,7 +5046,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-20T16:00:00.000Z'),
     gmv: 838,
     transaction: 59,
-    netSales: 712,
+    netSales: 191,
   },
   {
     id: '2024-09-22',
@@ -5054,7 +5054,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-21T16:00:00.000Z'),
     gmv: 887,
     transaction: 62,
-    netSales: 754,
+    netSales: 167,
   },
   {
     id: '2024-09-23',
@@ -5062,7 +5062,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-22T16:00:00.000Z'),
     gmv: 586,
     transaction: 41,
-    netSales: 498,
+    netSales: 237,
   },
   {
     id: '2024-09-24',
@@ -5070,7 +5070,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-23T16:00:00.000Z'),
     gmv: 767,
     transaction: 54,
-    netSales: 652,
+    netSales: 312,
   },
   {
     id: '2024-09-25',
@@ -5078,7 +5078,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-24T16:00:00.000Z'),
     gmv: 715,
     transaction: 50,
-    netSales: 608,
+    netSales: 243,
   },
   {
     id: '2024-09-26',
@@ -5086,7 +5086,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-25T16:00:00.000Z'),
     gmv: 724,
     transaction: 51,
-    netSales: 615,
+    netSales: 252,
   },
   {
     id: '2024-09-27',
@@ -5094,7 +5094,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-26T16:00:00.000Z'),
     gmv: 673,
     transaction: 47,
-    netSales: 572,
+    netSales: 352,
   },
   {
     id: '2024-09-28',
@@ -5102,7 +5102,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-27T16:00:00.000Z'),
     gmv: 726,
     transaction: 51,
-    netSales: 617,
+    netSales: 238,
   },
   {
     id: '2024-09-29',
@@ -5110,7 +5110,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-28T16:00:00.000Z'),
     gmv: 789,
     transaction: 55,
-    netSales: 671,
+    netSales: 180,
   },
   {
     id: '2024-09-30',
@@ -5118,7 +5118,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-29T16:00:00.000Z'),
     gmv: 651,
     transaction: 46,
-    netSales: 553,
+    netSales: 338,
   },
   {
     id: '2024-10-01',
@@ -5126,7 +5126,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-09-30T16:00:00.000Z'),
     gmv: 685,
     transaction: 48,
-    netSales: 582,
+    netSales: 362,
   },
   {
     id: '2024-10-02',
@@ -5134,7 +5134,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-01T16:00:00.000Z'),
     gmv: 640,
     transaction: 45,
-    netSales: 544,
+    netSales: 327,
   },
   {
     id: '2024-10-03',
@@ -5142,7 +5142,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-02T16:00:00.000Z'),
     gmv: 748,
     transaction: 52,
-    netSales: 636,
+    netSales: 355,
   },
   {
     id: '2024-10-04',
@@ -5150,7 +5150,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-03T16:00:00.000Z'),
     gmv: 586,
     transaction: 41,
-    netSales: 498,
+    netSales: 436,
   },
   {
     id: '2024-10-05',
@@ -5158,7 +5158,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-04T16:00:00.000Z'),
     gmv: 968,
     transaction: 68,
-    netSales: 823,
+    netSales: 221,
   },
   {
     id: '2024-10-06',
@@ -5166,7 +5166,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-05T16:00:00.000Z'),
     gmv: 780,
     transaction: 55,
-    netSales: 663,
+    netSales: 216,
   },
   {
     id: '2024-10-07',
@@ -5174,7 +5174,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-06T16:00:00.000Z'),
     gmv: 679,
     transaction: 48,
-    netSales: 577,
+    netSales: 442,
   },
   {
     id: '2024-10-08',
@@ -5182,7 +5182,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-07T16:00:00.000Z'),
     gmv: 615,
     transaction: 43,
-    netSales: 523,
+    netSales: 435,
   },
   {
     id: '2024-10-09',
@@ -5190,7 +5190,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-08T16:00:00.000Z'),
     gmv: 785,
     transaction: 55,
-    netSales: 667,
+    netSales: 371,
   },
   {
     id: '2024-10-10',
@@ -5198,7 +5198,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-09T16:00:00.000Z'),
     gmv: 817,
     transaction: 57,
-    netSales: 694,
+    netSales: 378,
   },
   {
     id: '2024-10-11',
@@ -5206,7 +5206,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-10T16:00:00.000Z'),
     gmv: 681,
     transaction: 48,
-    netSales: 579,
+    netSales: 377,
   },
   {
     id: '2024-10-12',
@@ -5214,7 +5214,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-11T16:00:00.000Z'),
     gmv: 971,
     transaction: 68,
-    netSales: 825,
+    netSales: 233,
   },
   {
     id: '2024-10-13',
@@ -5222,7 +5222,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-12T16:00:00.000Z'),
     gmv: 1044,
     transaction: 73,
-    netSales: 887,
+    netSales: 246,
   },
   {
     id: '2024-10-14',
@@ -5230,7 +5230,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-13T16:00:00.000Z'),
     gmv: 621,
     transaction: 43,
-    netSales: 528,
+    netSales: 346,
   },
   {
     id: '2024-10-15',
@@ -5238,7 +5238,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-14T16:00:00.000Z'),
     gmv: 679,
     transaction: 48,
-    netSales: 577,
+    netSales: 357,
   },
   {
     id: '2024-10-16',
@@ -5246,7 +5246,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-15T16:00:00.000Z'),
     gmv: 657,
     transaction: 46,
-    netSales: 558,
+    netSales: 318,
   },
   {
     id: '2024-10-17',
@@ -5254,7 +5254,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-16T16:00:00.000Z'),
     gmv: 794,
     transaction: 56,
-    netSales: 675,
+    netSales: 282,
   },
   {
     id: '2024-10-18',
@@ -5262,7 +5262,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-17T16:00:00.000Z'),
     gmv: 728,
     transaction: 51,
-    netSales: 619,
+    netSales: 285,
   },
   {
     id: '2024-10-19',
@@ -5270,7 +5270,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-18T16:00:00.000Z'),
     gmv: 1057,
     transaction: 74,
-    netSales: 898,
+    netSales: 174,
   },
   {
     id: '2024-10-20',
@@ -5278,7 +5278,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-19T16:00:00.000Z'),
     gmv: 1037,
     transaction: 73,
-    netSales: 881,
+    netSales: 155,
   },
   {
     id: '2024-10-21',
@@ -5286,7 +5286,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-20T16:00:00.000Z'),
     gmv: 681,
     transaction: 48,
-    netSales: 579,
+    netSales: 254,
   },
   {
     id: '2024-10-22',
@@ -5294,7 +5294,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-21T16:00:00.000Z'),
     gmv: 662,
     transaction: 46,
-    netSales: 563,
+    netSales: 249,
   },
   {
     id: '2024-10-23',
@@ -5302,7 +5302,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-22T16:00:00.000Z'),
     gmv: 595,
     transaction: 42,
-    netSales: 506,
+    netSales: 214,
   },
   {
     id: '2024-10-24',
@@ -5310,7 +5310,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-23T16:00:00.000Z'),
     gmv: 779,
     transaction: 55,
-    netSales: 662,
+    netSales: 228,
   },
   {
     id: '2024-10-25',
@@ -5318,7 +5318,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-24T16:00:00.000Z'),
     gmv: 638,
     transaction: 45,
-    netSales: 542,
+    netSales: 291,
   },
   {
     id: '2024-10-26',
@@ -5326,7 +5326,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-25T16:00:00.000Z'),
     gmv: 760,
     transaction: 53,
-    netSales: 646,
+    netSales: 177,
   },
   {
     id: '2024-10-27',
@@ -5334,7 +5334,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-26T16:00:00.000Z'),
     gmv: 924,
     transaction: 65,
-    netSales: 785,
+    netSales: 204,
   },
   {
     id: '2024-10-28',
@@ -5342,7 +5342,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-27T16:00:00.000Z'),
     gmv: 590,
     transaction: 41,
-    netSales: 502,
+    netSales: 340,
   },
   {
     id: '2024-10-29',
@@ -5350,7 +5350,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-28T16:00:00.000Z'),
     gmv: 733,
     transaction: 51,
-    netSales: 623,
+    netSales: 361,
   },
   {
     id: '2024-10-30',
@@ -5358,7 +5358,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-29T16:00:00.000Z'),
     gmv: 706,
     transaction: 49,
-    netSales: 600,
+    netSales: 339,
   },
   {
     id: '2024-10-31',
@@ -5366,7 +5366,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-30T16:00:00.000Z'),
     gmv: 592,
     transaction: 41,
-    netSales: 503,
+    netSales: 361,
   },
   {
     id: '2024-11-01',
@@ -5374,7 +5374,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-10-31T16:00:00.000Z'),
     gmv: 585,
     transaction: 41,
-    netSales: 497,
+    netSales: 293,
   },
   {
     id: '2024-11-02',
@@ -5382,7 +5382,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-01T16:00:00.000Z'),
     gmv: 846,
     transaction: 59,
-    netSales: 719,
+    netSales: 197,
   },
   {
     id: '2024-11-03',
@@ -5390,7 +5390,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-02T16:00:00.000Z'),
     gmv: 770,
     transaction: 54,
-    netSales: 655,
+    netSales: 263,
   },
   {
     id: '2024-11-04',
@@ -5398,7 +5398,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-03T16:00:00.000Z'),
     gmv: 603,
     transaction: 42,
-    netSales: 513,
+    netSales: 337,
   },
   {
     id: '2024-11-05',
@@ -5406,7 +5406,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-04T16:00:00.000Z'),
     gmv: 752,
     transaction: 53,
-    netSales: 639,
+    netSales: 421,
   },
   {
     id: '2024-11-06',
@@ -5414,7 +5414,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-05T16:00:00.000Z'),
     gmv: 622,
     transaction: 44,
-    netSales: 529,
+    netSales: 456,
   },
   {
     id: '2024-11-07',
@@ -5422,7 +5422,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-06T16:00:00.000Z'),
     gmv: 733,
     transaction: 51,
-    netSales: 623,
+    netSales: 471,
   },
   {
     id: '2024-11-08',
@@ -5430,7 +5430,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-07T16:00:00.000Z'),
     gmv: 774,
     transaction: 54,
-    netSales: 658,
+    netSales: 389,
   },
   {
     id: '2024-11-09',
@@ -5438,7 +5438,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-08T16:00:00.000Z'),
     gmv: 928,
     transaction: 65,
-    netSales: 789,
+    netSales: 258,
   },
   {
     id: '2024-11-10',
@@ -5446,7 +5446,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-09T16:00:00.000Z'),
     gmv: 912,
     transaction: 64,
-    netSales: 775,
+    netSales: 303,
   },
   {
     id: '2024-11-11',
@@ -5454,7 +5454,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-10T16:00:00.000Z'),
     gmv: 722,
     transaction: 51,
-    netSales: 614,
+    netSales: 393,
   },
   {
     id: '2024-11-12',
@@ -5462,7 +5462,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-11T16:00:00.000Z'),
     gmv: 744,
     transaction: 52,
-    netSales: 632,
+    netSales: 399,
   },
   {
     id: '2024-11-13',
@@ -5470,7 +5470,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-12T16:00:00.000Z'),
     gmv: 730,
     transaction: 51,
-    netSales: 621,
+    netSales: 300,
   },
   {
     id: '2024-11-14',
@@ -5478,7 +5478,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-13T16:00:00.000Z'),
     gmv: 678,
     transaction: 47,
-    netSales: 576,
+    netSales: 413,
   },
   {
     id: '2024-11-15',
@@ -5486,7 +5486,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-14T16:00:00.000Z'),
     gmv: 644,
     transaction: 45,
-    netSales: 547,
+    netSales: 297,
   },
   {
     id: '2024-11-16',
@@ -5494,7 +5494,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-15T16:00:00.000Z'),
     gmv: 837,
     transaction: 59,
-    netSales: 711,
+    netSales: 221,
   },
   {
     id: '2024-11-17',
@@ -5502,7 +5502,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-16T16:00:00.000Z'),
     gmv: 1105,
     transaction: 77,
-    netSales: 939,
+    netSales: 198,
   },
   {
     id: '2024-11-18',
@@ -5510,7 +5510,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-17T16:00:00.000Z'),
     gmv: 795,
     transaction: 56,
-    netSales: 676,
+    netSales: 347,
   },
   {
     id: '2024-11-19',
@@ -5518,7 +5518,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-18T16:00:00.000Z'),
     gmv: 711,
     transaction: 50,
-    netSales: 604,
+    netSales: 330,
   },
   {
     id: '2024-11-20',
@@ -5526,7 +5526,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-19T16:00:00.000Z'),
     gmv: 700,
     transaction: 49,
-    netSales: 595,
+    netSales: 254,
   },
   {
     id: '2024-11-21',
@@ -5534,7 +5534,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-20T16:00:00.000Z'),
     gmv: 700,
     transaction: 49,
-    netSales: 595,
+    netSales: 246,
   },
   {
     id: '2024-11-22',
@@ -5542,7 +5542,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-21T16:00:00.000Z'),
     gmv: 683,
     transaction: 48,
-    netSales: 581,
+    netSales: 312,
   },
   {
     id: '2024-11-23',
@@ -5550,7 +5550,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-22T16:00:00.000Z'),
     gmv: 954,
     transaction: 67,
-    netSales: 811,
+    netSales: 208,
   },
   {
     id: '2024-11-24',
@@ -5558,7 +5558,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-23T16:00:00.000Z'),
     gmv: 857,
     transaction: 60,
-    netSales: 728,
+    netSales: 156,
   },
   {
     id: '2024-11-25',
@@ -5566,7 +5566,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-24T16:00:00.000Z'),
     gmv: 800,
     transaction: 56,
-    netSales: 680,
+    netSales: 307,
   },
   {
     id: '2024-11-26',
@@ -5574,7 +5574,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-25T16:00:00.000Z'),
     gmv: 648,
     transaction: 45,
-    netSales: 551,
+    netSales: 271,
   },
   {
     id: '2024-11-27',
@@ -5582,7 +5582,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-26T16:00:00.000Z'),
     gmv: 731,
     transaction: 51,
-    netSales: 621,
+    netSales: 285,
   },
   {
     id: '2024-11-28',
@@ -5590,7 +5590,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-27T16:00:00.000Z'),
     gmv: 753,
     transaction: 53,
-    netSales: 640,
+    netSales: 331,
   },
   {
     id: '2024-11-29',
@@ -5598,7 +5598,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-28T16:00:00.000Z'),
     gmv: 574,
     transaction: 40,
-    netSales: 488,
+    netSales: 302,
   },
   {
     id: '2024-11-30',
@@ -5606,7 +5606,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-29T16:00:00.000Z'),
     gmv: 941,
     transaction: 66,
-    netSales: 800,
+    netSales: 214,
   },
   {
     id: '2024-12-01',
@@ -5614,7 +5614,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-11-30T16:00:00.000Z'),
     gmv: 789,
     transaction: 55,
-    netSales: 671,
+    netSales: 303,
   },
   {
     id: '2024-12-02',
@@ -5622,7 +5622,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-01T16:00:00.000Z'),
     gmv: 600,
     transaction: 42,
-    netSales: 510,
+    netSales: 484,
   },
   {
     id: '2024-12-03',
@@ -5630,7 +5630,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-02T16:00:00.000Z'),
     gmv: 609,
     transaction: 43,
-    netSales: 518,
+    netSales: 383,
   },
   {
     id: '2024-12-04',
@@ -5638,7 +5638,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-03T16:00:00.000Z'),
     gmv: 693,
     transaction: 49,
-    netSales: 589,
+    netSales: 410,
   },
   {
     id: '2024-12-05',
@@ -5646,7 +5646,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-04T16:00:00.000Z'),
     gmv: 774,
     transaction: 54,
-    netSales: 658,
+    netSales: 539,
   },
   {
     id: '2024-12-06',
@@ -5654,7 +5654,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-05T16:00:00.000Z'),
     gmv: 702,
     transaction: 49,
-    netSales: 597,
+    netSales: 520,
   },
   {
     id: '2024-12-07',
@@ -5662,7 +5662,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-06T16:00:00.000Z'),
     gmv: 1102,
     transaction: 77,
-    netSales: 937,
+    netSales: 316,
   },
   {
     id: '2024-12-08',
@@ -5670,7 +5670,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-07T16:00:00.000Z'),
     gmv: 1089,
     transaction: 76,
-    netSales: 926,
+    netSales: 331,
   },
   {
     id: '2024-12-09',
@@ -5678,7 +5678,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-08T16:00:00.000Z'),
     gmv: 736,
     transaction: 52,
-    netSales: 626,
+    netSales: 462,
   },
   {
     id: '2024-12-10',
@@ -5686,7 +5686,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-09T16:00:00.000Z'),
     gmv: 773,
     transaction: 54,
-    netSales: 657,
+    netSales: 448,
   },
   {
     id: '2024-12-11',
@@ -5694,7 +5694,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-10T16:00:00.000Z'),
     gmv: 696,
     transaction: 49,
-    netSales: 592,
+    netSales: 483,
   },
   {
     id: '2024-12-12',
@@ -5702,7 +5702,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-11T16:00:00.000Z'),
     gmv: 815,
     transaction: 57,
-    netSales: 693,
+    netSales: 462,
   },
   {
     id: '2024-12-13',
@@ -5710,7 +5710,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-12T16:00:00.000Z'),
     gmv: 875,
     transaction: 61,
-    netSales: 744,
+    netSales: 419,
   },
   {
     id: '2024-12-14',
@@ -5718,7 +5718,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-13T16:00:00.000Z'),
     gmv: 909,
     transaction: 64,
-    netSales: 773,
+    netSales: 251,
   },
   {
     id: '2024-12-15',
@@ -5726,7 +5726,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-14T16:00:00.000Z'),
     gmv: 1084,
     transaction: 76,
-    netSales: 921,
+    netSales: 214,
   },
   {
     id: '2024-12-16',
@@ -5734,7 +5734,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-15T16:00:00.000Z'),
     gmv: 770,
     transaction: 54,
-    netSales: 655,
+    netSales: 415,
   },
   {
     id: '2024-12-17',
@@ -5742,7 +5742,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-16T16:00:00.000Z'),
     gmv: 811,
     transaction: 57,
-    netSales: 689,
+    netSales: 353,
   },
   {
     id: '2024-12-18',
@@ -5750,7 +5750,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-17T16:00:00.000Z'),
     gmv: 715,
     transaction: 50,
-    netSales: 608,
+    netSales: 358,
   },
   {
     id: '2024-12-19',
@@ -5758,7 +5758,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-18T16:00:00.000Z'),
     gmv: 811,
     transaction: 57,
-    netSales: 689,
+    netSales: 377,
   },
   {
     id: '2024-12-20',
@@ -5766,7 +5766,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-19T16:00:00.000Z'),
     gmv: 801,
     transaction: 56,
-    netSales: 681,
+    netSales: 340,
   },
   {
     id: '2024-12-21',
@@ -5774,7 +5774,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-20T16:00:00.000Z'),
     gmv: 1079,
     transaction: 76,
-    netSales: 917,
+    netSales: 217,
   },
   {
     id: '2024-12-22',
@@ -5782,7 +5782,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-21T16:00:00.000Z'),
     gmv: 921,
     transaction: 64,
-    netSales: 783,
+    netSales: 233,
   },
   {
     id: '2024-12-23',
@@ -5790,7 +5790,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-22T16:00:00.000Z'),
     gmv: 764,
     transaction: 53,
-    netSales: 649,
+    netSales: 258,
   },
   {
     id: '2024-12-24',
@@ -5798,7 +5798,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-23T16:00:00.000Z'),
     gmv: 784,
     transaction: 55,
-    netSales: 666,
+    netSales: 261,
   },
   {
     id: '2024-12-25',
@@ -5806,7 +5806,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-24T16:00:00.000Z'),
     gmv: 740,
     transaction: 52,
-    netSales: 629,
+    netSales: 364,
   },
   {
     id: '2024-12-26',
@@ -5814,7 +5814,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-25T16:00:00.000Z'),
     gmv: 665,
     transaction: 47,
-    netSales: 565,
+    netSales: 358,
   },
   {
     id: '2024-12-27',
@@ -5822,7 +5822,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-26T16:00:00.000Z'),
     gmv: 605,
     transaction: 42,
-    netSales: 514,
+    netSales: 406,
   },
   {
     id: '2024-12-28',
@@ -5830,7 +5830,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-27T16:00:00.000Z'),
     gmv: 919,
     transaction: 64,
-    netSales: 781,
+    netSales: 252,
   },
   {
     id: '2024-12-29',
@@ -5838,7 +5838,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-28T16:00:00.000Z'),
     gmv: 964,
     transaction: 67,
-    netSales: 819,
+    netSales: 205,
   },
   {
     id: '2024-12-30',
@@ -5846,7 +5846,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-29T16:00:00.000Z'),
     gmv: 608,
     transaction: 43,
-    netSales: 517,
+    netSales: 456,
   },
   {
     id: '2024-12-31',
@@ -5854,7 +5854,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-30T16:00:00.000Z'),
     gmv: 651,
     transaction: 46,
-    netSales: 553,
+    netSales: 374,
   },
   {
     id: '2025-01-01',
@@ -5862,7 +5862,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2024-12-31T16:00:00.000Z'),
     gmv: 454,
     transaction: 32,
-    netSales: 386,
+    netSales: 569,
   },
   {
     id: '2025-01-02',
@@ -5870,7 +5870,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-01T16:00:00.000Z'),
     gmv: 531,
     transaction: 37,
-    netSales: 451,
+    netSales: 622,
   },
   {
     id: '2025-01-03',
@@ -5878,7 +5878,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-02T16:00:00.000Z'),
     gmv: 486,
     transaction: 34,
-    netSales: 413,
+    netSales: 519,
   },
   {
     id: '2025-01-04',
@@ -5886,7 +5886,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-03T16:00:00.000Z'),
     gmv: 815,
     transaction: 57,
-    netSales: 693,
+    netSales: 334,
   },
   {
     id: '2025-01-05',
@@ -5894,7 +5894,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-04T16:00:00.000Z'),
     gmv: 815,
     transaction: 57,
-    netSales: 693,
+    netSales: 454,
   },
   {
     id: '2025-01-06',
@@ -5902,7 +5902,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-05T16:00:00.000Z'),
     gmv: 552,
     transaction: 39,
-    netSales: 469,
+    netSales: 650,
   },
   {
     id: '2025-01-07',
@@ -5910,7 +5910,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-06T16:00:00.000Z'),
     gmv: 525,
     transaction: 37,
-    netSales: 446,
+    netSales: 575,
   },
   {
     id: '2025-01-08',
@@ -5918,7 +5918,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-07T16:00:00.000Z'),
     gmv: 664,
     transaction: 46,
-    netSales: 564,
+    netSales: 623,
   },
   {
     id: '2025-01-09',
@@ -5926,7 +5926,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-08T16:00:00.000Z'),
     gmv: 521,
     transaction: 36,
-    netSales: 443,
+    netSales: 544,
   },
   {
     id: '2025-01-10',
@@ -5934,7 +5934,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-09T16:00:00.000Z'),
     gmv: 537,
     transaction: 38,
-    netSales: 456,
+    netSales: 555,
   },
   {
     id: '2025-01-11',
@@ -5942,7 +5942,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-10T16:00:00.000Z'),
     gmv: 869,
     transaction: 61,
-    netSales: 739,
+    netSales: 354,
   },
   {
     id: '2025-01-12',
@@ -5950,7 +5950,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-11T16:00:00.000Z'),
     gmv: 843,
     transaction: 59,
-    netSales: 717,
+    netSales: 369,
   },
   {
     id: '2025-01-13',
@@ -5958,7 +5958,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-12T16:00:00.000Z'),
     gmv: 516,
     transaction: 36,
-    netSales: 439,
+    netSales: 464,
   },
   {
     id: '2025-01-14',
@@ -5966,7 +5966,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-13T16:00:00.000Z'),
     gmv: 561,
     transaction: 39,
-    netSales: 477,
+    netSales: 582,
   },
   {
     id: '2025-01-15',
@@ -5974,7 +5974,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-14T16:00:00.000Z'),
     gmv: 661,
     transaction: 46,
-    netSales: 562,
+    netSales: 455,
   },
   {
     id: '2025-01-16',
@@ -5982,7 +5982,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-15T16:00:00.000Z'),
     gmv: 575,
     transaction: 40,
-    netSales: 489,
+    netSales: 420,
   },
   {
     id: '2025-01-17',
@@ -5990,7 +5990,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-16T16:00:00.000Z'),
     gmv: 612,
     transaction: 43,
-    netSales: 520,
+    netSales: 374,
   },
   {
     id: '2025-01-18',
@@ -5998,7 +5998,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-17T16:00:00.000Z'),
     gmv: 789,
     transaction: 55,
-    netSales: 671,
+    netSales: 259,
   },
   {
     id: '2025-01-19',
@@ -6006,7 +6006,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-18T16:00:00.000Z'),
     gmv: 802,
     transaction: 56,
-    netSales: 682,
+    netSales: 261,
   },
   {
     id: '2025-01-20',
@@ -6014,7 +6014,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-19T16:00:00.000Z'),
     gmv: 602,
     transaction: 42,
-    netSales: 512,
+    netSales: 368,
   },
   {
     id: '2025-01-21',
@@ -6022,7 +6022,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-20T16:00:00.000Z'),
     gmv: 644,
     transaction: 45,
-    netSales: 547,
+    netSales: 465,
   },
   {
     id: '2025-01-22',
@@ -6030,7 +6030,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-21T16:00:00.000Z'),
     gmv: 649,
     transaction: 45,
-    netSales: 552,
+    netSales: 470,
   },
   {
     id: '2025-01-23',
@@ -6038,7 +6038,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-22T16:00:00.000Z'),
     gmv: 626,
     transaction: 44,
-    netSales: 532,
+    netSales: 463,
   },
   {
     id: '2025-01-24',
@@ -6046,7 +6046,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-23T16:00:00.000Z'),
     gmv: 632,
     transaction: 44,
-    netSales: 537,
+    netSales: 400,
   },
   {
     id: '2025-01-25',
@@ -6054,7 +6054,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-24T16:00:00.000Z'),
     gmv: 659,
     transaction: 46,
-    netSales: 560,
+    netSales: 224,
   },
   {
     id: '2025-01-26',
@@ -6062,7 +6062,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-25T16:00:00.000Z'),
     gmv: 756,
     transaction: 53,
-    netSales: 643,
+    netSales: 230,
   },
   {
     id: '2025-01-27',
@@ -6070,7 +6070,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-26T16:00:00.000Z'),
     gmv: 581,
     transaction: 41,
-    netSales: 494,
+    netSales: 442,
   },
   {
     id: '2025-01-28',
@@ -6078,7 +6078,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-27T16:00:00.000Z'),
     gmv: 486,
     transaction: 34,
-    netSales: 413,
+    netSales: 426,
   },
   {
     id: '2025-01-29',
@@ -6086,15 +6086,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-28T16:00:00.000Z'),
     gmv: 527,
     transaction: 37,
-    netSales: 448,
+    netSales: 412,
   },
   {
     id: '2025-01-30',
     name: '25/1/30',
     date: new Date('2025-01-29T16:00:00.000Z'),
     gmv: 564,
-    transaction: 40,
-    netSales: 479,
+    transaction: 39,
+    netSales: 433,
   },
   {
     id: '2025-01-31',
@@ -6102,7 +6102,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-30T16:00:00.000Z'),
     gmv: 586,
     transaction: 41,
-    netSales: 498,
+    netSales: 616,
   },
   {
     id: '2025-02-01',
@@ -6110,7 +6110,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-01-31T16:00:00.000Z'),
     gmv: 695,
     transaction: 49,
-    netSales: 591,
+    netSales: 426,
   },
   {
     id: '2025-02-02',
@@ -6118,7 +6118,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-01T16:00:00.000Z'),
     gmv: 642,
     transaction: 45,
-    netSales: 546,
+    netSales: 488,
   },
   {
     id: '2025-02-03',
@@ -6126,7 +6126,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-02T16:00:00.000Z'),
     gmv: 625,
     transaction: 44,
-    netSales: 531,
+    netSales: 590,
   },
   {
     id: '2025-02-04',
@@ -6134,7 +6134,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-03T16:00:00.000Z'),
     gmv: 489,
     transaction: 34,
-    netSales: 416,
+    netSales: 762,
   },
   {
     id: '2025-02-05',
@@ -6142,7 +6142,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-04T16:00:00.000Z'),
     gmv: 572,
     transaction: 40,
-    netSales: 486,
+    netSales: 695,
   },
   {
     id: '2025-02-06',
@@ -6150,7 +6150,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-05T16:00:00.000Z'),
     gmv: 670,
     transaction: 47,
-    netSales: 570,
+    netSales: 648,
   },
   {
     id: '2025-02-07',
@@ -6158,7 +6158,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-06T16:00:00.000Z'),
     gmv: 563,
     transaction: 39,
-    netSales: 479,
+    netSales: 592,
   },
   {
     id: '2025-02-08',
@@ -6166,7 +6166,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-07T16:00:00.000Z'),
     gmv: 809,
     transaction: 57,
-    netSales: 688,
+    netSales: 392,
   },
   {
     id: '2025-02-09',
@@ -6174,7 +6174,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-08T16:00:00.000Z'),
     gmv: 713,
     transaction: 50,
-    netSales: 606,
+    netSales: 431,
   },
   {
     id: '2025-02-10',
@@ -6182,7 +6182,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-09T16:00:00.000Z'),
     gmv: 687,
     transaction: 48,
-    netSales: 584,
+    netSales: 771,
   },
   {
     id: '2025-02-11',
@@ -6190,7 +6190,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-10T16:00:00.000Z'),
     gmv: 594,
     transaction: 42,
-    netSales: 505,
+    netSales: 552,
   },
   {
     id: '2025-02-12',
@@ -6198,7 +6198,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-11T16:00:00.000Z'),
     gmv: 616,
     transaction: 43,
-    netSales: 524,
+    netSales: 542,
   },
   {
     id: '2025-02-13',
@@ -6206,7 +6206,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-12T16:00:00.000Z'),
     gmv: 565,
     transaction: 40,
-    netSales: 480,
+    netSales: 509,
   },
   {
     id: '2025-02-14',
@@ -6214,7 +6214,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-13T16:00:00.000Z'),
     gmv: 534,
     transaction: 37,
-    netSales: 454,
+    netSales: 619,
   },
   {
     id: '2025-02-15',
@@ -6222,7 +6222,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-14T16:00:00.000Z'),
     gmv: 930,
     transaction: 65,
-    netSales: 791,
+    netSales: 370,
   },
   {
     id: '2025-02-16',
@@ -6230,7 +6230,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-15T16:00:00.000Z'),
     gmv: 918,
     transaction: 64,
-    netSales: 780,
+    netSales: 394,
   },
   {
     id: '2025-02-17',
@@ -6238,7 +6238,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-16T16:00:00.000Z'),
     gmv: 662,
     transaction: 46,
-    netSales: 563,
+    netSales: 506,
   },
   {
     id: '2025-02-18',
@@ -6246,7 +6246,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-17T16:00:00.000Z'),
     gmv: 586,
     transaction: 41,
-    netSales: 498,
+    netSales: 489,
   },
   {
     id: '2025-02-19',
@@ -6254,7 +6254,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-18T16:00:00.000Z'),
     gmv: 543,
     transaction: 38,
-    netSales: 462,
+    netSales: 572,
   },
   {
     id: '2025-02-20',
@@ -6262,7 +6262,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-19T16:00:00.000Z'),
     gmv: 674,
     transaction: 47,
-    netSales: 573,
+    netSales: 463,
   },
   {
     id: '2025-02-21',
@@ -6270,7 +6270,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-20T16:00:00.000Z'),
     gmv: 570,
     transaction: 40,
-    netSales: 485,
+    netSales: 537,
   },
   {
     id: '2025-02-22',
@@ -6278,7 +6278,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-21T16:00:00.000Z'),
     gmv: 824,
     transaction: 58,
-    netSales: 700,
+    netSales: 321,
   },
   {
     id: '2025-02-23',
@@ -6286,7 +6286,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-22T16:00:00.000Z'),
     gmv: 841,
     transaction: 59,
-    netSales: 715,
+    netSales: 342,
   },
   {
     id: '2025-02-24',
@@ -6294,7 +6294,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-23T16:00:00.000Z'),
     gmv: 539,
     transaction: 38,
-    netSales: 458,
+    netSales: 541,
   },
   {
     id: '2025-02-25',
@@ -6302,7 +6302,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-24T16:00:00.000Z'),
     gmv: 630,
     transaction: 44,
-    netSales: 536,
+    netSales: 388,
   },
   {
     id: '2025-02-26',
@@ -6310,7 +6310,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-25T16:00:00.000Z'),
     gmv: 517,
     transaction: 36,
-    netSales: 439,
+    netSales: 461,
   },
   {
     id: '2025-02-27',
@@ -6318,7 +6318,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-26T16:00:00.000Z'),
     gmv: 639,
     transaction: 45,
-    netSales: 543,
+    netSales: 571,
   },
   {
     id: '2025-02-28',
@@ -6326,7 +6326,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-27T16:00:00.000Z'),
     gmv: 619,
     transaction: 43,
-    netSales: 526,
+    netSales: 591,
   },
   {
     id: '2025-03-01',
@@ -6334,7 +6334,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-02-28T16:00:00.000Z'),
     gmv: 719,
     transaction: 50,
-    netSales: 611,
+    netSales: 447,
   },
   {
     id: '2025-03-02',
@@ -6342,15 +6342,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-01T16:00:00.000Z'),
     gmv: 842,
     transaction: 59,
-    netSales: 716,
+    netSales: 498,
   },
   {
     id: '2025-03-03',
     name: '25/3/3',
     date: new Date('2025-03-02T16:00:00.000Z'),
     gmv: 607,
-    transaction: 43,
-    netSales: 516,
+    transaction: 42,
+    netSales: 577,
   },
   {
     id: '2025-03-04',
@@ -6358,7 +6358,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-03T16:00:00.000Z'),
     gmv: 529,
     transaction: 37,
-    netSales: 450,
+    netSales: 814,
   },
   {
     id: '2025-03-05',
@@ -6366,15 +6366,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-04T16:00:00.000Z'),
     gmv: 634,
     transaction: 44,
-    netSales: 539,
+    netSales: 801,
   },
   {
     id: '2025-03-06',
     name: '25/3/6',
     date: new Date('2025-03-05T16:00:00.000Z'),
     gmv: 550,
-    transaction: 38,
-    netSales: 468,
+    transaction: 39,
+    netSales: 665,
   },
   {
     id: '2025-03-07',
@@ -6382,7 +6382,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-06T16:00:00.000Z'),
     gmv: 548,
     transaction: 38,
-    netSales: 466,
+    netSales: 783,
   },
   {
     id: '2025-03-08',
@@ -6390,7 +6390,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-07T16:00:00.000Z'),
     gmv: 781,
     transaction: 55,
-    netSales: 664,
+    netSales: 525,
   },
   {
     id: '2025-03-09',
@@ -6398,7 +6398,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-08T16:00:00.000Z'),
     gmv: 902,
     transaction: 63,
-    netSales: 767,
+    netSales: 543,
   },
   {
     id: '2025-03-10',
@@ -6406,7 +6406,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-09T16:00:00.000Z'),
     gmv: 659,
     transaction: 46,
-    netSales: 560,
+    netSales: 804,
   },
   {
     id: '2025-03-11',
@@ -6414,7 +6414,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-10T16:00:00.000Z'),
     gmv: 652,
     transaction: 46,
-    netSales: 554,
+    netSales: 705,
   },
   {
     id: '2025-03-12',
@@ -6422,7 +6422,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-11T16:00:00.000Z'),
     gmv: 696,
     transaction: 49,
-    netSales: 592,
+    netSales: 699,
   },
   {
     id: '2025-03-13',
@@ -6430,7 +6430,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-12T16:00:00.000Z'),
     gmv: 729,
     transaction: 51,
-    netSales: 620,
+    netSales: 675,
   },
   {
     id: '2025-03-14',
@@ -6438,7 +6438,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-13T16:00:00.000Z'),
     gmv: 597,
     transaction: 42,
-    netSales: 507,
+    netSales: 628,
   },
   {
     id: '2025-03-15',
@@ -6446,15 +6446,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-14T16:00:00.000Z'),
     gmv: 882,
     transaction: 62,
-    netSales: 750,
+    netSales: 460,
   },
   {
     id: '2025-03-16',
     name: '25/3/16',
     date: new Date('2025-03-15T16:00:00.000Z'),
     gmv: 850,
-    transaction: 59,
-    netSales: 723,
+    transaction: 60,
+    netSales: 427,
   },
   {
     id: '2025-03-17',
@@ -6462,7 +6462,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-16T16:00:00.000Z'),
     gmv: 583,
     transaction: 41,
-    netSales: 496,
+    netSales: 601,
   },
   {
     id: '2025-03-18',
@@ -6470,7 +6470,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-17T16:00:00.000Z'),
     gmv: 681,
     transaction: 48,
-    netSales: 579,
+    netSales: 607,
   },
   {
     id: '2025-03-19',
@@ -6478,7 +6478,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-18T16:00:00.000Z'),
     gmv: 697,
     transaction: 49,
-    netSales: 592,
+    netSales: 485,
   },
   {
     id: '2025-03-20',
@@ -6486,7 +6486,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-19T16:00:00.000Z'),
     gmv: 713,
     transaction: 50,
-    netSales: 606,
+    netSales: 551,
   },
   {
     id: '2025-03-21',
@@ -6494,7 +6494,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-20T16:00:00.000Z'),
     gmv: 672,
     transaction: 47,
-    netSales: 571,
+    netSales: 565,
   },
   {
     id: '2025-03-22',
@@ -6502,15 +6502,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-21T16:00:00.000Z'),
     gmv: 857,
     transaction: 60,
-    netSales: 728,
+    netSales: 379,
   },
   {
     id: '2025-03-23',
     name: '25/3/23',
     date: new Date('2025-03-22T16:00:00.000Z'),
     gmv: 879,
-    transaction: 61,
-    netSales: 747,
+    transaction: 62,
+    netSales: 292,
   },
   {
     id: '2025-03-24',
@@ -6518,7 +6518,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-23T16:00:00.000Z'),
     gmv: 602,
     transaction: 42,
-    netSales: 512,
+    netSales: 590,
   },
   {
     id: '2025-03-25',
@@ -6526,7 +6526,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-24T16:00:00.000Z'),
     gmv: 631,
     transaction: 44,
-    netSales: 536,
+    netSales: 428,
   },
   {
     id: '2025-03-26',
@@ -6534,7 +6534,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-25T16:00:00.000Z'),
     gmv: 661,
     transaction: 46,
-    netSales: 562,
+    netSales: 458,
   },
   {
     id: '2025-03-27',
@@ -6542,7 +6542,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-26T16:00:00.000Z'),
     gmv: 597,
     transaction: 42,
-    netSales: 507,
+    netSales: 642,
   },
   {
     id: '2025-03-28',
@@ -6550,7 +6550,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-27T16:00:00.000Z'),
     gmv: 660,
     transaction: 46,
-    netSales: 561,
+    netSales: 622,
   },
   {
     id: '2025-03-29',
@@ -6558,7 +6558,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-28T16:00:00.000Z'),
     gmv: 662,
     transaction: 46,
-    netSales: 563,
+    netSales: 435,
   },
   {
     id: '2025-03-30',
@@ -6566,7 +6566,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-29T16:00:00.000Z'),
     gmv: 763,
     transaction: 53,
-    netSales: 649,
+    netSales: 355,
   },
   {
     id: '2025-03-31',
@@ -6574,7 +6574,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-30T16:00:00.000Z'),
     gmv: 476,
     transaction: 33,
-    netSales: 405,
+    netSales: 607,
   },
   {
     id: '2025-04-01',
@@ -6582,7 +6582,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-03-31T16:00:00.000Z'),
     gmv: 664,
     transaction: 46,
-    netSales: 564,
+    netSales: 586,
   },
   {
     id: '2025-04-02',
@@ -6590,7 +6590,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-01T16:00:00.000Z'),
     gmv: 651,
     transaction: 46,
-    netSales: 553,
+    netSales: 572,
   },
   {
     id: '2025-04-03',
@@ -6598,7 +6598,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-02T16:00:00.000Z'),
     gmv: 678,
     transaction: 47,
-    netSales: 576,
+    netSales: 858,
   },
   {
     id: '2025-04-04',
@@ -6606,7 +6606,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-03T16:00:00.000Z'),
     gmv: 558,
     transaction: 39,
-    netSales: 474,
+    netSales: 705,
   },
   {
     id: '2025-04-05',
@@ -6614,7 +6614,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-04T16:00:00.000Z'),
     gmv: 907,
     transaction: 63,
-    netSales: 771,
+    netSales: 459,
   },
   {
     id: '2025-04-06',
@@ -6622,7 +6622,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-05T16:00:00.000Z'),
     gmv: 789,
     transaction: 55,
-    netSales: 671,
+    netSales: 461,
   },
   {
     id: '2025-04-07',
@@ -6630,7 +6630,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-06T16:00:00.000Z'),
     gmv: 661,
     transaction: 46,
-    netSales: 562,
+    netSales: 907,
   },
   {
     id: '2025-04-08',
@@ -6638,7 +6638,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-07T16:00:00.000Z'),
     gmv: 674,
     transaction: 47,
-    netSales: 573,
+    netSales: 881,
   },
   {
     id: '2025-04-09',
@@ -6646,7 +6646,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-08T16:00:00.000Z'),
     gmv: 592,
     transaction: 41,
-    netSales: 503,
+    netSales: 863,
   },
   {
     id: '2025-04-10',
@@ -6654,7 +6654,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-09T16:00:00.000Z'),
     gmv: 690,
     transaction: 48,
-    netSales: 587,
+    netSales: 721,
   },
   {
     id: '2025-04-11',
@@ -6662,7 +6662,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-10T16:00:00.000Z'),
     gmv: 634,
     transaction: 44,
-    netSales: 539,
+    netSales: 903,
   },
   {
     id: '2025-04-12',
@@ -6670,7 +6670,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-11T16:00:00.000Z'),
     gmv: 977,
     transaction: 68,
-    netSales: 830,
+    netSales: 528,
   },
   {
     id: '2025-04-13',
@@ -6678,7 +6678,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-12T16:00:00.000Z'),
     gmv: 838,
     transaction: 59,
-    netSales: 712,
+    netSales: 440,
   },
   {
     id: '2025-04-14',
@@ -6686,7 +6686,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-13T16:00:00.000Z'),
     gmv: 770,
     transaction: 54,
-    netSales: 655,
+    netSales: 653,
   },
   {
     id: '2025-04-15',
@@ -6694,7 +6694,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-14T16:00:00.000Z'),
     gmv: 588,
     transaction: 41,
-    netSales: 500,
+    netSales: 597,
   },
   {
     id: '2025-04-16',
@@ -6702,7 +6702,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-15T16:00:00.000Z'),
     gmv: 680,
     transaction: 48,
-    netSales: 578,
+    netSales: 512,
   },
   {
     id: '2025-04-17',
@@ -6710,7 +6710,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-16T16:00:00.000Z'),
     gmv: 752,
     transaction: 53,
-    netSales: 639,
+    netSales: 519,
   },
   {
     id: '2025-04-18',
@@ -6718,7 +6718,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-17T16:00:00.000Z'),
     gmv: 595,
     transaction: 42,
-    netSales: 506,
+    netSales: 625,
   },
   {
     id: '2025-04-19',
@@ -6726,7 +6726,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-18T16:00:00.000Z'),
     gmv: 873,
     transaction: 61,
-    netSales: 742,
+    netSales: 311,
   },
   {
     id: '2025-04-20',
@@ -6734,7 +6734,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-19T16:00:00.000Z'),
     gmv: 920,
     transaction: 64,
-    netSales: 782,
+    netSales: 349,
   },
   {
     id: '2025-04-21',
@@ -6742,7 +6742,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-20T16:00:00.000Z'),
     gmv: 588,
     transaction: 41,
-    netSales: 500,
+    netSales: 522,
   },
   {
     id: '2025-04-22',
@@ -6750,7 +6750,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-21T16:00:00.000Z'),
     gmv: 745,
     transaction: 52,
-    netSales: 633,
+    netSales: 422,
   },
   {
     id: '2025-04-23',
@@ -6758,7 +6758,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-22T16:00:00.000Z'),
     gmv: 663,
     transaction: 46,
-    netSales: 564,
+    netSales: 591,
   },
   {
     id: '2025-04-24',
@@ -6766,7 +6766,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-23T16:00:00.000Z'),
     gmv: 579,
     transaction: 41,
-    netSales: 492,
+    netSales: 487,
   },
   {
     id: '2025-04-25',
@@ -6774,7 +6774,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-24T16:00:00.000Z'),
     gmv: 594,
     transaction: 42,
-    netSales: 505,
+    netSales: 538,
   },
   {
     id: '2025-04-26',
@@ -6782,7 +6782,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-25T16:00:00.000Z'),
     gmv: 910,
     transaction: 64,
-    netSales: 774,
+    netSales: 403,
   },
   {
     id: '2025-04-27',
@@ -6790,7 +6790,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-26T16:00:00.000Z'),
     gmv: 906,
     transaction: 63,
-    netSales: 770,
+    netSales: 424,
   },
   {
     id: '2025-04-28',
@@ -6798,7 +6798,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-27T16:00:00.000Z'),
     gmv: 669,
     transaction: 47,
-    netSales: 569,
+    netSales: 663,
   },
   {
     id: '2025-04-29',
@@ -6806,7 +6806,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-28T16:00:00.000Z'),
     gmv: 681,
     transaction: 48,
-    netSales: 579,
+    netSales: 744,
   },
   {
     id: '2025-04-30',
@@ -6814,7 +6814,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-29T16:00:00.000Z'),
     gmv: 610,
     transaction: 43,
-    netSales: 519,
+    netSales: 650,
   },
   {
     id: '2025-05-01',
@@ -6822,7 +6822,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-04-30T16:00:00.000Z'),
     gmv: 633,
     transaction: 44,
-    netSales: 538,
+    netSales: 744,
   },
   {
     id: '2025-05-02',
@@ -6830,7 +6830,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-01T16:00:00.000Z'),
     gmv: 647,
     transaction: 45,
-    netSales: 550,
+    netSales: 568,
   },
   {
     id: '2025-05-03',
@@ -6838,7 +6838,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-02T16:00:00.000Z'),
     gmv: 719,
     transaction: 50,
-    netSales: 611,
+    netSales: 549,
   },
   {
     id: '2025-05-04',
@@ -6846,7 +6846,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-03T16:00:00.000Z'),
     gmv: 730,
     transaction: 51,
-    netSales: 621,
+    netSales: 560,
   },
   {
     id: '2025-05-05',
@@ -6854,7 +6854,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-04T16:00:00.000Z'),
     gmv: 715,
     transaction: 50,
-    netSales: 608,
+    netSales: 776,
   },
   {
     id: '2025-05-06',
@@ -6862,7 +6862,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-05T16:00:00.000Z'),
     gmv: 663,
     transaction: 46,
-    netSales: 564,
+    netSales: 860,
   },
   {
     id: '2025-05-07',
@@ -6870,7 +6870,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-06T16:00:00.000Z'),
     gmv: 726,
     transaction: 51,
-    netSales: 617,
+    netSales: 821,
   },
   {
     id: '2025-05-08',
@@ -6878,7 +6878,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-07T16:00:00.000Z'),
     gmv: 770,
     transaction: 54,
-    netSales: 655,
+    netSales: 828,
   },
   {
     id: '2025-05-09',
@@ -6886,7 +6886,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-08T16:00:00.000Z'),
     gmv: 599,
     transaction: 42,
-    netSales: 509,
+    netSales: 852,
   },
   {
     id: '2025-05-10',
@@ -6894,7 +6894,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-09T16:00:00.000Z'),
     gmv: 770,
     transaction: 54,
-    netSales: 655,
+    netSales: 591,
   },
   {
     id: '2025-05-11',
@@ -6902,7 +6902,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-10T16:00:00.000Z'),
     gmv: 828,
     transaction: 58,
-    netSales: 704,
+    netSales: 575,
   },
   {
     id: '2025-05-12',
@@ -6910,7 +6910,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-11T16:00:00.000Z'),
     gmv: 649,
     transaction: 45,
-    netSales: 552,
+    netSales: 680,
   },
   {
     id: '2025-05-13',
@@ -6918,7 +6918,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-12T16:00:00.000Z'),
     gmv: 598,
     transaction: 42,
-    netSales: 508,
+    netSales: 559,
   },
   {
     id: '2025-05-14',
@@ -6926,7 +6926,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-13T16:00:00.000Z'),
     gmv: 691,
     transaction: 48,
-    netSales: 587,
+    netSales: 751,
   },
   {
     id: '2025-05-15',
@@ -6934,7 +6934,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-14T16:00:00.000Z'),
     gmv: 673,
     transaction: 47,
-    netSales: 572,
+    netSales: 536,
   },
   {
     id: '2025-05-16',
@@ -6942,7 +6942,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-15T16:00:00.000Z'),
     gmv: 617,
     transaction: 43,
-    netSales: 524,
+    netSales: 644,
   },
   {
     id: '2025-05-17',
@@ -6950,7 +6950,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-16T16:00:00.000Z'),
     gmv: 821,
     transaction: 57,
-    netSales: 698,
+    netSales: 318,
   },
   {
     id: '2025-05-18',
@@ -6958,7 +6958,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-17T16:00:00.000Z'),
     gmv: 858,
     transaction: 60,
-    netSales: 729,
+    netSales: 418,
   },
   {
     id: '2025-05-19',
@@ -6966,7 +6966,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-18T16:00:00.000Z'),
     gmv: 767,
     transaction: 54,
-    netSales: 652,
+    netSales: 468,
   },
   {
     id: '2025-05-20',
@@ -6974,7 +6974,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-19T16:00:00.000Z'),
     gmv: 738,
     transaction: 52,
-    netSales: 627,
+    netSales: 477,
   },
   {
     id: '2025-05-21',
@@ -6982,7 +6982,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-20T16:00:00.000Z'),
     gmv: 765,
     transaction: 54,
-    netSales: 650,
+    netSales: 431,
   },
   {
     id: '2025-05-22',
@@ -6990,7 +6990,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-21T16:00:00.000Z'),
     gmv: 747,
     transaction: 52,
-    netSales: 635,
+    netSales: 512,
   },
   {
     id: '2025-05-23',
@@ -6998,7 +6998,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-22T16:00:00.000Z'),
     gmv: 732,
     transaction: 51,
-    netSales: 622,
+    netSales: 453,
   },
   {
     id: '2025-05-24',
@@ -7006,7 +7006,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-23T16:00:00.000Z'),
     gmv: 812,
     transaction: 57,
-    netSales: 690,
+    netSales: 285,
   },
   {
     id: '2025-05-25',
@@ -7014,7 +7014,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-24T16:00:00.000Z'),
     gmv: 907,
     transaction: 63,
-    netSales: 771,
+    netSales: 416,
   },
   {
     id: '2025-05-26',
@@ -7022,7 +7022,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-25T16:00:00.000Z'),
     gmv: 613,
     transaction: 43,
-    netSales: 521,
+    netSales: 494,
   },
   {
     id: '2025-05-27',
@@ -7030,7 +7030,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-26T16:00:00.000Z'),
     gmv: 559,
     transaction: 39,
-    netSales: 475,
+    netSales: 661,
   },
   {
     id: '2025-05-28',
@@ -7038,7 +7038,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-27T16:00:00.000Z'),
     gmv: 588,
     transaction: 41,
-    netSales: 500,
+    netSales: 662,
   },
   {
     id: '2025-05-29',
@@ -7046,7 +7046,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-28T16:00:00.000Z'),
     gmv: 626,
     transaction: 44,
-    netSales: 532,
+    netSales: 569,
   },
   {
     id: '2025-05-30',
@@ -7054,7 +7054,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-29T16:00:00.000Z'),
     gmv: 622,
     transaction: 44,
-    netSales: 529,
+    netSales: 679,
   },
   {
     id: '2025-05-31',
@@ -7062,7 +7062,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-30T16:00:00.000Z'),
     gmv: 681,
     transaction: 48,
-    netSales: 579,
+    netSales: 396,
   },
   {
     id: '2025-06-01',
@@ -7070,7 +7070,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-05-31T16:00:00.000Z'),
     gmv: 883,
     transaction: 62,
-    netSales: 751,
+    netSales: 370,
   },
   {
     id: '2025-06-02',
@@ -7078,7 +7078,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-01T16:00:00.000Z'),
     gmv: 561,
     transaction: 39,
-    netSales: 477,
+    netSales: 691,
   },
   {
     id: '2025-06-03',
@@ -7086,7 +7086,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-02T16:00:00.000Z'),
     gmv: 716,
     transaction: 50,
-    netSales: 609,
+    netSales: 610,
   },
   {
     id: '2025-06-04',
@@ -7094,7 +7094,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-03T16:00:00.000Z'),
     gmv: 594,
     transaction: 42,
-    netSales: 505,
+    netSales: 687,
   },
   {
     id: '2025-06-05',
@@ -7102,7 +7102,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-04T16:00:00.000Z'),
     gmv: 598,
     transaction: 42,
-    netSales: 508,
+    netSales: 691,
   },
   {
     id: '2025-06-06',
@@ -7110,7 +7110,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-05T16:00:00.000Z'),
     gmv: 623,
     transaction: 44,
-    netSales: 530,
+    netSales: 770,
   },
   {
     id: '2025-06-07',
@@ -7118,7 +7118,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-06T16:00:00.000Z'),
     gmv: 957,
     transaction: 67,
-    netSales: 813,
+    netSales: 546,
   },
   {
     id: '2025-06-08',
@@ -7126,7 +7126,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-07T16:00:00.000Z'),
     gmv: 845,
     transaction: 59,
-    netSales: 718,
+    netSales: 451,
   },
   {
     id: '2025-06-09',
@@ -7134,7 +7134,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-08T16:00:00.000Z'),
     gmv: 748,
     transaction: 52,
-    netSales: 636,
+    netSales: 674,
   },
   {
     id: '2025-06-10',
@@ -7142,15 +7142,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-09T16:00:00.000Z'),
     gmv: 721,
     transaction: 50,
-    netSales: 613,
+    netSales: 659,
   },
   {
     id: '2025-06-11',
     name: '25/6/11',
     date: new Date('2025-06-10T16:00:00.000Z'),
     gmv: 650,
-    transaction: 45,
-    netSales: 553,
+    transaction: 46,
+    netSales: 715,
   },
   {
     id: '2025-06-12',
@@ -7158,7 +7158,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-11T16:00:00.000Z'),
     gmv: 667,
     transaction: 47,
-    netSales: 567,
+    netSales: 731,
   },
   {
     id: '2025-06-13',
@@ -7166,7 +7166,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-12T16:00:00.000Z'),
     gmv: 639,
     transaction: 45,
-    netSales: 543,
+    netSales: 643,
   },
   {
     id: '2025-06-14',
@@ -7174,7 +7174,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-13T16:00:00.000Z'),
     gmv: 897,
     transaction: 63,
-    netSales: 762,
+    netSales: 396,
   },
   {
     id: '2025-06-15',
@@ -7182,7 +7182,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-14T16:00:00.000Z'),
     gmv: 965,
     transaction: 68,
-    netSales: 820,
+    netSales: 418,
   },
   {
     id: '2025-06-16',
@@ -7190,7 +7190,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-15T16:00:00.000Z'),
     gmv: 661,
     transaction: 46,
-    netSales: 562,
+    netSales: 467,
   },
   {
     id: '2025-06-17',
@@ -7198,7 +7198,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-16T16:00:00.000Z'),
     gmv: 702,
     transaction: 49,
-    netSales: 597,
+    netSales: 611,
   },
   {
     id: '2025-06-18',
@@ -7206,7 +7206,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-17T16:00:00.000Z'),
     gmv: 626,
     transaction: 44,
-    netSales: 532,
+    netSales: 586,
   },
   {
     id: '2025-06-19',
@@ -7214,7 +7214,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-18T16:00:00.000Z'),
     gmv: 711,
     transaction: 50,
-    netSales: 604,
+    netSales: 410,
   },
   {
     id: '2025-06-20',
@@ -7222,7 +7222,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-19T16:00:00.000Z'),
     gmv: 703,
     transaction: 49,
-    netSales: 598,
+    netSales: 444,
   },
   {
     id: '2025-06-21',
@@ -7230,7 +7230,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-20T16:00:00.000Z'),
     gmv: 1022,
     transaction: 72,
-    netSales: 869,
+    netSales: 357,
   },
   {
     id: '2025-06-22',
@@ -7238,7 +7238,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-21T16:00:00.000Z'),
     gmv: 987,
     transaction: 69,
-    netSales: 839,
+    netSales: 336,
   },
   {
     id: '2025-06-23',
@@ -7246,7 +7246,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-22T16:00:00.000Z'),
     gmv: 653,
     transaction: 46,
-    netSales: 555,
+    netSales: 382,
   },
   {
     id: '2025-06-24',
@@ -7254,7 +7254,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-23T16:00:00.000Z'),
     gmv: 663,
     transaction: 46,
-    netSales: 564,
+    netSales: 511,
   },
   {
     id: '2025-06-25',
@@ -7262,7 +7262,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-24T16:00:00.000Z'),
     gmv: 728,
     transaction: 51,
-    netSales: 619,
+    netSales: 386,
   },
   {
     id: '2025-06-26',
@@ -7270,7 +7270,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-25T16:00:00.000Z'),
     gmv: 574,
     transaction: 40,
-    netSales: 488,
+    netSales: 549,
   },
   {
     id: '2025-06-27',
@@ -7278,7 +7278,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-26T16:00:00.000Z'),
     gmv: 713,
     transaction: 50,
-    netSales: 606,
+    netSales: 508,
   },
   {
     id: '2025-06-28',
@@ -7286,7 +7286,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-27T16:00:00.000Z'),
     gmv: 841,
     transaction: 59,
-    netSales: 715,
+    netSales: 411,
   },
   {
     id: '2025-06-29',
@@ -7294,7 +7294,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-28T16:00:00.000Z'),
     gmv: 762,
     transaction: 53,
-    netSales: 648,
+    netSales: 344,
   },
   {
     id: '2025-06-30',
@@ -7302,7 +7302,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-29T16:00:00.000Z'),
     gmv: 674,
     transaction: 47,
-    netSales: 573,
+    netSales: 666,
   },
   {
     id: '2025-07-01',
@@ -7310,7 +7310,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-06-30T16:00:00.000Z'),
     gmv: 756,
     transaction: 53,
-    netSales: 643,
+    netSales: 574,
   },
   {
     id: '2025-07-02',
@@ -7318,7 +7318,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-01T16:00:00.000Z'),
     gmv: 610,
     transaction: 43,
-    netSales: 519,
+    netSales: 462,
   },
   {
     id: '2025-07-03',
@@ -7326,7 +7326,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-02T16:00:00.000Z'),
     gmv: 755,
     transaction: 53,
-    netSales: 642,
+    netSales: 614,
   },
   {
     id: '2025-07-04',
@@ -7334,7 +7334,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-03T16:00:00.000Z'),
     gmv: 683,
     transaction: 48,
-    netSales: 581,
+    netSales: 498,
   },
   {
     id: '2025-07-05',
@@ -7342,7 +7342,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-04T16:00:00.000Z'),
     gmv: 994,
     transaction: 70,
-    netSales: 845,
+    netSales: 411,
   },
   {
     id: '2025-07-06',
@@ -7350,7 +7350,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-05T16:00:00.000Z'),
     gmv: 906,
     transaction: 63,
-    netSales: 770,
+    netSales: 362,
   },
   {
     id: '2025-07-07',
@@ -7358,7 +7358,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-06T16:00:00.000Z'),
     gmv: 818,
     transaction: 57,
-    netSales: 695,
+    netSales: 716,
   },
   {
     id: '2025-07-08',
@@ -7366,7 +7366,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-07T16:00:00.000Z'),
     gmv: 633,
     transaction: 44,
-    netSales: 538,
+    netSales: 495,
   },
   {
     id: '2025-07-09',
@@ -7374,7 +7374,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-08T16:00:00.000Z'),
     gmv: 769,
     transaction: 54,
-    netSales: 654,
+    netSales: 554,
   },
   {
     id: '2025-07-10',
@@ -7382,7 +7382,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-09T16:00:00.000Z'),
     gmv: 769,
     transaction: 54,
-    netSales: 654,
+    netSales: 591,
   },
   {
     id: '2025-07-11',
@@ -7390,7 +7390,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-10T16:00:00.000Z'),
     gmv: 656,
     transaction: 46,
-    netSales: 558,
+    netSales: 647,
   },
   {
     id: '2025-07-12',
@@ -7398,7 +7398,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-11T16:00:00.000Z'),
     gmv: 936,
     transaction: 66,
-    netSales: 796,
+    netSales: 328,
   },
   {
     id: '2025-07-13',
@@ -7406,7 +7406,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-12T16:00:00.000Z'),
     gmv: 964,
     transaction: 67,
-    netSales: 819,
+    netSales: 311,
   },
   {
     id: '2025-07-14',
@@ -7414,7 +7414,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-13T16:00:00.000Z'),
     gmv: 756,
     transaction: 53,
-    netSales: 643,
+    netSales: 558,
   },
   {
     id: '2025-07-15',
@@ -7422,7 +7422,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-14T16:00:00.000Z'),
     gmv: 651,
     transaction: 46,
-    netSales: 553,
+    netSales: 437,
   },
   {
     id: '2025-07-16',
@@ -7430,7 +7430,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-15T16:00:00.000Z'),
     gmv: 656,
     transaction: 46,
-    netSales: 558,
+    netSales: 420,
   },
   {
     id: '2025-07-17',
@@ -7438,7 +7438,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-16T16:00:00.000Z'),
     gmv: 760,
     transaction: 53,
-    netSales: 646,
+    netSales: 532,
   },
   {
     id: '2025-07-18',
@@ -7446,7 +7446,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-17T16:00:00.000Z'),
     gmv: 667,
     transaction: 47,
-    netSales: 567,
+    netSales: 389,
   },
   {
     id: '2025-07-19',
@@ -7454,7 +7454,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-18T16:00:00.000Z'),
     gmv: 960,
     transaction: 67,
-    netSales: 816,
+    netSales: 266,
   },
   {
     id: '2025-07-20',
@@ -7462,7 +7462,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-19T16:00:00.000Z'),
     gmv: 972,
     transaction: 68,
-    netSales: 826,
+    netSales: 241,
   },
   {
     id: '2025-07-21',
@@ -7470,7 +7470,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-20T16:00:00.000Z'),
     gmv: 665,
     transaction: 47,
-    netSales: 565,
+    netSales: 387,
   },
   {
     id: '2025-07-22',
@@ -7478,7 +7478,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-21T16:00:00.000Z'),
     gmv: 792,
     transaction: 55,
-    netSales: 673,
+    netSales: 464,
   },
   {
     id: '2025-07-23',
@@ -7486,7 +7486,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-22T16:00:00.000Z'),
     gmv: 663,
     transaction: 46,
-    netSales: 564,
+    netSales: 422,
   },
   {
     id: '2025-07-24',
@@ -7494,7 +7494,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-23T16:00:00.000Z'),
     gmv: 688,
     transaction: 48,
-    netSales: 585,
+    netSales: 365,
   },
   {
     id: '2025-07-25',
@@ -7502,7 +7502,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-24T16:00:00.000Z'),
     gmv: 702,
     transaction: 49,
-    netSales: 597,
+    netSales: 477,
   },
   {
     id: '2025-07-26',
@@ -7510,7 +7510,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-25T16:00:00.000Z'),
     gmv: 973,
     transaction: 68,
-    netSales: 827,
+    netSales: 260,
   },
   {
     id: '2025-07-27',
@@ -7518,7 +7518,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-26T16:00:00.000Z'),
     gmv: 762,
     transaction: 53,
-    netSales: 648,
+    netSales: 351,
   },
   {
     id: '2025-07-28',
@@ -7526,7 +7526,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-27T16:00:00.000Z'),
     gmv: 718,
     transaction: 50,
-    netSales: 610,
+    netSales: 373,
   },
   {
     id: '2025-07-29',
@@ -7534,7 +7534,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-28T16:00:00.000Z'),
     gmv: 665,
     transaction: 47,
-    netSales: 565,
+    netSales: 505,
   },
   {
     id: '2025-07-30',
@@ -7542,7 +7542,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-29T16:00:00.000Z'),
     gmv: 601,
     transaction: 42,
-    netSales: 511,
+    netSales: 569,
   },
   {
     id: '2025-07-31',
@@ -7550,7 +7550,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-30T16:00:00.000Z'),
     gmv: 708,
     transaction: 50,
-    netSales: 602,
+    netSales: 438,
   },
   {
     id: '2025-08-01',
@@ -7558,7 +7558,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-07-31T16:00:00.000Z'),
     gmv: 711,
     transaction: 50,
-    netSales: 604,
+    netSales: 491,
   },
   {
     id: '2025-08-02',
@@ -7566,7 +7566,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-01T16:00:00.000Z'),
     gmv: 943,
     transaction: 66,
-    netSales: 802,
+    netSales: 305,
   },
   {
     id: '2025-08-03',
@@ -7574,15 +7574,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-02T16:00:00.000Z'),
     gmv: 949,
     transaction: 66,
-    netSales: 807,
+    netSales: 274,
   },
   {
     id: '2025-08-04',
     name: '25/8/4',
     date: new Date('2025-08-03T16:00:00.000Z'),
     gmv: 650,
-    transaction: 45,
-    netSales: 553,
+    transaction: 46,
+    netSales: 503,
   },
   {
     id: '2025-08-05',
@@ -7590,7 +7590,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-04T16:00:00.000Z'),
     gmv: 811,
     transaction: 57,
-    netSales: 689,
+    netSales: 443,
   },
   {
     id: '2025-08-06',
@@ -7598,7 +7598,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-05T16:00:00.000Z'),
     gmv: 632,
     transaction: 44,
-    netSales: 537,
+    netSales: 509,
   },
   {
     id: '2025-08-07',
@@ -7606,7 +7606,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-06T16:00:00.000Z'),
     gmv: 761,
     transaction: 53,
-    netSales: 647,
+    netSales: 600,
   },
   {
     id: '2025-08-08',
@@ -7614,7 +7614,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-07T16:00:00.000Z'),
     gmv: 835,
     transaction: 58,
-    netSales: 710,
+    netSales: 510,
   },
   {
     id: '2025-08-09',
@@ -7622,7 +7622,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-08T16:00:00.000Z'),
     gmv: 1043,
     transaction: 73,
-    netSales: 887,
+    netSales: 293,
   },
   {
     id: '2025-08-10',
@@ -7630,7 +7630,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-09T16:00:00.000Z'),
     gmv: 1062,
     transaction: 74,
-    netSales: 903,
+    netSales: 309,
   },
   {
     id: '2025-08-11',
@@ -7638,7 +7638,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-10T16:00:00.000Z'),
     gmv: 663,
     transaction: 46,
-    netSales: 564,
+    netSales: 437,
   },
   {
     id: '2025-08-12',
@@ -7646,7 +7646,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-11T16:00:00.000Z'),
     gmv: 880,
     transaction: 62,
-    netSales: 748,
+    netSales: 459,
   },
   {
     id: '2025-08-13',
@@ -7654,7 +7654,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-12T16:00:00.000Z'),
     gmv: 812,
     transaction: 57,
-    netSales: 690,
+    netSales: 441,
   },
   {
     id: '2025-08-14',
@@ -7662,7 +7662,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-13T16:00:00.000Z'),
     gmv: 659,
     transaction: 46,
-    netSales: 560,
+    netSales: 482,
   },
   {
     id: '2025-08-15',
@@ -7670,7 +7670,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-14T16:00:00.000Z'),
     gmv: 757,
     transaction: 53,
-    netSales: 643,
+    netSales: 395,
   },
   {
     id: '2025-08-16',
@@ -7678,7 +7678,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-15T16:00:00.000Z'),
     gmv: 1108,
     transaction: 78,
-    netSales: 942,
+    netSales: 279,
   },
   {
     id: '2025-08-17',
@@ -7686,7 +7686,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-16T16:00:00.000Z'),
     gmv: 876,
     transaction: 61,
-    netSales: 745,
+    netSales: 292,
   },
   {
     id: '2025-08-18',
@@ -7694,7 +7694,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-17T16:00:00.000Z'),
     gmv: 747,
     transaction: 52,
-    netSales: 635,
+    netSales: 329,
   },
   {
     id: '2025-08-19',
@@ -7702,7 +7702,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-18T16:00:00.000Z'),
     gmv: 818,
     transaction: 57,
-    netSales: 695,
+    netSales: 366,
   },
   {
     id: '2025-08-20',
@@ -7710,7 +7710,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-19T16:00:00.000Z'),
     gmv: 745,
     transaction: 52,
-    netSales: 633,
+    netSales: 285,
   },
   {
     id: '2025-08-21',
@@ -7718,7 +7718,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-20T16:00:00.000Z'),
     gmv: 773,
     transaction: 54,
-    netSales: 657,
+    netSales: 374,
   },
   {
     id: '2025-08-22',
@@ -7726,7 +7726,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-21T16:00:00.000Z'),
     gmv: 680,
     transaction: 48,
-    netSales: 578,
+    netSales: 294,
   },
   {
     id: '2025-08-23',
@@ -7734,7 +7734,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-22T16:00:00.000Z'),
     gmv: 1033,
     transaction: 72,
-    netSales: 878,
+    netSales: 219,
   },
   {
     id: '2025-08-24',
@@ -7742,7 +7742,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-23T16:00:00.000Z'),
     gmv: 970,
     transaction: 68,
-    netSales: 825,
+    netSales: 219,
   },
   {
     id: '2025-08-25',
@@ -7750,7 +7750,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-24T16:00:00.000Z'),
     gmv: 712,
     transaction: 50,
-    netSales: 605,
+    netSales: 375,
   },
   {
     id: '2025-08-26',
@@ -7758,7 +7758,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-25T16:00:00.000Z'),
     gmv: 766,
     transaction: 54,
-    netSales: 651,
+    netSales: 437,
   },
   {
     id: '2025-08-27',
@@ -7766,7 +7766,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-26T16:00:00.000Z'),
     gmv: 680,
     transaction: 48,
-    netSales: 578,
+    netSales: 368,
   },
   {
     id: '2025-08-28',
@@ -7774,7 +7774,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-27T16:00:00.000Z'),
     gmv: 793,
     transaction: 56,
-    netSales: 674,
+    netSales: 431,
   },
   {
     id: '2025-08-29',
@@ -7782,7 +7782,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-28T16:00:00.000Z'),
     gmv: 622,
     transaction: 44,
-    netSales: 529,
+    netSales: 392,
   },
   {
     id: '2025-08-30',
@@ -7790,7 +7790,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-29T16:00:00.000Z'),
     gmv: 925,
     transaction: 65,
-    netSales: 786,
+    netSales: 316,
   },
   {
     id: '2025-08-31',
@@ -7798,7 +7798,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-30T16:00:00.000Z'),
     gmv: 837,
     transaction: 59,
-    netSales: 711,
+    netSales: 279,
   },
   {
     id: '2025-09-01',
@@ -7806,7 +7806,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-08-31T16:00:00.000Z'),
     gmv: 630,
     transaction: 44,
-    netSales: 536,
+    netSales: 383,
   },
   {
     id: '2025-09-02',
@@ -7814,7 +7814,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-01T16:00:00.000Z'),
     gmv: 773,
     transaction: 54,
-    netSales: 657,
+    netSales: 338,
   },
   {
     id: '2025-09-03',
@@ -7822,7 +7822,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-02T16:00:00.000Z'),
     gmv: 626,
     transaction: 44,
-    netSales: 532,
+    netSales: 400,
   },
   {
     id: '2025-09-04',
@@ -7830,7 +7830,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-03T16:00:00.000Z'),
     gmv: 629,
     transaction: 44,
-    netSales: 535,
+    netSales: 372,
   },
   {
     id: '2025-09-05',
@@ -7838,7 +7838,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-04T16:00:00.000Z'),
     gmv: 816,
     transaction: 57,
-    netSales: 694,
+    netSales: 398,
   },
   {
     id: '2025-09-06',
@@ -7846,7 +7846,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-05T16:00:00.000Z'),
     gmv: 1029,
     transaction: 72,
-    netSales: 875,
+    netSales: 296,
   },
   {
     id: '2025-09-07',
@@ -7854,7 +7854,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-06T16:00:00.000Z'),
     gmv: 923,
     transaction: 65,
-    netSales: 785,
+    netSales: 289,
   },
   {
     id: '2025-09-08',
@@ -7862,7 +7862,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-07T16:00:00.000Z'),
     gmv: 805,
     transaction: 56,
-    netSales: 684,
+    netSales: 443,
   },
   {
     id: '2025-09-09',
@@ -7870,7 +7870,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-08T16:00:00.000Z'),
     gmv: 763,
     transaction: 53,
-    netSales: 649,
+    netSales: 518,
   },
   {
     id: '2025-09-10',
@@ -7878,7 +7878,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-09T16:00:00.000Z'),
     gmv: 879,
     transaction: 62,
-    netSales: 747,
+    netSales: 417,
   },
   {
     id: '2025-09-11',
@@ -7886,7 +7886,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-10T16:00:00.000Z'),
     gmv: 699,
     transaction: 49,
-    netSales: 594,
+    netSales: 501,
   },
   {
     id: '2025-09-12',
@@ -7894,7 +7894,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-11T16:00:00.000Z'),
     gmv: 770,
     transaction: 54,
-    netSales: 655,
+    netSales: 420,
   },
   {
     id: '2025-09-13',
@@ -7902,7 +7902,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-12T16:00:00.000Z'),
     gmv: 1017,
     transaction: 71,
-    netSales: 864,
+    netSales: 285,
   },
   {
     id: '2025-09-14',
@@ -7910,7 +7910,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-13T16:00:00.000Z'),
     gmv: 991,
     transaction: 69,
-    netSales: 842,
+    netSales: 276,
   },
   {
     id: '2025-09-15',
@@ -7918,7 +7918,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-14T16:00:00.000Z'),
     gmv: 731,
     transaction: 51,
-    netSales: 621,
+    netSales: 443,
   },
   {
     id: '2025-09-16',
@@ -7926,7 +7926,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-15T16:00:00.000Z'),
     gmv: 764,
     transaction: 53,
-    netSales: 649,
+    netSales: 417,
   },
   {
     id: '2025-09-17',
@@ -7934,7 +7934,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-16T16:00:00.000Z'),
     gmv: 889,
     transaction: 62,
-    netSales: 756,
+    netSales: 308,
   },
   {
     id: '2025-09-18',
@@ -7942,7 +7942,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-17T16:00:00.000Z'),
     gmv: 851,
     transaction: 60,
-    netSales: 723,
+    netSales: 353,
   },
   {
     id: '2025-09-19',
@@ -7950,7 +7950,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-18T16:00:00.000Z'),
     gmv: 846,
     transaction: 59,
-    netSales: 719,
+    netSales: 360,
   },
   {
     id: '2025-09-20',
@@ -7958,7 +7958,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-19T16:00:00.000Z'),
     gmv: 984,
     transaction: 69,
-    netSales: 836,
+    netSales: 230,
   },
   {
     id: '2025-09-21',
@@ -7966,7 +7966,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-20T16:00:00.000Z'),
     gmv: 959,
     transaction: 67,
-    netSales: 815,
+    netSales: 205,
   },
   {
     id: '2025-09-22',
@@ -7974,7 +7974,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-21T16:00:00.000Z'),
     gmv: 875,
     transaction: 61,
-    netSales: 744,
+    netSales: 306,
   },
   {
     id: '2025-09-23',
@@ -7982,7 +7982,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-22T16:00:00.000Z'),
     gmv: 802,
     transaction: 56,
-    netSales: 682,
+    netSales: 357,
   },
   {
     id: '2025-09-24',
@@ -7990,7 +7990,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-23T16:00:00.000Z'),
     gmv: 866,
     transaction: 61,
-    netSales: 736,
+    netSales: 246,
   },
   {
     id: '2025-09-25',
@@ -7998,7 +7998,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-24T16:00:00.000Z'),
     gmv: 741,
     transaction: 52,
-    netSales: 630,
+    netSales: 366,
   },
   {
     id: '2025-09-26',
@@ -8006,7 +8006,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-25T16:00:00.000Z'),
     gmv: 737,
     transaction: 52,
-    netSales: 626,
+    netSales: 355,
   },
   {
     id: '2025-09-27',
@@ -8014,7 +8014,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-26T16:00:00.000Z'),
     gmv: 1039,
     transaction: 73,
-    netSales: 883,
+    netSales: 260,
   },
   {
     id: '2025-09-28',
@@ -8022,7 +8022,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-27T16:00:00.000Z'),
     gmv: 1037,
     transaction: 73,
-    netSales: 881,
+    netSales: 256,
   },
   {
     id: '2025-09-29',
@@ -8030,7 +8030,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-28T16:00:00.000Z'),
     gmv: 708,
     transaction: 50,
-    netSales: 602,
+    netSales: 383,
   },
   {
     id: '2025-09-30',
@@ -8038,7 +8038,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-29T16:00:00.000Z'),
     gmv: 722,
     transaction: 51,
-    netSales: 614,
+    netSales: 414,
   },
   {
     id: '2025-10-01',
@@ -8046,7 +8046,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-09-30T16:00:00.000Z'),
     gmv: 656,
     transaction: 46,
-    netSales: 558,
+    netSales: 400,
   },
   {
     id: '2025-10-02',
@@ -8054,7 +8054,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-01T16:00:00.000Z'),
     gmv: 811,
     transaction: 57,
-    netSales: 689,
+    netSales: 385,
   },
   {
     id: '2025-10-03',
@@ -8062,7 +8062,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-02T16:00:00.000Z'),
     gmv: 719,
     transaction: 50,
-    netSales: 611,
+    netSales: 422,
   },
   {
     id: '2025-10-04',
@@ -8070,7 +8070,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-03T16:00:00.000Z'),
     gmv: 910,
     transaction: 64,
-    netSales: 774,
+    netSales: 307,
   },
   {
     id: '2025-10-05',
@@ -8078,7 +8078,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-04T16:00:00.000Z'),
     gmv: 1019,
     transaction: 71,
-    netSales: 866,
+    netSales: 264,
   },
   {
     id: '2025-10-06',
@@ -8086,7 +8086,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-05T16:00:00.000Z'),
     gmv: 663,
     transaction: 46,
-    netSales: 564,
+    netSales: 355,
   },
   {
     id: '2025-10-07',
@@ -8094,7 +8094,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-06T16:00:00.000Z'),
     gmv: 736,
     transaction: 52,
-    netSales: 626,
+    netSales: 494,
   },
   {
     id: '2025-10-08',
@@ -8102,7 +8102,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-07T16:00:00.000Z'),
     gmv: 846,
     transaction: 59,
-    netSales: 719,
+    netSales: 369,
   },
   {
     id: '2025-10-09',
@@ -8110,7 +8110,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-08T16:00:00.000Z'),
     gmv: 775,
     transaction: 54,
-    netSales: 659,
+    netSales: 441,
   },
   {
     id: '2025-10-10',
@@ -8118,7 +8118,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-09T16:00:00.000Z'),
     gmv: 858,
     transaction: 60,
-    netSales: 729,
+    netSales: 348,
   },
   {
     id: '2025-10-11',
@@ -8126,7 +8126,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-10T16:00:00.000Z'),
     gmv: 1176,
     transaction: 82,
-    netSales: 1000,
+    netSales: 271,
   },
   {
     id: '2025-10-12',
@@ -8134,7 +8134,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-11T16:00:00.000Z'),
     gmv: 1181,
     transaction: 83,
-    netSales: 1004,
+    netSales: 232,
   },
   {
     id: '2025-10-13',
@@ -8142,7 +8142,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-12T16:00:00.000Z'),
     gmv: 722,
     transaction: 51,
-    netSales: 614,
+    netSales: 396,
   },
   {
     id: '2025-10-14',
@@ -8150,7 +8150,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-13T16:00:00.000Z'),
     gmv: 864,
     transaction: 60,
-    netSales: 734,
+    netSales: 427,
   },
   {
     id: '2025-10-15',
@@ -8158,7 +8158,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-14T16:00:00.000Z'),
     gmv: 885,
     transaction: 62,
-    netSales: 752,
+    netSales: 317,
   },
   {
     id: '2025-10-16',
@@ -8166,7 +8166,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-15T16:00:00.000Z'),
     gmv: 873,
     transaction: 61,
-    netSales: 742,
+    netSales: 354,
   },
   {
     id: '2025-10-17',
@@ -8174,7 +8174,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-16T16:00:00.000Z'),
     gmv: 828,
     transaction: 58,
-    netSales: 704,
+    netSales: 308,
   },
   {
     id: '2025-10-18',
@@ -8182,7 +8182,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-17T16:00:00.000Z'),
     gmv: 961,
     transaction: 67,
-    netSales: 817,
+    netSales: 246,
   },
   {
     id: '2025-10-19',
@@ -8190,7 +8190,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-18T16:00:00.000Z'),
     gmv: 966,
     transaction: 68,
-    netSales: 821,
+    netSales: 184,
   },
   {
     id: '2025-10-20',
@@ -8198,7 +8198,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-19T16:00:00.000Z'),
     gmv: 738,
     transaction: 52,
-    netSales: 627,
+    netSales: 347,
   },
   {
     id: '2025-10-21',
@@ -8206,7 +8206,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-20T16:00:00.000Z'),
     gmv: 879,
     transaction: 62,
-    netSales: 747,
+    netSales: 241,
   },
   {
     id: '2025-10-22',
@@ -8214,7 +8214,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-21T16:00:00.000Z'),
     gmv: 783,
     transaction: 55,
-    netSales: 666,
+    netSales: 323,
   },
   {
     id: '2025-10-23',
@@ -8222,7 +8222,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-22T16:00:00.000Z'),
     gmv: 745,
     transaction: 52,
-    netSales: 633,
+    netSales: 239,
   },
   {
     id: '2025-10-24',
@@ -8230,7 +8230,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-23T16:00:00.000Z'),
     gmv: 873,
     transaction: 61,
-    netSales: 742,
+    netSales: 298,
   },
   {
     id: '2025-10-25',
@@ -8238,7 +8238,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-24T16:00:00.000Z'),
     gmv: 1119,
     transaction: 78,
-    netSales: 951,
+    netSales: 180,
   },
   {
     id: '2025-10-26',
@@ -8246,7 +8246,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-25T16:00:00.000Z'),
     gmv: 876,
     transaction: 61,
-    netSales: 745,
+    netSales: 163,
   },
   {
     id: '2025-10-27',
@@ -8254,7 +8254,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-26T16:00:00.000Z'),
     gmv: 765,
     transaction: 54,
-    netSales: 650,
+    netSales: 303,
   },
   {
     id: '2025-10-28',
@@ -8262,7 +8262,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-27T16:00:00.000Z'),
     gmv: 744,
     transaction: 52,
-    netSales: 632,
+    netSales: 277,
   },
   {
     id: '2025-10-29',
@@ -8270,7 +8270,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-28T16:00:00.000Z'),
     gmv: 665,
     transaction: 47,
-    netSales: 565,
+    netSales: 375,
   },
   {
     id: '2025-10-30',
@@ -8278,7 +8278,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-29T16:00:00.000Z'),
     gmv: 703,
     transaction: 49,
-    netSales: 598,
+    netSales: 379,
   },
   {
     id: '2025-10-31',
@@ -8286,7 +8286,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-30T16:00:00.000Z'),
     gmv: 766,
     transaction: 54,
-    netSales: 651,
+    netSales: 336,
   },
   {
     id: '2025-11-01',
@@ -8294,7 +8294,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-10-31T16:00:00.000Z'),
     gmv: 1031,
     transaction: 72,
-    netSales: 876,
+    netSales: 263,
   },
   {
     id: '2025-11-02',
@@ -8302,7 +8302,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-01T16:00:00.000Z'),
     gmv: 1089,
     transaction: 76,
-    netSales: 926,
+    netSales: 290,
   },
   {
     id: '2025-11-03',
@@ -8310,7 +8310,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-02T16:00:00.000Z'),
     gmv: 723,
     transaction: 51,
-    netSales: 615,
+    netSales: 488,
   },
   {
     id: '2025-11-04',
@@ -8318,7 +8318,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-03T16:00:00.000Z'),
     gmv: 701,
     transaction: 49,
-    netSales: 596,
+    netSales: 416,
   },
   {
     id: '2025-11-05',
@@ -8326,7 +8326,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-04T16:00:00.000Z'),
     gmv: 880,
     transaction: 62,
-    netSales: 748,
+    netSales: 514,
   },
   {
     id: '2025-11-06',
@@ -8334,7 +8334,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-05T16:00:00.000Z'),
     gmv: 849,
     transaction: 59,
-    netSales: 722,
+    netSales: 526,
   },
   {
     id: '2025-11-07',
@@ -8342,7 +8342,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-06T16:00:00.000Z'),
     gmv: 779,
     transaction: 55,
-    netSales: 662,
+    netSales: 514,
   },
   {
     id: '2025-11-08',
@@ -8350,7 +8350,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-07T16:00:00.000Z'),
     gmv: 1087,
     transaction: 76,
-    netSales: 924,
+    netSales: 345,
   },
   {
     id: '2025-11-09',
@@ -8358,7 +8358,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-08T16:00:00.000Z'),
     gmv: 996,
     transaction: 70,
-    netSales: 847,
+    netSales: 348,
   },
   {
     id: '2025-11-10',
@@ -8366,7 +8366,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-09T16:00:00.000Z'),
     gmv: 792,
     transaction: 55,
-    netSales: 673,
+    netSales: 511,
   },
   {
     id: '2025-11-11',
@@ -8374,7 +8374,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-10T16:00:00.000Z'),
     gmv: 784,
     transaction: 55,
-    netSales: 666,
+    netSales: 484,
   },
   {
     id: '2025-11-12',
@@ -8382,7 +8382,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-11T16:00:00.000Z'),
     gmv: 828,
     transaction: 58,
-    netSales: 704,
+    netSales: 378,
   },
   {
     id: '2025-11-13',
@@ -8390,7 +8390,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-12T16:00:00.000Z'),
     gmv: 749,
     transaction: 52,
-    netSales: 637,
+    netSales: 407,
   },
   {
     id: '2025-11-14',
@@ -8398,7 +8398,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-13T16:00:00.000Z'),
     gmv: 913,
     transaction: 64,
-    netSales: 776,
+    netSales: 426,
   },
   {
     id: '2025-11-15',
@@ -8406,7 +8406,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-14T16:00:00.000Z'),
     gmv: 1018,
     transaction: 71,
-    netSales: 865,
+    netSales: 206,
   },
   {
     id: '2025-11-16',
@@ -8414,7 +8414,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-15T16:00:00.000Z'),
     gmv: 989,
     transaction: 69,
-    netSales: 841,
+    netSales: 252,
   },
   {
     id: '2025-11-17',
@@ -8422,7 +8422,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-16T16:00:00.000Z'),
     gmv: 720,
     transaction: 50,
-    netSales: 612,
+    netSales: 333,
   },
   {
     id: '2025-11-18',
@@ -8430,7 +8430,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-17T16:00:00.000Z'),
     gmv: 760,
     transaction: 53,
-    netSales: 646,
+    netSales: 380,
   },
   {
     id: '2025-11-19',
@@ -8438,7 +8438,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-18T16:00:00.000Z'),
     gmv: 781,
     transaction: 55,
-    netSales: 664,
+    netSales: 294,
   },
   {
     id: '2025-11-20',
@@ -8446,7 +8446,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-19T16:00:00.000Z'),
     gmv: 757,
     transaction: 53,
-    netSales: 643,
+    netSales: 352,
   },
   {
     id: '2025-11-21',
@@ -8454,7 +8454,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-20T16:00:00.000Z'),
     gmv: 910,
     transaction: 64,
-    netSales: 774,
+    netSales: 362,
   },
   {
     id: '2025-11-22',
@@ -8462,7 +8462,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-21T16:00:00.000Z'),
     gmv: 1192,
     transaction: 83,
-    netSales: 1013,
+    netSales: 175,
   },
   {
     id: '2025-11-23',
@@ -8470,7 +8470,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-22T16:00:00.000Z'),
     gmv: 1166,
     transaction: 82,
-    netSales: 991,
+    netSales: 222,
   },
   {
     id: '2025-11-24',
@@ -8478,7 +8478,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-23T16:00:00.000Z'),
     gmv: 788,
     transaction: 55,
-    netSales: 670,
+    netSales: 279,
   },
   {
     id: '2025-11-25',
@@ -8486,7 +8486,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-24T16:00:00.000Z'),
     gmv: 676,
     transaction: 47,
-    netSales: 575,
+    netSales: 338,
   },
   {
     id: '2025-11-26',
@@ -8494,7 +8494,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-25T16:00:00.000Z'),
     gmv: 665,
     transaction: 47,
-    netSales: 565,
+    netSales: 333,
   },
   {
     id: '2025-11-27',
@@ -8502,7 +8502,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-26T16:00:00.000Z'),
     gmv: 765,
     transaction: 54,
-    netSales: 650,
+    netSales: 306,
   },
   {
     id: '2025-11-28',
@@ -8510,7 +8510,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-27T16:00:00.000Z'),
     gmv: 712,
     transaction: 50,
-    netSales: 605,
+    netSales: 316,
   },
   {
     id: '2025-11-29',
@@ -8518,7 +8518,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-28T16:00:00.000Z'),
     gmv: 863,
     transaction: 60,
-    netSales: 734,
+    netSales: 238,
   },
   {
     id: '2025-11-30',
@@ -8526,7 +8526,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-29T16:00:00.000Z'),
     gmv: 854,
     transaction: 60,
-    netSales: 726,
+    netSales: 216,
   },
   {
     id: '2025-12-01',
@@ -8534,7 +8534,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-11-30T16:00:00.000Z'),
     gmv: 801,
     transaction: 56,
-    netSales: 681,
+    netSales: 461,
   },
   {
     id: '2025-12-02',
@@ -8542,7 +8542,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-01T16:00:00.000Z'),
     gmv: 878,
     transaction: 61,
-    netSales: 746,
+    netSales: 556,
   },
   {
     id: '2025-12-03',
@@ -8550,7 +8550,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-02T16:00:00.000Z'),
     gmv: 738,
     transaction: 52,
-    netSales: 627,
+    netSales: 513,
   },
   {
     id: '2025-12-04',
@@ -8558,7 +8558,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-03T16:00:00.000Z'),
     gmv: 890,
     transaction: 62,
-    netSales: 757,
+    netSales: 505,
   },
   {
     id: '2025-12-05',
@@ -8566,7 +8566,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-04T16:00:00.000Z'),
     gmv: 826,
     transaction: 58,
-    netSales: 702,
+    netSales: 454,
   },
   {
     id: '2025-12-06',
@@ -8574,7 +8574,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-05T16:00:00.000Z'),
     gmv: 1021,
     transaction: 71,
-    netSales: 868,
+    netSales: 340,
   },
   {
     id: '2025-12-07',
@@ -8582,7 +8582,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-06T16:00:00.000Z'),
     gmv: 961,
     transaction: 67,
-    netSales: 817,
+    netSales: 353,
   },
   {
     id: '2025-12-08',
@@ -8590,7 +8590,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-07T16:00:00.000Z'),
     gmv: 744,
     transaction: 52,
-    netSales: 632,
+    netSales: 543,
   },
   {
     id: '2025-12-09',
@@ -8598,7 +8598,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-08T16:00:00.000Z'),
     gmv: 809,
     transaction: 57,
-    netSales: 688,
+    netSales: 466,
   },
   {
     id: '2025-12-10',
@@ -8606,7 +8606,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-09T16:00:00.000Z'),
     gmv: 940,
     transaction: 66,
-    netSales: 799,
+    netSales: 449,
   },
   {
     id: '2025-12-11',
@@ -8614,7 +8614,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-10T16:00:00.000Z'),
     gmv: 750,
     transaction: 53,
-    netSales: 638,
+    netSales: 447,
   },
   {
     id: '2025-12-12',
@@ -8622,7 +8622,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-11T16:00:00.000Z'),
     gmv: 758,
     transaction: 53,
-    netSales: 644,
+    netSales: 576,
   },
   {
     id: '2025-12-13',
@@ -8630,7 +8630,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-12T16:00:00.000Z'),
     gmv: 968,
     transaction: 68,
-    netSales: 823,
+    netSales: 293,
   },
   {
     id: '2025-12-14',
@@ -8638,7 +8638,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-13T16:00:00.000Z'),
     gmv: 1151,
     transaction: 81,
-    netSales: 978,
+    netSales: 291,
   },
   {
     id: '2025-12-15',
@@ -8646,7 +8646,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-14T16:00:00.000Z'),
     gmv: 842,
     transaction: 59,
-    netSales: 716,
+    netSales: 472,
   },
   {
     id: '2025-12-16',
@@ -8654,7 +8654,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-15T16:00:00.000Z'),
     gmv: 910,
     transaction: 64,
-    netSales: 774,
+    netSales: 399,
   },
   {
     id: '2025-12-17',
@@ -8662,15 +8662,15 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-16T16:00:00.000Z'),
     gmv: 835,
     transaction: 58,
-    netSales: 710,
+    netSales: 331,
   },
   {
     id: '2025-12-18',
     name: '25/12/18',
     date: new Date('2025-12-17T16:00:00.000Z'),
     gmv: 836,
-    transaction: 58,
-    netSales: 711,
+    transaction: 59,
+    netSales: 376,
   },
   {
     id: '2025-12-19',
@@ -8678,7 +8678,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-18T16:00:00.000Z'),
     gmv: 962,
     transaction: 67,
-    netSales: 818,
+    netSales: 315,
   },
   {
     id: '2025-12-20',
@@ -8686,7 +8686,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-19T16:00:00.000Z'),
     gmv: 1082,
     transaction: 76,
-    netSales: 920,
+    netSales: 243,
   },
   {
     id: '2025-12-21',
@@ -8694,7 +8694,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-20T16:00:00.000Z'),
     gmv: 1221,
     transaction: 85,
-    netSales: 1038,
+    netSales: 209,
   },
   {
     id: '2025-12-22',
@@ -8702,7 +8702,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-21T16:00:00.000Z'),
     gmv: 863,
     transaction: 60,
-    netSales: 734,
+    netSales: 291,
   },
   {
     id: '2025-12-23',
@@ -8710,7 +8710,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-22T16:00:00.000Z'),
     gmv: 896,
     transaction: 63,
-    netSales: 762,
+    netSales: 335,
   },
   {
     id: '2025-12-24',
@@ -8718,7 +8718,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-23T16:00:00.000Z'),
     gmv: 917,
     transaction: 64,
-    netSales: 779,
+    netSales: 342,
   },
   {
     id: '2025-12-25',
@@ -8726,7 +8726,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-24T16:00:00.000Z'),
     gmv: 697,
     transaction: 49,
-    netSales: 592,
+    netSales: 327,
   },
   {
     id: '2025-12-26',
@@ -8734,7 +8734,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-25T16:00:00.000Z'),
     gmv: 763,
     transaction: 53,
-    netSales: 649,
+    netSales: 325,
   },
   {
     id: '2025-12-27',
@@ -8742,7 +8742,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-26T16:00:00.000Z'),
     gmv: 1118,
     transaction: 78,
-    netSales: 950,
+    netSales: 250,
   },
   {
     id: '2025-12-28',
@@ -8750,7 +8750,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-27T16:00:00.000Z'),
     gmv: 1098,
     transaction: 77,
-    netSales: 933,
+    netSales: 282,
   },
   {
     id: '2025-12-29',
@@ -8758,7 +8758,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-28T16:00:00.000Z'),
     gmv: 827,
     transaction: 58,
-    netSales: 703,
+    netSales: 429,
   },
   {
     id: '2025-12-30',
@@ -8766,7 +8766,7 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-29T16:00:00.000Z'),
     gmv: 688,
     transaction: 48,
-    netSales: 585,
+    netSales: 476,
   },
   {
     id: '2025-12-31',
@@ -8774,6 +8774,6 @@ export const dailySalesData: TrendChartDataPoint[] = [
     date: new Date('2025-12-30T16:00:00.000Z'),
     gmv: 731,
     transaction: 51,
-    netSales: 621,
+    netSales: 378,
   },
 ]

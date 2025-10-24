@@ -14,6 +14,64 @@ const SALES_OUTPUT_FILE = path.join(OUTPUT_DIR, 'staticSalesData.ts');
 const USER_GROWTH_OUTPUT_FILE = path.join(OUTPUT_DIR, 'staticUserGrowthData.ts');
 
 /**
+ * Generates GMV value for a specific date with GMV-specific patterns
+ */
+function generateGMVValue(date, baseValue, seedOffset = 0) {
+  const month = date.getMonth();
+  const dayOfWeek = date.getDay();
+  const dayOfMonth = date.getDate();
+  const year = date.getFullYear();
+  
+  // Year growth factor (2023 baseline, 2024 +15%, 2025 +30%)
+  const yearMultiplier = 1 + ((year - 2023) * 0.15);
+  
+  // Seasonal multiplier (higher in Q4, lower in Q1)
+  const seasonalMultiplier = 1 + (month / 12) * 0.5;
+  
+  // Weekend boost (Saturday and Sunday)
+  const weekendMultiplier = (dayOfWeek === 0 || dayOfWeek === 6) ? 1.3 : 1.0;
+  
+  // Monthly pattern (peaks mid-month and end of month)
+  const monthlyPattern = 1 + Math.sin((dayOfMonth / 30) * Math.PI) * 0.15;
+  
+  // Add some randomness (seeded by date for consistency)
+  const randomFactor = 0.85 + seededRandom(year, month, dayOfMonth, seedOffset) * 0.3;
+  
+  const totalMultiplier = yearMultiplier * seasonalMultiplier * weekendMultiplier * monthlyPattern * randomFactor;
+  
+  return Math.round(baseValue * totalMultiplier);
+}
+
+/**
+ * Generates NetSales value for a specific date with NetSales-specific patterns
+ */
+function generateNetSalesValue(date, baseValue, seedOffset = 1000) {
+  const month = date.getMonth();
+  const dayOfWeek = date.getDay();
+  const dayOfMonth = date.getDate();
+  const year = date.getFullYear();
+  
+  // Year growth factor (different from GMV - slower growth)
+  const yearMultiplier = 1 + ((year - 2023) * 0.12);
+  
+  // Seasonal multiplier (different pattern - peaks in Q2 and Q4)
+  const seasonalMultiplier = 1 + Math.sin((month / 12) * Math.PI * 2) * 0.3;
+  
+  // Weekday pattern (different from GMV - stronger weekday performance)
+  const weekdayMultiplier = (dayOfWeek >= 1 && dayOfWeek <= 5) ? 1.2 : 0.8;
+  
+  // Monthly pattern (different cycle - peaks at beginning and end)
+  const monthlyPattern = 1 + Math.sin((dayOfMonth / 15) * Math.PI) * 0.2;
+  
+  // Add some randomness with different seed
+  const randomFactor = 0.8 + seededRandom(year, month, dayOfMonth, seedOffset) * 0.4;
+  
+  const totalMultiplier = yearMultiplier * seasonalMultiplier * weekdayMultiplier * monthlyPattern * randomFactor;
+  
+  return Math.round(baseValue * totalMultiplier);
+}
+
+/**
  * Generates daily sales data for 2023-2025
  */
 function generateDailySalesData() {
@@ -24,33 +82,22 @@ function generateDailySalesData() {
   // Base values with seasonal trends
   const baseRevenue = 400;
   const baseOrders = 28;
+  const baseNetSales = 340; // Different base for NetSales
   
   for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
     const month = d.getMonth();
-    const dayOfWeek = d.getDay();
     const dayOfMonth = d.getDate();
     const year = d.getFullYear();
     
-    // Year growth factor (2023 baseline, 2024 +15%, 2025 +30%)
-    const yearMultiplier = 1 + ((year - 2023) * 0.15);
+    // Generate GMV with one pattern
+    const gmv = generateGMVValue(d, baseRevenue, 0);
     
-    // Seasonal multiplier (higher in Q4, lower in Q1)
-    const seasonalMultiplier = 1 + (month / 12) * 0.5;
+    // Generate NetSales with different pattern
+    const netSales = generateNetSalesValue(d, baseNetSales, 1000);
     
-    // Weekend boost (Saturday and Sunday)
-    const weekendMultiplier = (dayOfWeek === 0 || dayOfWeek === 6) ? 1.3 : 1.0;
-    
-    // Monthly pattern (peaks mid-month and end of month)
-    const monthlyPattern = 1 + Math.sin((dayOfMonth / 30) * Math.PI) * 0.15;
-    
-    // Add some randomness (seeded by date for consistency)
-    const randomFactor = 0.85 + seededRandom(year, month, dayOfMonth) * 0.3;
-    
-    const totalMultiplier = yearMultiplier * seasonalMultiplier * weekendMultiplier * monthlyPattern * randomFactor;
-    
-    const gmv = Math.round(baseRevenue * totalMultiplier);
-    const transaction = Math.round(baseOrders * totalMultiplier);
-    const netSales = Math.round(gmv * 0.85); // NetSales is typically 85% of GMV
+    // Transaction follows GMV pattern
+    const transactionMultiplier = (gmv / baseRevenue);
+    const transaction = Math.round(baseOrders * transactionMultiplier);
     
     data.push({
       id: `${year}-${String(month + 1).padStart(2, '0')}-${String(dayOfMonth).padStart(2, '0')}`,
@@ -75,6 +122,8 @@ function generateDailyUserGrowthData() {
   
   let cumulativeUsers = 2000;
   const baseNewSignups = 15;
+  const baseGMV = 30000; // Different base for GMV in user growth
+  const baseNetSales = 25000; // Different base for NetSales in user growth
   
   for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
     const month = d.getMonth();
@@ -96,8 +145,11 @@ function generateDailyUserGrowthData() {
     const transaction = Math.round(baseNewSignups * yearMultiplier * growthMultiplier * weekdayMultiplier * randomFactor);
     cumulativeUsers += transaction * 0.9; // Net growth (accounting for churn)
     
-    const gmv = Math.round(cumulativeUsers * 15); // GMV based on cumulative users
-    const netSales = Math.round(gmv * 0.85); // NetSales is typically 85% of GMV
+    // Generate GMV with user growth specific pattern (seed offset 2000)
+    const gmv = generateGMVValue(d, baseGMV, 2000);
+    
+    // Generate NetSales with user growth specific pattern (seed offset 3000)
+    const netSales = generateNetSalesValue(d, baseNetSales, 3000);
     
     data.push({
       id: `${year}-${String(month + 1).padStart(2, '0')}-${String(dayOfMonth).padStart(2, '0')}`,
@@ -115,8 +167,8 @@ function generateDailyUserGrowthData() {
 /**
  * Seeded random number generator for consistent results
  */
-function seededRandom(year, month, day) {
-  const seed = year * 10000 + month * 100 + day;
+function seededRandom(year, month, day, seedOffset = 0) {
+  const seed = year * 10000 + month * 100 + day + seedOffset;
   const x = Math.sin(seed) * 10000;
   return x - Math.floor(x);
 }

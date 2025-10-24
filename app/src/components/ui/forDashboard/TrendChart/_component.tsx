@@ -185,7 +185,7 @@ export const TrendChart = ({
         cx={cx}
         cy={cy}
         r={6}
-        fill="#fff"
+        fill={getCssVar('colorBgMain')}
         stroke={stroke}
         strokeWidth={strokeWidth || 2}
       />
