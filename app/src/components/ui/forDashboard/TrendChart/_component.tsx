@@ -58,9 +58,20 @@ export interface TrendChartProps {
   animationDuration?: number
   /**
    * X-axis tick interval (0 = show all, 'preserveStartEnd' = auto with start/end, number = skip)
-   * @default 0
+   * If set to 'auto', will calculate based on minXAxisSpacing
+   * @default 'auto'
    */
-  xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd'
+  xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd' | 'auto'
+  /**
+   * Minimum spacing between x-axis ticks in pixels (used when xAxisInterval is 'auto')
+   * @default 8
+   */
+  minXAxisSpacing?: number
+  /**
+   * Estimated chart width in pixels for automatic interval calculation
+   * @default 800
+   */
+  estimatedChartWidth?: number
   /**
    * Whether to show dots on the line chart
    * @default true
@@ -123,7 +134,9 @@ export const TrendChart = ({
   showGrid = TREND_CHART_DEFAULTS.showGrid,
   showLegend = TREND_CHART_DEFAULTS.showLegend,
   animationDuration = TREND_CHART_DEFAULTS.animationDuration,
-  xAxisInterval = TREND_CHART_DEFAULTS.xAxisInterval,
+  xAxisInterval = 'auto',
+  minXAxisSpacing = TREND_CHART_DEFAULTS.minXAxisSpacing,
+  estimatedChartWidth = TREND_CHART_DEFAULTS.estimatedChartWidth,
   showDots = true,
   dotInterval,
   xAxisAngle = TREND_CHART_DEFAULTS.xAxisAngle,
@@ -143,10 +156,57 @@ export const TrendChart = ({
     .filter(Boolean)
     .join(' ')
 
-  // Use dotInterval if provided, otherwise sync with xAxisInterval
+  // Filter data based on selected date range
+  const filteredData = useMemo(() => {
+    if (!enableDateFilter || !getDateFromDataPoint) {
+      return data
+    }
+
+    if (!startDate && !endDate) {
+      return data
+    }
+
+    return data.filter((dataPoint) => {
+      const pointDate = getDateFromDataPoint(dataPoint)
+      
+      if (startDate && endDate) {
+        return pointDate >= startDate && pointDate <= endDate
+      } else if (startDate) {
+        return pointDate >= startDate
+      } else if (endDate) {
+        return pointDate <= endDate
+      }
+      
+      return true
+    })
+  }, [data, startDate, endDate, enableDateFilter, getDateFromDataPoint])
+
+  // Determine effective x-axis interval
+  const effectiveXAxisInterval = useMemo(() => {
+    if (xAxisInterval === 'auto') {
+      const dataPointCount = filteredData.length
+      if (dataPointCount <= 1) return 0
+      
+      // Calculate available space per data point if we show all
+      const spacePerPoint = estimatedChartWidth / (dataPointCount - 1)
+      
+      // If space is sufficient, show all points
+      if (spacePerPoint >= minXAxisSpacing) {
+        return 0
+      }
+      
+      // Calculate how many points we need to skip to meet minimum spacing
+      const interval = Math.ceil(minXAxisSpacing / spacePerPoint) - 1
+      
+      return Math.max(1, interval)
+    }
+    return xAxisInterval
+  }, [xAxisInterval, filteredData.length, minXAxisSpacing, estimatedChartWidth])
+
+  // Use dotInterval if provided, otherwise sync with effectiveXAxisInterval
   const effectiveDotInterval = dotInterval !== undefined 
     ? dotInterval 
-    : (typeof xAxisInterval === 'number' ? xAxisInterval : 0)
+    : (typeof effectiveXAxisInterval === 'number' ? effectiveXAxisInterval : 0)
 
   // Custom dot renderer that respects the interval and showDots setting
   const renderDot = (props: { cx?: number; cy?: number; stroke?: string; strokeWidth?: number; index?: number; key?: Key | null }) => {
@@ -192,31 +252,6 @@ export const TrendChart = ({
     )
   }
 
-  // Filter data based on selected date range
-  const filteredData = useMemo(() => {
-    if (!enableDateFilter || !getDateFromDataPoint) {
-      return data
-    }
-
-    if (!startDate && !endDate) {
-      return data
-    }
-
-    return data.filter((dataPoint) => {
-      const pointDate = getDateFromDataPoint(dataPoint)
-      
-      if (startDate && endDate) {
-        return pointDate >= startDate && pointDate <= endDate
-      } else if (startDate) {
-        return pointDate >= startDate
-      } else if (endDate) {
-        return pointDate <= endDate
-      }
-      
-      return true
-    })
-  }, [data, startDate, endDate, enableDateFilter, getDateFromDataPoint])
-
   return (
     <div className={containerClasses}>
       <div className={styles.header}>
@@ -247,7 +282,7 @@ export const TrendChart = ({
             {showGrid && <CartesianGrid strokeDasharray="3 3" verticalFill={[]} />}
             <XAxis 
               dataKey="name" 
-              interval={xAxisInterval}
+              interval={effectiveXAxisInterval}
               angle={xAxisAngle}
               textAnchor="end"
               height={xAxisHeight}

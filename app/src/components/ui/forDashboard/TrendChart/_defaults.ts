@@ -10,5 +10,7 @@ export const TREND_CHART_DEFAULTS = {
   xAxisHeight: 80,
   marginBottom: -20,
   xAxisTickMargin: 8,
+  minXAxisSpacing: 12, // Minimum spacing between x-axis ticks in pixels
+  estimatedChartWidth: 800, // Estimated chart width for automatic interval calculation
 }
 

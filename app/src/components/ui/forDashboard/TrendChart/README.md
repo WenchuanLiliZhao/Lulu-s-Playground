@@ -8,9 +8,12 @@ A responsive line chart component for displaying trends and analytics data, buil
 - **Responsive Design**: Uses ResponsiveContainer for fluid sizing
 - **Multiple Lines**: Support for displaying multiple data series
 - **Interactive Tooltips**: Hover tooltips with detailed information
+- **Automatic Grid Spacing**: Intelligent x-axis label spacing to prevent overlap (minimum 8px spacing by default)
+- **Date Range Filtering**: Built-in date filter for temporal data
 - **Configurable Styling**: Adjustable font sizes and padding via SCSS variables
 - **Smooth Animations**: Configurable animation duration
 - **Grid & Legend**: Optional grid lines and legend display
+- **Flexible Axis Configuration**: Customizable label angles, heights, and intervals
 
 ## Usage
 
@@ -67,6 +70,19 @@ function MyComponent() {
 | `showGrid` | `boolean` | `true` | Show/hide grid lines |
 | `showLegend` | `boolean` | `true` | Show/hide legend |
 | `animationDuration` | `number` | `1500` | Animation duration in milliseconds |
+| `xAxisInterval` | `number \| 'auto' \| 'preserveStart' \| 'preserveEnd' \| 'preserveStartEnd'` | `'auto'` | X-axis tick interval. Use `'auto'` for automatic spacing based on `minXAxisSpacing`, `0` to show all, or a number to skip every n labels |
+| `minXAxisSpacing` | `number` | `8` | Minimum spacing between x-axis ticks in pixels (used when `xAxisInterval` is `'auto'`) |
+| `estimatedChartWidth` | `number` | `800` | Estimated chart width in pixels for automatic interval calculation |
+| `showDots` | `boolean` | `true` | Whether to show dots on the line chart |
+| `dotInterval` | `number` | - | Dot display interval (defaults to `xAxisInterval` to keep dots and labels in sync) |
+| `xAxisAngle` | `number` | `-45` | X-axis label angle in degrees |
+| `xAxisHeight` | `number` | `80` | X-axis height to accommodate rotated labels |
+| `marginBottom` | `number` | `-20` | Chart margin bottom (distance from X-axis labels to SVG bottom) |
+| `xAxisTickMargin` | `number` | `8` | X-axis tick margin (distance from axis line to labels) |
+| `enableDateFilter` | `boolean` | `false` | Enable date range filtering |
+| `getDateFromDataPoint` | `(dataPoint: TrendChartDataPoint) => Date` | - | Function to extract date from data point (required if `enableDateFilter` is true) |
+| `initialStartDate` | `Date \| null` | `null` | Initial start date for date filter |
+| `initialEndDate` | `Date \| null` | `null` | Initial end date for date filter |
 | `className` | `string` | - | Optional className for custom styling |
 
 ### TrendChartDataPoint
@@ -165,6 +181,60 @@ const lines = [
   showGrid={false}
   showLegend={false}
   animationDuration={1000}
+/>
+```
+
+### Automatic Grid Spacing
+
+By default, the component automatically calculates the optimal x-axis interval to ensure labels don't overlap:
+
+```tsx
+<TrendChart
+  data={largeDataset} // 100+ data points
+  lines={lines}
+  // xAxisInterval defaults to 'auto'
+  // minXAxisSpacing defaults to 8px
+  // Labels will be automatically spaced to prevent overlap
+/>
+```
+
+### Custom Grid Spacing
+
+You can customize the minimum spacing or provide a manual interval:
+
+```tsx
+// Custom minimum spacing
+<TrendChart
+  data={data}
+  lines={lines}
+  xAxisInterval="auto"
+  minXAxisSpacing={12} // Require 12px minimum spacing
+/>
+
+// Manual interval (show every 5th label)
+<TrendChart
+  data={data}
+  lines={lines}
+  xAxisInterval={4} // Skip 4, show every 5th
+/>
+```
+
+### Date Range Filtering
+
+Enable interactive date filtering for temporal data:
+
+```tsx
+const getDateFromDataPoint = (dataPoint: TrendChartDataPoint): Date => {
+  return dataPoint.date as Date
+}
+
+<TrendChart
+  data={timeSeriesData}
+  lines={lines}
+  enableDateFilter={true}
+  getDateFromDataPoint={getDateFromDataPoint}
+  initialStartDate={new Date(2025, 0, 1)}
+  initialEndDate={new Date(2025, 11, 31)}
 />
 ```
 

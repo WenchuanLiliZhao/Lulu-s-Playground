@@ -8,7 +8,6 @@ import {
   salesLines,
   userGrowthLines,
 } from '../data'
-import { calcGridSpace } from './gridSpaceUtils'
 import styles from './TrendView.module.scss'
 
 export interface TrendViewProps {
@@ -37,60 +36,47 @@ export const TrendView = ({ zoomLevel }: TrendViewProps) => {
     [zoomLevel]
   )
 
-  // Calculate appropriate x-axis interval based on data density
-  // Typical chart width is ~800px for this layout
-  const calculatedInterval = useMemo(() => {
-    return calcGridSpace(salesData.length, 800)
-  }, [salesData.length])
-
   // Adjust X-axis display based on zoom level
   const xAxisConfig = useMemo(() => {
     switch (zoomLevel) {
       case 'day':
-        // Use calculated interval for day view to handle variable data density
         return { 
-          interval: calculatedInterval, 
           angle: -45, 
           height: 60, 
           showDots: false 
         }
       case 'week':
         return { 
-          interval: calculatedInterval, 
           angle: -45, 
           height: 70, 
           showDots: true 
         }
       case 'month':
         return { 
-          interval: calculatedInterval, 
           angle: -45, 
           height: 60, 
           showDots: true 
         }
       case 'quarter':
         return { 
-          interval: 0, // Quarters are few enough to show all
           angle: 0, 
           height: 50, 
           showDots: true 
         }
       case 'year':
         return { 
-          interval: 0, // Only 3 years, show all
           angle: 0, 
           height: 50, 
           showDots: true 
         }
       default:
         return { 
-          interval: calculatedInterval, 
           angle: -45, 
           height: 60, 
           showDots: true 
         }
     }
-  }, [zoomLevel, calculatedInterval])
+  }, [zoomLevel])
 
   // Generate chart title suffix based on zoom level
   const zoomLevelLabel = useMemo(() => {
@@ -107,11 +93,7 @@ export const TrendView = ({ zoomLevel }: TrendViewProps) => {
             title={`Sales Performance (${zoomLevelLabel} View)`}
             data={salesData}
             lines={salesLines}
-            showGrid={true}
-            showLegend={true}
             showDots={xAxisConfig.showDots}
-            animationDuration={1500}
-            xAxisInterval={xAxisConfig.interval}
             xAxisAngle={xAxisConfig.angle}
             xAxisHeight={xAxisConfig.height}
             enableDateFilter={true}
@@ -128,11 +110,7 @@ export const TrendView = ({ zoomLevel }: TrendViewProps) => {
             title={`User Growth & Engagement (${zoomLevelLabel} View)`}
             data={userGrowthData}
             lines={userGrowthLines}
-            showGrid={true}
-            showLegend={true}
             showDots={xAxisConfig.showDots}
-            animationDuration={1500}
-            xAxisInterval={xAxisConfig.interval}
             xAxisAngle={xAxisConfig.angle}
             xAxisHeight={xAxisConfig.height}
             enableDateFilter={true}
