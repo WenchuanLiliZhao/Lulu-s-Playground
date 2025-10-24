@@ -1,0 +1,77 @@
+.navigation {
+  height: 56px;
+  background-color: var(--color-bg-sec);
+  border: 1px solid var(--color-border-main);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  gap: 24px;
+  margin: 24px 24px 0 24px;
+  flex-shrink: 0;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  height: 32px;
+  width: 32px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-main);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.switchGroup {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-bg-sec);
+  border: 1px solid var(--color-border-main);
+  border-radius: 6px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.switchButton {
+  padding: 6px 16px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-sec);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--color-main);
+    background-color: var(--color-bg-sec-trans);
+  }
+
+  &.active {
+    background-color: var(--color-semantic-active);
+    color: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+

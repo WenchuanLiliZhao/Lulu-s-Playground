@@ -5,12 +5,12 @@
   "type": "module",
   "main": "./dist/lululemon-ui.umd.js",
   "module": "./dist/lululemon-ui.es.js",
-  "types": "./dist/lib-entry.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/lululemon-ui.es.js",
       "require": "./dist/lululemon-ui.umd.js",
-      "types": "./dist/lib-entry.d.ts"
+      "types": "./dist/index.d.ts"
     },
     "./styles": "./dist/lululemon-ui.css"
   },

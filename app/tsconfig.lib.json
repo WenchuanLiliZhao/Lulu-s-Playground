@@ -11,7 +11,8 @@
   },
   "include": [
     "src/components/**/*",
-    "src/lib-entry.ts"
+    "src/styles/**/*",
+    "src/index.ts"
   ],
   "exclude": [
     "src/playground",

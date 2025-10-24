@@ -11,7 +11,6 @@ export default defineConfig({
       include: ['src/components/**/*', 'src/index.ts', 'src/styles/**/*'],
       exclude: ['src/playground', 'src/debug', '**/*.test.tsx', '**/*.test.ts'],
       outDir: 'dist',
-      insertTypesEntry: true,
     }),
   ],
   publicDir: false, // Disable copying public directory
