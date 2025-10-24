@@ -1,0 +1,60 @@
+// ============================================================================
+// LAYOUT PARAMETERS - Container Configuration
+// ============================================================================
+// Container padding
+$container-padding: 24px;
+$container-padding-mobile: 16px;
+
+// Grid gap between charts
+$chart-gap: 24px;
+
+// Chart container styling
+$chart-border-radius: 12px;
+$chart-padding: 24px;
+// ============================================================================
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background: var(--color-bg-main);
+  padding: $container-padding;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; // Prevent container scroll
+}
+
+.chartsGrid {
+  display: grid;
+  grid-template-rows: 1fr 1fr; // Split 50-50 vertically
+  gap: $chart-gap;
+  flex: 1;
+  min-height: 0; // Critical: allows grid children to shrink
+}
+
+.chartContainer {
+  background: var(--color-bg-sec);
+  border-radius: $chart-border-radius;
+  padding: $chart-padding;
+  border: 1px solid var(--color-border-main);
+  display: flex;
+  flex-direction: column;
+  min-height: 0; // Critical: prevents overflow
+  height: 100%;
+  overflow: hidden; // Prevent internal scroll
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .container {
+    padding: $container-padding-mobile;
+  }
+}
+
+// Override responsive behavior when in scaled viewport mode
+// This ensures the layout remains fixed regardless of browser window size
+[data-scaled-viewport="true"] {
+  .container {
+    padding: $container-padding !important;
+  }
+}
+

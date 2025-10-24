@@ -2,17 +2,19 @@
 $x-axis-label-font-size: 12px !default;
 $y-axis-label-font-size: 12px !default;
 $chart-title-font-size: 18px !default;
-$chart-padding: 24px !default;
+$chart-padding: 0 !default;
+$chart-background-color: transparent !default;
+$chart-border: none !default;
 
 .container {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-bg-main);
+  background-color: $chart-background-color;
   padding: $chart-padding;
   border-radius: 8px;
-  border: 1px solid var(--color-border-main);
+  border: $chart-border;
   box-sizing: border-box;
 }
 
