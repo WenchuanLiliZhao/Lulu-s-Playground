@@ -8,13 +8,9 @@ import {
   salesLines,
   userGrowthLines,
 } from '../data'
+import { calcGridSpace } from './gridSpaceUtils'
 import styles from './TrendView.module.scss'
 
-/**
- * X-axis interval for day view (show every nth label)
- * Adjust this value to control label density in day zoom level
- */
-const DAY_VIEW_X_AXIS_INTERVAL = 7
 export interface TrendViewProps {
   zoomLevel: ZoomLevel
 }
@@ -24,6 +20,11 @@ export const TrendView = ({ zoomLevel }: TrendViewProps) => {
   const getDateFromDataPoint = (dataPoint: TrendChartDataPoint): Date => {
     return dataPoint.date as Date
   }
+
+  // Global default date range (independent of zoom level)
+  // This ensures user's time interval selection persists across zoom level changes
+  const defaultStartDate = useMemo(() => new Date(2023, 0, 1), []) // Jan 1, 2023
+  const defaultEndDate = useMemo(() => new Date(2025, 11, 31), []) // Dec 31, 2025
 
   // Aggregate data based on zoom level
   const salesData = useMemo(
@@ -36,57 +37,64 @@ export const TrendView = ({ zoomLevel }: TrendViewProps) => {
     [zoomLevel]
   )
 
-  // Adjust date range based on zoom level for better visualization
-  const { defaultStartDate, defaultEndDate } = useMemo(() => {
-    switch (zoomLevel) {
-      case 'day':
-        // Show last 2 months for day view
-        return {
-          defaultStartDate: new Date(2024, 9, 1), // Oct 1
-          defaultEndDate: new Date(2024, 10, 30),  // Nov 30
-        }
-      case 'week':
-        // Show Q3 and Q4 for week view
-        return {
-          defaultStartDate: new Date(2024, 6, 1),  // Jul 1
-          defaultEndDate: new Date(2024, 11, 31),  // Dec 31
-        }
-      case 'month':
-        // Show March to September for month view
-        return {
-          defaultStartDate: new Date(2024, 2, 1),  // Mar 1
-          defaultEndDate: new Date(2024, 8, 30),   // Sep 30
-        }
-      case 'quarter':
-      case 'year':
-        // Show full year for quarter and year views
-        return {
-          defaultStartDate: new Date(2024, 0, 1),  // Jan 1
-          defaultEndDate: new Date(2024, 11, 31),  // Dec 31
-        }
-      default:
-        return {
-          defaultStartDate: new Date(2024, 2, 1),
-          defaultEndDate: new Date(2024, 8, 30),
-        }
-    }
-  }, [zoomLevel])
+  // Calculate appropriate x-axis interval based on data density
+  // Typical chart width is ~800px for this layout
+  const calculatedInterval = useMemo(() => {
+    return calcGridSpace(salesData.length, 800)
+  }, [salesData.length])
 
   // Adjust X-axis display based on zoom level
   const xAxisConfig = useMemo(() => {
     switch (zoomLevel) {
       case 'day':
-        return { interval: DAY_VIEW_X_AXIS_INTERVAL, angle: -45, height: 60, showDots: false }
+        // Use calculated interval for day view to handle variable data density
+        return { 
+          interval: calculatedInterval, 
+          angle: -45, 
+          height: 60, 
+          showDots: false 
+        }
       case 'week':
-        return { interval: 0, angle: -45, height: 70, showDots: true }
+        return { 
+          interval: calculatedInterval, 
+          angle: -45, 
+          height: 70, 
+          showDots: false 
+        }
       case 'month':
-        return { interval: 0, angle: -45, height: 60, showDots: true }
+        return { 
+          interval: calculatedInterval, 
+          angle: -45, 
+          height: 60, 
+          showDots: true 
+        }
       case 'quarter':
+        return { 
+          interval: 0, // Quarters are few enough to show all
+          angle: 0, 
+          height: 50, 
+          showDots: true 
+        }
       case 'year':
-        return { interval: 0, angle: 0, height: 50, showDots: true }
+        return { 
+          interval: 0, // Only 3 years, show all
+          angle: 0, 
+          height: 50, 
+          showDots: true 
+        }
       default:
-        return { interval: 0, angle: -45, height: 60, showDots: true }
+        return { 
+          interval: calculatedInterval, 
+          angle: -45, 
+          height: 60, 
+          showDots: true 
+        }
     }
+  }, [zoomLevel, calculatedInterval])
+
+  // Generate chart title suffix based on zoom level
+  const zoomLevelLabel = useMemo(() => {
+    return zoomLevel.charAt(0).toUpperCase() + zoomLevel.slice(1)
   }, [zoomLevel])
   
   return (
@@ -95,7 +103,8 @@ export const TrendView = ({ zoomLevel }: TrendViewProps) => {
         {/* Chart 1: Sales Performance */}
         <div className={styles.chartContainer}>
           <TrendChart
-            title={`2024 Sales Performance (${zoomLevel.charAt(0).toUpperCase() + zoomLevel.slice(1)} View)`}
+            key={`sales-${zoomLevel}`}
+            title={`Sales Performance (${zoomLevelLabel} View)`}
             data={salesData}
             lines={salesLines}
             showGrid={true}
@@ -115,7 +124,8 @@ export const TrendView = ({ zoomLevel }: TrendViewProps) => {
         {/* Chart 2: User Growth & Engagement */}
         <div className={styles.chartContainer}>
           <TrendChart
-            title={`2024 User Growth & Engagement (${zoomLevel.charAt(0).toUpperCase() + zoomLevel.slice(1)} View)`}
+            key={`user-growth-${zoomLevel}`}
+            title={`User Growth & Engagement (${zoomLevelLabel} View)`}
             data={userGrowthData}
             lines={userGrowthLines}
             showGrid={true}

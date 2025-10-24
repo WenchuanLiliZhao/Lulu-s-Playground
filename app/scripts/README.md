@@ -119,3 +119,51 @@ const sequoiaColors = COLOR_SCALES.sequoia.colors;
 - ✅ **Automatic sync**: No manual copying of color values
 - ✅ **DRY principle**: Define colors once, use everywhere
 
+---
+
+## generate-trend-data.cjs
+
+Automatically generates static trend data (2023-2025) for the Sales Event Trend demo page.
+
+### Usage
+
+```bash
+npm run generate:trend-data
+```
+
+### What it does
+
+1. Generates daily sales data for the period 2023-01-01 to 2025-12-31 (1,096 data points)
+2. Generates daily user growth data for the same period
+3. Creates two TypeScript files:
+   - `staticSalesData.ts` - Contains GMV, Transaction, and NetSales data
+   - `staticUserGrowthData.ts` - Contains GMV, Transaction, and NetSales data
+4. Uses seeded random generation for consistent results across runs
+
+### When to run
+
+Run this script when you need to:
+- Update the date range for trend data
+- Modify the data generation algorithm
+- Change base values or growth patterns
+- Regenerate data with different seasonal patterns
+
+### Output
+
+The script generates TypeScript files with static data that can be imported:
+
+```typescript
+import { dailySalesData, dailyUserGrowthData } from './data/salesData';
+
+// Use the pre-generated static data
+<TrendChart data={dailySalesData} lines={salesLines} />
+```
+
+### Benefits
+
+- ✅ **Consistent data**: Same data generated every time (seeded random)
+- ✅ **Performance**: No runtime data generation overhead
+- ✅ **Type safety**: TypeScript types for all data points
+- ✅ **Large dataset**: 3 years of daily data (1,096 points per dataset)
+- ✅ **Realistic patterns**: Includes seasonal trends, weekend effects, and year-over-year growth
+

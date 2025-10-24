@@ -6,20 +6,20 @@ import { COLOR_SCALES } from '../../../../../styles/color-chart'
  */
 export const salesLines: TrendChartLine[] = [
   {
-    dataKey: 'revenue',
-    name: 'Revenue ($)',
+    dataKey: 'gmv',
+    name: 'GMV ($)',
     color: COLOR_SCALES.indigo.colors[5],
     strokeWidth: 2,
   },
   {
-    dataKey: 'orders',
-    name: 'Orders',
+    dataKey: 'transaction',
+    name: 'Transaction',
     color: COLOR_SCALES.wilderness.colors[4],
     strokeWidth: 2,
   },
   {
-    dataKey: 'avgOrderValue',
-    name: 'Avg Order Value ($)',
+    dataKey: 'netSales',
+    name: 'NetSales ($)',
     color: COLOR_SCALES.amber.colors[4],
     strokeWidth: 2,
   },
@@ -30,20 +30,20 @@ export const salesLines: TrendChartLine[] = [
  */
 export const userGrowthLines: TrendChartLine[] = [
   {
-    dataKey: 'activeUsers',
-    name: 'Active Users',
+    dataKey: 'gmv',
+    name: 'GMV ($)',
     color: COLOR_SCALES.hotHeat.colors[4],
     strokeWidth: 2,
   },
   {
-    dataKey: 'newSignups',
-    name: 'New Signups',
+    dataKey: 'transaction',
+    name: 'Transaction',
     color: COLOR_SCALES.indigo.colors[4],
     strokeWidth: 2,
   },
   {
-    dataKey: 'retention',
-    name: 'Retention Rate (%)',
+    dataKey: 'netSales',
+    name: 'NetSales ($)',
     color: COLOR_SCALES.wilderness.colors[5],
     strokeWidth: 2,
   },

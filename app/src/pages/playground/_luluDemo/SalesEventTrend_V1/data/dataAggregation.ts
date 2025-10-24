@@ -43,12 +43,10 @@ function aggregateByWeek(data: TrendChartDataPoint[]): TrendChartDataPoint[] {
   
   return Array.from(weeklyGroups.entries()).map(([key, points]) => {
     const weekStart = points[0].date as Date
-    const weekEnd = new Date(weekStart)
-    weekEnd.setDate(weekEnd.getDate() + 6)
     
     return {
       id: key,
-      name: `${weekStart.getMonth() + 1}/${weekStart.getDate()}-${weekEnd.getMonth() + 1}/${weekEnd.getDate()}`,
+      name: `${String(weekStart.getFullYear()).slice(-2)}/${weekStart.getMonth() + 1}/${weekStart.getDate()}`,
       date: weekStart,
       ...aggregateMetrics(points),
     }
@@ -77,7 +75,7 @@ function aggregateByMonth(data: TrendChartDataPoint[]): TrendChartDataPoint[] {
     
     return {
       id: key,
-      name: monthNames[date.getMonth()],
+      name: `${String(date.getFullYear()).slice(-2)}/${monthNames[date.getMonth()]}`,
       date: new Date(date.getFullYear(), date.getMonth(), 15), // Mid-month
       ...aggregateMetrics(points),
     }
@@ -108,7 +106,8 @@ function aggregateByQuarter(data: TrendChartDataPoint[]): TrendChartDataPoint[] 
     
     return {
       id: key,
-      name: key.split('-')[1], // 'Q1', 'Q2', etc.
+      // name: `${String(date.getFullYear()).slice(-2)}-Q${quarter}`, // '23/Q1', '24/Q2', etc.
+      name: key,
       date: new Date(date.getFullYear(), quarterStartMonth + 1, 15), // Mid-quarter month
       ...aggregateMetrics(points),
     }
@@ -134,6 +133,7 @@ function aggregateByYear(data: TrendChartDataPoint[]): TrendChartDataPoint[] {
   return Array.from(yearlyGroups.entries()).map(([key, points]) => {
     return {
       id: key,
+      // name: `${String(parseInt(key)).slice(-2)}`, // '23', '24', '25'
       name: key,
       date: new Date(parseInt(key), 6, 1), // Mid-year
       ...aggregateMetrics(points),
@@ -155,17 +155,8 @@ function aggregateMetrics(points: TrendChartDataPoint[]): Record<string, number>
     
     if (values.length === 0) return
     
-    // For most metrics, sum them up
-    // For percentage-like metrics (retention, avgOrderValue), calculate average
-    if (key.includes('retention') || key.includes('avg') || key.includes('Avg')) {
-      result[key] = Math.round((values.reduce((a, b) => a + b, 0) / values.length) * 100) / 100
-    } else if (key.includes('active') || key.includes('Active')) {
-      // For active users, use the last value (most recent)
-      result[key] = values[values.length - 1]
-    } else {
-      // For revenue, orders, signups, etc., sum them up
-      result[key] = Math.round(values.reduce((a, b) => a + b, 0))
-    }
+    // For GMV, NetSales, and Transaction, sum them up
+    result[key] = Math.round(values.reduce((a, b) => a + b, 0))
   })
   
   return result

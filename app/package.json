@@ -27,7 +27,8 @@
     "preview:playground": "npm run build:playground && vite preview",
     "prepublishOnly": "npm run build:lib",
     "generate:colors": "node scripts/generate-colors-ts.cjs",
-    "generate:color-use": "node scripts/generate-color-use-ts.cjs"
+    "generate:color-use": "node scripts/generate-color-use-ts.cjs",
+    "generate:trend-data": "node scripts/generate-trend-data.cjs"
   },
   "keywords": [
     "lululemon",

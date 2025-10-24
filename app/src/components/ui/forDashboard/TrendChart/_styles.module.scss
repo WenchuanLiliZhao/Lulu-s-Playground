@@ -38,7 +38,7 @@ $chart-border: none !default;
 .chartWrapper {
   flex: 1;
   width: 100%;
-  min-height: 0; // Important for flex children
+  min-height: 300px; // Ensure ResponsiveContainer has a minimum height
   overflow: visible; // Allow Y-axis text to show if it extends beyond bounds
 
   // Recharts custom styling

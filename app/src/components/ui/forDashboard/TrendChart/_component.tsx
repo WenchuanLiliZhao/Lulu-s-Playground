@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, type Key } from 'react'
 import {
   LineChart,
   Line,
@@ -12,6 +12,7 @@ import {
 import styles from './_styles.module.scss'
 import { TREND_CHART_DEFAULTS } from './_defaults'
 import { DateFilter } from '../../DateFilter'
+import { getCssVar } from '../../../../styles/color-use'
 
 export interface TrendChartDataPoint {
   name: string
@@ -148,23 +149,23 @@ export const TrendChart = ({
     : (typeof xAxisInterval === 'number' ? xAxisInterval : 0)
 
   // Custom dot renderer that respects the interval and showDots setting
-  const renderDot = (props: { cx?: number; cy?: number; stroke?: string; strokeWidth?: number; index?: number }) => {
-    const { cx, cy, stroke, strokeWidth, index = 0 } = props
+  const renderDot = (props: { cx?: number; cy?: number; stroke?: string; strokeWidth?: number; index?: number; key?: Key | null }) => {
+    const { cx, cy, stroke, strokeWidth, index = 0, key } = props
     
     // If showDots is false, don't render any dots
     if (!showDots) {
-      return <circle cx={cx} cy={cy} r={0} fill="none" stroke="none" />
+      return <circle key={key} cx={cx} cy={cy} r={0} fill="none" stroke="none" />
     }
     
     // Only show dots at specified intervals
     if (effectiveDotInterval === 0 || index % (effectiveDotInterval + 1) === 0) {
       return (
         <circle
-          key={`dot-${index}`}
+          key={key}
           cx={cx}
           cy={cy}
           r={4}
-          fill="#fff"
+          fill={getCssVar('colorBgMain')}
           stroke={stroke}
           strokeWidth={strokeWidth || 2}
         />
@@ -172,14 +173,15 @@ export const TrendChart = ({
     }
     
     // Return invisible dot to maintain structure
-    return <circle cx={cx} cy={cy} r={0} fill="none" stroke="none" />
+    return <circle key={key} cx={cx} cy={cy} r={0} fill="none" stroke="none" />
   }
 
   // Active dot renderer (always show on hover)
-  const renderActiveDot = (props: { cx?: number; cy?: number; stroke?: string; strokeWidth?: number }) => {
-    const { cx, cy, stroke, strokeWidth } = props
+  const renderActiveDot = (props: { cx?: number; cy?: number; stroke?: string; strokeWidth?: number; key?: Key | null }) => {
+    const { cx, cy, stroke, strokeWidth, key } = props
     return (
       <circle
+        key={key}
         cx={cx}
         cy={cy}
         r={6}
