@@ -40,6 +40,10 @@ export interface MetricWidgetProps extends DashboardCommonProps {
    * Sparkline color
    */
   sparklineColor?: string
+  /**
+   * Whether to use smooth/rounded curves for sparkline (default: true)
+   */
+  sparklineSmooth?: boolean
 }
 
 export const MetricWidget = ({
@@ -66,6 +70,7 @@ export const MetricWidget = ({
   statusColor = 'neutral',
   sparklineData,
   sparklineColor = 'var(--color-semantic-active)',
+  sparklineSmooth = true,
 }: MetricWidgetProps) => {
   const containerClasses = [styles['card-container'], className].filter(Boolean).join(' ')
 
@@ -85,15 +90,50 @@ export const MetricWidget = ({
       return { x, y }
     })
 
-    // Build path that includes bottom area
-    const path = [
-      `M ${points[0].x} ${height}`, // Start at bottom left
-      ...points.map((point) => `L ${point.x} ${point.y}`), // Draw line to each point
-      `L ${points[points.length - 1].x} ${height}`, // Draw down to bottom right
-      'Z', // Close path
-    ].join(' ')
+    let linePath: string
 
-    return path
+    if (sparklineSmooth && points.length > 2) {
+      // Generate smooth curve using quadratic Bezier curves
+      const smoothCommands = []
+      smoothCommands.push(`M ${points[0].x} ${height}`) // Start at bottom left
+      smoothCommands.push(`L ${points[0].x} ${points[0].y}`) // Move to first point
+
+      // Create smooth curve through points
+      for (let i = 0; i < points.length - 1; i++) {
+        const current = points[i]
+        const next = points[i + 1]
+        
+        if (i === 0) {
+          // First segment: use quadratic curve with control point at current
+          smoothCommands.push(`Q ${current.x} ${current.y}, ${(current.x + next.x) / 2} ${(current.y + next.y) / 2}`)
+        } else if (i === points.length - 2) {
+          // Last segment: smooth to the final point
+          smoothCommands.push(`T ${next.x} ${next.y}`)
+        } else {
+          // Middle segments: use smooth quadratic curve
+          smoothCommands.push(`T ${(current.x + next.x) / 2} ${(current.y + next.y) / 2}`)
+        }
+      }
+      
+      // Complete the last point
+      const lastPoint = points[points.length - 1]
+      smoothCommands.push(`T ${lastPoint.x} ${lastPoint.y}`)
+      
+      smoothCommands.push(`L ${lastPoint.x} ${height}`) // Draw down to bottom right
+      smoothCommands.push('Z') // Close path
+      
+      linePath = smoothCommands.join(' ')
+    } else {
+      // Build straight line path
+      linePath = [
+        `M ${points[0].x} ${height}`, // Start at bottom left
+        ...points.map((point) => `L ${point.x} ${point.y}`), // Draw line to each point
+        `L ${points[points.length - 1].x} ${height}`, // Draw down to bottom right
+        'Z', // Close path
+      ].join(' ')
+    }
+
+    return linePath
   }
 
   const changeTypeClassName = {
@@ -174,8 +214,6 @@ export const MetricWidget = ({
       {sparklineData && sparklineData.length > 1 && (
         <div className={styles.sparkline}>
           <svg
-            width="120"
-            height="60"
             viewBox="0 0 120 60"
             preserveAspectRatio="none"
             className={styles['sparkline-svg']}
