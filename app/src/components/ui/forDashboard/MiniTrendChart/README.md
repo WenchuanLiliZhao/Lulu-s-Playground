@@ -1,40 +1,62 @@
 # MiniTrendChart Component
 
-A compact line chart component for visualizing trends in limited space, perfect for dashboard cards showing attack traffic, latency, user activity, and other time-series metrics.
+A compact, responsive line chart component for dashboard cards, built with Recharts and following the Lululemon design system. Perfect for visualizing trends in small spaces while maintaining full interactivity.
 
 ## Features
 
-- **Compact Design**: Optimized for small dashboard cards
-- **Multiple Lines**: Support for comparing multiple metrics
-- **Flexible Legend**: Show/hide legend as needed
-- **Optional Grid**: Toggle grid lines for better readability
-- **Auto-scaling**: Data automatically normalized to fit chart area
-- **Area Fill**: Subtle gradient fill under each line
+- **Compact Design**: Optimized for dashboard cards and small containers
+- **Theme Support**: Automatically adapts to light/dark themes
+- **Responsive Design**: Uses ResponsiveContainer for fluid sizing
+- **Multiple Lines**: Support for displaying multiple data series
+- **Interactive Tooltips**: Hover tooltips with detailed information
+- **Automatic Grid Spacing**: Intelligent x-axis label spacing to prevent overlap
+- **Date Range Filtering**: Built-in date filter for temporal data
+- **Dashboard Integration**: Full support for dashboard header and alert light
+- **Configurable Styling**: Adjustable font sizes and padding via SCSS variables
+- **Smooth Animations**: Configurable animation duration
+- **Grid & Legend**: Optional grid lines and legend display
+- **Flexible Axis Configuration**: Show/hide axes, customizable angles and intervals
 
 ## Usage
 
-### Single Line Chart
+### Basic Mini Chart
 
 ```tsx
-import { MiniTrendChart, type MiniTrendChartLine } from '@/components/ui/forDashboard/MiniTrendChart'
+import { MiniTrendChart } from '@lululemon-ui'
+import type { MiniTrendChartDataPoint, MiniTrendChartLine } from '@lululemon-ui'
 
-const data: MiniTrendChartLine[] = [
+const data: MiniTrendChartDataPoint[] = [
+  { id: '1', name: '8m', latency: 45 },
+  { id: '2', name: '6m', latency: 52 },
+  { id: '3', name: '4m', latency: 48 },
+  { id: '4', name: '2m', latency: 55 },
+  { id: '5', name: '1m', latency: 60 },
+]
+
+const lines: MiniTrendChartLine[] = [
   {
-    id: 'latency',
-    name: 'API Latency',
-    data: [45, 52, 48, 55, 60, 58, 65, 70, 68, 72],
+    dataKey: 'latency',
+    name: 'API Latency (ms)',
     color: '#8b5cf6',
     strokeWidth: 2,
   },
 ]
 
-<MiniTrendChart
-  title="API Latency"
-  subtitle="p95: 234ms"
-  lines={data}
-  height={180}
-  showLegend={false}
-/>
+function MyDashboard() {
+  return (
+    <div style={{ width: '400px', height: '240px' }}>
+      <MiniTrendChart
+        title="API Latency"
+        subtitle="p95: 234ms"
+        data={data}
+        lines={lines}
+        height={180}
+        showGrid={false}
+        showLegend={false}
+      />
+    </div>
+  )
+}
 ```
 
 ### Multi-line Comparison
@@ -42,39 +64,62 @@ const data: MiniTrendChartLine[] = [
 ```tsx
 const lines: MiniTrendChartLine[] = [
   {
-    id: 'attack',
-    name: 'Attack Traffic (Gbps)',
-    data: [...],
+    dataKey: 'attack',
+    name: 'Attack Traffic',
     color: '#ef4444',
     strokeWidth: 2,
   },
   {
-    id: 'clean',
-    name: 'Clean Traffic (Gbps)',
-    data: [...],
+    dataKey: 'clean',
+    name: 'Clean Traffic',
     color: '#10b981',
     strokeWidth: 2,
   },
 ]
 
 <MiniTrendChart
-  title="DDOS Attack Traffic"
+  title="DDOS Traffic"
   subtitle="Mitigation: Active"
+  data={trafficData}
   lines={lines}
   height={180}
   showGrid={true}
   showLegend={true}
+  legendPosition="bottom"
 />
 ```
 
-### With X-axis Labels
+### With Dashboard Header
 
 ```tsx
 <MiniTrendChart
-  title="Hourly Traffic"
+  showHeader={true}
+  headerIcon="speed"
+  headerTitle="Performance"
+  headerSummary="Last 24 hours"
+  headerTitleSize="medium"
+  data={data}
   lines={lines}
-  xLabels={['8m', '6m', '4m', '2m', '1m']}
   height={180}
+/>
+```
+
+### With Date Filter
+
+```tsx
+const getDateFromDataPoint = (dataPoint: MiniTrendChartDataPoint): Date => {
+  return dataPoint.date as Date
+}
+
+<MiniTrendChart
+  title="Traffic Trend"
+  data={timeSeriesData}
+  lines={lines}
+  enableDateFilter={true}
+  getDateFromDataPoint={getDateFromDataPoint}
+  initialStartDate={new Date(2025, 0, 1)}
+  initialEndDate={new Date(2025, 11, 31)}
+  height={200}
 />
 ```
 
@@ -84,91 +129,204 @@ const lines: MiniTrendChartLine[] = [
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `title` | `string` | **required** | Chart title |
-| `subtitle` | `string` | `undefined` | Additional info/description |
-| `xLabels` | `string[]` | `undefined` | X-axis labels (e.g., time intervals) |
-| `lines` | `MiniTrendChartLine[]` | **required** | Data lines to display |
+| `title` | `string` | - | Chart title (internal header) |
+| `subtitle` | `string` | - | Subtitle/additional info |
+| `data` | `MiniTrendChartDataPoint[]` | **required** | Data for the chart |
+| `lines` | `MiniTrendChartLine[]` | **required** | Configuration for lines to display |
 | `height` | `number` | `180` | Chart height in pixels |
-| `showGrid` | `boolean` | `false` | Show horizontal grid lines |
-| `showLegend` | `boolean` | `true` | Show legend for multiple lines |
-| `className` | `string` | `''` | Additional CSS class |
+| `showGrid` | `boolean` | `false` | Show/hide grid lines |
+| `showLegend` | `boolean` | `true` | Show/hide legend |
+| `legendPosition` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Position of the legend |
+| `animationDuration` | `number` | `1000` | Animation duration in milliseconds |
+| `xAxisInterval` | `number \| 'auto' \| 'preserveStart' \| 'preserveEnd' \| 'preserveStartEnd'` | `'auto'` | X-axis tick interval |
+| `minXAxisSpacing` | `number` | `8` | Minimum spacing between x-axis ticks in pixels |
+| `estimatedChartWidth` | `number` | `400` | Estimated chart width for automatic interval calculation |
+| `showDots` | `boolean` | `false` | Whether to show dots on the line chart |
+| `dotInterval` | `number` | - | Dot display interval (defaults to xAxisInterval) |
+| `xAxisAngle` | `number` | `0` | X-axis label angle in degrees |
+| `xAxisHeight` | `number` | `40` | X-axis height to accommodate labels |
+| `marginBottom` | `number` | `0` | Chart margin bottom |
+| `xAxisTickMargin` | `number` | `5` | X-axis tick margin |
+| `showYAxis` | `boolean` | `false` | Show/hide Y-axis |
+| `showXAxis` | `boolean` | `true` | Show/hide X-axis |
+| `enableDateFilter` | `boolean` | `false` | Enable date range filtering |
+| `getDateFromDataPoint` | `(dataPoint: MiniTrendChartDataPoint) => Date` | - | Function to extract date from data point |
+| `initialStartDate` | `Date \| null` | `null` | Initial start date for date filter |
+| `initialEndDate` | `Date \| null` | `null` | Initial end date for date filter |
+| `className` | `string` | - | Optional className for custom styling |
+
+#### Dashboard Integration Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `showHeader` | `boolean` | `false` | Show dashboard header instead of internal title |
+| `headerIcon` | `string` | - | Material Symbol icon name |
+| `headerTitle` | `string` | - | Header title text |
+| `headerSummary` | `string` | - | Header summary/description text |
+| `headerTitleSize` | `'small' \| 'medium' \| 'large'` | `'medium'` | Title font size |
+| `headerIconSize` | `'small' \| 'medium' \| 'large'` | `'medium'` | Icon size |
+| `headerSummarySize` | `'small' \| 'medium' \| 'large'` | - | Summary font size |
+| `headerColor` | `'primary' \| 'secondary' \| 'active' \| 'success' \| 'warning' \| 'error'` | `'secondary'` | Header text color |
+| `showAlertLight` | `boolean` | `false` | Show alert light indicator |
+| `alertLightColor` | `string` | `'#10b981'` | Alert light color (CSS color value) |
+
+### MiniTrendChartDataPoint
+
+```typescript
+interface MiniTrendChartDataPoint {
+  name: string              // Display label for X-axis
+  id?: string              // Unique identifier
+  date?: Date              // Optional date for filtering
+  [key: string]: string | number | Date | undefined  // Data values
+}
+```
 
 ### MiniTrendChartLine
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `id` | `string` | **required** | Unique identifier |
-| `name` | `string` | **required** | Display name in legend |
-| `data` | `number[]` | **required** | Data points to plot |
-| `color` | `string` | **required** | Line color (CSS color value) |
-| `strokeWidth` | `number` | `2` | Line thickness in pixels |
+```typescript
+interface MiniTrendChartLine {
+  dataKey: string     // Key in data object
+  name: string        // Display name in legend
+  color: string       // Line color (hex or CSS color)
+  strokeWidth?: number  // Line thickness (default: 2)
+}
+```
 
-## Design Guidelines
+## SCSS Configuration
 
-### Recommended Sizes
+The component's appearance can be customized by modifying the following SCSS variables:
 
-- **Standard**: 400px width × 240px height (with grid and legend)
-- **Compact**: 300px width × 200px height (minimal, no grid)
-- **Mini**: 280px width × 160px height (status cards)
-
-### Chart Height Options
-
-- `180px`: Standard dashboard card
-- `140px`: Compact card
-- `120px`: Minimal inline chart
-
-### Data Points
-
-- **Optimal**: 30-50 data points for smooth curves
-- **Minimum**: 10 points to show trend
-- **Maximum**: 100 points (may look dense)
-
-### Color Selection
-
-Use semantic colors for clarity:
-- **Success/Normal**: `#10b981` (green)
-- **Warning**: `#f59e0b` (orange)
-- **Error/Alert**: `#ef4444` (red)
-- **Info**: `#3b82f6` (blue)
-- **Custom**: `#8b5cf6` (purple), `#06b6d4` (cyan)
-
-### When to Show Grid
-
-- **Show**: When precise values matter (latency, performance)
-- **Hide**: For general trend indication (activity patterns)
-
-### Legend Display
-
-- **Show**: When comparing 2+ lines
-- **Hide**: Single line charts with clear title
-
-## Use Cases
-
-Perfect for:
-- **Security Monitoring**: DDOS attacks, WAF blocks, intrusion attempts
-- **Performance Metrics**: API latency, response times, error rates
-- **User Activity**: Login attempts, page views, active sessions
-- **System Health**: CPU usage, memory consumption, network traffic
+```scss
+$x-axis-label-font-size: 10px !default;
+$y-axis-label-font-size: 10px !default;
+$chart-title-font-size: 15px !default;
+$chart-subtitle-font-size: 13px !default;
+$header-margin-bottom: 12px !default;
+```
 
 ## Examples
 
-See [debug-dashboard-widgets](/debug/dashboard-widgets) for live examples:
-- DDOS Attack Traffic (multi-line with grid)
-- WAF Blocks per minute (single line with grid)
-- High-Risk Login Attempts (compact, no grid)
-- API Latency monitoring (custom colors)
+### Minimal Compact Chart
 
-## Performance
+```tsx
+<MiniTrendChart
+  data={data}
+  lines={[
+    { dataKey: 'value', name: 'Metric', color: '#8b5cf6' }
+  ]}
+  height={140}
+  showGrid={false}
+  showLegend={false}
+  showXAxis={false}
+  showYAxis={false}
+/>
+```
 
-- Uses SVG for crisp rendering at any size
-- Automatic path generation and data normalization
-- Minimal re-renders with React optimization
-- Lightweight: ~5KB (component + styles)
+### Security Monitoring Dashboard
 
-## Accessibility
+```tsx
+const securityLines = [
+  {
+    dataKey: 'blocked',
+    name: 'Blocked Requests',
+    color: '#ef4444',
+  },
+  {
+    dataKey: 'allowed',
+    name: 'Allowed Requests',
+    color: '#10b981',
+  },
+]
 
-- SVG rendered with proper viewBox for scaling
-- Color contrast meets WCAG AA standards
-- Semantic structure with title hierarchy
-- Works in both light and dark themes
+<MiniTrendChart
+  showHeader={true}
+  headerIcon="security"
+  headerTitle="WAF Protection"
+  headerSummary="Real-time"
+  showAlertLight={true}
+  alertLightColor="#10b981"
+  data={wafData}
+  lines={securityLines}
+  height={200}
+  showGrid={true}
+  showLegend={true}
+/>
+```
 
+### With Rotated X-axis Labels
+
+```tsx
+<MiniTrendChart
+  title="Daily Metrics"
+  data={dailyData}
+  lines={lines}
+  height={220}
+  xAxisAngle={-45}
+  xAxisHeight={60}
+  showXAxis={true}
+/>
+```
+
+## Design System Integration
+
+The component uses the following design system tokens:
+
+- **Colors**: `--color-main`, `--color-sec`, `--color-bg-main`, `--color-border-main`
+- **Typography**: `--ff-sans`
+- **Shadows**: `--pop-shadow`
+- **Z-index**: `--z-index-popup-sec`
+
+All colors automatically adapt to the current theme (light/dark).
+
+## Comparison with TrendChart
+
+| Feature | MiniTrendChart | TrendChart |
+|---------|---------------|------------|
+| Primary Use | Dashboard cards | Full-page analytics |
+| Default Height | 180px | 300px+ |
+| Font Sizes | Smaller (10-15px) | Larger (12-18px) |
+| Default Grid | Off | On |
+| Default Y-axis | Hidden | Visible |
+| Default Dots | Hidden | Visible |
+| Dashboard Props | ✅ Full support | ❌ Not available |
+| Animation | 1000ms | 1500ms |
+| Legend Size | Compact (11px) | Standard (14px) |
+
+## Best Practices
+
+### Recommended Sizes
+
+- **Standard Card**: 400px × 240px
+- **Compact Card**: 300px × 200px
+- **Mini Card**: 280px × 160px
+
+### Data Points
+
+- **Optimal**: 10-30 data points for clarity in small space
+- **Maximum**: 50 points (may need auto interval)
+
+### When to Show Grid
+
+- **Show**: For precise value reading
+- **Hide**: For general trend visualization
+
+### Color Selection
+
+Use semantic colors:
+- Success/Normal: `#10b981` (green)
+- Warning: `#f59e0b` (orange)
+- Error/Alert: `#ef4444` (red)
+- Info: `#3b82f6` (blue)
+- Custom: `#8b5cf6` (purple)
+
+## Dependencies
+
+- [Recharts](https://recharts.org/) - Charting library
+- React 18+
+
+## Notes
+
+- The component requires a parent container with defined width and height
+- Optimized for compact spaces while maintaining full interactivity
+- Inherits all Recharts features including tooltips, animations, and responsiveness
+- Works seamlessly with dashboard layout system

@@ -15,6 +15,9 @@ $sparkline-right: -1px;
   @include shared.dashboard-card-container;
   min-height: 140px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 // ===== Dashboard Header Elements =====
@@ -88,8 +91,8 @@ $sparkline-right: -1px;
   font-size: 12px;
   font-weight: 600;
 
-  .material-symbols-outlined {
-    font-size: 14px;
+  .icon {
+    font-size: 16px;
   }
 
   &.positive {
@@ -108,27 +111,27 @@ $sparkline-right: -1px;
 .metric-status {
   font-size: 13px;
   font-weight: 600;
-  padding: 2px 8px;
+  // padding: 2px 8px;
   border-radius: 4px;
 
   &.status-success {
     color: var(--color-semantic-success);
-    background-color: rgba(16, 185, 129, 0.1);
+    // background-color: rgba(16, 185, 129, 0.1);
   }
 
   &.status-warning {
     color: var(--color-semantic-warning);
-    background-color: rgba(245, 158, 11, 0.1);
+    // background-color: rgba(245, 158, 11, 0.1);
   }
 
   &.status-error {
     color: var(--color-semantic-error);
-    background-color: rgba(239, 68, 68, 0.1);
+    // background-color: rgba(239, 68, 68, 0.1);
   }
 
   &.status-neutral {
     color: var(--color-sec);
-    background-color: var(--color-bg-sec-2);
+    // background-color: var(--color-bg-sec-2);
   }
 }
 

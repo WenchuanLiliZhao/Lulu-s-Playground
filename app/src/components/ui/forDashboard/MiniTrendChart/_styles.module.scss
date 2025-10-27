@@ -1,12 +1,18 @@
 @use '../_shared-styles.scss' as shared;
 
-// ===== Design Parameters =====
-$header-margin-bottom: 12px;
+// ===== Configurable parameters =====
+$x-axis-label-font-size: 10px !default;
+$y-axis-label-font-size: 10px !default;
+$chart-title-font-size: 15px !default;
+$chart-subtitle-font-size: 13px !default;
+$header-margin-bottom: 12px !default;
 
 // ===== Dashboard Card Container =====
 .card-container {
   @include shared.dashboard-card-container;
   min-height: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
 // ===== Dashboard Header Elements =====
@@ -35,78 +41,174 @@ $header-margin-bottom: 12px;
   @include shared.dashboard-alert-light;
 }
 
-// ===== Internal Header (alternative to dashboard header) =====
-.internal-header {
+// ===== Internal Header =====
+.header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  gap: 12px;
   margin-bottom: $header-margin-bottom;
-  gap: 16px;
-
-  .internal-title {
-    margin: 0;
-    padding: 0;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--color-main);
-    line-height: 1;
-    font-family: var(--ff-sans);
-  }
-
-  .internal-subtitle {
-    margin: 4px 0 0 0;
-    padding: 0;
-    font-size: 13px;
-    color: var(--color-sec);
-    line-height: 1.4;
-    font-family: var(--ff-sans);
-  }
-}
-
-.legend {
-  display: flex;
-  align-items: center;
-  gap: 16px;
   flex-wrap: wrap;
 }
 
-.legendItem {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.title {
+  font-size: $chart-title-font-size;
+  font-weight: 600;
+  color: var(--color-main);
+  margin: 0;
+  line-height: 1.2;
+  font-family: var(--ff-sans);
 }
 
-.legendColor {
-  width: 12px;
-  height: 3px;
-  border-radius: 2px;
-}
-
-.legendLabel {
-  font-size: 12px;
+.subtitle {
+  font-size: $chart-subtitle-font-size;
   color: var(--color-sec);
-  white-space: nowrap;
+  margin: 4px 0 0 0;
+  line-height: 1.4;
+  font-family: var(--ff-sans);
 }
 
 .chartWrapper {
   flex: 1;
-  position: relative;
   width: 100%;
-}
+  min-height: 120px;
+  overflow: visible;
 
-.svg {
-  display: block;
-}
+  // Recharts custom styling
+  :global {
+    // Ensure SVG doesn't clip labels
+    .recharts-wrapper {
+      overflow: visible !important;
+      
+      svg {
+        overflow: visible !important;
+        outline: none !important;
+        
+        &:focus,
+        &:focus-visible {
+          outline: none !important;
+        }
+      }
+    }
+    
+    // Remove outline from recharts surface
+    .recharts-surface {
+      outline: none !important;
+      
+      &:focus,
+      &:focus-visible {
+        outline: none !important;
+      }
+    }
 
-.yAxis {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 4px;
-  padding: 0 10px;
+    .recharts-cartesian-axis-tick {
+      font-family: var(--ff-sans);
+      
+      &-value {
+        fill: var(--color-sec);
+      }
+    }
 
-  .yAxisLabel {
-    font-size: 10px;
-    color: var(--color-sec);
+    // X-axis specific styling
+    .recharts-xAxis {
+      .recharts-cartesian-axis-tick-value {
+        font-size: $x-axis-label-font-size;
+      }
+    }
+
+    // Y-axis specific styling
+    .recharts-yAxis {
+      .recharts-cartesian-axis-tick-value {
+        font-size: $y-axis-label-font-size;
+      }
+    }
+
+    // Grid styling
+    .recharts-cartesian-grid-horizontal,
+    .recharts-cartesian-grid-vertical {
+      line {
+        stroke: var(--color-border-main);
+        opacity: 0.3;
+      }
+    }
+
+    // Axis lines
+    .recharts-cartesian-axis-line {
+      stroke: var(--color-border-main);
+      opacity: 0.5;
+    }
+
+    .recharts-cartesian-axis-tick-line {
+      stroke: var(--color-border-main);
+      opacity: 0.5;
+    }
+
+    // Tooltip styling
+    .recharts-tooltip-wrapper {
+      z-index: var(--z-index-popup-sec) !important;
+      
+      .recharts-default-tooltip {
+        background-color: var(--color-bg-main) !important;
+        border: 1px solid var(--color-border-main) !important;
+        border-radius: 4px !important;
+        box-shadow: var(--pop-shadow) !important;
+        padding: 8px 10px !important;
+        position: relative !important;
+        z-index: var(--z-index-popup-sec) !important;
+
+        .recharts-tooltip-label {
+          color: var(--color-main) !important;
+          font-weight: 600 !important;
+          margin-bottom: 6px !important;
+          font-family: var(--ff-sans) !important;
+          font-size: 11px !important;
+        }
+
+        .recharts-tooltip-item-list {
+          .recharts-tooltip-item {
+            color: var(--color-sec) !important;
+            font-family: var(--ff-sans) !important;
+            font-size: 10px !important;
+            
+            .recharts-tooltip-item-value {
+              color: var(--color-main) !important;
+              font-weight: 600 !important;
+            }
+          }
+        }
+      }
+    }
+    
+    // Additional tooltip background override with z-index
+    .recharts-default-tooltip {
+      background-color: var(--color-bg-main) !important;
+      z-index: var(--z-index-popup-sec) !important;
+    }
+    
+    // Ensure tooltip cursor is visible
+    .recharts-tooltip-cursor {
+      z-index: calc(var(--z-index-popup-sec) - 1) !important;
+    }
+
+    // Legend styling
+    .recharts-legend-wrapper {
+      .recharts-legend-item {
+        font-family: var(--ff-sans);
+        
+        .recharts-legend-item-text {
+          color: var(--color-main) !important;
+          font-size: 11px;
+          line-height: 1.25;
+        }
+      }
+    }
+
+    // Line dots
+    .recharts-line {
+      .recharts-line-dot {
+        fill: var(--color-main) !important;
+        stroke: var(--color-bg-main);
+      }
+    }
   }
 }
-

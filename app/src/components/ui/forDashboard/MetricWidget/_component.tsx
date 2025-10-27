@@ -2,6 +2,7 @@ import styles from './_styles.module.scss'
 import { DashboardHeaderElement, DashboardAlertLightElement } from '../_shared-elements'
 import type { DashboardCommonProps } from '../_shared-types'
 import { DASHBOARD_DEFAULTS } from '../_shared-config'
+import Icon from '../../Icon'
 
 export interface MetricWidgetProps extends DashboardCommonProps {
   /**
@@ -195,10 +196,10 @@ export const MetricWidget = ({
         {changeText && (
           <div className={`${styles['metric-change']} ${changeTypeClassName}`}>
             {changeType === 'positive' && (
-              <span className="material-symbols-outlined">arrow_upward</span>
+              <Icon icon="arrow_upward" className={styles['icon']} />
             )}
             {changeType === 'negative' && (
-              <span className="material-symbols-outlined">arrow_downward</span>
+              <Icon icon="arrow_downward" className={styles['icon']} />
             )}
             {changeText}
           </div>

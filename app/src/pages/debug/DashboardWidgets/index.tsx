@@ -1,6 +1,6 @@
 import { MetricWidget } from '../../../components/ui/forDashboard/MetricWidget'
 import { ProgressBarChart, type ProgressBarItem } from '../../../components/ui/forDashboard/ProgressBarChart'
-import { MiniTrendChart, type MiniTrendChartLine } from '../../../components/ui/forDashboard/MiniTrendChart'
+import { MiniTrendChart, type MiniTrendChartLine, type MiniTrendChartDataPoint } from '../../../components/ui/forDashboard/MiniTrendChart'
 import AppLayout from '../../../components/ui/AppLayout'
 import type { PageProps } from '../../_page-types'
 import styles from './styles.module.scss'
@@ -43,57 +43,86 @@ const appServiceData: ProgressBarItem[] = [
 ]
 
 // Sample data for MiniTrendChart
-const generateTrendData = (count: number): number[] => {
-  const data: number[] = []
+const generateTrendDataPoints = (
+  count: number, 
+  keys: string[], 
+  prefix: string = 'data'
+): MiniTrendChartDataPoint[] => {
+  const data: MiniTrendChartDataPoint[] = []
   for (let i = 0; i < count; i++) {
-    data.push(Math.random() * 40 + 10 + Math.sin(i / 5) * 20)
+    const point: MiniTrendChartDataPoint = {
+      id: `${prefix}-${i}`,
+      name: `${i}m`,
+    }
+    keys.forEach(key => {
+      point[key] = Math.random() * 40 + 10 + Math.sin(i / 5) * 20
+    })
+    data.push(point)
   }
   return data
 }
 
-const ddosData: MiniTrendChartLine[] = [
+// DDOS Attack Traffic data
+const ddosDataPoints = generateTrendDataPoints(50, ['attack', 'clean'], 'ddos').map((point) => ({
+  ...point,
+  clean: (point.clean as number) * 0.5,
+}))
+
+const ddosLines: MiniTrendChartLine[] = [
   {
-    id: 'attack',
+    dataKey: 'attack',
     name: 'Attack Traffic (Gbps)',
-    data: generateTrendData(50),
     color: '#ef4444',
     strokeWidth: 2,
   },
   {
-    id: 'clean',
+    dataKey: 'clean',
     name: 'Clean Traffic (Gbps)',
-    data: generateTrendData(50).map(v => v * 0.5),
     color: '#10b981',
     strokeWidth: 2,
   },
 ]
 
-const wafData: MiniTrendChartLine[] = [
+// WAF Blocks data
+const wafDataPoints = generateTrendDataPoints(40, ['blocks'], 'waf')
+const wafLines: MiniTrendChartLine[] = [
   {
-    id: 'blocks',
+    dataKey: 'blocks',
     name: 'Blocks per minute',
-    data: generateTrendData(40),
     color: '#ef4444',
     strokeWidth: 2,
   },
 ]
 
-const highRiskAccountsData: MiniTrendChartLine[] = [
+// High-Risk Accounts data
+const highRiskAccountsDataPoints = generateTrendDataPoints(30, ['accounts'], 'accounts')
+const highRiskAccountsLines: MiniTrendChartLine[] = [
   {
-    id: 'accounts',
+    dataKey: 'accounts',
     name: 'Accounts',
-    data: generateTrendData(30),
     color: '#f59e0b',
     strokeWidth: 2,
   },
 ]
 
-const highRiskTransactionsData: MiniTrendChartLine[] = [
+// High-Risk Transactions data
+const highRiskTransactionsDataPoints = generateTrendDataPoints(30, ['transactions'], 'transactions')
+const highRiskTransactionsLines: MiniTrendChartLine[] = [
   {
-    id: 'transactions',
+    dataKey: 'transactions',
     name: 'Transactions',
-    data: generateTrendData(30),
     color: '#f59e0b',
+    strokeWidth: 2,
+  },
+]
+
+// API Latency data
+const apiLatencyDataPoints = generateTrendDataPoints(25, ['latency'], 'latency')
+const apiLatencyLines: MiniTrendChartLine[] = [
+  {
+    dataKey: 'latency',
+    name: 'Latency',
+    color: '#8b5cf6',
     strokeWidth: 2,
   },
 ]
@@ -289,7 +318,8 @@ const DashboardWidgetsDebug = () => {
             showAlertLight={false}
             title="DDOS Attack Traffic"
             subtitle="Mitigation: Active"
-            lines={ddosData}
+            data={ddosDataPoints}
+            lines={ddosLines}
             height={180}
             showGrid={true}
             showLegend={true}
@@ -298,7 +328,8 @@ const DashboardWidgetsDebug = () => {
           <MiniTrendChart
             showAlertLight={false}
             title="WAF Blocks / min"
-            lines={wafData}
+            data={wafDataPoints}
+            lines={wafLines}
             height={180}
             showGrid={true}
             showLegend={false}
@@ -311,7 +342,8 @@ const DashboardWidgetsDebug = () => {
             showAlertLight={false}
             title="High-Risk Login Attempts"
             subtitle="85 Accounts"
-            lines={highRiskAccountsData}
+            data={highRiskAccountsDataPoints}
+            lines={highRiskAccountsLines}
             height={140}
             showGrid={false}
             showLegend={false}
@@ -321,7 +353,8 @@ const DashboardWidgetsDebug = () => {
             showAlertLight={false}
             title="High-Risk Login Attempts"
             subtitle="42 Transactions"
-            lines={highRiskTransactionsData}
+            data={highRiskTransactionsDataPoints}
+            lines={highRiskTransactionsLines}
             height={140}
             showGrid={false}
             showLegend={false}
@@ -331,15 +364,8 @@ const DashboardWidgetsDebug = () => {
             showAlertLight={false}
             title="API Latency"
             subtitle="p95: 234ms"
-            lines={[
-              {
-                id: 'latency',
-                name: 'Latency',
-                data: generateTrendData(25),
-                color: '#8b5cf6',
-                strokeWidth: 2,
-              },
-            ]}
+            data={apiLatencyDataPoints}
+            lines={apiLatencyLines}
             height={140}
             showGrid={false}
             showLegend={false}
@@ -470,7 +496,8 @@ const DashboardWidgetsDebug = () => {
               alertLightColor="#ef4444"
               title="DDOS Attack Traffic"
               subtitle="Mitigation: Active"
-              lines={ddosData}
+              data={ddosDataPoints}
+              lines={ddosLines}
               height={180}
               showGrid={true}
               showLegend={true}
@@ -481,7 +508,8 @@ const DashboardWidgetsDebug = () => {
               alertLightColor="#ef4444"
               title="WAF Blocks / min"
               subtitle="1,250"
-              lines={wafData}
+              data={wafDataPoints}
+              lines={wafLines}
               height={180}
               showGrid={true}
               showLegend={false}
@@ -492,7 +520,8 @@ const DashboardWidgetsDebug = () => {
               alertLightColor="#f59e0b"
               title="High-Risk Login Attempts"
               subtitle="85 Accounts"
-              lines={highRiskAccountsData}
+              data={highRiskAccountsDataPoints}
+              lines={highRiskAccountsLines}
               height={180}
               showGrid={false}
               showLegend={false}
@@ -503,7 +532,8 @@ const DashboardWidgetsDebug = () => {
               alertLightColor="#f59e0b"
               title="High-Risk Login Attempts"
               subtitle="42 Transactions"
-              lines={highRiskTransactionsData}
+              data={highRiskTransactionsDataPoints}
+              lines={highRiskTransactionsLines}
               height={180}
               showGrid={false}
               showLegend={false}

@@ -35,5 +35,5 @@ export { ProgressBarChart } from './ProgressBarChart'
 export type { ProgressBarChartProps, ProgressBarItem } from './ProgressBarChart'
 
 export { MiniTrendChart } from './MiniTrendChart'
-export type { MiniTrendChartProps, MiniTrendChartLine } from './MiniTrendChart'
+export type { MiniTrendChartProps, MiniTrendChartLine, MiniTrendChartDataPoint } from './MiniTrendChart'
 

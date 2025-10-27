@@ -1,0 +1,108 @@
+---
+description: When generating chart data
+alwaysApply: false
+---
+# Data Generation Rules
+
+## When Generating Chart Data
+
+### Unique ID Requirements
+
+**Every data point MUST have a globally unique ID:**
+
+```typescript
+// ✅ CORRECT - Use prefix to ensure uniqueness
+const generateDataPoints = (count: number, keys: string[], prefix: string) => {
+  const data: DataPoint[] = []
+  for (let i = 0; i < count; i++) {
+    data.push({
+      id: `${prefix}-${i}`,  // Unique ID with prefix
+      name: `${i}m`,          // Meaningful label
+      ...values
+    })
+  }
+  return data
+}
+
+// Usage with different prefixes
+const salesData = generateDataPoints(50, ['revenue'], 'sales')
+const ordersData = generateDataPoints(30, ['count'], 'orders')
+```
+
+```typescript
+// ❌ WRONG - IDs will collide across datasets
+const data1 = [
+  { id: '0', name: '0m', value: 100 },  // Conflicts with data2
+  { id: '1', name: '1m', value: 120 },
+]
+
+const data2 = [
+  { id: '0', name: '0m', value: 50 },   // Same ID as data1!
+  { id: '1', name: '1m', value: 60 },
+]
+```
+
+### Key Rules
+
+1. **Use prefixes** - Add dataset-specific prefix to IDs (`sales-0`, `orders-0`)
+2. **No empty names** - Every point should have a label for tooltips
+3. **Consistent format** - Keep ID format consistent: `${prefix}-${index}`
+4. **Meaningful prefixes** - Use descriptive prefixes that indicate the data type
+
+### Why This Matters
+
+- Recharts uses IDs to track data points for tooltips and interactions
+- Duplicate IDs cause incorrect hover states and tooltip display
+- Unique IDs improve debugging and data mapping
+# Data Generation Rules
+
+## When Generating Chart Data
+
+### Unique ID Requirements
+
+**Every data point MUST have a globally unique ID:**
+
+```typescript
+// ✅ CORRECT - Use prefix to ensure uniqueness
+const generateDataPoints = (count: number, keys: string[], prefix: string) => {
+  const data: DataPoint[] = []
+  for (let i = 0; i < count; i++) {
+    data.push({
+      id: `${prefix}-${i}`,  // Unique ID with prefix
+      name: `${i}m`,          // Meaningful label
+      ...values
+    })
+  }
+  return data
+}
+
+// Usage with different prefixes
+const salesData = generateDataPoints(50, ['revenue'], 'sales')
+const ordersData = generateDataPoints(30, ['count'], 'orders')
+```
+
+```typescript
+// ❌ WRONG - IDs will collide across datasets
+const data1 = [
+  { id: '0', name: '0m', value: 100 },  // Conflicts with data2
+  { id: '1', name: '1m', value: 120 },
+]
+
+const data2 = [
+  { id: '0', name: '0m', value: 50 },   // Same ID as data1!
+  { id: '1', name: '1m', value: 60 },
+]
+```
+
+### Key Rules
+
+1. **Use prefixes** - Add dataset-specific prefix to IDs (`sales-0`, `orders-0`)
+2. **No empty names** - Every point should have a label for tooltips
+3. **Consistent format** - Keep ID format consistent: `${prefix}-${index}`
+4. **Meaningful prefixes** - Use descriptive prefixes that indicate the data type
+
+### Why This Matters
+
+- Recharts uses IDs to track data points for tooltips and interactions
+- Duplicate IDs cause incorrect hover states and tooltip display
+- Unique IDs improve debugging and data mapping
