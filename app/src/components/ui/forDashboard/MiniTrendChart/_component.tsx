@@ -229,7 +229,7 @@ export const MiniTrendChart = ({
           {showGrid && generateGridLines()}
 
           {/* Draw each line */}
-          {lines.map((line, index) => (
+          {lines.map((line) => (
             <g key={line.id}>
               {/* Area fill */}
               <path
