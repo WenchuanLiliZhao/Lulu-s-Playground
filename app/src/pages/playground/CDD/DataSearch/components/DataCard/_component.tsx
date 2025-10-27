@@ -14,7 +14,7 @@ export const DataCard = ({ data, className = "" }: DataCardProps) => {
       return <span className={styles.title}>{data.name}</span>;
     }
 
-    const parts = data.name.split(new RegExp(`(${data.nameHighlight})`, 'gi'));
+    const parts = data.name.split(new RegExp(`(${data.nameHighlight})`, "gi"));
     return (
       <span className={styles.title}>
         {parts.map((part, index) =>
@@ -34,11 +34,21 @@ export const DataCard = ({ data, className = "" }: DataCardProps) => {
     <div className={`${styles.card} ${className}`}>
       <div className={styles.header}>
         <div className={styles.titleSection}>
-          <Icon icon="table_chart" className={styles.icon} />
-          <div className={styles.titleWrapper}>{renderHighlightedName()}</div>
-          <button className={styles.copyBtn} aria-label="feature_search">
-            <Icon icon="feature_search" />
-          </button>
+          <div className={styles.titleWrapper}>
+            <Icon icon="table_chart" className={styles.icon} />
+            <div className={styles.titleWrapper}>{renderHighlightedName()}</div>
+          </div>
+          <div className={styles.btnGroup}>
+            <button className={styles.actionBtn} aria-label="feature_search">
+              <Icon icon="feature_search" />
+            </button>
+            <button className={styles.actionBtn} aria-label="flowchart">
+              <Icon icon="flowchart" />
+            </button>
+            <button className={styles.actionBtn} aria-label="flowchart_reverse">
+              <Icon icon="flowchart" className={styles.mirroredIcon} />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -72,4 +82,3 @@ export const DataCard = ({ data, className = "" }: DataCardProps) => {
     </div>
   );
 };
-
