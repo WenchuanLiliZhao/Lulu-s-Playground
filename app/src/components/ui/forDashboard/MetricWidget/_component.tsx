@@ -69,33 +69,7 @@ export const MetricWidget = ({
 }: MetricWidgetProps) => {
   const containerClasses = [styles['card-container'], className].filter(Boolean).join(' ')
 
-  // Generate SVG path for sparkline
-  const generateSparklinePath = () => {
-    if (!sparklineData || sparklineData.length < 2) return ''
-
-    const width = 120
-    const height = 60
-    const min = Math.min(...sparklineData)
-    const max = Math.max(...sparklineData)
-    const range = max - min || 1
-
-    const points = sparklineData.map((value, index) => {
-      const x = (index / (sparklineData.length - 1)) * width
-      const y = height - ((value - min) / range) * height
-      return { x, y }
-    })
-
-    const path = points
-      .map((point, index) => {
-        if (index === 0) return `M ${point.x} ${point.y}`
-        return `L ${point.x} ${point.y}`
-      })
-      .join(' ')
-
-    return path
-  }
-
-  // Generate gradient path for sparkline fill
+  // Generate area path for sparkline fill
   const generateSparklineAreaPath = () => {
     if (!sparklineData || sparklineData.length < 2) return ''
 
@@ -156,6 +130,7 @@ export const MetricWidget = ({
           summarySize={headerSummarySize}
           color={headerColor}
           className={styles['dashboard-header']}
+          topClassName={styles['dashboard-header-top']}
           iconClassName={styles['dashboard-header-icon']}
           titleClassName={styles['dashboard-header-title']}
           summaryClassName={styles['dashboard-header-summary']}
@@ -207,28 +182,31 @@ export const MetricWidget = ({
           >
             <defs>
               <linearGradient
-                id={`gradient-${title.replace(/\s+/g, '-')}`}
+                id={`fade-mask-${title.replace(/\s+/g, '-')}`}
                 x1="0%"
                 y1="0%"
-                x2="0%"
-                y2="100%"
+                x2="100%"
+                y2="0%"
               >
-                <stop offset="0%" stopColor={sparklineColor} stopOpacity="0.3" />
-                <stop offset="100%" stopColor={sparklineColor} stopOpacity="0" />
+                <stop offset="0%" stopColor="white" stopOpacity="0" />
+                <stop offset="100%" stopColor="white" stopOpacity="1" />
               </linearGradient>
+              <mask id={`mask-${title.replace(/\s+/g, '-')}`}>
+                <rect
+                  x="0"
+                  y="0"
+                  width="120"
+                  height="60"
+                  fill={`url(#fade-mask-${title.replace(/\s+/g, '-')})`}
+                />
+              </mask>
             </defs>
-            {/* Area fill with gradient */}
+            {/* Area fill with solid color and left-to-right fade mask */}
             <path
               d={generateSparklineAreaPath()}
-              fill={`url(#gradient-${title.replace(/\s+/g, '-')})`}
+              fill={sparklineColor}
               stroke="none"
-            />
-            {/* Line on top */}
-            <path
-              d={generateSparklinePath()}
-              fill="none"
-              stroke={sparklineColor}
-              strokeWidth="2"
+              mask={`url(#mask-${title.replace(/\s+/g, '-')})`}
             />
           </svg>
         </div>

@@ -111,6 +111,7 @@ export const ProgressBarChart = ({
           summarySize={headerSummarySize}
           color={headerColor}
           className={styles['dashboard-header']}
+          topClassName={styles['dashboard-header-top']}
           iconClassName={styles['dashboard-header-icon']}
           titleClassName={styles['dashboard-header-title']}
           summaryClassName={styles['dashboard-header-summary']}

@@ -36,8 +36,8 @@ export const DataCard = ({ data, className = "" }: DataCardProps) => {
         <div className={styles.titleSection}>
           <Icon icon="table_chart" className={styles.icon} />
           <div className={styles.titleWrapper}>{renderHighlightedName()}</div>
-          <button className={styles.copyBtn} aria-label="Copy">
-            <Icon icon="content_copy" />
+          <button className={styles.copyBtn} aria-label="feature_search">
+            <Icon icon="feature_search" />
           </button>
         </div>
       </div>

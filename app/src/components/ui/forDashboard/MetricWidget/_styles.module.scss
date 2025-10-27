@@ -22,6 +22,10 @@ $sparkline-right: 0;
   @include shared.dashboard-header;
 }
 
+.dashboard-header-top {
+  @include shared.dashboard-header-top;
+}
+
 .dashboard-header-icon {
   @include shared.dashboard-header-icon;
 }

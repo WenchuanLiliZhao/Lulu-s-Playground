@@ -18,6 +18,7 @@ export interface DashboardHeaderElementProps {
   summarySize?: DashboardSizeType
   color?: DashboardColorType
   className?: string
+  topClassName?: string
   iconClassName?: string
   titleClassName?: string
   summaryClassName?: string
@@ -32,6 +33,7 @@ export const DashboardHeaderElement = ({
   summarySize,
   color = DASHBOARD_DEFAULTS.headerColor,
   className = '',
+  topClassName = '',
   iconClassName = '',
   titleClassName = '',
   summaryClassName = '',
@@ -66,7 +68,7 @@ export const DashboardHeaderElement = ({
   return (
     <div className={className}>
       {(icon || title) && (
-        <div>
+        <div className={topClassName}>
           {icon && (
             <span className={iconClassName} style={iconStyle}>
               <span className="material-symbols-outlined">{icon}</span>
