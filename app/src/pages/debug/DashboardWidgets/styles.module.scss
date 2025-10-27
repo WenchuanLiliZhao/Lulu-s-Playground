@@ -1,0 +1,200 @@
+.container {
+  padding: 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.debugHeader {
+  margin-bottom: 48px;
+
+  h1 {
+    margin: 0 0 12px 0;
+    color: var(--color-main);
+    font-family: var(--ff-sans);
+  }
+
+  .description {
+    margin: 0;
+    color: var(--color-sec);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+.section {
+  margin-bottom: 64px;
+
+  h2 {
+    margin: 0 0 8px 0;
+    color: var(--color-main);
+    font-family: var(--ff-sans);
+    font-size: 24px;
+  }
+
+  .sectionSubtitle {
+    margin: 24px 0 16px 0;
+    color: var(--color-sec);
+    font-family: var(--ff-sans);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .sectionDesc {
+    margin: 0 0 32px 0;
+    color: var(--color-sec);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+// ===== MetricWidget Grids =====
+.gridMetrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+
+  > * {
+    min-height: 160px;
+  }
+}
+
+.gridMetricsCompact {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+
+  > * {
+    min-height: 140px;
+  }
+}
+
+// ===== ProgressBarChart Grids =====
+.gridProgressFull {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+
+  > * {
+    min-height: 400px;
+  }
+}
+
+.gridProgressHalf {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+
+  > * {
+    min-height: 350px;
+  }
+}
+
+// ===== MiniTrendChart Grids =====
+.gridTrendStandard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+
+  > * {
+    min-height: 240px;
+  }
+}
+
+.gridTrendCompact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+
+  > * {
+    min-height: 200px;
+  }
+}
+
+// ===== Full Dashboard Layout =====
+.dashboardLayout {
+  background-color: var(--color-bg-sec-trans);
+  border: 1px solid var(--color-border-main);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.metricsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+
+  > * {
+    min-height: 160px;
+  }
+}
+
+.journeyRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 20px;
+
+  > * {
+    min-height: 400px;
+  }
+}
+
+.trendsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 16px;
+
+  > * {
+    min-height: 240px;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1400px) {
+  .metricsRow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .metricsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .journeyRow {
+    grid-template-columns: 1fr;
+  }
+
+  .trendsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .metricsRow,
+  .journeyRow,
+  .trendsRow {
+    grid-template-columns: 1fr;
+  }
+
+  .gridMetrics,
+  .gridMetricsCompact,
+  .gridProgressHalf,
+  .gridTrendStandard,
+  .gridTrendCompact {
+    grid-template-columns: 1fr;
+  }
+}
+

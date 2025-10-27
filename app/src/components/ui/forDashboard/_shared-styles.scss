@@ -1,0 +1,92 @@
+/**
+ * Shared SCSS mixins for all dashboard components
+ * Use these mixins to ensure consistent styling across all widgets
+ */
+
+// ===== Dashboard Card Container =====
+@mixin dashboard-card-container {
+  position: relative;
+  background-color: var(--color-bg-main);
+  border: 1px solid var(--color-border-main);
+  border-radius: 8px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+// ===== Dashboard Header =====
+@mixin dashboard-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+@mixin dashboard-header-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+@mixin dashboard-header-icon {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+  user-select: none;
+  
+  span {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: inherit;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@mixin dashboard-header-title {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-family: var(--ff-sans);
+  line-height: 1;
+}
+
+@mixin dashboard-header-summary {
+  margin: 0;
+  padding: 0;
+  font-family: var(--ff-sans);
+  line-height: 1.4;
+  color: var(--color-sec);
+}
+
+// ===== Dashboard Alert Light =====
+@mixin dashboard-alert-light {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+  animation: dashboard-pulse 2s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes dashboard-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+

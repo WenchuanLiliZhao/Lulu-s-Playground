@@ -1,0 +1,197 @@
+@use '../_shared-styles.scss' as shared;
+
+// ===== Design Parameters =====
+$header-margin-bottom: 20px;
+$bar-height: 32px;
+$bar-border-radius: 6px;
+$bar-row-gap: 12px;
+$legend-margin-top: 16px;
+$label-width: 140px;
+$info-width: 60px;
+
+// Color mappings for status
+$healthy-color: var(--color-semantic-success);
+$warning-color: var(--color-semantic-warning);
+$critical-color: var(--color-semantic-error);
+
+// ===== Dashboard Card Container =====
+.card-container {
+  @include shared.dashboard-card-container;
+  min-height: 200px;
+}
+
+// ===== Dashboard Header Elements =====
+.dashboard-header {
+  @include shared.dashboard-header;
+}
+
+.dashboard-header-icon {
+  @include shared.dashboard-header-icon;
+}
+
+.dashboard-header-title {
+  @include shared.dashboard-header-title;
+}
+
+.dashboard-header-summary {
+  @include shared.dashboard-header-summary;
+}
+
+// ===== Dashboard Alert Light =====
+.alert-light {
+  @include shared.dashboard-alert-light;
+}
+
+// ===== Internal Header (alternative to dashboard header) =====
+.internal-header {
+  margin-bottom: $header-margin-bottom;
+
+  .internal-title {
+    margin: 0 0 4px 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-main);
+    line-height: 1;
+    font-family: var(--ff-sans);
+  }
+
+  .internal-subtitle {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    color: var(--color-sec);
+    line-height: 1.4;
+    font-family: var(--ff-sans);
+  }
+}
+
+.chart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $bar-row-gap;
+}
+
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: $bar-height;
+}
+
+.leftSection {
+  width: $label-width;
+  flex-shrink: 0;
+
+  .label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-main);
+    line-height: 1.3;
+  }
+
+  .meta {
+    font-size: 11px;
+    color: var(--color-sec);
+    margin-top: 2px;
+  }
+}
+
+.barContainer {
+  flex: 1;
+  position: relative;
+  height: $bar-height;
+  background-color: var(--color-bg-sec-2);
+  border-radius: $bar-border-radius;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  border-radius: $bar-border-radius;
+  transition: width 0.6s ease-out;
+  position: relative;
+
+  &.healthy {
+    background-color: $healthy-color;
+  }
+
+  &.warning {
+    background-color: $warning-color;
+  }
+
+  &.critical {
+    background-color: $critical-color;
+  }
+
+  .barText {
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+  }
+}
+
+.outsideText {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-sec);
+  white-space: nowrap;
+}
+
+.infoText {
+  width: $info-width;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: 12px;
+  color: var(--color-sec);
+  font-family: var(--ff-mono);
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: $legend-margin-top;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border-main-trans);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  &.healthy {
+    background-color: $healthy-color;
+  }
+
+  &.warning {
+    background-color: $warning-color;
+  }
+
+  &.critical {
+    background-color: $critical-color;
+  }
+}
+
+.legendLabel {
+  font-size: 12px;
+  color: var(--color-sec);
+}
+
