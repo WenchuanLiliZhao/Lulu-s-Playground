@@ -65,9 +65,9 @@ import { DashboardShowCase } from '@/components/ui/forDashboard/DashboardShowCas
 | `headerIcon` | `string` | `undefined` | Material Symbol name (e.g., 'home', 'star', 'search') |
 | `headerTitle` | `string` | `undefined` | Header title text |
 | `headerSummary` | `string` | `undefined` | Header summary/description text |
-| `headerTitleSize` | `'small' \| 'medium' \| 'large'` | `'medium'` | Title and icon font size |
+| `headerTitleSize` | `'small' \| 'medium' \| 'large'` | `'medium'` | Title font size (summary follows this size) |
 | `headerIconSize` | `'small' \| 'medium' \| 'large'` | `'medium'` | Icon size |
-| `headerSummarySize` | `'small' \| 'medium' \| 'large'` | `'medium'` | Summary font size |
+| `headerSummarySize` | `'small' \| 'medium' \| 'large'` | `undefined` | Summary font size (optional, defaults to follow headerTitleSize) |
 | `headerColor` | `ColorType` | `'secondary'` | Header text color (primary, secondary, brand, active, success, warning, error) |
 
 ### Alert Light Configuration

@@ -55,8 +55,8 @@ export interface DashboardShowCaseProps {
   headerIconSize?: SizeType
 
   /**
-   * Summary font size
-   * @default 'medium'
+   * Summary font size (if not provided, follows headerTitleSize)
+   * @default undefined (follows headerTitleSize)
    */
   headerSummarySize?: SizeType
 
@@ -89,7 +89,7 @@ export const DashboardShowCase = ({
   headerSummary,
   headerTitleSize = DASHBOARD_SHOWCASE_DEFAULTS.headerTitleSize,
   headerIconSize = DASHBOARD_SHOWCASE_DEFAULTS.headerIconSize,
-  headerSummarySize = DASHBOARD_SHOWCASE_DEFAULTS.headerSummarySize,
+  headerSummarySize, // If undefined, will follow headerTitleSize
   headerColor = DASHBOARD_SHOWCASE_DEFAULTS.headerColor,
   showAlertLight = DASHBOARD_SHOWCASE_DEFAULTS.showAlertLight,
   alertLightColor = DASHBOARD_SHOWCASE_DEFAULTS.alertLightColor,
@@ -118,9 +118,10 @@ export const DashboardShowCase = ({
 
   const headerSummaryStyle = useMemo(
     () => ({
-      fontSize: SIZE_CONFIG[headerSummarySize].summary,
+      // If headerSummarySize is not provided, follow headerTitleSize
+      fontSize: SIZE_CONFIG[headerSummarySize ?? headerTitleSize].summary,
     }),
-    [headerSummarySize]
+    [headerSummarySize, headerTitleSize]
   )
 
   const alertLightStyle = useMemo(

@@ -77,7 +77,8 @@
       margin-bottom: 0;
     }
 
-    label {
+    label,
+    .fieldLabel {
       display: block;
       margin-bottom: 8px;
       color: var(--color-main);

@@ -52,6 +52,11 @@ export interface TrendChartProps {
    */
   showLegend?: boolean
   /**
+   * Legend position
+   * @default 'top'
+   */
+  legendPosition?: 'top' | 'bottom' | 'left' | 'right'
+  /**
    * Animation duration in ms
    * @default 1500
    */
@@ -133,6 +138,7 @@ export const TrendChart = ({
   lines,
   showGrid = TREND_CHART_DEFAULTS.showGrid,
   showLegend = TREND_CHART_DEFAULTS.showLegend,
+  legendPosition = TREND_CHART_DEFAULTS.legendPosition,
   animationDuration = TREND_CHART_DEFAULTS.animationDuration,
   xAxisInterval = 'auto',
   minXAxisSpacing = TREND_CHART_DEFAULTS.minXAxisSpacing,
@@ -274,8 +280,8 @@ export const TrendChart = ({
             data={filteredData}
             margin={{
               top: 5,
-              right: 30,
-              left: 0,
+              right: showLegend && legendPosition === 'right' ? 0 : 30,
+              left: showLegend && legendPosition === 'left' ? 0 : 0,
               bottom: marginBottom,
             }}
           >
@@ -290,7 +296,29 @@ export const TrendChart = ({
             />
             <YAxis width={60} orientation="left" />
             <Tooltip />
-            {showLegend && <Legend verticalAlign="top" height={36} />}
+            {showLegend && (() => {
+              const isVertical = legendPosition === 'left' || legendPosition === 'right'
+              const verticalAlign = isVertical ? 'middle' : legendPosition
+              const align = legendPosition === 'left' ? 'left' : legendPosition === 'right' ? 'right' : 'center'
+              const layout = isVertical ? 'vertical' : 'horizontal'
+              
+              let wrapperStyle = {}
+              if (legendPosition === 'left') {
+                wrapperStyle = { paddingLeft: '0px', paddingRight: '16px' }
+              } else if (legendPosition === 'right') {
+                wrapperStyle = { paddingLeft: '24px', paddingRight: '0px' }
+              }
+              
+              return (
+                <Legend 
+                  verticalAlign={verticalAlign}
+                  align={align}
+                  layout={layout}
+                  height={isVertical ? undefined : 36}
+                  wrapperStyle={wrapperStyle}
+                />
+              )
+            })()}
             {lines.map((line) => (
               <Line
                 key={line.dataKey}

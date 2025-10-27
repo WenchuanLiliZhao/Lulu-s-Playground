@@ -5,6 +5,8 @@
  * Adjust these values to fine-tune the component's appearance
  */
 
+import { getCssVar } from "../../../../styles/color-use"
+
 /**
  * Default values for DashboardShowCase component props
  */
@@ -12,8 +14,8 @@ export const DASHBOARD_SHOWCASE_DEFAULTS = {
   // Header configuration
   headerTitleSize: 'medium' as const,
   headerIconSize: 'medium' as const,
-  headerSummarySize: 'medium' as const,
-  headerColor: 'secondary' as const,
+  // Note: headerSummarySize removed - now automatically follows headerTitleSize
+  headerColor: 'primary' as const,
   
   // Alert light configuration
   alertLightColor: '#10b981', // Default green color
@@ -26,17 +28,17 @@ export const DASHBOARD_SHOWCASE_DEFAULTS = {
 export const SIZE_CONFIG = {
   small: {
     title: '14px',
-    icon: '18px',
+    icon: '14px',
     summary: '12px',
   },
   medium: {
     title: '18px',
-    icon: '24px',
+    icon: '18px',
     summary: '14px',
   },
   large: {
     title: '24px',
-    icon: '32px',
+    icon: '24px',
     summary: '16px',
   },
 } as const
@@ -45,13 +47,12 @@ export const SIZE_CONFIG = {
  * Color mapping for header elements
  */
 export const COLOR_CONFIG = {
-  primary: 'var(--color-main)',
-  secondary: 'var(--color-sec)',
-  brand: 'var(--brand-color)',
-  active: 'var(--color-semantic-active)',
-  success: 'var(--color-semantic-success)',
-  warning: 'var(--color-semantic-warning)',
-  error: 'var(--color-semantic-error)',
+  primary: getCssVar("colorMain"),
+  secondary: getCssVar("colorSec"),
+  active: getCssVar("colorSemanticActive"),
+  success: getCssVar("colorSemanticSuccess"),
+  warning: getCssVar("colorSemanticWarning"),
+  error: getCssVar("colorSemanticError"),
 } as const
 
 export type SizeType = keyof typeof SIZE_CONFIG

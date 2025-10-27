@@ -159,6 +159,7 @@ $chart-border: none !default;
         .recharts-legend-item-text {
           color: var(--color-main) !important;
           font-size: 14px;
+          line-height: 1.25;
         }
       }
     }

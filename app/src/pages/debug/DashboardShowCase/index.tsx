@@ -3,7 +3,8 @@ import { DashboardShowCase, DASHBOARD_SHOWCASE_DEFAULTS, type SizeType, type Col
 import { TrendChart } from '../../../components/ui/forDashboard/TrendChart'
 import AppLayout from '../../../components/ui/AppLayout'
 import type { PageProps } from '../../_page-types'
-import styles from './styles.module.scss'
+import styles from './styles.module.scss' 
+import { COLOR_SCALES } from '../../../styles/color-chart'
 
 // Sample data for TrendChart
 const sampleChartData = [
@@ -16,8 +17,8 @@ const sampleChartData = [
 ]
 
 const sampleChartLines = [
-  { dataKey: 'revenue', name: 'Revenue', color: '#d31334', strokeWidth: 2 },
-  { dataKey: 'users', name: 'Users', color: '#3b82f6', strokeWidth: 2 },
+  { dataKey: 'revenue', name: 'Revenue', color: COLOR_SCALES.hotHeat.colors[4], strokeWidth: 2 },
+  { dataKey: 'users', name: 'Users', color: COLOR_SCALES.cyan.colors[4], strokeWidth: 2 },
 ]
 
 const DashboardShowCaseDebug = () => {
@@ -28,7 +29,6 @@ const DashboardShowCaseDebug = () => {
   const [headerSummary, setHeaderSummary] = useState('Track your revenue and user growth over time')
   const [headerTitleSize, setHeaderTitleSize] = useState<SizeType>(DASHBOARD_SHOWCASE_DEFAULTS.headerTitleSize)
   const [headerIconSize, setHeaderIconSize] = useState<SizeType>(DASHBOARD_SHOWCASE_DEFAULTS.headerIconSize)
-  const [headerSummarySize, setHeaderSummarySize] = useState<SizeType>(DASHBOARD_SHOWCASE_DEFAULTS.headerSummarySize)
   const [headerColor, setHeaderColor] = useState<ColorType>(DASHBOARD_SHOWCASE_DEFAULTS.headerColor)
 
   // Alert light configuration
@@ -88,7 +88,6 @@ const DashboardShowCaseDebug = () => {
             headerSummary={headerSummary}
             headerTitleSize={headerTitleSize}
             headerIconSize={headerIconSize}
-            headerSummarySize={headerSummarySize}
             headerColor={headerColor}
             showAlertLight={showAlertLight}
             alertLightColor={alertLightColor}
@@ -99,6 +98,7 @@ const DashboardShowCaseDebug = () => {
               lines={sampleChartLines}
               showGrid={true}
               showLegend={true}
+              legendPosition="right"
             />
           </DashboardShowCase>
         </div>
@@ -184,9 +184,9 @@ const DashboardShowCaseDebug = () => {
               </div>
 
               <div className={styles.controlGroup}>
-                <label htmlFor="headerTitleSize">
-                  Title & Icon Size <code>(headerTitleSize, headerIconSize)</code>
-                </label>
+                <div className={styles.fieldLabel}>
+                  Size <code>(headerTitleSize, headerIconSize)</code>
+                </div>
                 <div className={styles.radioGroup}>
                   {(['small', 'medium', 'large'] as SizeType[]).map((size) => (
                     <label key={size} className={styles.radioLabel}>
@@ -204,26 +204,9 @@ const DashboardShowCaseDebug = () => {
                     </label>
                   ))}
                 </div>
-              </div>
-
-              <div className={styles.controlGroup}>
-                <label htmlFor="headerSummarySize">
-                  Summary Size <code>(headerSummarySize)</code>
-                </label>
-                <div className={styles.radioGroup}>
-                  {(['small', 'medium', 'large'] as SizeType[]).map((size) => (
-                    <label key={size} className={styles.radioLabel}>
-                      <input
-                        type="radio"
-                        name="summarySize"
-                        value={size}
-                        checked={headerSummarySize === size}
-                        onChange={() => setHeaderSummarySize(size)}
-                      />
-                      {' '}{size.charAt(0).toUpperCase() + size.slice(1)}
-                    </label>
-                  ))}
-                </div>
+                <span className={styles.hint}>
+                  Summary size automatically follows the title size
+                </span>
               </div>
 
               <div className={styles.controlGroup}>
@@ -268,7 +251,9 @@ const DashboardShowCaseDebug = () => {
           {showAlertLight && (
             <>
               <div className={styles.controlGroup}>
-                <label>Alert Light Color <code>(alertLightColor)</code></label>
+                <div className={styles.fieldLabel}>
+                  Alert Light Color <code>(alertLightColor)</code>
+                </div>
                 <div className={styles.colorGrid}>
                   {alertColors.map((color) => (
                     <button
@@ -300,6 +285,7 @@ const DashboardShowCaseDebug = () => {
                     onChange={(e) => setAlertLightColor(e.target.value)}
                     placeholder="#10b981"
                     className={styles.textInput}
+                    aria-label="Alert light color hex value"
                   />
                 </div>
                 <span className={styles.hint}>
@@ -388,7 +374,7 @@ const DashboardShowCaseDebug = () => {
   headerTitle="Sales Analytics"
   headerSummary="Track revenue over time"
   headerTitleSize="medium"
-  headerColor="secondary"
+  headerColor="primary"
   showAlertLight={true}
   alertLightColor="#10b981"
 >

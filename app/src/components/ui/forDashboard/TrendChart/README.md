@@ -69,6 +69,7 @@ function MyComponent() {
 | `lines` | `TrendChartLine[]` | **required** | Configuration for lines to display |
 | `showGrid` | `boolean` | `true` | Show/hide grid lines |
 | `showLegend` | `boolean` | `true` | Show/hide legend |
+| `legendPosition` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Position of the legend. When set to `'left'` or `'right'`, each legend item is displayed on a separate line |
 | `animationDuration` | `number` | `1500` | Animation duration in milliseconds |
 | `xAxisInterval` | `number \| 'auto' \| 'preserveStart' \| 'preserveEnd' \| 'preserveStartEnd'` | `'auto'` | X-axis tick interval. Use `'auto'` for automatic spacing based on `minXAxisSpacing`, `0` to show all, or a number to skip every n labels |
 | `minXAxisSpacing` | `number` | `8` | Minimum spacing between x-axis ticks in pixels (used when `xAxisInterval` is `'auto'`) |
@@ -181,6 +182,39 @@ const lines = [
   showGrid={false}
   showLegend={false}
   animationDuration={1000}
+/>
+```
+
+### With Bottom Legend
+
+```tsx
+<TrendChart
+  title="Sales Trend"
+  data={data}
+  lines={lines}
+  legendPosition="bottom"
+/>
+```
+
+### With Right-Side Legend (Vertical Stack)
+
+```tsx
+<TrendChart
+  title="Sales Trend"
+  data={data}
+  lines={lines}
+  legendPosition="right"
+/>
+```
+
+### With Left-Side Legend (Vertical Stack)
+
+```tsx
+<TrendChart
+  title="Sales Trend"
+  data={data}
+  lines={lines}
+  legendPosition="left"
 />
 ```
 

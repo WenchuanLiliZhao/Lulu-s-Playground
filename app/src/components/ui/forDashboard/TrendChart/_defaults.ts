@@ -4,6 +4,7 @@
 export const TREND_CHART_DEFAULTS = {
   showGrid: true,
   showLegend: true,
+  legendPosition: 'top' as 'top' | 'bottom' | 'left' | 'right',
   animationDuration: 1500,
   xAxisInterval: 0,
   xAxisAngle: -45,
