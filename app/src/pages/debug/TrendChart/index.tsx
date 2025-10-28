@@ -10,7 +10,7 @@ const TrendChartDebug = () => {
   const [showGrid, setShowGrid] = useState(TREND_CHART_DEFAULTS.showGrid)
   const [showLegend, setShowLegend] = useState(TREND_CHART_DEFAULTS.showLegend)
   const [animationDuration, setAnimationDuration] = useState(TREND_CHART_DEFAULTS.animationDuration)
-  const [xAxisInterval, setXAxisInterval] = useState<number>(TREND_CHART_DEFAULTS.xAxisInterval)
+  const [xAxisInterval, setXAxisInterval] = useState(TREND_CHART_DEFAULTS.xAxisInterval)
   const [xAxisAngle, setXAxisAngle] = useState(TREND_CHART_DEFAULTS.xAxisAngle)
   const [xAxisHeight, setXAxisHeight] = useState(TREND_CHART_DEFAULTS.xAxisHeight)
   const [marginBottom, setMarginBottom] = useState(TREND_CHART_DEFAULTS.marginBottom)
@@ -130,7 +130,7 @@ const TrendChartDebug = () => {
             min="0"
             max="5"
             step="1"
-            value={xAxisInterval}
+            value={typeof xAxisInterval === 'number' ? xAxisInterval : 0}
             onChange={(e) => setXAxisInterval(Number(e.target.value))}
           />
           <span className={styles.hint}>
