@@ -13,6 +13,7 @@ import styles from './_styles.module.scss'
 import { TREND_CHART_DEFAULTS } from './_defaults'
 import { DateFilter } from '../../DateFilter'
 import { getCssVar } from '../../../../styles/color-use'
+import { useChartWidth, calculateXAxisInterval } from '../_shared-hooks'
 
 export interface TrendChartDataPoint {
   name: string
@@ -63,17 +64,29 @@ export interface TrendChartProps {
   animationDuration?: number
   /**
    * X-axis tick interval (0 = show all, 'preserveStartEnd' = auto with start/end, number = skip)
-   * If set to 'auto', will calculate based on minXAxisSpacing
+   * If set to 'auto', will calculate based on actual chart width and minXAxisSpacing
    * @default 'auto'
    */
   xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd' | 'auto'
   /**
+   * Target number of ticks to display on x-axis (when xAxisInterval is 'auto')
+   * Takes priority over minXAxisSpacing when specified
+   * @default undefined
+   */
+  targetTickCount?: number
+  /**
    * Minimum spacing between x-axis ticks in pixels (used when xAxisInterval is 'auto')
-   * @default 8
+   * @default 50
    */
   minXAxisSpacing?: number
   /**
+   * Maximum number of ticks allowed on x-axis (prevents over-crowding)
+   * @default 25
+   */
+  maxTickCount?: number
+  /**
    * Estimated chart width in pixels for automatic interval calculation
+   * @deprecated Use automatic width detection instead. This prop is kept for backward compatibility.
    * @default 800
    */
   estimatedChartWidth?: number
@@ -141,7 +154,9 @@ export const TrendChart = ({
   legendPosition = TREND_CHART_DEFAULTS.legendPosition,
   animationDuration = TREND_CHART_DEFAULTS.animationDuration,
   xAxisInterval = 'auto',
+  targetTickCount,
   minXAxisSpacing = TREND_CHART_DEFAULTS.minXAxisSpacing,
+  maxTickCount = TREND_CHART_DEFAULTS.maxTickCount,
   estimatedChartWidth = TREND_CHART_DEFAULTS.estimatedChartWidth,
   showDots = true,
   dotInterval,
@@ -157,6 +172,9 @@ export const TrendChart = ({
 }: TrendChartProps) => {
   const [startDate, setStartDate] = useState<Date | null>(initialStartDate)
   const [endDate, setEndDate] = useState<Date | null>(initialEndDate)
+  
+  // Get actual chart width for responsive tick calculation
+  const { width: chartWidth, refCallback } = useChartWidth()
 
   const containerClasses = [styles.container, className]
     .filter(Boolean)
@@ -187,27 +205,25 @@ export const TrendChart = ({
     })
   }, [data, startDate, endDate, enableDateFilter, getDateFromDataPoint])
 
-  // Determine effective x-axis interval
+  // Determine effective x-axis interval using responsive calculation
   const effectiveXAxisInterval = useMemo(() => {
-    if (xAxisInterval === 'auto') {
-      const dataPointCount = filteredData.length
-      if (dataPointCount <= 1) return 0
-      
-      // Calculate available space per data point if we show all
-      const spacePerPoint = estimatedChartWidth / (dataPointCount - 1)
-      
-      // If space is sufficient, show all points
-      if (spacePerPoint >= minXAxisSpacing) {
-        return 0
-      }
-      
-      // Calculate how many points we need to skip to meet minimum spacing
-      const interval = Math.ceil(minXAxisSpacing / spacePerPoint) - 1
-      
-      return Math.max(1, interval)
-    }
-    return xAxisInterval
-  }, [xAxisInterval, filteredData.length, minXAxisSpacing, estimatedChartWidth])
+    return calculateXAxisInterval(
+      filteredData.length,
+      chartWidth || estimatedChartWidth, // Use actual width, fallback to estimated
+      xAxisInterval,
+      targetTickCount,
+      minXAxisSpacing,
+      maxTickCount
+    )
+  }, [
+    filteredData.length,
+    chartWidth,
+    estimatedChartWidth,
+    xAxisInterval,
+    targetTickCount,
+    minXAxisSpacing,
+    maxTickCount,
+  ])
 
   // Use dotInterval if provided, otherwise sync with effectiveXAxisInterval
   const effectiveDotInterval = dotInterval !== undefined 
@@ -274,7 +290,7 @@ export const TrendChart = ({
         )}
       </div>
 
-      <div className={styles.chartWrapper}>
+      <div ref={refCallback} className={styles.chartWrapper}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={filteredData}

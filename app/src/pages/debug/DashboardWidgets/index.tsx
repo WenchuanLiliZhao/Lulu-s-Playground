@@ -323,6 +323,7 @@ const DashboardWidgetsDebug = () => {
             height={180}
             showGrid={true}
             showLegend={true}
+            legendPosition="bottom"
           />
 
           <MiniTrendChart

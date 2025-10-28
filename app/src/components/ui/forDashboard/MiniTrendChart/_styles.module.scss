@@ -128,19 +128,19 @@ $header-margin-bottom: 12px !default;
     .recharts-cartesian-grid-vertical {
       line {
         stroke: var(--color-border-main);
-        opacity: 0.3;
+        // opacity: 0.5;
       }
     }
 
     // Axis lines
     .recharts-cartesian-axis-line {
       stroke: var(--color-border-main);
-      opacity: 0.5;
+      // opacity: 0.5;
     }
 
     .recharts-cartesian-axis-tick-line {
       stroke: var(--color-border-main);
-      opacity: 0.5;
+      // opacity: 0.5;
     }
 
     // Tooltip styling

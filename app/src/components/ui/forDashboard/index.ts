@@ -20,6 +20,11 @@ export {
   DashboardAlertLightElement 
 } from './_shared-elements'
 
+export { 
+  useChartWidth, 
+  calculateXAxisInterval 
+} from './_shared-hooks'
+
 // ===== Dashboard Components =====
 export { TrendChart } from './TrendChart'
 export type { TrendChartProps, TrendChartDataPoint, TrendChartLine } from './TrendChart'

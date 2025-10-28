@@ -11,8 +11,9 @@ export const MINI_TREND_CHART_DEFAULTS = {
   xAxisHeight: 40,
   marginBottom: -16,
   xAxisTickMargin: 5,
-  minXAxisSpacing: 8,
-  estimatedChartWidth: 400,
+  minXAxisSpacing: 45, // Increased from 8 to 45 for better readability
+  maxTickCount: 20, // Maximum number of ticks to prevent over-crowding
+  estimatedChartWidth: 400, // Deprecated: kept for backward compatibility
   height: 180,
   showDots: false,
   showYAxis: false,
