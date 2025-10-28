@@ -280,7 +280,7 @@ export const MiniTrendChart = ({
                 dataKey="name" 
                 interval={effectiveXAxisInterval}
                 angle={xAxisAngle}
-                textAnchor={xAxisAngle === 0 ? "middle" : "end"}
+                textAnchor={xAxisAngle === 0 ? "middle" : xAxisAngle < 0 ? "end" : "start"}
                 height={xAxisHeight}
                 tickMargin={xAxisTickMargin}
               />

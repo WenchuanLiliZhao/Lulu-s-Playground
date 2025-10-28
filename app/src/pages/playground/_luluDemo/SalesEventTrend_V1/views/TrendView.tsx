@@ -41,19 +41,19 @@ export const TrendView = ({ zoomLevel }: TrendViewProps) => {
     switch (zoomLevel) {
       case 'day':
         return { 
-          angle: -45, 
+          angle: 0, 
           height: 60, 
           showDots: false 
         }
       case 'week':
         return { 
-          angle: -45, 
+          angle: 0, 
           height: 70, 
           showDots: true 
         }
       case 'month':
         return { 
-          angle: -45, 
+          angle: 0, 
           height: 60, 
           showDots: true 
         }

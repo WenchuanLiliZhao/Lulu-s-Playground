@@ -104,7 +104,7 @@ $chart-border: 1px solid var(--color-border-main) !default;
     .recharts-xAxis {
       .recharts-cartesian-axis-tick-value {
         font-size: $x-axis-label-font-size;
-        text-anchor: middle;
+        // text-anchor is dynamically set in component based on angle
       }
     }
 
