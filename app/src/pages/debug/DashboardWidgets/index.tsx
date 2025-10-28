@@ -127,6 +127,61 @@ const apiLatencyLines: MiniTrendChartLine[] = [
   },
 ]
 
+// Revenue data for Y-axis demo
+const revenueDataPoints: MiniTrendChartDataPoint[] = [
+  { name: 'Jan', revenue: 45000, orders: 234 },
+  { name: 'Feb', revenue: 52000, orders: 289 },
+  { name: 'Mar', revenue: 48000, orders: 267 },
+  { name: 'Apr', revenue: 61000, orders: 312 },
+  { name: 'May', revenue: 58000, orders: 295 },
+  { name: 'Jun', revenue: 67000, orders: 341 },
+  { name: 'Jul', revenue: 73000, orders: 378 },
+  { name: 'Aug', revenue: 69000, orders: 356 },
+  { name: 'Sep', revenue: 76000, orders: 392 },
+  { name: 'Oct', revenue: 82000, orders: 415 },
+  { name: 'Nov', revenue: 79000, orders: 398 },
+  { name: 'Dec', revenue: 91000, orders: 456 },
+]
+
+const revenueLines: MiniTrendChartLine[] = [
+  {
+    dataKey: 'revenue',
+    name: 'Revenue',
+    color: '#3b82f6',
+    strokeWidth: 2,
+  },
+]
+
+// Performance data for Y-axis demo
+const performanceDataPoints: MiniTrendChartDataPoint[] = Array.from({ length: 20 }, (_, i) => ({
+  name: `${i}m`,
+  score: Math.min(100, Math.max(0, 75 + Math.random() * 20 - 10)),
+}))
+
+const performanceLines: MiniTrendChartLine[] = [
+  {
+    dataKey: 'score',
+    name: 'Performance Score',
+    color: '#10b981',
+    strokeWidth: 2,
+  },
+]
+
+// Large numbers data for Y-axis demo
+const trafficDataPoints: MiniTrendChartDataPoint[] = Array.from({ length: 15 }, (_, i) => ({
+  name: `${i}h`,
+  visitors: Math.floor(Math.random() * 500000 + 1000000),
+}))
+
+const trafficLines: MiniTrendChartLine[] = [
+  {
+    dataKey: 'visitors',
+    name: 'Visitors',
+    color: '#f59e0b',
+    strokeWidth: 2,
+  },
+]
+
 const DashboardWidgetsDebug = () => {
   return (
     <div className={styles.container}>
@@ -370,6 +425,180 @@ const DashboardWidgetsDebug = () => {
             height={140}
             showGrid={false}
             showLegend={false}
+          />
+        </div>
+      </section>
+
+      {/* Section: NEW - Y-Axis Enhancement Demo */}
+      <section className={styles.section}>
+        <h2>🎉 NEW: Y-Axis Enhancement</h2>
+        <p className={styles.sectionDesc}>
+          MiniTrendChart now supports customizable Y-axis with formatting options
+        </p>
+
+        <h3 className={styles.sectionSubtitle}>Before vs After Comparison</h3>
+        <div className={styles.gridTrendStandard}>
+          <MiniTrendChart
+            showAlertLight={false}
+            title="❌ Before: No Y-Axis"
+            subtitle="Default behavior (showYAxis: false)"
+            data={revenueDataPoints}
+            lines={revenueLines}
+            height={200}
+            showGrid={true}
+            showYAxis={false}
+          />
+
+          <MiniTrendChart
+            showAlertLight={false}
+            title="✅ After: With Y-Axis"
+            subtitle="New feature (showYAxis: true)"
+            data={revenueDataPoints}
+            lines={revenueLines}
+            height={200}
+            showGrid={true}
+            showYAxis={true}
+            yAxisWidth={50}
+          />
+        </div>
+
+        <h3 className={styles.sectionSubtitle}>Y-Axis Formatting Options</h3>
+        <div className={styles.gridTrendStandard}>
+          <MiniTrendChart
+            showAlertLight={false}
+            title="Currency Format"
+            subtitle="yAxisTickFormatter for $"
+            data={revenueDataPoints}
+            lines={revenueLines}
+            height={200}
+            showGrid={true}
+            showYAxis={true}
+            yAxisWidth={60}
+            yAxisTickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+          />
+
+          <MiniTrendChart
+            showAlertLight={false}
+            title="Percentage Format"
+            subtitle="yAxisDomain + formatter"
+            data={performanceDataPoints}
+            lines={performanceLines}
+            height={200}
+            showGrid={true}
+            showYAxis={true}
+            yAxisWidth={50}
+            yAxisDomain={[0, 100]}
+            yAxisTickFormatter={(value) => `${value.toFixed(0)}%`}
+          />
+        </div>
+
+        <h3 className={styles.sectionSubtitle}>Large Number Formatting</h3>
+        <div className={styles.gridTrendCompact}>
+          <MiniTrendChart
+            showAlertLight={false}
+            title="Traffic (K/M format)"
+            subtitle="Auto K/M suffixes"
+            data={trafficDataPoints}
+            lines={trafficLines}
+            height={160}
+            showGrid={true}
+            showYAxis={true}
+            yAxisWidth={50}
+            yAxisTickFormatter={(value) => {
+              if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`
+              if (value >= 1000) return `${(value / 1000).toFixed(0)}K`
+              return value.toString()
+            }}
+          />
+
+          <MiniTrendChart
+            showAlertLight={false}
+            title="Custom Y-Axis Width"
+            subtitle="yAxisWidth: 55px"
+            data={revenueDataPoints}
+            lines={revenueLines}
+            height={160}
+            showGrid={true}
+            showYAxis={true}
+            yAxisWidth={55}
+            yAxisTickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+          />
+
+          <MiniTrendChart
+            showAlertLight={false}
+            title="Right-Aligned Y-Axis"
+            subtitle="yAxisOrientation: right"
+            data={performanceDataPoints}
+            lines={performanceLines}
+            height={160}
+            showGrid={true}
+            showYAxis={true}
+            yAxisOrientation="right"
+            yAxisWidth={50}
+            yAxisTickFormatter={(value) => `${value.toFixed(0)}%`}
+          />
+        </div>
+
+        <h3 className={styles.sectionSubtitle}>Dashboard Widget Style</h3>
+        <div className={styles.gridTrendCompact}>
+          <MiniTrendChart
+            showHeader={true}
+            headerIcon="attach_money"
+            headerTitle="Monthly Revenue"
+            headerSummary="Last 12 months"
+            headerTitleSize="small"
+            headerIconSize="small"
+            showAlertLight={true}
+            alertLightColor="#10b981"
+            data={revenueDataPoints}
+            lines={revenueLines}
+            height={180}
+            showGrid={true}
+            showDots={true}
+            showYAxis={true}
+            yAxisWidth={55}
+            yAxisTickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+          />
+
+          <MiniTrendChart
+            showHeader={true}
+            headerIcon="speed"
+            headerTitle="Performance Score"
+            headerSummary="Real-time monitoring"
+            headerTitleSize="small"
+            headerIconSize="small"
+            showAlertLight={true}
+            alertLightColor="#3b82f6"
+            data={performanceDataPoints}
+            lines={performanceLines}
+            height={180}
+            showGrid={false}
+            showYAxis={true}
+            yAxisWidth={45}
+            yAxisDomain={[0, 100]}
+            yAxisTickFormatter={(value) => `${value.toFixed(0)}%`}
+          />
+
+          <MiniTrendChart
+            showHeader={true}
+            headerIcon="trending_up"
+            headerTitle="Daily Traffic"
+            headerSummary="Unique visitors"
+            headerTitleSize="small"
+            headerIconSize="small"
+            showAlertLight={true}
+            alertLightColor="#f59e0b"
+            data={trafficDataPoints}
+            lines={trafficLines}
+            height={180}
+            showGrid={true}
+            showYAxis={true}
+            yAxisWidth={50}
+            yAxisTickFormatter={(value) => {
+              if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`
+              if (value >= 1000) return `${(value / 1000).toFixed(0)}K`
+              return value.toString()
+            }}
           />
         </div>
       </section>

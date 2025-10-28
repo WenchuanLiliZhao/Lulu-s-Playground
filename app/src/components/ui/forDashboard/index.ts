@@ -8,10 +8,23 @@ export type {
   DashboardColorType
 } from './_shared-types'
 
+export type {
+  BaseChartDataPoint,
+  BaseChartLine,
+  BaseChartProps,
+  ChartXAxisProps,
+  ChartYAxisProps,
+  ChartVisualProps,
+  ChartDateFilterProps
+} from './_shared-chart-types'
+
 export { 
   DASHBOARD_DEFAULTS, 
   DASHBOARD_SIZE_CONFIG, 
-  DASHBOARD_COLOR_CONFIG 
+  DASHBOARD_COLOR_CONFIG,
+  CHART_DEFAULTS,
+  TREND_CHART_DEFAULTS,
+  MINI_TREND_CHART_DEFAULTS
 } from './_shared-config'
 
 export { 
@@ -29,6 +42,9 @@ export {
 export { TrendChart } from './TrendChart'
 export type { TrendChartProps, TrendChartDataPoint, TrendChartLine } from './TrendChart'
 
+export { MiniTrendChart } from './MiniTrendChart'
+export type { MiniTrendChartProps, MiniTrendChartLine, MiniTrendChartDataPoint } from './MiniTrendChart'
+
 export { DashboardShowCase } from './DashboardShowCase'
 export type { DashboardShowCaseProps } from './DashboardShowCase'
 export { DASHBOARD_SHOWCASE_DEFAULTS } from './DashboardShowCase'
@@ -38,7 +54,4 @@ export type { MetricWidgetProps } from './MetricWidget'
 
 export { ProgressBarChart } from './ProgressBarChart'
 export type { ProgressBarChartProps, ProgressBarItem } from './ProgressBarChart'
-
-export { MiniTrendChart } from './MiniTrendChart'
-export type { MiniTrendChartProps, MiniTrendChartLine, MiniTrendChartDataPoint } from './MiniTrendChart'
 

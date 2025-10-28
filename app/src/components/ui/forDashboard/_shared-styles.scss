@@ -26,8 +26,8 @@
   // margin-bottom: 4px;
 }
 
-@mixin dashboard-header-icon {
-  margin-right: 8px;
+@mixin dashboard-header-icon($icon-spacing: 4px) {
+  margin-right: $icon-spacing;
   display: flex;
   align-items: center;
   justify-content: center;

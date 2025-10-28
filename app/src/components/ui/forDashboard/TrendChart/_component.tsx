@@ -10,30 +10,21 @@ import {
   Legend,
 } from 'recharts'
 import styles from './_styles.module.scss'
-import { TREND_CHART_DEFAULTS } from './_defaults'
+import { TREND_CHART_DEFAULTS } from '../_shared-config'
 import { DateFilter } from '../../DateFilter'
 import { getCssVar } from '../../../../styles/color-use'
 import { useChartWidth, calculateXAxisInterval } from '../_shared-hooks'
+import type { 
+  BaseChartDataPoint, 
+  BaseChartLine, 
+  BaseChartProps 
+} from '../_shared-chart-types'
 
-export interface TrendChartDataPoint {
-  name: string
-  id?: string
-  date?: Date
-  [key: string]: string | number | Date | undefined
-}
+export type TrendChartDataPoint = BaseChartDataPoint
 
-export interface TrendChartLine {
-  dataKey: string
-  name: string
-  color: string
-  strokeWidth?: number
-}
+export type TrendChartLine = BaseChartLine
 
-export interface TrendChartProps {
-  /**
-   * Chart title
-   */
-  title?: string
+export interface TrendChartProps extends Omit<BaseChartProps<TrendChartDataPoint>, 'data' | 'lines'> {
   /**
    * Data for the chart
    */
@@ -42,133 +33,48 @@ export interface TrendChartProps {
    * Lines to display
    */
   lines: TrendChartLine[]
-  /**
-   * Show grid
-   * @default true
-   */
-  showGrid?: boolean
-  /**
-   * Show legend
-   * @default true
-   */
-  showLegend?: boolean
-  /**
-   * Legend position
-   * @default 'top'
-   */
-  legendPosition?: 'top' | 'bottom' | 'left' | 'right'
-  /**
-   * Animation duration in ms
-   * @default 1500
-   */
-  animationDuration?: number
-  /**
-   * X-axis tick interval (0 = show all, 'preserveStartEnd' = auto with start/end, number = skip)
-   * If set to 'auto', will calculate based on actual chart width and minXAxisSpacing
-   * @default 'auto'
-   */
-  xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd' | 'auto'
-  /**
-   * Target number of ticks to display on x-axis (when xAxisInterval is 'auto')
-   * Takes priority over minXAxisSpacing when specified
-   * @default undefined
-   */
-  targetTickCount?: number
-  /**
-   * Minimum spacing between x-axis ticks in pixels (used when xAxisInterval is 'auto')
-   * @default 50
-   */
-  minXAxisSpacing?: number
-  /**
-   * Maximum number of ticks allowed on x-axis (prevents over-crowding)
-   * @default 25
-   */
-  maxTickCount?: number
-  /**
-   * Estimated chart width in pixels for automatic interval calculation
-   * @deprecated Use automatic width detection instead. This prop is kept for backward compatibility.
-   * @default 800
-   */
-  estimatedChartWidth?: number
-  /**
-   * Whether to show dots on the line chart
-   * @default true
-   */
-  showDots?: boolean
-  /**
-   * Dot display interval (0 = show all dots, number = show every nth dot)
-   * If not provided, defaults to xAxisInterval to keep dots and labels in sync
-   * Only applies when showDots is true
-   * @default undefined (uses xAxisInterval)
-   */
-  dotInterval?: number
-  /**
-   * X-axis label angle in degrees
-   * @default -45
-   */
-  xAxisAngle?: number
-  /**
-   * X-axis height to accommodate rotated labels
-   * @default 80
-   */
-  xAxisHeight?: number
-  /**
-   * Chart margin bottom (distance from X-axis labels to SVG bottom)
-   * @default 0
-   */
-  marginBottom?: number
-  /**
-   * X-axis tick margin (distance from axis line to labels)
-   * @default 8
-   */
-  xAxisTickMargin?: number
-  /**
-   * Optional className
-   */
-  className?: string
-  /**
-   * Enable date range filtering
-   * @default false
-   */
-  enableDateFilter?: boolean
-  /**
-   * Function to extract date from data point (required if enableDateFilter is true)
-   */
-  getDateFromDataPoint?: (dataPoint: TrendChartDataPoint) => Date
-  /**
-   * Initial start date for date filter
-   */
-  initialStartDate?: Date | null
-  /**
-   * Initial end date for date filter
-   */
-  initialEndDate?: Date | null
+  // All other props are inherited from BaseChartProps
 }
 
 export const TrendChart = ({
   title,
   data,
   lines,
+  className = '',
+  // Visual props
   showGrid = TREND_CHART_DEFAULTS.showGrid,
   showLegend = TREND_CHART_DEFAULTS.showLegend,
   legendPosition = TREND_CHART_DEFAULTS.legendPosition,
   animationDuration = TREND_CHART_DEFAULTS.animationDuration,
-  xAxisInterval = 'auto',
+  showDots = TREND_CHART_DEFAULTS.showDots,
+  dotInterval,
+  // X-axis props
+  showXAxis = TREND_CHART_DEFAULTS.showXAxis,
+  xAxisInterval = TREND_CHART_DEFAULTS.xAxisInterval,
   targetTickCount,
   minXAxisSpacing = TREND_CHART_DEFAULTS.minXAxisSpacing,
   maxTickCount = TREND_CHART_DEFAULTS.maxTickCount,
-  estimatedChartWidth = TREND_CHART_DEFAULTS.estimatedChartWidth,
-  showDots = true,
-  dotInterval,
   xAxisAngle = TREND_CHART_DEFAULTS.xAxisAngle,
   xAxisHeight = TREND_CHART_DEFAULTS.xAxisHeight,
-  marginBottom = TREND_CHART_DEFAULTS.marginBottom,
   xAxisTickMargin = TREND_CHART_DEFAULTS.xAxisTickMargin,
-  className = '',
-  enableDateFilter = false,
+  estimatedChartWidth = TREND_CHART_DEFAULTS.estimatedChartWidth,
+  // Chart margins
+  marginTop = TREND_CHART_DEFAULTS.marginTop,
+  marginRight = TREND_CHART_DEFAULTS.marginRight,
+  marginBottom = TREND_CHART_DEFAULTS.marginBottom,
+  marginLeft = TREND_CHART_DEFAULTS.marginLeft,
+  // Y-axis props
+  showYAxis = TREND_CHART_DEFAULTS.showYAxis,
+  yAxisWidth = TREND_CHART_DEFAULTS.yAxisWidth,
+  yAxisOrientation = TREND_CHART_DEFAULTS.yAxisOrientation,
+  yAxisTickFormatter,
+  yAxisDomain,
+  yAxisTickMargin = TREND_CHART_DEFAULTS.yAxisTickMargin,
+  // Date filter props
+  enableDateFilter = TREND_CHART_DEFAULTS.enableDateFilter,
   getDateFromDataPoint,
-  initialStartDate = null,
-  initialEndDate = null,
+  initialStartDate = TREND_CHART_DEFAULTS.initialStartDate,
+  initialEndDate = TREND_CHART_DEFAULTS.initialEndDate,
 }: TrendChartProps) => {
   const [startDate, setStartDate] = useState<Date | null>(initialStartDate)
   const [endDate, setEndDate] = useState<Date | null>(initialEndDate)
@@ -295,22 +201,32 @@ export const TrendChart = ({
           <LineChart
             data={filteredData}
             margin={{
-              top: 5,
-              right: showLegend && legendPosition === 'right' ? 0 : 30,
-              left: showLegend && legendPosition === 'left' ? 0 : 0,
+              top: marginTop,
+              right: showLegend && legendPosition === 'right' ? 0 : marginRight,
+              left: showLegend && legendPosition === 'left' ? 0 : marginLeft,
               bottom: marginBottom,
             }}
           >
             {showGrid && <CartesianGrid strokeDasharray="3 3" verticalFill={[]} />}
-            <XAxis 
-              dataKey="name" 
-              interval={effectiveXAxisInterval}
-              angle={xAxisAngle}
-              textAnchor="end"
-              height={xAxisHeight}
-              tickMargin={xAxisTickMargin}
-            />
-            <YAxis width={60} orientation="left" />
+            {showXAxis && (
+              <XAxis 
+                dataKey="name" 
+                interval={effectiveXAxisInterval}
+                angle={xAxisAngle}
+                textAnchor="end"
+                height={xAxisHeight}
+                tickMargin={xAxisTickMargin}
+              />
+            )}
+            {showYAxis && (
+              <YAxis 
+                width={yAxisWidth}
+                orientation={yAxisOrientation}
+                tickFormatter={yAxisTickFormatter}
+                domain={yAxisDomain}
+                tickMargin={yAxisTickMargin}
+              />
+            )}
             <Tooltip />
             {showLegend && (() => {
               const isVertical = legendPosition === 'left' || legendPosition === 'right'

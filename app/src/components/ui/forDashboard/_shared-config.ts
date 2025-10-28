@@ -54,3 +54,88 @@ export const DASHBOARD_COLOR_CONFIG: Record<DashboardColorType, string> = {
   error: getCssVar('colorSemanticError'),
 }
 
+/**
+ * Shared chart configuration defaults
+ * These values provide sensible defaults for chart components
+ */
+export const CHART_DEFAULTS = {
+  // Visual
+  showLegend: true,
+  legendPosition: 'top' as 'top' | 'bottom' | 'left' | 'right',
+  
+  // X-axis
+  showXAxis: true,
+  xAxisInterval: 'auto' as number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd' | 'auto',
+  
+  // Y-axis
+  yAxisOrientation: 'left' as 'left' | 'right',
+  yAxisTickMargin: 8,
+  
+  // Date filter
+  enableDateFilter: false,
+  initialStartDate: null,
+  initialEndDate: null,
+}
+
+/**
+ * TrendChart specific defaults (full-size chart)
+ * Optimized for larger displays with more detail
+ */
+export const TREND_CHART_DEFAULTS = {
+  ...CHART_DEFAULTS,
+  // Visual
+  showGrid: true,
+  animationDuration: 1500,
+  showDots: true,
+  
+  // X-axis
+  xAxisAngle: -45,
+  xAxisHeight: 80,
+  xAxisTickMargin: 8,
+  minXAxisSpacing: 50,
+  maxTickCount: 25,
+  estimatedChartWidth: 800, // Deprecated
+  
+  // Chart margins
+  marginTop: 5,
+  marginRight: 5,
+  marginBottom: -30,
+  marginLeft: 5,
+  
+  // Y-axis
+  showYAxis: true,
+  yAxisWidth: 60,
+}
+
+/**
+ * MiniTrendChart specific defaults (compact chart for dashboards)
+ * Optimized for smaller displays with minimal clutter
+ */
+export const MINI_TREND_CHART_DEFAULTS = {
+  ...CHART_DEFAULTS,
+  // Visual
+  showGrid: false,
+  animationDuration: 1000,
+  showDots: false,
+  height: 180,
+  
+  // X-axis
+  xAxisAngle: 0,
+  xAxisHeight: 40,
+  xAxisTickMargin: 5,
+  minXAxisSpacing: 45,
+  maxTickCount: 20,
+  estimatedChartWidth: 400, // Deprecated
+  
+  // Chart margins
+  marginTop: 5,
+  marginRight: 5,
+  marginBottom: -16,
+  marginLeft: 5,
+  
+  // Y-axis
+  showYAxis: false, // Compact view - hide by default
+  yAxisWidth: 40,
+  yAxisTickMargin: 5,
+}
+

@@ -2,6 +2,7 @@
 
 // ===== Design Parameters =====
 $header-margin-bottom: 20px;
+$header-icon-spacing: 8px; // Icon to title spacing (larger for ProgressBarChart)
 $bar-height: 32px;
 $bar-border-radius: 6px;
 $bar-row-gap: 12px;
@@ -32,7 +33,7 @@ $critical-color: var(--color-semantic-error);
 }
 
 .dashboard-header-icon {
-  @include shared.dashboard-header-icon;
+  @include shared.dashboard-header-icon($header-icon-spacing);
 }
 
 .dashboard-header-title {

@@ -5,6 +5,7 @@ $metric-header-margin-bottom: 8px;
 $metric-value-margin-bottom: 4px;
 $metric-icon-size: 20px;
 $metric-icon-margin-right: 8px;
+$header-icon-spacing: 6px; // Icon to title spacing (compact metric widget)
 $sparkline-width: 50%;
 $sparkline-height: 60px;
 $sparkline-bottom: 0;
@@ -30,7 +31,7 @@ $sparkline-right: -1px;
 }
 
 .dashboard-header-icon {
-  @include shared.dashboard-header-icon;
+  @include shared.dashboard-header-icon($header-icon-spacing);
 }
 
 .dashboard-header-title {

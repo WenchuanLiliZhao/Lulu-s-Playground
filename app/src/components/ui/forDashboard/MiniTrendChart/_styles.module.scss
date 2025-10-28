@@ -6,6 +6,7 @@ $y-axis-label-font-size: 10px !default;
 $chart-title-font-size: 15px !default;
 $chart-subtitle-font-size: 13px !default;
 $header-margin-bottom: 12px !default;
+$header-icon-spacing: 4px !default; // Icon to title spacing (compact widget)
 
 // ===== Dashboard Card Container =====
 .card-container {
@@ -25,7 +26,7 @@ $header-margin-bottom: 12px !default;
 }
 
 .dashboard-header-icon {
-  @include shared.dashboard-header-icon;
+  @include shared.dashboard-header-icon($header-icon-spacing);
 }
 
 .dashboard-header-title {

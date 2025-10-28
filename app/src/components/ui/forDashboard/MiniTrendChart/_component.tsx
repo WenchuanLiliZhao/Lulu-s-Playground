@@ -10,29 +10,23 @@ import {
   Legend,
 } from 'recharts'
 import styles from './_styles.module.scss'
-import { MINI_TREND_CHART_DEFAULTS } from './_defaults'
+import { MINI_TREND_CHART_DEFAULTS, DASHBOARD_DEFAULTS } from '../_shared-config'
 import { DashboardHeaderElement, DashboardAlertLightElement } from '../_shared-elements'
 import type { DashboardCommonProps } from '../_shared-types'
-import { DASHBOARD_DEFAULTS } from '../_shared-config'
+import type { 
+  BaseChartDataPoint, 
+  BaseChartLine, 
+  BaseChartProps 
+} from '../_shared-chart-types'
 import { DateFilter } from '../../DateFilter'
 import { getCssVar } from '../../../../styles/color-use'
 import { useChartWidth, calculateXAxisInterval } from '../_shared-hooks'
 
-export interface MiniTrendChartDataPoint {
-  name: string
-  id?: string
-  date?: Date
-  [key: string]: string | number | Date | undefined
-}
+export type MiniTrendChartDataPoint = BaseChartDataPoint
 
-export interface MiniTrendChartLine {
-  dataKey: string
-  name: string
-  color: string
-  strokeWidth?: number
-}
+export type MiniTrendChartLine = BaseChartLine
 
-export interface MiniTrendChartProps extends DashboardCommonProps {
+export interface MiniTrendChartProps extends DashboardCommonProps, Omit<BaseChartProps<MiniTrendChartDataPoint>, 'data' | 'lines' | 'title' | 'className'> {
   /**
    * Chart title (internal header, used when showHeader is false)
    */
@@ -54,113 +48,7 @@ export interface MiniTrendChartProps extends DashboardCommonProps {
    * @default 180
    */
   height?: number
-  /**
-   * Show grid
-   * @default false
-   */
-  showGrid?: boolean
-  /**
-   * Show legend
-   * @default true
-   */
-  showLegend?: boolean
-  /**
-   * Legend position
-   * @default 'top'
-   */
-  legendPosition?: 'top' | 'bottom' | 'left' | 'right'
-  /**
-   * Animation duration in ms
-   * @default 1000
-   */
-  animationDuration?: number
-  /**
-   * X-axis tick interval (0 = show all, 'preserveStartEnd' = auto with start/end, number = skip)
-   * If set to 'auto', will calculate based on actual chart width and minXAxisSpacing
-   * @default 'auto'
-   */
-  xAxisInterval?: number | 'preserveStart' | 'preserveEnd' | 'preserveStartEnd' | 'auto'
-  /**
-   * Target number of ticks to display on x-axis (when xAxisInterval is 'auto')
-   * Takes priority over minXAxisSpacing when specified
-   * @default undefined
-   */
-  targetTickCount?: number
-  /**
-   * Minimum spacing between x-axis ticks in pixels (used when xAxisInterval is 'auto')
-   * @default 45
-   */
-  minXAxisSpacing?: number
-  /**
-   * Maximum number of ticks allowed on x-axis (prevents over-crowding)
-   * @default 20
-   */
-  maxTickCount?: number
-  /**
-   * Estimated chart width in pixels for automatic interval calculation
-   * @deprecated Use automatic width detection instead. This prop is kept for backward compatibility.
-   * @default 400
-   */
-  estimatedChartWidth?: number
-  /**
-   * Whether to show dots on the line chart
-   * @default false
-   */
-  showDots?: boolean
-  /**
-   * Dot display interval (0 = show all dots, number = show every nth dot)
-   * If not provided, defaults to xAxisInterval to keep dots and labels in sync
-   * Only applies when showDots is true
-   * @default undefined (uses xAxisInterval)
-   */
-  dotInterval?: number
-  /**
-   * X-axis label angle in degrees
-   * @default 0
-   */
-  xAxisAngle?: number
-  /**
-   * X-axis height to accommodate rotated labels
-   * @default 40
-   */
-  xAxisHeight?: number
-  /**
-   * Chart margin bottom (distance from X-axis labels to SVG bottom)
-   * @default 0
-   */
-  marginBottom?: number
-  /**
-   * X-axis tick margin (distance from axis line to labels)
-   * @default 5
-   */
-  xAxisTickMargin?: number
-  /**
-   * Show Y-axis
-   * @default false
-   */
-  showYAxis?: boolean
-  /**
-   * Show X-axis
-   * @default true
-   */
-  showXAxis?: boolean
-  /**
-   * Enable date range filtering
-   * @default false
-   */
-  enableDateFilter?: boolean
-  /**
-   * Function to extract date from data point (required if enableDateFilter is true)
-   */
-  getDateFromDataPoint?: (dataPoint: MiniTrendChartDataPoint) => Date
-  /**
-   * Initial start date for date filter
-   */
-  initialStartDate?: Date | null
-  /**
-   * Initial end date for date filter
-   */
-  initialEndDate?: Date | null
+  // All other chart props are inherited from BaseChartProps
 }
 
 export const MiniTrendChart = ({
@@ -183,27 +71,44 @@ export const MiniTrendChart = ({
   data,
   lines,
   height = MINI_TREND_CHART_DEFAULTS.height,
+  
+  // Visual props
   showGrid = MINI_TREND_CHART_DEFAULTS.showGrid,
   showLegend = MINI_TREND_CHART_DEFAULTS.showLegend,
   legendPosition = MINI_TREND_CHART_DEFAULTS.legendPosition,
   animationDuration = MINI_TREND_CHART_DEFAULTS.animationDuration,
-  xAxisInterval = 'auto',
+  showDots = MINI_TREND_CHART_DEFAULTS.showDots,
+  dotInterval,
+  
+  // X-axis props
+  showXAxis = MINI_TREND_CHART_DEFAULTS.showXAxis,
+  xAxisInterval = MINI_TREND_CHART_DEFAULTS.xAxisInterval,
   targetTickCount,
   minXAxisSpacing = MINI_TREND_CHART_DEFAULTS.minXAxisSpacing,
   maxTickCount = MINI_TREND_CHART_DEFAULTS.maxTickCount,
-  estimatedChartWidth = MINI_TREND_CHART_DEFAULTS.estimatedChartWidth,
-  showDots = MINI_TREND_CHART_DEFAULTS.showDots,
-  dotInterval,
   xAxisAngle = MINI_TREND_CHART_DEFAULTS.xAxisAngle,
   xAxisHeight = MINI_TREND_CHART_DEFAULTS.xAxisHeight,
-  marginBottom = MINI_TREND_CHART_DEFAULTS.marginBottom,
   xAxisTickMargin = MINI_TREND_CHART_DEFAULTS.xAxisTickMargin,
+  estimatedChartWidth = MINI_TREND_CHART_DEFAULTS.estimatedChartWidth,
+  // Chart margins
+  marginTop = MINI_TREND_CHART_DEFAULTS.marginTop,
+  marginRight = MINI_TREND_CHART_DEFAULTS.marginRight,
+  marginBottom = MINI_TREND_CHART_DEFAULTS.marginBottom,
+  marginLeft = MINI_TREND_CHART_DEFAULTS.marginLeft,
+  
+  // Y-axis props
   showYAxis = MINI_TREND_CHART_DEFAULTS.showYAxis,
-  showXAxis = MINI_TREND_CHART_DEFAULTS.showXAxis,
-  enableDateFilter = false,
+  yAxisWidth = MINI_TREND_CHART_DEFAULTS.yAxisWidth,
+  yAxisOrientation = MINI_TREND_CHART_DEFAULTS.yAxisOrientation,
+  yAxisTickFormatter,
+  yAxisDomain,
+  yAxisTickMargin = MINI_TREND_CHART_DEFAULTS.yAxisTickMargin,
+  
+  // Date filter props
+  enableDateFilter = MINI_TREND_CHART_DEFAULTS.enableDateFilter,
   getDateFromDataPoint,
-  initialStartDate = null,
-  initialEndDate = null,
+  initialStartDate = MINI_TREND_CHART_DEFAULTS.initialStartDate,
+  initialEndDate = MINI_TREND_CHART_DEFAULTS.initialEndDate,
 }: MiniTrendChartProps) => {
   const [startDate, setStartDate] = useState<Date | null>(initialStartDate)
   const [endDate, setEndDate] = useState<Date | null>(initialEndDate)
@@ -362,9 +267,9 @@ export const MiniTrendChart = ({
           <LineChart
             data={filteredData}
             margin={{
-              top: 5,
-              right: showLegend && legendPosition === 'right' ? 0 : 10,
-              left: showLegend && legendPosition === 'left' ? 0 : 0,
+              top: marginTop,
+              right: showLegend && legendPosition === 'right' ? 0 : marginRight,
+              left: showLegend && legendPosition === 'left' ? 0 : marginLeft,
               bottom: marginBottom,
             }}
           >
@@ -379,7 +284,15 @@ export const MiniTrendChart = ({
                 tickMargin={xAxisTickMargin}
               />
             )}
-            {showYAxis && <YAxis width={40} orientation="left" />}
+            {showYAxis && (
+              <YAxis 
+                width={yAxisWidth}
+                orientation={yAxisOrientation}
+                tickFormatter={yAxisTickFormatter}
+                domain={yAxisDomain}
+                tickMargin={yAxisTickMargin}
+              />
+            )}
             <Tooltip />
             {showLegend && (() => {
               const isVertical = legendPosition === 'left' || legendPosition === 'right'
