@@ -11,13 +11,10 @@ import {
 } from 'recharts'
 import styles from './_styles.module.scss'
 import { TREND_CHART_DEFAULTS, DASHBOARD_DEFAULTS } from '../_shared-config'
+import { DashboardWidgetFrame } from '../DashboardWidgetFrame'
 import { DateFilter } from '../../DateFilter'
 import { getCssVar } from '../../../../styles/color-use'
 import { useChartWidth, calculateXAxisInterval } from '../_shared-hooks'
-import {
-  DashboardHeaderElement,
-  DashboardAlertLightElement,
-} from '../_shared-elements'
 import type { 
   BaseChartDataPoint, 
   BaseChartLine, 
@@ -99,10 +96,6 @@ export const TrendChart = ({
   
   // Get actual chart width for responsive tick calculation
   const { width: chartWidth, refCallback } = useChartWidth()
-
-  const containerClasses = [styles.container, className]
-    .filter(Boolean)
-    .join(' ')
 
   // Filter data based on selected date range
   const filteredData = useMemo(() => {
@@ -199,46 +192,34 @@ export const TrendChart = ({
   }
 
   return (
-    <div className={containerClasses}>
-      {/* Alert Light Indicator */}
-      {showAlertLight && (
-        <DashboardAlertLightElement
-          color={alertLightColor}
-          className={styles['alert-light']}
-        />
-      )}
-
-      {/* Dashboard Header */}
-      {(showHeader || title) && (
-        <DashboardHeaderElement
-          icon={headerIcon}
-          title={headerTitle || title}
-          summary={headerSummary}
-          titleSize={headerTitleSize}
-          iconSize={headerIconSize}
-          summarySize={headerSummarySize}
-          color={headerColor}
-          className={styles.dashboardHeader}
-          topClassName={styles['header-top']}
-          iconClassName={styles['header-icon']}
-          titleClassName={styles['header-title']}
-          summaryClassName={styles['header-summary']}
-        />
-      )}
-
-      {/* Legacy header (date filter) */}
-      {enableDateFilter && (
-        <div className={styles.header}>
-          <DateFilter
-            startDate={startDate}
-            endDate={endDate}
-            onStartDateChange={setStartDate}
-            onEndDateChange={setEndDate}
-            size="small"
-          />
-        </div>
-      )}
-
+    <DashboardWidgetFrame
+      showHeader={showHeader || !!title}
+      headerIcon={headerIcon}
+      headerTitle={headerTitle || title}
+      headerSummary={headerSummary}
+      headerTitleSize={headerTitleSize}
+      headerIconSize={headerIconSize}
+      headerSummarySize={headerSummarySize}
+      headerColor={headerColor}
+      showAlertLight={showAlertLight}
+      alertLightColor={alertLightColor}
+      className={className}
+      renderAfterHeader={
+        enableDateFilter
+          ? () => (
+              <div className={styles.header}>
+                <DateFilter
+                  startDate={startDate}
+                  endDate={endDate}
+                  onStartDateChange={setStartDate}
+                  onEndDateChange={setEndDate}
+                  size="small"
+                />
+              </div>
+            )
+          : undefined
+      }
+    >
       <div ref={refCallback} className={styles.chartWrapper}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
@@ -294,7 +275,7 @@ export const TrendChart = ({
           </LineChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </DashboardWidgetFrame>
   )
 }
 

@@ -8,40 +8,6 @@ $chart-subtitle-font-size: 13px !default;
 $header-margin-bottom: 12px !default;
 $header-icon-spacing: 4px !default; // Icon to title spacing (compact widget)
 
-// ===== Dashboard Card Container =====
-.card-container {
-  @include shared.dashboard-card-container;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-}
-
-// ===== Dashboard Header Elements =====
-.dashboard-header {
-  @include shared.dashboard-header;
-}
-
-.dashboard-header-top {
-  @include shared.dashboard-header-top;
-}
-
-.dashboard-header-icon {
-  @include shared.dashboard-header-icon($header-icon-spacing);
-}
-
-.dashboard-header-title {
-  @include shared.dashboard-header-title;
-}
-
-.dashboard-header-summary {
-  @include shared.dashboard-header-summary;
-}
-
-// ===== Dashboard Alert Light =====
-.alert-light {
-  @include shared.dashboard-alert-light;
-}
-
 // ===== Internal Header =====
 .header {
   display: flex;

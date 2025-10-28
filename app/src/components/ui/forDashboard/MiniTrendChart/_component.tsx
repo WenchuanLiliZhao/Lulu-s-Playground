@@ -11,7 +11,7 @@ import {
 } from 'recharts'
 import styles from './_styles.module.scss'
 import { MINI_TREND_CHART_DEFAULTS, DASHBOARD_DEFAULTS } from '../_shared-config'
-import { DashboardHeaderElement, DashboardAlertLightElement } from '../_shared-elements'
+import { DashboardWidgetFrame } from '../DashboardWidgetFrame'
 import type { DashboardCommonProps } from '../_shared-types'
 import type { 
   BaseChartDataPoint, 
@@ -115,10 +115,6 @@ export const MiniTrendChart = ({
   // Get actual chart width for responsive tick calculation
   const { width: chartWidth, refCallback } = useChartWidth()
 
-  const containerClasses = [styles['card-container'], className]
-    .filter(Boolean)
-    .join(' ')
-
   // Filter data based on selected date range
   const filteredData = useMemo(() => {
     if (!enableDateFilter || !getDateFromDataPoint) {
@@ -214,33 +210,32 @@ export const MiniTrendChart = ({
   }
 
   return (
-    <div className={containerClasses}>
-      {/* Alert Light */}
-      {showAlertLight && (
-        <DashboardAlertLightElement
-          color={alertLightColor}
-          className={styles['alert-light']}
-        />
-      )}
-      
-      {/* Dashboard Header */}
-      {showHeader && (
-        <DashboardHeaderElement
-          icon={headerIcon}
-          title={headerTitle}
-          summary={headerSummary}
-          titleSize={headerTitleSize}
-          iconSize={headerIconSize}
-          summarySize={headerSummarySize}
-          color={headerColor}
-          className={styles['dashboard-header']}
-          topClassName={styles['dashboard-header-top']}
-          iconClassName={styles['dashboard-header-icon']}
-          titleClassName={styles['dashboard-header-title']}
-          summaryClassName={styles['dashboard-header-summary']}
-        />
-      )}
-      
+    <DashboardWidgetFrame
+      showHeader={showHeader}
+      headerIcon={headerIcon}
+      headerTitle={headerTitle}
+      headerSummary={headerSummary}
+      headerTitleSize={headerTitleSize}
+      headerIconSize={headerIconSize}
+      headerSummarySize={headerSummarySize}
+      headerColor={headerColor}
+      showAlertLight={showAlertLight}
+      alertLightColor={alertLightColor}
+      className={className}
+      renderAfterHeader={
+        showHeader && enableDateFilter
+          ? () => (
+              <DateFilter
+                startDate={startDate}
+                endDate={endDate}
+                onStartDateChange={setStartDate}
+                onEndDateChange={setEndDate}
+                size="small"
+              />
+            )
+          : undefined
+      }
+    >
       {/* Internal Header (alternative to dashboard header) */}
       {!showHeader && (
         <div className={styles.header}>
@@ -318,6 +313,6 @@ export const MiniTrendChart = ({
           </LineChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </DashboardWidgetFrame>
   )
 }

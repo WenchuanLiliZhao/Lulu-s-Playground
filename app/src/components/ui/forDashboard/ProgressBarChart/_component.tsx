@@ -1,8 +1,5 @@
 import styles from "./_styles.module.scss";
-import {
-  DashboardHeaderElement,
-  DashboardAlertLightElement,
-} from "../_shared-elements";
+import { DashboardWidgetFrame } from "../DashboardWidgetFrame";
 import type { DashboardCommonProps } from "../_shared-types";
 import { DASHBOARD_DEFAULTS } from "../_shared-config";
 
@@ -75,10 +72,6 @@ export const ProgressBarChart = ({
   showPercentage = true,
   showInfo = true,
 }: ProgressBarChartProps) => {
-  const containerClasses = [styles["card-container"], className]
-    .filter(Boolean)
-    .join(" ");
-
   // Find max value for percentage calculation
   const maxValue = Math.max(...items.map((item) => item.value));
 
@@ -96,33 +89,35 @@ export const ProgressBarChart = ({
   };
 
   return (
-    <div className={containerClasses}>
-      {/* Alert Light */}
-      {showAlertLight && (
-        <DashboardAlertLightElement
-          color={alertLightColor}
-          className={styles["alert-light"]}
-        />
+    <DashboardWidgetFrame
+      showHeader={showHeader}
+      headerIcon={headerIcon}
+      headerTitle={headerTitle}
+      headerSummary={headerSummary}
+      headerTitleSize={headerTitleSize}
+      headerIconSize={headerIconSize}
+      headerSummarySize={headerSummarySize}
+      headerColor={headerColor}
+      showAlertLight={showAlertLight}
+      alertLightColor={alertLightColor}
+      className={className}
+      renderFooter={() => (
+        <div className={styles.legend}>
+          <div className={styles.legendItem}>
+            <span className={`${styles.legendDot} ${styles.healthy}`}></span>
+            <span className={styles.legendLabel}>Healthy</span>
+          </div>
+          <div className={styles.legendItem}>
+            <span className={`${styles.legendDot} ${styles.warning}`}></span>
+            <span className={styles.legendLabel}>Warning</span>
+          </div>
+          <div className={styles.legendItem}>
+            <span className={`${styles.legendDot} ${styles.critical}`}></span>
+            <span className={styles.legendLabel}>Critical</span>
+          </div>
+        </div>
       )}
-
-      {/* Dashboard Header (alternative to internal title/subtitle) */}
-      {showHeader && (
-        <DashboardHeaderElement
-          icon={headerIcon}
-          title={headerTitle}
-          summary={headerSummary}
-          titleSize={headerTitleSize}
-          iconSize={headerIconSize}
-          summarySize={headerSummarySize}
-          color={headerColor}
-          className={styles["dashboard-header"]}
-          topClassName={styles["dashboard-header-top"]}
-          iconClassName={styles["dashboard-header-icon"]}
-          titleClassName={styles["dashboard-header-title"]}
-          summaryClassName={styles["dashboard-header-summary"]}
-        />
-      )}
-
+    >
       {/* Internal Header (alternative to dashboard header) */}
       {!showHeader && (title || subtitle) && (
         <div className={styles["internal-header"]}>
@@ -172,23 +167,7 @@ export const ProgressBarChart = ({
             );
           })}
         </div>
-
-        {/* Legend */}
-        <div className={styles.legend}>
-          <div className={styles.legendItem}>
-            <span className={`${styles.legendDot} ${styles.healthy}`}></span>
-            <span className={styles.legendLabel}>Healthy</span>
-          </div>
-          <div className={styles.legendItem}>
-            <span className={`${styles.legendDot} ${styles.warning}`}></span>
-            <span className={styles.legendLabel}>Warning</span>
-          </div>
-          <div className={styles.legendItem}>
-            <span className={`${styles.legendDot} ${styles.critical}`}></span>
-            <span className={styles.legendLabel}>Critical</span>
-          </div>
-        </div>
       </div>
-    </div>
+    </DashboardWidgetFrame>
   );
 };

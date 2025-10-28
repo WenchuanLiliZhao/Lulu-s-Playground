@@ -1,5 +1,5 @@
 import styles from './_styles.module.scss'
-import { DashboardHeaderElement, DashboardAlertLightElement } from '../_shared-elements'
+import { DashboardWidgetFrame } from '../DashboardWidgetFrame'
 import type { DashboardCommonProps } from '../_shared-types'
 import { DASHBOARD_DEFAULTS } from '../_shared-config'
 import Icon from '../../Icon'
@@ -73,8 +73,6 @@ export const MetricWidget = ({
   sparklineColor = 'var(--color-semantic-active)',
   sparklineSmooth = true,
 }: MetricWidgetProps) => {
-  const containerClasses = [styles['card-container'], className].filter(Boolean).join(' ')
-
   // Generate area path for sparkline fill
   const generateSparklineAreaPath = () => {
     if (!sparklineData || sparklineData.length < 2) return ''
@@ -151,33 +149,20 @@ export const MetricWidget = ({
   }[statusColor]
 
   return (
-    <div className={containerClasses}>
-      {/* Dashboard Alert Light */}
-      {showAlertLight && (
-        <DashboardAlertLightElement
-          color={alertLightColor}
-          className={styles['alert-light']}
-        />
-      )}
-      
-      {/* Dashboard Header (optional) */}
-      {showHeader && (
-        <DashboardHeaderElement
-          icon={headerIcon}
-          title={headerTitle}
-          summary={headerSummary}
-          titleSize={headerTitleSize}
-          iconSize={headerIconSize}
-          summarySize={headerSummarySize}
-          color={headerColor}
-          className={styles['dashboard-header']}
-          topClassName={styles['dashboard-header-top']}
-          iconClassName={styles['dashboard-header-icon']}
-          titleClassName={styles['dashboard-header-title']}
-          summaryClassName={styles['dashboard-header-summary']}
-        />
-      )}
-      
+    <DashboardWidgetFrame
+      showHeader={showHeader}
+      headerIcon={headerIcon}
+      headerTitle={headerTitle}
+      headerSummary={headerSummary}
+      headerTitleSize={headerTitleSize}
+      headerIconSize={headerIconSize}
+      headerSummarySize={headerSummarySize}
+      headerColor={headerColor}
+      showAlertLight={showAlertLight}
+      alertLightColor={alertLightColor}
+      className={className}
+      contentClassName={styles['metric-content']}
+    >
       {/* Metric header with icon and title */}
       <div className={styles['metric-header']}>
         {icon && (
@@ -250,7 +235,7 @@ export const MetricWidget = ({
           </svg>
         </div>
       )}
-    </div>
+    </DashboardWidgetFrame>
   )
 }
 

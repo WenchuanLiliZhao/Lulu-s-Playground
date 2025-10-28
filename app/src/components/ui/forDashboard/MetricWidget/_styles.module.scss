@@ -7,44 +7,20 @@ $metric-icon-size: 20px;
 $metric-icon-margin-right: 8px;
 $header-icon-spacing: 6px; // Icon to title spacing (compact metric widget)
 $sparkline-width: 50%;
-$sparkline-height: 60px;
-$sparkline-bottom: 0;
-$sparkline-right: -1px;
+$sparkline-height: 80px;
+$sparkline-bottom: -20px;
+$sparkline-right: -21px;
 
-// ===== Dashboard Card Container =====
-.card-container {
-  @include shared.dashboard-card-container;
+// ===== Metric Content Wrapper =====
+// This wraps the metric-specific content inside DashboardWidgetFrame
+.metric-content {
+  flex: 1; // Fill available space in flex container
   min-height: 140px;
-  overflow: hidden;
+  // overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-// ===== Dashboard Header Elements =====
-.dashboard-header {
-  @include shared.dashboard-header;
-}
-
-.dashboard-header-top {
-  @include shared.dashboard-header-top;
-}
-
-.dashboard-header-icon {
-  @include shared.dashboard-header-icon($header-icon-spacing);
-}
-
-.dashboard-header-title {
-  @include shared.dashboard-header-title;
-}
-
-.dashboard-header-summary {
-  @include shared.dashboard-header-summary;
-}
-
-// ===== Dashboard Alert Light =====
-.alert-light {
-  @include shared.dashboard-alert-light;
+  // Note: No position: relative here - sparkline positions relative to frame-container
 }
 
 // ===== Metric-specific Elements =====

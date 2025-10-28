@@ -38,6 +38,10 @@ export {
   calculateXAxisInterval 
 } from './_shared-hooks'
 
+// ===== Dashboard Widget Frame =====
+export { DashboardWidgetFrame } from './DashboardWidgetFrame'
+export type { DashboardWidgetFrameProps } from './DashboardWidgetFrame'
+
 // ===== Dashboard Components =====
 export { TrendChart } from './TrendChart'
 export type { TrendChartProps, TrendChartDataPoint, TrendChartLine } from './TrendChart'
