@@ -2,7 +2,6 @@ import SearchBarDebugPage from "./SearchBar";
 import CalendarDebugPage from "./Calendar";
 import IconButtonDebugPage from "./IconButton";
 import TrendChartDebugPage from "./TrendChart";
-import DashboardShowCaseDebugPage from "./DashboardShowCase";
 import DashboardWidgetsDebugPage from "./DashboardWidgets";
 
 export const DebugPages = {
@@ -10,7 +9,6 @@ export const DebugPages = {
   CalendarDebug: CalendarDebugPage,
   IconButtonDebug: IconButtonDebugPage,
   TrendChartDebug: TrendChartDebugPage,
-  DashboardShowCaseDebug: DashboardShowCaseDebugPage,
   DashboardWidgetsDebug: DashboardWidgetsDebugPage,
 };
 

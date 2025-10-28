@@ -61,7 +61,6 @@ export const DASHBOARD_COLOR_CONFIG: Record<DashboardColorType, string> = {
 export const CHART_DEFAULTS = {
   // Visual
   showLegend: true,
-  legendPosition: 'top' as 'top' | 'bottom' | 'left' | 'right',
   
   // X-axis
   showXAxis: true,
@@ -89,8 +88,8 @@ export const TREND_CHART_DEFAULTS = {
   showDots: true,
   
   // X-axis
-  xAxisAngle: -45,
-  xAxisHeight: 80,
+  xAxisAngle: 0,
+  xAxisHeight: 40,
   xAxisTickMargin: 8,
   minXAxisSpacing: 50,
   maxTickCount: 25,
@@ -98,9 +97,10 @@ export const TREND_CHART_DEFAULTS = {
   
   // Chart margins
   marginTop: 5,
-  marginRight: 5,
-  marginBottom: -30,
-  marginLeft: 5,
+  marginLeft: 10,
+  marginRight: 10,
+  marginBottom: 8,
+  
   
   // Y-axis
   showYAxis: true,
@@ -121,7 +121,7 @@ export const MINI_TREND_CHART_DEFAULTS = {
   
   // X-axis
   xAxisAngle: 0,
-  xAxisHeight: 40,
+  xAxisHeight: 24,
   xAxisTickMargin: 5,
   minXAxisSpacing: 45,
   maxTickCount: 20,
@@ -130,7 +130,7 @@ export const MINI_TREND_CHART_DEFAULTS = {
   // Chart margins
   marginTop: 5,
   marginRight: 5,
-  marginBottom: -16,
+  marginBottom: 0,
   marginLeft: 5,
   
   // Y-axis

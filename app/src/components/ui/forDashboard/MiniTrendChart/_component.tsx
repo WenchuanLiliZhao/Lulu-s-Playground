@@ -75,7 +75,6 @@ export const MiniTrendChart = ({
   // Visual props
   showGrid = MINI_TREND_CHART_DEFAULTS.showGrid,
   showLegend = MINI_TREND_CHART_DEFAULTS.showLegend,
-  legendPosition = MINI_TREND_CHART_DEFAULTS.legendPosition,
   animationDuration = MINI_TREND_CHART_DEFAULTS.animationDuration,
   showDots = MINI_TREND_CHART_DEFAULTS.showDots,
   dotInterval,
@@ -262,14 +261,16 @@ export const MiniTrendChart = ({
         </div>
       )}
 
-      <div ref={refCallback} className={styles.chartWrapper} style={{ height: `${height}px` }}>
+      <div ref={refCallback} className={styles.chartWrapper} style={{ 
+        height: `${height}px`,
+      }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={filteredData}
             margin={{
               top: marginTop,
-              right: showLegend && legendPosition === 'right' ? 0 : marginRight,
-              left: showLegend && legendPosition === 'left' ? 0 : marginLeft,
+              right: marginRight,
+              left: marginLeft,
               bottom: marginBottom,
             }}
           >
@@ -294,29 +295,13 @@ export const MiniTrendChart = ({
               />
             )}
             <Tooltip />
-            {showLegend && (() => {
-              const isVertical = legendPosition === 'left' || legendPosition === 'right'
-              const verticalAlign = isVertical ? 'middle' : legendPosition
-              const align = legendPosition === 'left' ? 'left' : legendPosition === 'right' ? 'right' : 'center'
-              const layout = isVertical ? 'vertical' : 'horizontal'
-              
-              let wrapperStyle = {}
-              if (legendPosition === 'left') {
-                wrapperStyle = { paddingLeft: '0px', paddingRight: '12px' }
-              } else if (legendPosition === 'right') {
-                wrapperStyle = { paddingLeft: '12px', paddingRight: '0px' }
-              }
-              
-              return (
-                <Legend 
-                  verticalAlign={verticalAlign}
-                  align={align}
-                  layout={layout}
-                  height={isVertical ? undefined : 30}
-                  wrapperStyle={wrapperStyle}
-                />
-              )
-            })()}
+            {showLegend && (
+              <Legend 
+                verticalAlign="bottom"
+                align="center"
+                layout="horizontal"
+              />
+            )}
             {lines.map((line) => (
               <Line
                 key={line.dataKey}

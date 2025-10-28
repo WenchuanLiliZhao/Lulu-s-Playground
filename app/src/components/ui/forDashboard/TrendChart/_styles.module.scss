@@ -2,22 +2,47 @@
 $x-axis-label-font-size: 12px !default;
 $y-axis-label-font-size: 12px !default;
 $chart-title-font-size: 18px !default;
-$chart-padding: 0 !default;
-$chart-background-color: transparent !default;
-$chart-border: none !default;
+$chart-padding: 16px !default;
+$chart-background-color: var(--color-bg-main) !default;
+$chart-border: 1px solid var(--color-border-main) !default;
+
+@use '../_shared-styles.scss' as shared;
 
 .container {
+  @include shared.dashboard-card-container;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: $chart-background-color;
-  padding: $chart-padding;
-  border-radius: 8px;
-  border: $chart-border;
-  box-sizing: border-box;
 }
 
+// ===== Dashboard Header Elements =====
+.dashboardHeader {
+  @include shared.dashboard-header;
+}
+
+.header-top {
+  @include shared.dashboard-header-top;
+}
+
+.header-icon {
+  @include shared.dashboard-header-icon(8px);
+}
+
+.header-title {
+  @include shared.dashboard-header-title;
+}
+
+.header-summary {
+  @include shared.dashboard-header-summary;
+}
+
+// ===== Dashboard Alert Light =====
+.alert-light {
+  @include shared.dashboard-alert-light;
+}
+
+// ===== Legacy Header (date filter) =====
 .header {
   display: flex;
   align-items: flex-start;
@@ -79,6 +104,7 @@ $chart-border: none !default;
     .recharts-xAxis {
       .recharts-cartesian-axis-tick-value {
         font-size: $x-axis-label-font-size;
+        text-anchor: middle;
       }
     }
 
@@ -153,13 +179,15 @@ $chart-border: none !default;
 
     // Legend styling
     .recharts-legend-wrapper {
+      // Margin is controlled via inline style based on legend position
+      
       .recharts-legend-item {
         font-family: var(--ff-sans);
         
         .recharts-legend-item-text {
           color: var(--color-main) !important;
           font-size: 14px;
-          line-height: 1.25;
+          line-height: 1.2;
         }
       }
     }

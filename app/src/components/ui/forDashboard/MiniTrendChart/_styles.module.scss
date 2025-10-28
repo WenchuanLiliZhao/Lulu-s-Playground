@@ -193,13 +193,15 @@ $header-icon-spacing: 4px !default; // Icon to title spacing (compact widget)
 
     // Legend styling
     .recharts-legend-wrapper {
+      // Margin is controlled via inline style based on legend position
+      
       .recharts-legend-item {
         font-family: var(--ff-sans);
         
         .recharts-legend-item-text {
           color: var(--color-main) !important;
           font-size: 11px;
-          line-height: 1.25;
+          line-height: 1.2;
         }
       }
     }

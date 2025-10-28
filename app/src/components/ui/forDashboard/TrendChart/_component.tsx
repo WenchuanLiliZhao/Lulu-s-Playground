@@ -10,21 +10,28 @@ import {
   Legend,
 } from 'recharts'
 import styles from './_styles.module.scss'
-import { TREND_CHART_DEFAULTS } from '../_shared-config'
+import { TREND_CHART_DEFAULTS, DASHBOARD_DEFAULTS } from '../_shared-config'
 import { DateFilter } from '../../DateFilter'
 import { getCssVar } from '../../../../styles/color-use'
 import { useChartWidth, calculateXAxisInterval } from '../_shared-hooks'
+import {
+  DashboardHeaderElement,
+  DashboardAlertLightElement,
+} from '../_shared-elements'
 import type { 
   BaseChartDataPoint, 
   BaseChartLine, 
-  BaseChartProps 
+  BaseChartProps,
+  DashboardCommonProps,
 } from '../_shared-chart-types'
 
 export type TrendChartDataPoint = BaseChartDataPoint
 
 export type TrendChartLine = BaseChartLine
 
-export interface TrendChartProps extends Omit<BaseChartProps<TrendChartDataPoint>, 'data' | 'lines'> {
+export interface TrendChartProps 
+  extends Omit<BaseChartProps<TrendChartDataPoint>, 'data' | 'lines'>,
+    DashboardCommonProps {
   /**
    * Data for the chart
    */
@@ -33,7 +40,7 @@ export interface TrendChartProps extends Omit<BaseChartProps<TrendChartDataPoint
    * Lines to display
    */
   lines: TrendChartLine[]
-  // All other props are inherited from BaseChartProps
+  // All other props are inherited from BaseChartProps and DashboardCommonProps
 }
 
 export const TrendChart = ({
@@ -41,10 +48,21 @@ export const TrendChart = ({
   data,
   lines,
   className = '',
+  // Dashboard header props
+  showHeader = DASHBOARD_DEFAULTS.showHeader,
+  headerIcon,
+  headerTitle,
+  headerSummary,
+  headerTitleSize = DASHBOARD_DEFAULTS.headerTitleSize,
+  headerIconSize = DASHBOARD_DEFAULTS.headerIconSize,
+  headerSummarySize,
+  headerColor = DASHBOARD_DEFAULTS.headerColor,
+  // Dashboard alert light props
+  showAlertLight = DASHBOARD_DEFAULTS.showAlertLight,
+  alertLightColor = DASHBOARD_DEFAULTS.alertLightColor,
   // Visual props
   showGrid = TREND_CHART_DEFAULTS.showGrid,
   showLegend = TREND_CHART_DEFAULTS.showLegend,
-  legendPosition = TREND_CHART_DEFAULTS.legendPosition,
   animationDuration = TREND_CHART_DEFAULTS.animationDuration,
   showDots = TREND_CHART_DEFAULTS.showDots,
   dotInterval,
@@ -182,10 +200,35 @@ export const TrendChart = ({
 
   return (
     <div className={containerClasses}>
-      <div className={styles.header}>
-        {title && <h2 className={styles.title}>{title}</h2>}
-        
-        {enableDateFilter && (
+      {/* Alert Light Indicator */}
+      {showAlertLight && (
+        <DashboardAlertLightElement
+          color={alertLightColor}
+          className={styles['alert-light']}
+        />
+      )}
+
+      {/* Dashboard Header */}
+      {(showHeader || title) && (
+        <DashboardHeaderElement
+          icon={headerIcon}
+          title={headerTitle || title}
+          summary={headerSummary}
+          titleSize={headerTitleSize}
+          iconSize={headerIconSize}
+          summarySize={headerSummarySize}
+          color={headerColor}
+          className={styles.dashboardHeader}
+          topClassName={styles['header-top']}
+          iconClassName={styles['header-icon']}
+          titleClassName={styles['header-title']}
+          summaryClassName={styles['header-summary']}
+        />
+      )}
+
+      {/* Legacy header (date filter) */}
+      {enableDateFilter && (
+        <div className={styles.header}>
           <DateFilter
             startDate={startDate}
             endDate={endDate}
@@ -193,8 +236,8 @@ export const TrendChart = ({
             onEndDateChange={setEndDate}
             size="small"
           />
-        )}
-      </div>
+        </div>
+      )}
 
       <div ref={refCallback} className={styles.chartWrapper}>
         <ResponsiveContainer width="100%" height="100%">
@@ -202,8 +245,8 @@ export const TrendChart = ({
             data={filteredData}
             margin={{
               top: marginTop,
-              right: showLegend && legendPosition === 'right' ? 0 : marginRight,
-              left: showLegend && legendPosition === 'left' ? 0 : marginLeft,
+              right: marginRight,
+              left: marginLeft,
               bottom: marginBottom,
             }}
           >
@@ -213,7 +256,7 @@ export const TrendChart = ({
                 dataKey="name" 
                 interval={effectiveXAxisInterval}
                 angle={xAxisAngle}
-                textAnchor="end"
+                textAnchor={xAxisAngle === 0 ? "middle" : "end"}
                 height={xAxisHeight}
                 tickMargin={xAxisTickMargin}
               />
@@ -228,29 +271,13 @@ export const TrendChart = ({
               />
             )}
             <Tooltip />
-            {showLegend && (() => {
-              const isVertical = legendPosition === 'left' || legendPosition === 'right'
-              const verticalAlign = isVertical ? 'middle' : legendPosition
-              const align = legendPosition === 'left' ? 'left' : legendPosition === 'right' ? 'right' : 'center'
-              const layout = isVertical ? 'vertical' : 'horizontal'
-              
-              let wrapperStyle = {}
-              if (legendPosition === 'left') {
-                wrapperStyle = { paddingLeft: '0px', paddingRight: '16px' }
-              } else if (legendPosition === 'right') {
-                wrapperStyle = { paddingLeft: '24px', paddingRight: '0px' }
-              }
-              
-              return (
-                <Legend 
-                  verticalAlign={verticalAlign}
-                  align={align}
-                  layout={layout}
-                  height={isVertical ? undefined : 36}
-                  wrapperStyle={wrapperStyle}
-                />
-              )
-            })()}
+            {showLegend && (
+              <Legend 
+                verticalAlign="bottom"
+                align="center"
+                layout="horizontal"
+              />
+            )}
             {lines.map((line) => (
               <Line
                 key={line.dataKey}

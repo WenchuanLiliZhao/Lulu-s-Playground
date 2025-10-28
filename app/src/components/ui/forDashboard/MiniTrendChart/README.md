@@ -85,7 +85,6 @@ const lines: MiniTrendChartLine[] = [
   height={180}
   showGrid={true}
   showLegend={true}
-  legendPosition="bottom"
 />
 ```
 
@@ -135,8 +134,7 @@ const getDateFromDataPoint = (dataPoint: MiniTrendChartDataPoint): Date => {
 | `lines` | `MiniTrendChartLine[]` | **required** | Configuration for lines to display |
 | `height` | `number` | `180` | Chart height in pixels |
 | `showGrid` | `boolean` | `false` | Show/hide grid lines |
-| `showLegend` | `boolean` | `true` | Show/hide legend |
-| `legendPosition` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Position of the legend |
+| `showLegend` | `boolean` | `true` | Show/hide legend (always displays at bottom) |
 | `animationDuration` | `number` | `1000` | Animation duration in milliseconds |
 | `xAxisInterval` | `number \| 'auto' \| 'preserveStart' \| 'preserveEnd' \| 'preserveStartEnd'` | `'auto'` | X-axis tick interval |
 | `minXAxisSpacing` | `number` | `8` | Minimum spacing between x-axis ticks in pixels |

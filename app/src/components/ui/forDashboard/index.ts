@@ -45,10 +45,6 @@ export type { TrendChartProps, TrendChartDataPoint, TrendChartLine } from './Tre
 export { MiniTrendChart } from './MiniTrendChart'
 export type { MiniTrendChartProps, MiniTrendChartLine, MiniTrendChartDataPoint } from './MiniTrendChart'
 
-export { DashboardShowCase } from './DashboardShowCase'
-export type { DashboardShowCaseProps } from './DashboardShowCase'
-export { DASHBOARD_SHOWCASE_DEFAULTS } from './DashboardShowCase'
-
 export { MetricWidget } from './MetricWidget'
 export type { MetricWidgetProps } from './MetricWidget'
 

@@ -3,7 +3,7 @@
 // ===== Design Parameters =====
 $header-margin-bottom: 20px;
 $header-icon-spacing: 8px; // Icon to title spacing (larger for ProgressBarChart)
-$bar-height: 32px;
+$bar-height: 24px;
 $bar-border-radius: 6px;
 $bar-row-gap: 12px;
 $legend-margin-top: 16px;
@@ -182,7 +182,8 @@ $critical-color: var(--color-semantic-error);
   justify-content: center;
   gap: 20px;
   margin-top: $legend-margin-top;
-  padding-top: 12px;
+  // padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .legendItem {

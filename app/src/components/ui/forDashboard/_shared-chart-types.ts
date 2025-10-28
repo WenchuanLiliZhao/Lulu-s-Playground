@@ -3,6 +3,9 @@
  * This ensures consistency and reusability across all chart-based dashboard widgets
  */
 
+// Re-export dashboard types for convenience
+export type { DashboardCommonProps, DashboardHeaderProps, DashboardAlertLightProps, DashboardSizeType, DashboardColorType } from './_shared-types'
+
 /**
  * Base data point structure for all charts
  */
@@ -177,12 +180,6 @@ export interface ChartVisualProps {
    * @default true
    */
   showLegend?: boolean
-  
-  /**
-   * Legend position
-   * @default 'top'
-   */
-  legendPosition?: 'top' | 'bottom' | 'left' | 'right'
   
   /**
    * Animation duration in milliseconds
