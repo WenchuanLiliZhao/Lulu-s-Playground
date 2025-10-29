@@ -15,7 +15,7 @@ $sparkline-right: -21px;
 // This wraps the metric-specific content inside DashboardWidgetFrame
 .metric-content {
   flex: 1; // Fill available space in flex container
-  min-height: 140px;
+  // min-height: 140px;
   // overflow: hidden;
   display: flex;
   flex-direction: column;

@@ -4,7 +4,9 @@ import { RichText } from '../../../../components/ui/RichText';
 import { WeatherWidget } from '../../../../components/ui/WeatherWidget';
 import { InfoPanel } from '../../../../components/ui/InfoPanel';
 import { Card } from '../../../../components/ui/Card';
-import { StatusBadge } from '../../../../components/ui/StatusBadge';
+import { MetricWidget } from '../../../../components/ui/forDashboard/MetricWidget';
+import { MiniTrendChart } from '../../../../components/ui/forDashboard';
+import type { MiniTrendChartLine } from '../../../../components/ui/forDashboard';
 import styles from './styles.module.scss';
 
 // ============================================
@@ -41,19 +43,22 @@ const mockDashboardData = {
       label: "UPT",
       value: "2.3",
       status: "success" as const,
-      statusLabel: "↑ Above"
+      statusLabel: "↑ Above",
+      sparklineData: [1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.3]
     },
     conversionRate: {
       label: "Conv. Rate",
       value: "68%",
       status: "info" as const,
-      statusLabel: "On Track"
+      statusLabel: "On Track",
+      sparklineData: [62, 64, 65, 67, 66, 68, 69, 68]
     },
     aur: {
       label: "AUR",
       value: "$105",
       status: "danger" as const,
-      statusLabel: "↓ Below"
+      statusLabel: "↓ Below",
+      sparklineData: [115, 112, 110, 108, 107, 105, 103, 105]
     }
   },
   peakHours: {
@@ -68,8 +73,25 @@ const mockDashboardData = {
   },
   todayTargetDetail: {
     total: "$25,200",
+    currentProgress: "$18,500",
     morning: "$11,340",
-    evening: "$13,860"
+    evening: "$13,860",
+    sparklineData: {
+      morning: [8200, 8800, 9500, 10200, 10800, 11100, 11340],
+      evening: [9800, 10400, 11000, 11600, 12300, 13100, 13860]
+    },
+    // Today's hourly sales data (10 AM - 6 PM so far)
+    trendData: [
+      { id: 'h10', name: '10 AM', sales: 1200 },
+      { id: 'h11', name: '11 AM', sales: 1850 },
+      { id: 'h12', name: '12 PM', sales: 2400 },
+      { id: 'h13', name: '1 PM', sales: 2100 },
+      { id: 'h14', name: '2 PM', sales: 2800 },
+      { id: 'h15', name: '3 PM', sales: 3200 },
+      { id: 'h16', name: '4 PM', sales: 2900 },
+      { id: 'h17', name: '5 PM', sales: 3500 },
+      { id: 'h18', name: '6 PM', sales: 2550 },
+    ]
   }
 };
 
@@ -193,38 +215,47 @@ const JingjingOnePageV0 = () => {
 
   // TODO: Phase 5 - Extract to MetricsRow component
   // - Accept props: MetricsRowData
-  // - Uses StatusBadge component (already done in Phase 1)
-  const renderMetricsRow = () => (
-    <div className={styles.metricsRow}>
-      <div className={styles.metricCard}>
-        <div className={styles.metricLabel}>{mockDashboardData.metrics.upt.label}</div>
-        <div className={styles.metricValue}>{mockDashboardData.metrics.upt.value}</div>
-        <StatusBadge 
-          label={mockDashboardData.metrics.upt.statusLabel} 
-          status={mockDashboardData.metrics.upt.status}
-          variant="light"
+  // NOW USING: MetricWidget with sparkline support
+  const renderMetricsRow = () => {
+    // Map status to MetricWidget's statusColor
+    const mapStatusColor = (status: 'success' | 'info' | 'danger'): 'success' | 'warning' | 'error' | 'neutral' => {
+      if (status === 'success') return 'success';
+      if (status === 'danger') return 'error';
+      return 'neutral';
+    };
+
+    return (
+      <div className={styles.metricsRow}>
+        <MetricWidget
+          icon="shopping_bag"
+          title={mockDashboardData.metrics.upt.label}
+          value={mockDashboardData.metrics.upt.value}
+          statusText={mockDashboardData.metrics.upt.statusLabel}
+          statusColor={mapStatusColor(mockDashboardData.metrics.upt.status)}
+          sparklineData={mockDashboardData.metrics.upt.sparklineData}
+          sparklineColor="var(--color-semantic-success)"
+        />
+        <MetricWidget
+          icon="trending_up"
+          title={mockDashboardData.metrics.conversionRate.label}
+          value={mockDashboardData.metrics.conversionRate.value}
+          statusText={mockDashboardData.metrics.conversionRate.statusLabel}
+          statusColor={mapStatusColor(mockDashboardData.metrics.conversionRate.status)}
+          sparklineData={mockDashboardData.metrics.conversionRate.sparklineData}
+          sparklineColor="var(--color-semantic-active)"
+        />
+        <MetricWidget
+          icon="payments"
+          title={mockDashboardData.metrics.aur.label}
+          value={mockDashboardData.metrics.aur.value}
+          statusText={mockDashboardData.metrics.aur.statusLabel}
+          statusColor={mapStatusColor(mockDashboardData.metrics.aur.status)}
+          sparklineData={mockDashboardData.metrics.aur.sparklineData}
+          sparklineColor="var(--color-semantic-error)"
         />
       </div>
-      <div className={styles.metricCard}>
-        <div className={styles.metricLabel}>{mockDashboardData.metrics.conversionRate.label}</div>
-        <div className={styles.metricValue}>{mockDashboardData.metrics.conversionRate.value}</div>
-        <StatusBadge 
-          label={mockDashboardData.metrics.conversionRate.statusLabel} 
-          status={mockDashboardData.metrics.conversionRate.status}
-          variant="light"
-        />
-      </div>
-      <div className={styles.metricCard}>
-        <div className={styles.metricLabel}>{mockDashboardData.metrics.aur.label}</div>
-        <div className={styles.metricValue}>{mockDashboardData.metrics.aur.value}</div>
-        <StatusBadge 
-          label={mockDashboardData.metrics.aur.statusLabel} 
-          status={mockDashboardData.metrics.aur.status}
-          variant="light"
-        />
-      </div>
-    </div>
-  );
+    );
+  };
 
   // TODO: Phase 5 - Extract to PeakHoursPanel and CategoryMixPanel components
   // - Uses InfoPanel component (already done in Phase 1)
@@ -254,27 +285,67 @@ const JingjingOnePageV0 = () => {
   // TODO: Phase 5 - Extract to TodayTargetDetail component
   // - Accept props: TodayTargetDetail
   // - Style must use var(--wilderness-4) and var(--wilderness-5)
-  const renderTodayTargetDetail = () => (
-    <div className={styles.todayTargetDetail}>
-      <div className={styles.targetHeader}>
-        <span className={styles.targetIcon}>🎯</span>
-        <span className={styles.targetTitle}>Today's Target</span>
-      </div>
-      <div className={styles.targetTotal}>{mockDashboardData.todayTargetDetail.total}</div>
-      <div className={styles.targetBreakdown}>
-        <div className={styles.targetItem}>
-          <span className={styles.targetItemIcon}>🌅</span>
-          <span className={styles.targetItemLabel}>Morning</span>
-          <span className={styles.targetItemValue}>{mockDashboardData.todayTargetDetail.morning}</span>
+  // NOW USING: MiniTrendChart for hourly sales, MetricWidget for breakdown
+  const renderTodayTargetDetail = () => {
+    // Single line showing today's hourly sales
+    const trendLines: MiniTrendChartLine[] = [
+      {
+        dataKey: 'sales',
+        name: 'Hourly Sales',
+        color: '#ef4444', // Red color
+        strokeWidth: 3,
+      },
+    ];
+
+    return (
+      <div className={styles.todayTargetDetail}>
+        {/* Main Target Chart - Full Width */}
+        <div className={styles.targetChartContainer}>
+          <MiniTrendChart
+            data={mockDashboardData.todayTargetDetail.trendData}
+            lines={trendLines}
+            showGrid={true}
+            showLegend={true}
+            showYAxis={true}
+            yAxisTickFormatter={(value: number) => `$${(value / 1000).toFixed(1)}k`}
+            xAxisAngle={0}
+            xAxisHeight={40}
+            marginBottom={5}
+            headerTitle={
+              <div className={styles.targetDetailHeader}>
+                <h2 className={styles.targetDetailTitle}>Today's Target</h2>
+                <p className={styles.targetDetailSubtitle}>{mockDashboardData.todayTargetDetail.currentProgress} <span className={styles.targetDetailSubtitleSeparator}>/</span> {mockDashboardData.todayTargetDetail.total}</p>
+              </div>
+            }
+            headerColor={"primary"}
+            showHeader={true}
+            className={styles.targetTrendChart}
+          />
         </div>
-        <div className={styles.targetItem}>
-          <span className={styles.targetItemIcon}>🌙</span>
-          <span className={styles.targetItemLabel}>Evening</span>
-          <span className={styles.targetItemValue}>{mockDashboardData.todayTargetDetail.evening}</span>
+        
+        {/* Morning & Evening Targets - Side by Side */}
+        <div className={styles.targetWidgetsContainer}>
+          <MetricWidget
+            icon="wb_twilight"
+            title="Morning Target"
+            value={mockDashboardData.todayTargetDetail.morning}
+            statusText="45% of total"
+            statusColor="neutral"
+            // sparklineData={mockDashboardData.todayTargetDetail.sparklineData.morning}
+          />
+          <MetricWidget
+            icon="nights_stay"
+            title="Evening Target"
+            value={mockDashboardData.todayTargetDetail.evening}
+            statusText="55% of total"
+            statusColor="neutral"
+            // sparklineData={mockDashboardData.todayTargetDetail.sparklineData.evening}
+            // sparklineColor="rgba(255, 255, 255, 0.6)"
+          />
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   // TODO: Phase 4 - Extract to DashboardSection component
   const renderDashboard = () => (
@@ -353,7 +424,7 @@ const JingjingOnePage_V0: PageProps = {
   title: 'JingJing One Page V0',
   slug: 'jingjing-one-page-v0',
   content: (
-    <AppLayout isTesting={true} viewportMode={"default"}>
+    <AppLayout isTesting={false} viewportMode={"default"}>
       <JingjingOnePageV0 />
     </AppLayout>
   ),

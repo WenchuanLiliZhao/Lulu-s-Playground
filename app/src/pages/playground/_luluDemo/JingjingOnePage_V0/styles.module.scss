@@ -154,31 +154,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-}
-
-.metricCard {
-  background: var(--color-bg-main);
-  border: 1px solid var(--color-border-main);
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.metricLabel {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-sec);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.metricValue {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--color-main);
-  line-height: 1.2;
+  grid-auto-rows: 140px;
 }
 
 // ===========================================
@@ -196,74 +172,60 @@
 // DASHBOARD - Today's Target Detail
 // TODO: Phase 5 - Extract to TodayTargetDetail styles
 // Background must use var(--wilderness-4) and var(--wilderness-5)
+// NOW USING: MetricWidget components from design system
 // ===========================================
 
 .todayTargetDetail {
-  background: linear-gradient(
-    135deg,
-    var(--wilderness-4),
-    var(--wilderness-5)
-  );
-  padding: 24px;
-  border-radius: 12px;
+  // padding: 24px;
+  // border: 1px solid var(--color-border-main);
+  // background: var(--color-bg-main);
+  // border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+
+  .targetDetailHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .targetDetailTitle {
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: bold;
+  }
+
+  .targetDetailSubtitle {
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: bold;
+  }
+
+  .targetDetailSubtitleSeparator {
+    font-weight: normal;
+    color: var(--color-sec);
+  }
 }
 
-.targetHeader {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+// Full-width chart container - CRITICAL: Must have fixed height for Recharts
+.targetChartContainer {
+  width: 100%;
+  height: 320px; // Fixed height required by ResponsiveContainer
+  // Let the component use its own styles - no overrides!
 }
 
-.targetIcon {
-  font-size: 24px;
+.targetTrendChart {
+  height: 100%;
+  width: 100%;
 }
 
-.targetTitle {
-  font-size: 16px;
-  font-weight: 600;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.targetTotal {
-  font-size: 40px;
-  font-weight: 700;
-  color: white;
-  line-height: 1.2;
-}
-
-.targetBreakdown {
-  display: flex;
-  gap: 24px;
-}
-
-.targetItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-}
-
-.targetItemIcon {
-  font-size: 20px;
-}
-
-.targetItemLabel {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.targetItemValue {
-  font-size: 18px;
-  font-weight: 700;
-  color: white;
-  margin-left: auto;
+// Side-by-side small widgets
+.targetWidgetsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  height: 140px;
 }
 
 // ===========================================
@@ -387,8 +349,12 @@
     grid-template-columns: 1fr;
   }
 
-  .targetBreakdown {
-    flex-direction: column;
+  .targetChartContainer {
+    height: 250px;
+  }
+
+  .targetWidgetsContainer {
+    grid-template-columns: 1fr;
   }
 }
 

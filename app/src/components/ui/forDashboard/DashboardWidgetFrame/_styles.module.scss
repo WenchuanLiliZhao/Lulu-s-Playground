@@ -3,6 +3,7 @@
 // Frame Container
 // This is the outermost wrapper for all dashboard widgets
 .frame-container {
+  overflow: hidden;
   position: relative;
   background-color: var(--color-bg-main);
   border-radius: 12px;

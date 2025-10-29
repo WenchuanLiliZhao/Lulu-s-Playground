@@ -3,6 +3,8 @@
  * These types ensure consistency across MetricWidget, ProgressBarChart, MiniTrendChart, and TrendChart
  */
 
+import type { ReactNode } from "react"
+
 export type DashboardSizeType = 'small' | 'medium' | 'large'
 export type DashboardColorType = 'primary' | 'secondary' | 'active' | 'success' | 'warning' | 'error'
 
@@ -24,7 +26,7 @@ export interface DashboardHeaderProps {
   /**
    * Header title text
    */
-  headerTitle?: string
+  headerTitle?: string | ReactNode
   
   /**
    * Header summary/description text
