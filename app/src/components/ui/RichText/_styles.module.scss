@@ -1,0 +1,26 @@
+.container {
+  display: inline;
+  color: var(--color-main);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-highlight {
+  background-color: var(--zest-7);
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+// Ensure highlighted text remains readable
+.text-highlight {
+  color: var(--color-main);
+}
+

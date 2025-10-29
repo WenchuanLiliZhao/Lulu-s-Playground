@@ -1,0 +1,394 @@
+// ===========================================
+// LAYOUT
+// TODO: Phase 4 - Extract to PageLayout styles
+// ===========================================
+
+.page {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  z-index: 100;
+  background: var(--color-bg-main);
+  border-bottom: 1px solid var(--color-border-main);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.content {
+  display: flex;
+  margin-top: 64px;
+  height: calc(100vh - 64px);
+  overflow: hidden;
+}
+
+.dashboardSection {
+  width: 60%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px;
+  background: var(--color-bg-sec);
+  border-right: 1px solid var(--color-border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tipsSection {
+  width: 40%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px;
+  background: var(--color-bg-main);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+// ===========================================
+// NAVIGATION
+// TODO: Phase 4 - Extract to NavigationBar styles
+// ===========================================
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  height: 32px;
+  width: auto;
+}
+
+.storeName {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-main);
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.date {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-main);
+}
+
+.day {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-sec);
+}
+
+// ===========================================
+// DASHBOARD - Performance Snapshot
+// TODO: Phase 5 - Extract to PerformanceSnapshot styles
+// Background must use var(--daydream-5) and var(--daydream-6)
+// ===========================================
+
+.performanceSnapshot {
+  background: linear-gradient(
+    135deg,
+    var(--daydream-5),
+    var(--daydream-6)
+  );
+  padding: 24px;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  box-shadow: 0 4px 12px rgba(41, 182, 246, 0.2);
+}
+
+.snapshotCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.snapshotLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.snapshotValue {
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+}
+
+.snapshotSubtitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+// ===========================================
+// DASHBOARD - Metrics Row
+// TODO: Phase 5 - Extract to MetricsRow styles
+// ===========================================
+
+.metricsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.metricCard {
+  background: var(--color-bg-main);
+  border: 1px solid var(--color-border-main);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metricLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-sec);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metricValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-main);
+  line-height: 1.2;
+}
+
+// ===========================================
+// DASHBOARD - Info Panels
+// TODO: Phase 5 - Extract to PeakHoursPanel and CategoryMixPanel styles
+// ===========================================
+
+.infoPanelsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+// ===========================================
+// DASHBOARD - Today's Target Detail
+// TODO: Phase 5 - Extract to TodayTargetDetail styles
+// Background must use var(--wilderness-4) and var(--wilderness-5)
+// ===========================================
+
+.todayTargetDetail {
+  background: linear-gradient(
+    135deg,
+    var(--wilderness-4),
+    var(--wilderness-5)
+  );
+  padding: 24px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.targetHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.targetIcon {
+  font-size: 24px;
+}
+
+.targetTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.targetTotal {
+  font-size: 40px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+}
+
+.targetBreakdown {
+  display: flex;
+  gap: 24px;
+}
+
+.targetItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.targetItemIcon {
+  font-size: 20px;
+}
+
+.targetItemLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.targetItemValue {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  margin-left: auto;
+}
+
+// ===========================================
+// TIPS SECTION
+// TODO: Phase 6 - Extract to TipsSection styles
+// ===========================================
+
+.tipsSectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-main);
+  margin: 0 0 8px 0;
+}
+
+.tipCard {
+  margin-bottom: 0;
+}
+
+.tipCardHeader {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-main);
+}
+
+.tipCardBody {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-main);
+}
+
+// ===========================================
+// TIPS - Inventory List
+// TODO: Phase 6 - Extract to InventoryListBlock styles
+// ===========================================
+
+.inventoryList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inventoryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border-main-trans);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.inventoryProduct {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-main);
+  flex: 1;
+}
+
+.inventoryDetail {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-sec);
+}
+
+// ===========================================
+// RESPONSIVE DESIGN
+// ===========================================
+
+@media (max-width: 1024px) {
+  .dashboardSection {
+    width: 50%;
+  }
+
+  .tipsSection {
+    width: 50%;
+  }
+
+  .metricsRow {
+    grid-template-columns: 1fr;
+  }
+
+  .infoPanelsRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .dashboardSection,
+  .tipsSection {
+    width: 100%;
+    height: auto;
+    min-height: 50vh;
+  }
+
+  .navigation {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 16px;
+    gap: 8px;
+  }
+
+  .navLeft,
+  .navRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .content {
+    margin-top: 80px;
+    height: calc(100vh - 80px);
+  }
+
+  .performanceSnapshot {
+    grid-template-columns: 1fr;
+  }
+
+  .targetBreakdown {
+    flex-direction: column;
+  }
+}
+

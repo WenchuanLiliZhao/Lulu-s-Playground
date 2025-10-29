@@ -1,0 +1,53 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-main);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.condition {
+  font-weight: 500;
+}
+
+.temperature {
+  font-weight: 600;
+  color: var(--color-sec);
+}
+
+// Size variants
+.size-small {
+  font-size: 12px;
+  gap: 4px;
+
+  .icon {
+    font-size: 14px;
+  }
+}
+
+.size-medium {
+  font-size: 14px;
+  gap: 8px;
+
+  .icon {
+    font-size: 18px;
+  }
+}
+
+.size-large {
+  font-size: 16px;
+  gap: 12px;
+
+  .icon {
+    font-size: 24px;
+  }
+}
+
