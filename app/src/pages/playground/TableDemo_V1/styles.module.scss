@@ -1,0 +1,108 @@
+.container {
+  padding: 32px;
+  background-color: var(--color-bg-sec);
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-main);
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--color-sec);
+  margin: 0;
+}
+
+.section {
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-main);
+  margin: 0 0 16px 0;
+}
+
+.sectionDescription {
+  font-size: 14px;
+  color: var(--color-sec);
+  margin: 0 0 24px 0;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.tableContainer {
+  background-color: var(--color-bg-main);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tableTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-main);
+  margin: 0 0 16px 0;
+}
+
+// Custom styling for specific cells
+.priceCell {
+  font-weight: 600;
+  color: var(--color-semantic-success);
+}
+
+.stockLow {
+  color: var(--color-semantic-warning);
+  font-weight: 600;
+}
+
+.stockOut {
+  color: var(--color-semantic-error);
+  font-weight: 600;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
+  .star {
+    color: var(--amber-4);
+    font-size: 16px;
+  }
+}
+
+.growth {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  
+  &.positive {
+    color: var(--wilderness-4);
+  }
+  
+  &.negative {
+    color: var(--hot-heat-4);
+  }
+  
+  .icon {
+    font-size: 16px;
+  }
+}
+

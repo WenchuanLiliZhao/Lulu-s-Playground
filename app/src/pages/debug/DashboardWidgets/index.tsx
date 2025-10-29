@@ -8,6 +8,8 @@ import {
   type MiniTrendChartLine,
   type MiniTrendChartDataPoint,
 } from "../../../components/ui/forDashboard/MiniTrendChart";
+import { TableWidget } from "../../../components/ui/forDashboard";
+import type { TableColumn } from "../../../components/ui/Table";
 import AppLayout from "../../../components/ui/AppLayout";
 import type { PageProps } from "../../_page-types";
 import styles from "./styles.module.scss";
@@ -304,6 +306,166 @@ const trafficLines: MiniTrendChartLine[] = [
     name: "Visitors",
     color: "#f59e0b",
     strokeWidth: 2,
+  },
+];
+
+// Sample data for TableWidget
+interface PerformanceMetric {
+  id: string;
+  service: string;
+  status: 'healthy' | 'warning' | 'critical';
+  uptime: number;
+  responseTime: number;
+  requests: number;
+}
+
+const performanceMetrics: PerformanceMetric[] = [
+  {
+    id: '1',
+    service: 'API Gateway',
+    status: 'healthy',
+    uptime: 99.99,
+    responseTime: 45,
+    requests: 1250000,
+  },
+  {
+    id: '2',
+    service: 'Authentication Service',
+    status: 'healthy',
+    uptime: 99.95,
+    responseTime: 78,
+    requests: 890000,
+  },
+  {
+    id: '3',
+    service: 'Payment Processing',
+    status: 'warning',
+    uptime: 98.5,
+    responseTime: 234,
+    requests: 450000,
+  },
+  {
+    id: '4',
+    service: 'Database Cluster',
+    status: 'critical',
+    uptime: 95.2,
+    responseTime: 567,
+    requests: 2100000,
+  },
+  {
+    id: '5',
+    service: 'CDN',
+    status: 'healthy',
+    uptime: 99.99,
+    responseTime: 12,
+    requests: 5600000,
+  },
+];
+
+interface SalesMetric {
+  id: string;
+  region: string;
+  revenue: number;
+  orders: number;
+  conversionRate: number;
+}
+
+const salesMetrics: SalesMetric[] = [
+  { id: '1', region: 'North America', revenue: 2450000, orders: 12340, conversionRate: 3.8 },
+  { id: '2', region: 'Europe', revenue: 1890000, orders: 9850, conversionRate: 3.2 },
+  { id: '3', region: 'Asia Pacific', revenue: 3120000, orders: 15670, conversionRate: 4.1 },
+  { id: '4', region: 'Latin America', revenue: 780000, orders: 4200, conversionRate: 2.9 },
+  { id: '5', region: 'Middle East', revenue: 560000, orders: 2890, conversionRate: 2.6 },
+];
+
+const performanceColumns: TableColumn<PerformanceMetric>[] = [
+  {
+    key: 'service',
+    header: 'Service',
+    render: (row: PerformanceMetric) => row.service,
+    sortable: true,
+  },
+  {
+    key: 'status',
+    header: 'Status',
+    render: (row: PerformanceMetric) => (
+      <span style={{
+        padding: '4px 8px',
+        borderRadius: '4px',
+        fontSize: '12px',
+        fontWeight: 600,
+        backgroundColor: 
+          row.status === 'healthy' ? 'rgba(16, 185, 129, 0.15)' :
+          row.status === 'warning' ? 'rgba(251, 191, 36, 0.15)' :
+          'rgba(239, 68, 68, 0.15)',
+        color:
+          row.status === 'healthy' ? '#10b981' :
+          row.status === 'warning' ? '#f59e0b' :
+          '#ef4444',
+      }}>
+        {row.status.toUpperCase()}
+      </span>
+    ),
+    width: '120px',
+    align: 'center',
+    sortable: true,
+  },
+  {
+    key: 'uptime',
+    header: 'Uptime',
+    render: (row: PerformanceMetric) => `${row.uptime}%`,
+    width: '100px',
+    align: 'center',
+    sortable: true,
+  },
+  {
+    key: 'responseTime',
+    header: 'Avg Response',
+    render: (row: PerformanceMetric) => `${row.responseTime}ms`,
+    width: '120px',
+    align: 'center',
+    sortable: true,
+  },
+  {
+    key: 'requests',
+    header: 'Total Requests',
+    render: (row: PerformanceMetric) => row.requests.toLocaleString(),
+    width: '140px',
+    align: 'right',
+    sortable: true,
+  },
+];
+
+const salesColumns: TableColumn<SalesMetric>[] = [
+  {
+    key: 'region',
+    header: 'Region',
+    render: (row: SalesMetric) => row.region,
+    sortable: true,
+  },
+  {
+    key: 'revenue',
+    header: 'Revenue',
+    render: (row: SalesMetric) => `$${(row.revenue / 1000).toFixed(0)}K`,
+    width: '120px',
+    align: 'right',
+    sortable: true,
+  },
+  {
+    key: 'orders',
+    header: 'Orders',
+    render: (row: SalesMetric) => row.orders.toLocaleString(),
+    width: '100px',
+    align: 'center',
+    sortable: true,
+  },
+  {
+    key: 'conversionRate',
+    header: 'Conv. Rate',
+    render: (row: SalesMetric) => `${row.conversionRate}%`,
+    width: '110px',
+    align: 'center',
+    sortable: true,
   },
 ];
 
@@ -927,6 +1089,108 @@ const DashboardWidgetsDebug = () => {
               showLegend={false}
             />
           </div>
+        </div>
+      </section>
+
+      {/* Section: TableWidget */}
+      <section className={styles.section}>
+        <h2>TableWidget - Dashboard Tables</h2>
+        <p className={styles.sectionDesc}>
+          Table component wrapped in DashboardWidgetFrame for displaying tabular data in dashboards
+        </p>
+
+        <h3 className={styles.sectionSubtitle}>Full Width Tables</h3>
+        <div className={styles.gridTableFull}>
+          <TableWidget
+            showHeader={true}
+            headerIcon="monitor_heart"
+            headerTitle="System Performance Metrics"
+            headerSummary="Real-time monitoring of all services"
+            headerTitleSize="small"
+            headerIconSize="small"
+            headerColor="secondary"
+            showAlertLight={true}
+            alertLightColor="#ef4444"
+            columns={performanceColumns}
+            data={performanceMetrics}
+            enableSorting
+            initialSortColumn="uptime"
+            initialSortDirection="asc"
+            striped
+            hoverable
+            size="small"
+            rowKey={(row) => row.id}
+          />
+        </div>
+
+        <h3 className={styles.sectionSubtitle}>Half Width Tables</h3>
+        <div className={styles.gridTableHalf}>
+          <TableWidget
+            showHeader={true}
+            headerIcon="trending_up"
+            headerTitle="Sales by Region"
+            headerSummary="Last 30 days performance"
+            headerTitleSize="small"
+            headerIconSize="small"
+            showAlertLight={true}
+            alertLightColor="#10b981"
+            columns={salesColumns}
+            data={salesMetrics}
+            enableSorting
+            initialSortColumn="revenue"
+            initialSortDirection="desc"
+            striped
+            hoverable
+            size="small"
+            rowKey={(row) => row.id}
+          />
+
+          <TableWidget
+            showHeader={true}
+            headerIcon="leaderboard"
+            headerTitle="Top Performers"
+            headerSummary="Highest conversion rates"
+            headerTitleSize="small"
+            headerIconSize="small"
+            showAlertLight={true}
+            alertLightColor="#3b82f6"
+            columns={salesColumns}
+            data={salesMetrics.slice(0, 3)}
+            striped
+            hoverable
+            size="small"
+            rowKey={(row) => row.id}
+          />
+        </div>
+
+        <h3 className={styles.sectionSubtitle}>Different States</h3>
+        <div className={styles.gridTableHalf}>
+          <TableWidget
+            showHeader={true}
+            headerIcon="hourglass_empty"
+            headerTitle="Loading State"
+            headerSummary="Fetching data..."
+            headerTitleSize="small"
+            headerIconSize="small"
+            showAlertLight={true}
+            alertLightColor="#f59e0b"
+            columns={performanceColumns}
+            data={[]}
+            loading={true}
+          />
+
+          <TableWidget
+            showHeader={true}
+            headerIcon="inbox"
+            headerTitle="Empty State"
+            headerSummary="No data available"
+            headerTitleSize="small"
+            headerIconSize="small"
+            showAlertLight={false}
+            columns={performanceColumns}
+            data={[]}
+            emptyText="No performance metrics found. All services may be offline."
+          />
         </div>
       </section>
     </div>

@@ -55,3 +55,6 @@ export type { MetricWidgetProps } from './MetricWidget'
 export { ProgressBarChart } from './ProgressBarChart'
 export type { ProgressBarChartProps, ProgressBarItem } from './ProgressBarChart'
 
+export { TableWidget } from './TableWidget'
+export type { TableWidgetProps } from './TableWidget'
+

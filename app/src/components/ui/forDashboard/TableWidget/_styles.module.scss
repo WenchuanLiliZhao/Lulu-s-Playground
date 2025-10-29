@@ -1,0 +1,8 @@
+.table-content {
+  // Remove any default padding since table has its own padding
+  margin: 0;
+  
+  // Ensure table fits within the frame
+  overflow: hidden;
+}
+

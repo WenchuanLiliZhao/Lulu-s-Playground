@@ -1,0 +1,25 @@
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.active {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--wilderness-4);
+}
+
+.inactive {
+  background-color: var(--color-bg-sec-2);
+  color: var(--color-sec);
+}
+
+.pending {
+  background-color: rgba(251, 191, 36, 0.15);
+  color: var(--amber-4);
+}
+
