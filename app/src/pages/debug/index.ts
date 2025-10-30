@@ -3,6 +3,7 @@ import CalendarDebugPage from "./Calendar";
 import IconButtonDebugPage from "./IconButton";
 import TrendChartDebugPage from "./TrendChart";
 import DashboardWidgetsDebugPage from "./DashboardWidgets";
+import DashboardWidgetFrameDebugPage from "./DashboardWidgetFrame";
 
 export const DebugPages = {
   SearchBarDebug: SearchBarDebugPage,
@@ -10,5 +11,6 @@ export const DebugPages = {
   IconButtonDebug: IconButtonDebugPage,
   TrendChartDebug: TrendChartDebugPage,
   DashboardWidgetsDebug: DashboardWidgetsDebugPage,
+  DashboardWidgetFrameDebug: DashboardWidgetFrameDebugPage,
 };
 
