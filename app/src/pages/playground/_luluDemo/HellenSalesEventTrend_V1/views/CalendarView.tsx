@@ -5,14 +5,17 @@ import {
   holidays,
   convertEventsToTimeRanges,
   convertHolidaysToTimeRanges,
-} from '../../SalesEventCalendar_V1/data/eventData'
+  getEventDuration,
+} from '../data/eventData'
 import { useCalendarHighlight, highlightStyles, useEventFilter } from '../../SalesEventCalendar_V1/features'
+import { fiscalYearConfig } from '../data'
 import styles from './CalendarView.module.scss'
 
-type EventStatus = 'In progress' | 'Last' | 'Incoming'
+type EventStatus = 'In progress' | 'Past' | 'Incoming'
 
 export const CalendarView = () => {
   const [currentYear] = useState(2025)
+  const [useFiscalYear, setUseFiscalYear] = useState(false)
   
   // Use the event filter feature
   const {
@@ -65,14 +68,14 @@ export const CalendarView = () => {
       }
 
       if (endTime < todayTime) {
-        return 'Last'
+        return 'Past'
       }
 
       if (startTime > todayTime) {
         return 'Incoming'
       }
 
-      return 'Last'
+      return 'Past'
     }
 
     const uniqueEvents = getUniqueEvents(filteredEvents)
@@ -81,7 +84,7 @@ export const CalendarView = () => {
       backgroundColor: event.backgroundColor,
       backgroundOpacity: event.backgroundOpacity,
       color: event.color,
-      money: event.money || 0,
+      duration: getEventDuration(event),
       status: getEventStatus(event.interval),
       interval: event.interval,
     }))
@@ -118,7 +121,7 @@ export const CalendarView = () => {
                   <tr>
                     <th>Status</th>
                     <th>Name</th>
-                    <th>Money</th>
+                    <th>Duration</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -144,7 +147,7 @@ export const CalendarView = () => {
                         </Label>
                       </td>
                       <td className={styles.moneyCell}>
-                        {event.money.toLocaleString()}
+                        {event.duration}
                       </td>
                     </tr>
                   ))}
@@ -183,6 +186,9 @@ export const CalendarView = () => {
             initialYear={currentYear}
             timeRanges={timeRanges}
             headerMode={["switch", 1, 2]}
+            fiscalYearConfig={fiscalYearConfig}
+            useFiscalYear={useFiscalYear}
+            onFiscalYearChange={(isFiscal) => setUseFiscalYear(isFiscal)}
           />
         </div>
       </section>

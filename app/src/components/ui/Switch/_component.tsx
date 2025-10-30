@@ -1,24 +1,29 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './_styles.module.scss'
 
 export interface SwitchProps {
   /**
    * Options for the switch
+   * Can be either 2 options [string, string] or multiple options string[]
    */
-  options: [string, string]
+  options: [string, string] | string[]
   /**
-   * Initial selected index (0 or 1)
+   * Initial selected index
    * @default 0
    */
-  initialSelected?: 0 | 1
+  initialSelected?: number
   /**
    * Callback when selection changes
    */
-  onChange?: (selectedIndex: 0 | 1, selectedValue: string) => void
+  onChange?: (selectedIndex: number, selectedValue: string) => void
   /**
    * Optional className
    */
   className?: string
+  /**
+   * Controlled selected index (overrides internal state)
+   */
+  selectedIndex?: number
 }
 
 export const Switch = ({
@@ -26,28 +31,38 @@ export const Switch = ({
   initialSelected = 0,
   onChange,
   className = '',
+  selectedIndex: controlledSelectedIndex,
 }: SwitchProps) => {
-  const [selected, setSelected] = useState<0 | 1>(initialSelected)
+  const [selected, setSelected] = useState<number>(initialSelected)
 
-  const handleSwitch = (index: 0 | 1) => {
-    setSelected(index)
+  // Use controlled value if provided
+  const currentSelected = controlledSelectedIndex !== undefined ? controlledSelectedIndex : selected
+
+  // Update internal state when controlledSelectedIndex changes
+  useEffect(() => {
+    if (controlledSelectedIndex !== undefined) {
+      setSelected(controlledSelectedIndex)
+    }
+  }, [controlledSelectedIndex])
+
+  const handleSwitch = (index: number) => {
+    if (controlledSelectedIndex === undefined) {
+      setSelected(index)
+    }
     onChange?.(index, options[index])
   }
 
   return (
     <div className={`${styles.container} ${className}`}>
-      <button
-        className={`${styles.option} ${selected === 0 ? styles.active : ''}`}
-        onClick={() => handleSwitch(0)}
-      >
-        {options[0]}
-      </button>
-      <button
-        className={`${styles.option} ${selected === 1 ? styles.active : ''}`}
-        onClick={() => handleSwitch(1)}
-      >
-        {options[1]}
-      </button>
+      {options.map((option, index) => (
+        <button
+          key={index}
+          className={`${styles.option} ${currentSelected === index ? styles.active : ''}`}
+          onClick={() => handleSwitch(index)}
+        >
+          {option}
+        </button>
+      ))}
     </div>
   )
 }

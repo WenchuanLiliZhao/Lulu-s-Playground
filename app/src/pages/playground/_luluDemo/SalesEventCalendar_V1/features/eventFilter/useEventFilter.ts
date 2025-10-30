@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import type { EventData } from '../../data/eventData'
+import type { EventData } from '../../../HellenSalesEventTrend_V1/data/eventData'
 
 export type EventChannel = 'Retail' | 'EC'
 

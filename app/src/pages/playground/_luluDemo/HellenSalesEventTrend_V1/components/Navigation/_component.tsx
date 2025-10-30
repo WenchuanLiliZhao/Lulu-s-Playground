@@ -40,7 +40,7 @@ export const Navigation = ({
           alt="Logo" 
           className={styles.logo}
         />
-        <h1 className={styles.title}>Sales Event Trend</h1>
+        <h1 className={styles.title}>Sales Event Calendar</h1>
       </div>
 
       {/* Right side: Switches */}

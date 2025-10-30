@@ -3,6 +3,7 @@ import styles from './_styles.module.scss'
 import { responsiveness, type repsonsivenessProps } from './_config'
 import { MonthPopup, useMonthPopup } from './features'
 import { IconButton } from '../IconButton'
+import { Switch } from '../Switch'
 
 
 export interface TimeRange {
@@ -31,6 +32,17 @@ export interface TimeRange {
   name?: string
 }
 
+export interface FiscalYearConfig {
+  /**
+   * The month when fiscal year starts (0-11, where 0 is January)
+   */
+  startMonth: number
+  /**
+   * The day of the month when fiscal year starts (1-31)
+   */
+  startDay: number
+}
+
 export interface CalendarProps {
   /**
    * Initial year to display
@@ -57,6 +69,20 @@ export interface CalendarProps {
    * @default "default"
    */
   headerMode?: "default" | ["switch", number, number]
+  /**
+   * Fiscal year configuration
+   * When provided, enables fiscal year mode
+   */
+  fiscalYearConfig?: FiscalYearConfig
+  /**
+   * Whether to use fiscal year mode
+   * @default false
+   */
+  useFiscalYear?: boolean
+  /**
+   * Callback when fiscal year mode changes
+   */
+  onFiscalYearChange?: (useFiscalYear: boolean) => void
 }
 
 interface MonthData {
@@ -294,7 +320,7 @@ const MonthCalendar = ({
               >
                 {dayCell.day}
               </span>
-              {isToday && <span className={styles.todayDot}></span>}
+              {isToday && <span className={styles.todayMarker}></span>}
               
               {/* Tooltip */}
               {showTooltip && (
@@ -327,6 +353,9 @@ export const Calendar = ({
   breakpoint = 600,
   timeRanges = [],
   headerMode = "default",
+  fiscalYearConfig,
+  useFiscalYear = false,
+  onFiscalYearChange,
 }: CalendarProps) => {
   const [year, setYear] = useState(initialYear)
   const [isCompact, setIsCompact] = useState(false)
@@ -348,6 +377,15 @@ export const Calendar = ({
         (_, i) => currentYear - headerMode[1] + i
       )
     : []
+
+  // Generate months array based on fiscal year mode
+  // For fiscal year, months start from fiscalYearConfig.startMonth
+  const months = useFiscalYear && fiscalYearConfig
+    ? Array.from({ length: 12 }, (_, i) => {
+        const month = (fiscalYearConfig.startMonth + i) % 12
+        return { month, year: month < fiscalYearConfig.startMonth ? year + 1 : year }
+      })
+    : Array.from({ length: 12 }, (_, i) => ({ month: i, year }))
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -375,8 +413,6 @@ export const Calendar = ({
       resizeObserver.disconnect()
     }
   }, [breakpoint])
-
-  const months = Array.from({ length: 12 }, (_, i) => i)
 
   return (
     <div
@@ -420,30 +456,22 @@ export const Calendar = ({
             </button>
           </>
         ) : (
-          // Switch mode: year dropdown/switch with today button
+          // Switch mode: year selection with fiscal year toggle
           <>
-            <div className={styles.yearSwitchContainer}>
-              <div className={styles.yearSwitchWrapper}>
-                {yearOptions.map((yearOption) => (
-                  <button
-                    key={yearOption}
-                    className={`${styles.yearSwitchOption} ${
-                      yearOption === year ? styles.yearSwitchOptionActive : ''
-                    }`}
-                    onClick={() => handleYearChange(yearOption)}
-                  >
-                    {yearOption}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <button 
-              className={styles.todayButton}
-              onClick={handleToday}
-              disabled={year === currentYear}
-            >
-              Back to This Year
-            </button>
+            <Switch
+              options={yearOptions.map(String)}
+              selectedIndex={yearOptions.indexOf(year)}
+              onChange={(index) => handleYearChange(yearOptions[index])}
+              className={styles.yearSwitch}
+            />
+            {fiscalYearConfig && onFiscalYearChange && (
+              <Switch
+                options={['Calendar Year', 'Fiscal Year']}
+                initialSelected={useFiscalYear ? 1 : 0}
+                onChange={(index) => onFiscalYearChange(index === 1)}
+                className={styles.fiscalYearSwitch}
+              />
+            )}
           </>
         )}
       </div>
@@ -454,11 +482,11 @@ export const Calendar = ({
           gridTemplateColumns: `repeat(${currentResponsiveConfig.monthColCount}, 1fr)`,
         }}
       >
-        {months.map((month) => (
+        {months.map((monthData, index) => (
           <MonthCalendar
-            key={month}
-            month={month}
-            year={year}
+            key={`${monthData.year}-${monthData.month}-${index}`}
+            month={monthData.month}
+            year={monthData.year}
             timeRanges={timeRanges}
             responsiveConfig={currentResponsiveConfig}
             onExpandClick={openPopup}

@@ -30,7 +30,7 @@ $container-padding-mobile: 16px;                // Container padding on mobile
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  margin-top: 8px;
+  margin-top: 24px;
   min-height: 32px;
 }
 
@@ -174,9 +174,10 @@ $container-padding-mobile: 16px;                // Container padding on mobile
   color: white;
 }
 
-.statusLast {
+.statusPast {
   background-color: var(--color-bg-sec-2);
   color: var(--color-sec);
+  opacity: 0.5;
 }
 
 .statusIncoming {

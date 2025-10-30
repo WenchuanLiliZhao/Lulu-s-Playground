@@ -7,7 +7,7 @@ import {
   holidays,
   convertEventsToTimeRanges,
   convertHolidaysToTimeRanges,
-} from './data/eventData'
+} from '../HellenSalesEventTrend_V1/data/eventData'
 import { useCalendarHighlight, highlightStyles, useEventFilter } from './features'
 import styles from './styles.module.scss'
 
