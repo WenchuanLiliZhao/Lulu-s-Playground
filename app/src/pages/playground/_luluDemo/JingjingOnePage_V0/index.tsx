@@ -34,7 +34,7 @@ const JingjingOnePageV0 = () => {
     <div className={styles.navigation}>
       <div className={styles.navLeft}>
         <img
-          src="/logo/BlackNoText.svg"
+          src="/logo/BlackWhite.svg"
           alt="Lululemon"
           className={styles.logo}
         />
