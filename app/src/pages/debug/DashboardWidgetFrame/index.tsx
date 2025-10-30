@@ -42,11 +42,6 @@ const DashboardWidgetFrameDebug = () => {
 
         <div className={styles.grid2}>
           <DashboardWidgetFrame
-            showHeader={true}
-            headerTitle="Simple Widget"
-            headerIcon="dashboard"
-            showAlertLight={true}
-            alertLightColor="#10b981"
           >
             <div className={styles.sampleContent}>
               <h3>Main Content Area</h3>

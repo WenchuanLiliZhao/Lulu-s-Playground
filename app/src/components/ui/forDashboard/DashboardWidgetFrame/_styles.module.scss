@@ -6,20 +6,18 @@
   --dashboard-card-padding-h: 14px;
   --dashboard-card-padding-v: 16px;
 
-  overflow: hidden;
   position: relative;
   background-color: var(--color-bg-main);
   padding: var(--dashboard-card-padding-v) var(--dashboard-card-padding-h);
   // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--color-border-main);
-  transition: box-shadow 0.2s ease;
-  // Note: No overflow:hidden to allow sparklines to extend beyond edges
-  height: 100%; // Allow inheriting height from parent
+  // No overflow:hidden to allow sparklines to extend beyond edges and prevent content clipping
+  // Hug content by default - use native HTML height calculation
   display: flex;
   flex-direction: column;
 
   &:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-border-darken-trans);
   }
 }
 
@@ -66,10 +64,10 @@
 // Content Area
 // Minimal styling - let child components control their own layout
 .frame-content {
-  flex: 1; // Allow content to fill remaining space
+  // Removed flex: 1 to allow content-based height (hug content)
+  // Content will now naturally size based on children
   display: flex;
   flex-direction: column;
-  min-height: 0; // Allow flex children to shrink below content size
   // Most styling should come from child components
 }
 

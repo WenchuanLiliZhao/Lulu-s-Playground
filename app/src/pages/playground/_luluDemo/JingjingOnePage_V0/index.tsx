@@ -1,173 +1,25 @@
-import AppLayout from '../../../../components/ui/AppLayout';
-import type { PageProps } from '../../../_page-types';
-import { RichText } from '../../../../components/ui/RichText';
-import { WeatherWidget } from '../../../../components/ui/WeatherWidget';
-import { Card } from '../../../../components/ui/Card';
-import { MetricWidget } from '../../../../components/ui/forDashboard/MetricWidget';
-import { TableWidget } from '../../../../components/ui/forDashboard/TableWidget';
-import { InfoPanelWidget } from '../../../../components/ui/forDashboard/InfoPanelWidget';
-import type { TableColumn } from '../../../../components/ui/Table';
-import { mockTargetTableData, type TargetTableRow } from './data';
-import styles from './styles.module.scss';
+import AppLayout from "../../../../components/ui/AppLayout";
+import type { PageProps } from "../../../_page-types";
+import { RichText } from "../../../../components/ui/RichText";
+import { WeatherWidget } from "../../../../components/ui/WeatherWidget";
+import { Card } from "../../../../components/ui/Card";
+import { MetricWidget } from "../../../../components/ui/forDashboard/MetricWidget";
+import { TableWidget } from "../../../../components/ui/forDashboard/TableWidget";
+import { InfoPanelWidget } from "../../../../components/ui/forDashboard/InfoPanelWidget";
+import type { TableColumn } from "../../../../components/ui/Table";
+import {
+  mockTargetTableData,
+  type TargetTableRow,
+  mockNavigationData,
+  mockDashboardData,
+  mockTipsData,
+} from "./data";
+import styles from "./styles.module.scss";
+import { DashboardWidgetFrame } from "../../../../components/ui/forDashboard/DashboardWidgetFrame";
 
 // ============================================
-// MOCK DATA - PHASE 2 EXTRACTION
-// TODO: Phase 2 - Move to data/types.ts
-// TODO: Phase 2 - Move to data/navigationData.ts
-// TODO: Phase 2 - Move to data/dashboardData.ts
-// TODO: Phase 2 - Move to data/tipsData.ts
+// MOCK DATA - EXTRACTED TO data.ts
 // ============================================
-
-const mockNavigationData = {
-  storeName: "Vancouver - Robson Street",
-  date: "Oct 29, 2025",
-  dayOfWeek: "Wednesday",
-  weather: {
-    condition: "Sunny",
-    temperature: 18,
-  }
-};
-
-const mockDashboardData = {
-  performanceSnapshot: {
-    yesterday: {
-      value: "$24,580",
-      subtitle: "103% of target"
-    },
-    todayTarget: {
-      value: "$25,200",
-      subtitle: "+2.5% vs yesterday"
-    }
-  },
-  metrics: {
-    upt: {
-      label: "UPT",
-      value: "2.3",
-      status: "success" as const,
-      statusLabel: "↑ Above",
-      sparklineData: [1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.3]
-    },
-    conversionRate: {
-      label: "Conv. Rate",
-      value: "68%",
-      status: "info" as const,
-      statusLabel: "On Track",
-      sparklineData: [62, 64, 65, 67, 66, 68, 69, 68]
-    },
-    aur: {
-      label: "AUR",
-      value: "$105",
-      status: "danger" as const,
-      statusLabel: "↓ Below",
-      sparklineData: [115, 112, 110, 108, 107, 105, 103, 105]
-    }
-  },
-  peakHours: {
-    bestCR: { time: "2-4PM", rate: "78%" },
-    lowCR: { time: "10-12PM", rate: "52%" },
-    rush: "5-7PM"
-  },
-  categoryMix: {
-    mens: { percentage: "58%", trend: "↑5%" },
-    womens: { percentage: "42%" },
-    traffic: { count: 342, change: 12 }
-  },
-  todayTargetDetail: {
-    total: "$25,200",
-    currentProgress: "$18,500",
-    morning: "$11,340",
-    evening: "$13,860",
-    sparklineData: {
-      morning: [8200, 8800, 9500, 10200, 10800, 11100, 11340],
-      evening: [9800, 10400, 11000, 11600, 12300, 13100, 13860]
-    },
-    // Today's hourly sales data (10 AM - 6 PM so far)
-    trendData: [
-      { id: 'h10', name: '10 AM', sales: 1200 },
-      { id: 'h11', name: '11 AM', sales: 1850 },
-      { id: 'h12', name: '12 PM', sales: 2400 },
-      { id: 'h13', name: '1 PM', sales: 2100 },
-      { id: 'h14', name: '2 PM', sales: 2800 },
-      { id: 'h15', name: '3 PM', sales: 3200 },
-      { id: 'h16', name: '4 PM', sales: 2900 },
-      { id: 'h17', name: '5 PM', sales: 3500 },
-      { id: 'h18', name: '6 PM', sales: 2550 },
-    ]
-  }
-};
-
-const mockTipsData = [
-  {
-    id: "sales-001",
-    category: "sales",
-    label: "Sales Tips",
-    body: [
-      { text: "Your " },
-      { text: "UPT", styles: { bold: true } },
-      { text: " has " },
-      { text: "decreased", styles: { highlight: true, color: "red" } },
-      { text: " by " },
-      { text: "15%", styles: { bold: true, highlight: true, color: "red" } },
-      { text: " compared to last week. " },
-      { text: "Suggestion:", styles: { bold: true } },
-      { text: " Focus on cross-selling accessories with main products." }
-    ]
-  },
-  {
-    id: "labour-001",
-    category: "labour",
-    label: "Labour Tips",
-    body: [
-      { text: "Due to expected " },
-      { text: "high traffic", styles: { bold: true, color: "orange" } },
-      { text: " between " },
-      { text: "3-4 PM", styles: { bold: true } },
-      { text: " today, ensure adequate staffing during this period." }
-    ]
-  },
-  {
-    id: "vm-001",
-    category: "vm",
-    label: "VM Tips",
-    body: [
-      { text: "The following products need " },
-      { text: "immediate attention", styles: { bold: true, color: "orange" } },
-      { text: " for visual merchandising display updates." }
-    ]
-  },
-  {
-    id: "season-001",
-    category: "season",
-    label: "Season/Weather Tips",
-    body: [
-      { text: "Cold weather expected this week. Ensure " },
-      { text: "winter jacket displays", styles: { bold: true } },
-      { text: " are prominent. Spring collection launch in " },
-      { text: "2 days", styles: { bold: true, color: "green" } },
-      { text: "." }
-    ]
-  },
-  {
-    id: "out-of-stock-001",
-    category: "danger" as const,
-    label: "🔴 Critical Out-of-Stock (High Demand)",
-    items: [
-      { product: "Slim Fit Chino - Navy (32x32)", detail: "Reorder!" },
-      { product: "Oxford Shirt - White (M)", detail: "2 days lead" },
-      { product: "Leather Sneakers - White (9.5)", detail: "Popular size" }
-    ]
-  },
-  {
-    id: "overstock-001",
-    category: "warning" as const,
-    label: "🟡 Overstock Opportunities",
-    items: [
-      { product: "Winter Jacket - Black (XL)", detail: "18 pcs" },
-      { product: "Wool Scarf - Grey", detail: "25 pcs" },
-      { product: "Flannel Shirt - Red (S)", detail: "12 pcs" }
-    ]
-  }
-];
 
 // eslint-disable-next-line react-refresh/only-export-components
 const JingjingOnePageV0 = () => {
@@ -181,7 +33,11 @@ const JingjingOnePageV0 = () => {
   const renderNavigation = () => (
     <div className={styles.navigation}>
       <div className={styles.navLeft}>
-        <img src="/logo/BlackNoText.svg" alt="Lululemon" className={styles.logo} />
+        <img
+          src="/logo/BlackNoText.svg"
+          alt="Lululemon"
+          className={styles.logo}
+        />
         <span className={styles.storeName}>{mockNavigationData.storeName}</span>
       </div>
       <div className={styles.navRight}>
@@ -196,22 +52,36 @@ const JingjingOnePageV0 = () => {
     </div>
   );
 
-  // TODO: Phase 5 - Extract to PerformanceSnapshot component
-  // - Accept props: { yesterday: MetricValue, todayTarget: MetricValue }
-  // - Style must use var(--daydream-5) and var(--daydream-6)
-  const renderPerformanceSnapshot = () => (
-    <div className={styles.performanceSnapshot}>
-      <div className={styles.snapshotCard}>
-        <div className={styles.snapshotLabel}>Yesterday's Performance</div>
-        <div className={styles.snapshotValue}>{mockDashboardData.performanceSnapshot.yesterday.value}</div>
-        <div className={styles.snapshotSubtitle}>{mockDashboardData.performanceSnapshot.yesterday.subtitle}</div>
+  const renderPerformanceSnapshotA = () => (
+    <DashboardWidgetFrame
+      showHeader={true}
+      headerTitle="🎯 Performance Snapshot"
+      // headerIcon="dashboard"
+      headerColor="primary"
+      showAlertLight={true}
+      alertLightColor="var(--color-semantic-success)"
+    >
+      <div className={styles.performanceSnapshot}>
+        <MetricWidget
+          icon="dashboard"
+          title="Yesterday"
+          value={mockDashboardData.performanceSnapshot.yesterday.value}
+          statusText={mockDashboardData.performanceSnapshot.yesterday.subtitle}
+          statusColor="success"
+          // statusColor="var(--color-semantic-success)"
+        />
+        <MetricWidget
+          icon="dashboard"
+          title="Today"
+          value={mockDashboardData.performanceSnapshot.todayTarget.value}
+          statusText={
+            mockDashboardData.performanceSnapshot.todayTarget.subtitle
+          }
+          statusColor="warning"
+          // statusColor="var(--color-semantic-success)"
+        />
       </div>
-      <div className={styles.snapshotCard}>
-        <div className={styles.snapshotLabel}>Today's Target</div>
-        <div className={styles.snapshotValue}>{mockDashboardData.performanceSnapshot.todayTarget.value}</div>
-        <div className={styles.snapshotSubtitle}>{mockDashboardData.performanceSnapshot.todayTarget.subtitle}</div>
-      </div>
-    </div>
+    </DashboardWidgetFrame>
   );
 
   // TODO: Phase 5 - Extract to MetricsRow component
@@ -219,10 +89,12 @@ const JingjingOnePageV0 = () => {
   // NOW USING: MetricWidget with sparkline support
   const renderMetricsRow = () => {
     // Map status to MetricWidget's statusColor
-    const mapStatusColor = (status: 'success' | 'info' | 'danger'): 'success' | 'warning' | 'error' | 'neutral' => {
-      if (status === 'success') return 'success';
-      if (status === 'danger') return 'error';
-      return 'neutral';
+    const mapStatusColor = (
+      status: "success" | "info" | "danger"
+    ): "success" | "warning" | "error" | "neutral" => {
+      if (status === "success") return "success";
+      if (status === "danger") return "error";
+      return "neutral";
     };
 
     return (
@@ -233,7 +105,7 @@ const JingjingOnePageV0 = () => {
           value={mockDashboardData.metrics.upt.value}
           statusText={mockDashboardData.metrics.upt.statusLabel}
           statusColor={mapStatusColor(mockDashboardData.metrics.upt.status)}
-          sparklineData={mockDashboardData.metrics.upt.sparklineData}
+          sparklineData={[...mockDashboardData.metrics.upt.sparklineData]}
           sparklineColor="var(--color-semantic-success)"
         />
         <MetricWidget
@@ -241,8 +113,12 @@ const JingjingOnePageV0 = () => {
           title={mockDashboardData.metrics.conversionRate.label}
           value={mockDashboardData.metrics.conversionRate.value}
           statusText={mockDashboardData.metrics.conversionRate.statusLabel}
-          statusColor={mapStatusColor(mockDashboardData.metrics.conversionRate.status)}
-          sparklineData={mockDashboardData.metrics.conversionRate.sparklineData}
+          statusColor={mapStatusColor(
+            mockDashboardData.metrics.conversionRate.status
+          )}
+          sparklineData={[
+            ...mockDashboardData.metrics.conversionRate.sparklineData,
+          ]}
           sparklineColor="var(--color-semantic-active)"
         />
         <MetricWidget
@@ -251,7 +127,7 @@ const JingjingOnePageV0 = () => {
           value={mockDashboardData.metrics.aur.value}
           statusText={mockDashboardData.metrics.aur.statusLabel}
           statusColor={mapStatusColor(mockDashboardData.metrics.aur.status)}
-          sparklineData={mockDashboardData.metrics.aur.sparklineData}
+          sparklineData={[...mockDashboardData.metrics.aur.sparklineData]}
           sparklineColor="var(--color-semantic-error)"
         />
       </div>
@@ -266,18 +142,34 @@ const JingjingOnePageV0 = () => {
         icon="🕐"
         title="Peak Hours"
         items={[
-          { label: "Best CR", value: `${mockDashboardData.peakHours.bestCR.time} (${mockDashboardData.peakHours.bestCR.rate})`, highlight: true },
-          { label: "Low CR", value: `${mockDashboardData.peakHours.lowCR.time} (${mockDashboardData.peakHours.lowCR.rate})` },
-          { label: "Rush", value: mockDashboardData.peakHours.rush }
+          {
+            label: "Best CR",
+            value: `${mockDashboardData.peakHours.bestCR.time} (${mockDashboardData.peakHours.bestCR.rate})`,
+            highlight: true,
+          },
+          {
+            label: "Low CR",
+            value: `${mockDashboardData.peakHours.lowCR.time} (${mockDashboardData.peakHours.lowCR.rate})`,
+          },
+          { label: "Rush", value: mockDashboardData.peakHours.rush },
         ]}
       />
       <InfoPanelWidget
         icon="🛍️"
         title="Category Mix"
         items={[
-          { label: "Men's", value: `${mockDashboardData.categoryMix.mens.percentage} ${mockDashboardData.categoryMix.mens.trend}` },
-          { label: "Women's", value: mockDashboardData.categoryMix.womens.percentage },
-          { label: "Traffic", value: `${mockDashboardData.categoryMix.traffic.count} (+${mockDashboardData.categoryMix.traffic.change})` }
+          {
+            label: "Men's",
+            value: `${mockDashboardData.categoryMix.mens.percentage} ${mockDashboardData.categoryMix.mens.trend}`,
+          },
+          {
+            label: "Women's",
+            value: mockDashboardData.categoryMix.womens.percentage,
+          },
+          {
+            label: "Traffic",
+            value: `${mockDashboardData.categoryMix.traffic.count} (+${mockDashboardData.categoryMix.traffic.change})`,
+          },
         ]}
       />
     </div>
@@ -291,42 +183,43 @@ const JingjingOnePageV0 = () => {
     // Define table columns
     const columns: TableColumn<TargetTableRow>[] = [
       {
-        key: 'time',
-        header: 'Time',
+        key: "time",
+        header: "Time",
         render: (row) => row.time,
-        width: '120px',
-        align: 'left',
+        width: "120px",
+        align: "left",
       },
       {
-        key: 'sales',
-        header: 'Sales',
+        key: "sales",
+        header: "Sales",
         render: (row) => `$${row.sales.toLocaleString()}`,
-        width: '120px',
-        align: 'right',
+        width: "120px",
+        align: "right",
       },
       {
-        key: 'target',
-        header: 'Target',
+        key: "target",
+        header: "Target",
         render: (row) => `$${row.target.toLocaleString()}`,
-        width: '120px',
-        align: 'right',
+        width: "120px",
+        align: "right",
       },
       {
-        key: 'progress',
-        header: 'Progress',
+        key: "progress",
+        header: "Progress",
         render: (row) => {
           const progressStyle = {
-            color: row.status === 'success' 
-              ? 'var(--color-semantic-success)' 
-              : row.status === 'warning' 
-              ? 'var(--color-semantic-warning)' 
-              : 'var(--color-semantic-error)',
-            fontWeight: 'bold' as const,
+            color:
+              row.status === "success"
+                ? "var(--color-semantic-success)"
+                : row.status === "warning"
+                ? "var(--color-semantic-warning)"
+                : "var(--color-semantic-error)",
+            fontWeight: "bold" as const,
           };
           return <span style={progressStyle}>{row.progress}%</span>;
         },
-        width: '100px',
-        align: 'center',
+        width: "100px",
+        align: "center",
       },
     ];
 
@@ -342,7 +235,13 @@ const JingjingOnePageV0 = () => {
             headerTitle={
               <div className={styles.targetDetailHeader}>
                 <h2 className={styles.targetDetailTitle}>Today's Target</h2>
-                <p className={styles.targetDetailSubtitle}>{mockDashboardData.todayTargetDetail.currentProgress} <span className={styles.targetDetailSubtitleSeparator}>/</span> {mockDashboardData.todayTargetDetail.total}</p>
+                <p className={styles.targetDetailSubtitle}>
+                  {mockDashboardData.todayTargetDetail.currentProgress}{" "}
+                  <span className={styles.targetDetailSubtitleSeparator}>
+                    /
+                  </span>{" "}
+                  {mockDashboardData.todayTargetDetail.total}
+                </p>
               </div>
             }
             headerColor="primary"
@@ -353,8 +252,13 @@ const JingjingOnePageV0 = () => {
             rowKey={(row) => row.id}
           />
         </div>
-        
-        {/* Morning & Evening Targets - Side by Side */}
+      </div>
+    );
+  };
+
+  const renderMorningTargetDetail = () => {
+    return (
+      <>
         <div className={styles.targetWidgetsContainer}>
           <MetricWidget
             icon="wb_twilight"
@@ -370,21 +274,20 @@ const JingjingOnePageV0 = () => {
             value={mockDashboardData.todayTargetDetail.evening}
             statusText="55% of total"
             statusColor="neutral"
-            // sparklineData={mockDashboardData.todayTargetDetail.sparklineData.evening}
-            // sparklineColor="rgba(255, 255, 255, 0.6)"
           />
         </div>
-      </div>
+      </>
     );
   };
 
   // TODO: Phase 4 - Extract to DashboardSection component
   const renderDashboard = () => (
     <div className={styles.dashboardSection}>
-      {renderPerformanceSnapshot()}
+      {renderPerformanceSnapshotA()}
       {renderMetricsRow()}
       {renderInfoPanels()}
       {renderTodayTargetDetail()}
+      {renderMorningTargetDetail()}
     </div>
   );
 
@@ -393,12 +296,13 @@ const JingjingOnePageV0 = () => {
   // - Category determines border color from design system
   // TODO: Phase 6 - Extract to BlockRenderer system
   // - Dispatches to ParagraphBlock, ProductCardBlock, ListBlock
-  const renderTipCard = (tip: typeof mockTipsData[0]) => {
+  const renderTipCard = (tip: (typeof mockTipsData)[0]) => {
     // Determine card variant based on category
-    let variant: 'default' | 'info' | 'warning' | 'danger' = 'default';
-    if (tip.category === 'danger') variant = 'danger';
-    else if (tip.category === 'warning') variant = 'warning';
-    else if (tip.category === 'sales' || tip.category === 'vm') variant = 'info';
+    let variant: "default" | "info" | "warning" | "danger" = "default";
+    if (tip.category === "danger") variant = "danger";
+    else if (tip.category === "warning") variant = "warning";
+    else if (tip.category === "sales" || tip.category === "vm")
+      variant = "info";
 
     return (
       <Card
@@ -406,13 +310,15 @@ const JingjingOnePageV0 = () => {
         header={<h3 className={styles.tipCardHeader}>{tip.label}</h3>}
         body={
           <div className={styles.tipCardBody}>
-            {'body' in tip && tip.body ? (
+            {"body" in tip && tip.body ? (
               <RichText content={tip.body} />
-            ) : 'items' in tip && tip.items ? (
+            ) : "items" in tip && tip.items ? (
               <div className={styles.inventoryList}>
                 {tip.items.map((item, idx) => (
                   <div key={idx} className={styles.inventoryItem}>
-                    <span className={styles.inventoryProduct}>{item.product}</span>
+                    <span className={styles.inventoryProduct}>
+                      {item.product}
+                    </span>
                     <span className={styles.inventoryDetail}>
                       {item.detail}
                     </span>
@@ -433,7 +339,7 @@ const JingjingOnePageV0 = () => {
   const renderTips = () => (
     <div className={styles.tipsSection}>
       <h2 className={styles.tipsSectionTitle}>Actionable Tips</h2>
-      {mockTipsData.map(tip => renderTipCard(tip))}
+      {mockTipsData.map((tip) => renderTipCard(tip))}
     </div>
   );
 
@@ -452,14 +358,13 @@ const JingjingOnePageV0 = () => {
 };
 
 const JingjingOnePage_V0: PageProps = {
-  title: 'JingJing One Page V0',
-  slug: 'jingjing-one-page-v0',
+  title: "JingJing One Page V0",
+  slug: "jingjing-one-page-v0",
   content: (
-    <AppLayout isTesting={false} viewportMode={"default"}>
+    <AppLayout isTesting={true} viewportMode={"default"}>
       <JingjingOnePageV0 />
     </AppLayout>
   ),
 };
 
 export default JingjingOnePage_V0;
-
