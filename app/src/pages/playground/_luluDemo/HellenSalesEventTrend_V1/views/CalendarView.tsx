@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { Calendar, Label, Dropdown, Checkbox } from '../../../../../components/ui'
+import { Calendar, Label, Button, IconButton } from '../../../../../components/ui'
 import {
   events2025,
   holidays,
@@ -9,9 +9,15 @@ import {
 } from '../data/eventData'
 import { useCalendarHighlight, highlightStyles, useEventFilter } from '../../SalesEventCalendar_V1/features'
 import { fiscalYearConfig } from '../data'
+import { COLOR_SCALES } from '../../../../../styles/color-chart'
+import { getCssVar } from '../../../../../styles/color-use'
 import styles from './CalendarView.module.scss'
 
 type EventStatus = 'In progress' | 'Past' | 'Incoming'
+
+// Filter button colors
+const retailColor = COLOR_SCALES.teal.colors[4]
+const ecColor = COLOR_SCALES.indigo.colors[5]
 
 export const CalendarView = () => {
   const [currentYear] = useState(2025)
@@ -21,7 +27,6 @@ export const CalendarView = () => {
   const {
     filterState,
     filteredEvents,
-    isFilterActive,
     toggleChannel,
   } = useEventFilter(events2025)
   
@@ -87,6 +92,7 @@ export const CalendarView = () => {
       duration: getEventDuration(event),
       status: getEventStatus(event.interval),
       interval: event.interval,
+      link: event.link,
     }))
   }, [filteredEvents])
 
@@ -97,31 +103,41 @@ export const CalendarView = () => {
           <div className={styles.listSection}>
             <div className={styles.listHeader}>
               <h3 className={styles.listTitle}>All Events ({eventsWithStatus.length})</h3>
-              <Dropdown 
-                trigger="Channel Filter" 
-                isActive={isFilterActive}
-              >
-                <div className={styles.filterOptions}>
-                  <Checkbox
-                    label="Retail Events"
-                    checked={filterState.retail}
-                    onChange={() => toggleChannel('Retail')}
-                  />
-                  <Checkbox
-                    label="EC Events"
-                    checked={filterState.ec}
-                    onChange={() => toggleChannel('EC')}
-                  />
-                </div>
-              </Dropdown>
+              <div className={styles.filterButtonGroup}>
+                <Button
+                  size="small"
+                  onClick={() => toggleChannel('EC')}
+                  className={styles.filterButton}
+                  style={{
+                    backgroundColor: filterState.ec ? ecColor : getCssVar('colorBgSecTrans'),
+                    color: filterState.ec ? 'white' : getCssVar('colorDisabledTrans'),
+                    border: 'none',
+                  }}
+                >
+                  EC
+                </Button>
+                <Button
+                  size="small"
+                  onClick={() => toggleChannel('Retail')}
+                  className={styles.filterButton}
+                  style={{
+                    backgroundColor: filterState.retail ? retailColor : getCssVar('colorBgSecTrans'),
+                    color: filterState.retail ? 'white' : getCssVar('colorDisabledTrans'),
+                    border: 'none',
+                  }}
+                >
+                  Retail
+                </Button>
+              </div>
             </div>
             <div className={styles.tableContainer}>
               <table className={styles.eventsTable}>
                 <thead>
                   <tr>
                     <th>Status</th>
-                    <th>Name</th>
-                    <th>Duration</th>
+                    <th>Event Name</th>
+                    <th>Day(s)</th>
+                    <th>Link</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -148,6 +164,15 @@ export const CalendarView = () => {
                       </td>
                       <td className={styles.moneyCell}>
                         {event.duration}
+                      </td>
+                      <td className={styles.linkCell}>
+                        <a href={event.link} target="_blank" rel="noopener noreferrer">
+                          <IconButton
+                            icon="link"
+                            size="small"
+                            variant="default"
+                          />
+                        </a>
                       </td>
                     </tr>
                   ))}

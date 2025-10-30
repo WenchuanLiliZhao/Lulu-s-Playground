@@ -16,6 +16,7 @@ export interface EventData {
   backgroundOpacity?: number
   channel?: 'Retail' | 'EC'
   duration?: number
+  link?: string
 }
 
 /**
@@ -38,44 +39,44 @@ export const getEventDuration = (event: EventData): number => {
 // Retail Events - Blue (Indigo)
 export const retailEvents: EventData[] = [
   // January
-  { name: 'FY24 Retail FF', interval: [new Date(2025, 0, 13), new Date(2025, 0, 19)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail' },
-  { name: 'FY24 Retail CNY', interval: [new Date(2025, 0, 27), new Date(2025, 1, 2)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail' },
+  { name: 'FY24 Retail FF', interval: [new Date(2025, 0, 13), new Date(2025, 0, 19)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail', link: 'https://example.com/events/fy24-retail-ff' },
+  { name: 'FY24 Retail CNY', interval: [new Date(2025, 0, 27), new Date(2025, 1, 2)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail', link: 'https://example.com/events/fy24-retail-cny' },
 
   // May
-  { name: 'FY25 Retail SML', interval: [new Date(2025, 4, 26), new Date(2025, 5, 1)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail' },
+  { name: 'FY25 Retail SML', interval: [new Date(2025, 4, 26), new Date(2025, 5, 1)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail', link: 'https://example.com/events/fy25-retail-sml' },
 
   // September
-  { name: 'FY25 Retail Autumn', interval: [new Date(2025, 8, 23), new Date(2025, 8, 30)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail' },
+  { name: 'FY25 Retail Autumn', interval: [new Date(2025, 8, 23), new Date(2025, 8, 30)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail', link: 'https://example.com/events/fy25-retail-autumn' },
 
   // October
-  { name: 'FY25 Retail FF', interval: [new Date(2025, 9, 10), new Date(2025, 9, 24)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail' },
+  { name: 'FY25 Retail FF', interval: [new Date(2025, 9, 10), new Date(2025, 9, 24)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail', link: 'https://example.com/events/fy25-retail-ff' },
 
   // November
-  { name: 'FY26 Retail BF', interval: [new Date(2025, 10, 20), new Date(2025, 10, 30)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail' },
+  { name: 'FY26 Retail BF', interval: [new Date(2025, 10, 20), new Date(2025, 10, 30)], backgroundColor: retailColor, backgroundOpacity: 0.32, channel: 'Retail', link: 'https://example.com/events/fy26-retail-bf' },
 ]
 
 
 // EC Events - Purple
 export const ecEvents: EventData[] = [
   // January
-  { name: 'FY24 EC FF', interval: [new Date(2025, 0, 5), new Date(2025, 0, 5)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC' },
-  { name: 'FY24 EC CNY', interval: [new Date(2025, 0, 20), new Date(2025, 1, 9)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC' },
+  { name: 'FY24 EC FF', interval: [new Date(2025, 0, 5), new Date(2025, 0, 5)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC', link: 'https://example.com/events/fy24-ec-ff' },
+  { name: 'FY24 EC CNY', interval: [new Date(2025, 0, 20), new Date(2025, 1, 9)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC', link: 'https://example.com/events/fy24-ec-cny' },
 
   // February
-  { name: 'FY25 EC IWD', interval: [new Date(2025, 1, 23), new Date(2025, 2, 2)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC' },
+  { name: 'FY25 EC IWD', interval: [new Date(2025, 1, 23), new Date(2025, 2, 2)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC', link: 'https://example.com/events/fy25-ec-iwd' },
 
   // May-June
-  { name: 'FY25 EC 618', interval: [new Date(2025, 4, 12), new Date(2025, 5, 22)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC' },
+  { name: 'FY25 EC 618', interval: [new Date(2025, 4, 12), new Date(2025, 5, 22)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC', link: 'https://example.com/events/fy25-ec-618' },
 
   // September
-  { name: 'FY25 EC SBD', interval: [new Date(2025, 8, 15), new Date(2025, 8, 22)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC' },
+  { name: 'FY25 EC SBD', interval: [new Date(2025, 8, 15), new Date(2025, 8, 22)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC', link: 'https://example.com/events/fy25-ec-sbd' },
 
   // October
-  { name: 'FY25 EC SML', interval: [new Date(2025, 9, 1), new Date(2025, 9, 5)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC' },
-  { name: 'FY26 EC Pre-D11', interval: [new Date(2025, 9, 20), new Date(2025, 10, 5)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC' },
+  { name: 'FY25 EC SML', interval: [new Date(2025, 9, 1), new Date(2025, 9, 5)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC', link: 'https://example.com/events/fy25-ec-sml' },
+  { name: 'FY26 EC Pre-D11', interval: [new Date(2025, 9, 20), new Date(2025, 10, 5)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC', link: 'https://example.com/events/fy26-ec-pre-d11' },
 
   // December
-  { name: 'FY25 EC D11', interval: [new Date(2025, 11, 1), new Date(2025, 11, 1)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC' },
+  { name: 'FY25 EC D11', interval: [new Date(2025, 11, 1), new Date(2025, 11, 1)], backgroundColor: ecColor, backgroundOpacity: 0.32, channel: 'EC', link: 'https://example.com/events/fy25-ec-d11' },
 ]
 
 // All Events (Retail + EC)
