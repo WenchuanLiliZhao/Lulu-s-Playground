@@ -297,12 +297,8 @@ const JingjingOnePageV0 = () => {
   // TODO: Phase 6 - Extract to BlockRenderer system
   // - Dispatches to ParagraphBlock, ProductCardBlock, ListBlock
   const renderTipCard = (tip: (typeof mockTipsData)[0]) => {
-    // Determine card variant based on category
-    let variant: "default" | "info" | "warning" | "danger" = "default";
-    if (tip.category === "danger") variant = "danger";
-    else if (tip.category === "warning") variant = "warning";
-    else if (tip.category === "sales" || tip.category === "vm")
-      variant = "info";
+    const variant: "default" | "info" | "warning" | "danger" =
+      (tip as { variant?: "default" | "info" | "warning" | "danger" }).variant ?? "default";
 
     return (
       <Card

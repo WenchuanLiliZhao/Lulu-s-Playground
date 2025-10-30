@@ -5,7 +5,6 @@ export interface RichTextContent {
   styles?: {
     bold?: boolean;
     italic?: boolean;
-    highlight?: boolean;
     color?: string; // Predefined color name or hex code
   };
 }
@@ -47,7 +46,6 @@ export const RichText = ({ content, className }: RichTextProps) => {
     
     if (textStyles?.bold) classes.push(styles['text-bold']);
     if (textStyles?.italic) classes.push(styles['text-italic']);
-    if (textStyles?.highlight) classes.push(styles['text-highlight']);
     
     return classes.join(' ');
   };

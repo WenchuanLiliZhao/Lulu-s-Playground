@@ -110,14 +110,15 @@ export const mockTipsData = [
   {
     id: "sales-001",
     category: "sales",
-    label: "Sales Tips",
+    label: "🛍️ Sales Tips",
+    variant: "default",
     body: [
       { text: "Your " },
       { text: "UPT", styles: { bold: true } },
       { text: " has " },
-      { text: "decreased", styles: { highlight: true, color: "red" } },
+      { text: "decreased", styles: { color: "red" } },
       { text: " by " },
-      { text: "15%", styles: { bold: true, highlight: true, color: "red" } },
+      { text: "15%", styles: { bold: true, color: "red" } },
       { text: " compared to last week. " },
       { text: "Suggestion:", styles: { bold: true } },
       { text: " Focus on cross-selling accessories with main products." },
@@ -126,7 +127,8 @@ export const mockTipsData = [
   {
     id: "labour-001",
     category: "labour",
-    label: "Labour Tips",
+    label: "👥 Labour Tips",
+    variant: "info",
     body: [
       { text: "Due to expected " },
       { text: "high traffic", styles: { bold: true, color: "orange" } },
@@ -138,7 +140,8 @@ export const mockTipsData = [
   {
     id: "vm-001",
     category: "vm",
-    label: "VM Tips",
+    label: "🎁 VM Tips",
+    variant: "default",
     body: [
       { text: "The following products need " },
       { text: "immediate attention", styles: { bold: true, color: "orange" } },
@@ -148,7 +151,8 @@ export const mockTipsData = [
   {
     id: "season-001",
     category: "season",
-    label: "Season/Weather Tips",
+    label: "🌤️ Season/Weather Tips",
+    variant: "info",
     body: [
       { text: "Cold weather expected this week. Ensure " },
       { text: "winter jacket displays", styles: { bold: true } },
@@ -161,6 +165,7 @@ export const mockTipsData = [
     id: "out-of-stock-001",
     category: "danger" as const,
     label: "🔴 Critical Out-of-Stock (High Demand)",
+    variant: "danger",
     items: [
       { product: "Slim Fit Chino - Navy (32x32)", detail: "Reorder!" },
       { product: "Oxford Shirt - White (M)", detail: "2 days lead" },
@@ -171,6 +176,7 @@ export const mockTipsData = [
     id: "overstock-001",
     category: "warning" as const,
     label: "🟡 Overstock Opportunities",
+    variant: "warning",
     items: [
       { product: "Winter Jacket - Black (XL)", detail: "18 pcs" },
       { product: "Wool Scarf - Grey", detail: "25 pcs" },

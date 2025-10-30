@@ -1,11 +1,62 @@
 .container {
-  background-color: var(--color-bg-main);
-  border-radius: 8px;
+  // background-color: var(--color-bg-main);
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   transition: transform 0.2s ease;
+  position: relative;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-main);
+
+  &.bg-default {
+    background-color: var(--color-bg-main);
+    border: 1px solid var(--color-border-main);
+  }
+
+  &.bg-outlined {
+    background-color: transparent;
+    border: 1px solid var(--color-border-main);
+  }
+
+  &.bg-elevated {
+    background-color: transparent;
+    border: 1px solid var(--color-border-main);
+  }
+
+  &.bg-danger {
+    background-color: var(--hot-heat-4);
+    opacity: 0.1;
+    border: 1px solid var(--color-border-main);
+  }
+  
+  &.bg-warning {
+    background-color: var(--amber-4);
+    opacity: 0.1;
+  }
+
+  &.bg-success {
+    background-color: var(--wilderness-4);
+    opacity: 0.1;
+  }
+
+  &.bg-info {
+    background-color: var(--indigo-4);
+    opacity: 0.1;
+  }
 }
 
 .header {
@@ -46,13 +97,14 @@
 
 // Variant: Default
 .variant-default {
-  border: 1px solid var(--color-border-main);
+  // border: 1px solid var(--color-border-main);
+  // background-color: var(--color-bg-main);
 }
 
 // Variant: Outlined
 .variant-outlined {
   border: 1px solid var(--color-border-darken-trans);
-  background: transparent;
+  // background: transparent;
 }
 
 // Variant: Elevated
@@ -61,63 +113,57 @@
   box-shadow: var(--pop-shadow);
 }
 
-// Variant: Danger
-.variant-danger {
-  background-color: var(--color-bg-main);
-  border-left: 4px solid var(--hot-heat-4);
-  border-top: 1px solid var(--color-border-main);
-  border-right: 1px solid var(--color-border-main);
-  border-bottom: 1px solid var(--color-border-main);
+$semantic-border-width: 4px;
+
+// Semantic border - replaces border-left approach
+.semantic-border {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: $semantic-border-width;
+  // background-color: var(--color-border-darken-trans);
 }
 
-// Variant: Warning
-.variant-warning {
-  background-color: var(--color-bg-main);
-  border-left: 4px solid var(--amber-4);
-  border-top: 1px solid var(--color-border-main);
-  border-right: 1px solid var(--color-border-main);
-  border-bottom: 1px solid var(--color-border-main);
+// Semantic border variants
+.semantic-border-danger {
+  background-color: var(--hot-heat-4);
+  opacity: 0.4;
 }
 
-// Variant: Success
-.variant-success {
-  background-color: var(--color-bg-main);
-  border-left: 4px solid var(--wilderness-4);
-  border-top: 1px solid var(--color-border-main);
-  border-right: 1px solid var(--color-border-main);
-  border-bottom: 1px solid var(--color-border-main);
+.semantic-border-warning {
+  background-color: var(--amber-4);
+  opacity: 0.4;
 }
 
-// Variant: Info
-.variant-info {
-  background-color: var(--color-bg-main);
-  border-left: 4px solid var(--indigo-5);
-  border-top: 1px solid var(--color-border-main);
-  border-right: 1px solid var(--color-border-main);
-  border-bottom: 1px solid var(--color-border-main);
+.semantic-border-success {
+  background-color: var(--wilderness-4);
+  opacity: 0.4;
 }
 
-// Border positions
-.border-left {
-  border-left-width: 4px;
+.semantic-border-info {
+  background-color: var(--indigo-4);
+  opacity: 0.4;
 }
+
+.semantic-border-default,
+.semantic-border-outlined,
+.semantic-border-elevated {
+  // background-color: var(--color-border-darken-trans);
+  display: none;
+}
+
+
 
 .border-top {
   border-top-width: 4px;
-  border-left-width: 1px;
 }
 
 .border-right {
   border-right-width: 4px;
-  border-left-width: 1px;
 }
 
 .border-bottom {
   border-bottom-width: 4px;
-  border-left-width: 1px;
-}
-
-.border-all {
-  // Default - all borders same width (handled by variants)
 }
 
