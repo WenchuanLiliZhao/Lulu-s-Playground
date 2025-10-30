@@ -15,7 +15,7 @@ export * from './components/ui'
 export * from './components/utils'
 
 // Export enhanced components
-export * from './components/enhanced'
+// export * from './components/enhanced'
 
 // Export styles
 export * from './styles/color-chart'

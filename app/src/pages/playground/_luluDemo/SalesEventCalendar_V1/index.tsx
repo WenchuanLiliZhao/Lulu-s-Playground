@@ -86,7 +86,7 @@ const SalesEventCalendar_V1 = () => {
       backgroundColor: event.backgroundColor,
       backgroundOpacity: event.backgroundOpacity,
       color: event.color,
-      money: event.money || 0,
+      money: event.duration || 0,
       status: getEventStatus(event.interval),
       interval: event.interval,
     }))
