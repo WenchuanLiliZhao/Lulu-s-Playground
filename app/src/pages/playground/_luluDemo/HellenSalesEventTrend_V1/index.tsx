@@ -50,9 +50,9 @@ const SalesEventTrend_V1 = () => {
   )
 }
 
-const SalesEventTrendPage_V1: PageProps = {
-  title: 'Sales Event Trend V1',
-  slug: 'sales-event-trend-v1',
+const HellenSalesEventTrendPage_V1: PageProps = {
+  title: 'Hellen\'s Sales Event Trend V1',
+  slug: 'hellen-sales-event-trend-v1',
   content: (
     <AppLayout isTesting={true} viewportMode={["scaled-from", 1800, 1100]}>
       <SalesEventTrend_V1 />
@@ -60,5 +60,5 @@ const SalesEventTrendPage_V1: PageProps = {
   ),
 }
 
-export default SalesEventTrendPage_V1
+export default HellenSalesEventTrendPage_V1
 
