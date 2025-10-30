@@ -1,14 +1,17 @@
-@use '../../../../styles/color-use.scss' as *;
+@use "../../../../styles/color-use.scss" as *;
 
 // Frame Container
 // This is the outermost wrapper for all dashboard widgets
 .frame-container {
+  --dashboard-card-padding-h: 14px;
+  --dashboard-card-padding-v: 16px;
+
   overflow: hidden;
   position: relative;
   background-color: var(--color-bg-main);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: var(--dashboard-card-padding-v) var(--dashboard-card-padding-h);
+  // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border-main);
   transition: box-shadow 0.2s ease;
   // Note: No overflow:hidden to allow sparklines to extend beyond edges
   height: 100%; // Allow inheriting height from parent
@@ -121,4 +124,3 @@
   font-size: 14px;
   text-align: center;
 }
-

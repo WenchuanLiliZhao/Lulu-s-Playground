@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react'
 import styles from './_styles.module.scss'
 
-export interface TableColumn<T = any> {
+export interface TableColumn<T = unknown> {
   /**
    * Unique key for the column
    */
@@ -32,7 +32,7 @@ export interface TableColumn<T = any> {
   sortable?: boolean
 }
 
-export interface TableProps<T = any> {
+export interface TableProps<T = unknown> {
   /**
    * Column definitions
    */

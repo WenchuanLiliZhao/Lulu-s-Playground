@@ -58,3 +58,6 @@ export type { ProgressBarChartProps, ProgressBarItem } from './ProgressBarChart'
 export { TableWidget } from './TableWidget'
 export type { TableWidgetProps } from './TableWidget'
 
+export { InfoPanelWidget } from './InfoPanelWidget'
+export type { InfoPanelWidgetProps, InfoItem } from './InfoPanelWidget'
+

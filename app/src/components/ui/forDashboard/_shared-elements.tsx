@@ -11,7 +11,7 @@ import { DASHBOARD_SIZE_CONFIG, DASHBOARD_COLOR_CONFIG, DASHBOARD_DEFAULTS } fro
 
 export interface DashboardHeaderElementProps {
   icon?: string
-  title?: string
+  title?: string | ReactNode
   summary?: string
   titleSize?: DashboardSizeType
   iconSize?: DashboardSizeType

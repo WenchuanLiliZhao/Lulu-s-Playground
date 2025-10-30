@@ -8,8 +8,8 @@ $metric-icon-margin-right: 8px;
 $header-icon-spacing: 6px; // Icon to title spacing (compact metric widget)
 $sparkline-width: 50%;
 $sparkline-height: 80px;
-$sparkline-bottom: -20px;
-$sparkline-right: -21px;
+$sparkline-bottom: calc(-1 * var(--dashboard-card-padding-v));
+$sparkline-right: calc(-1 * var(--dashboard-card-padding-h));
 
 // ===== Metric Content Wrapper =====
 // This wraps the metric-specific content inside DashboardWidgetFrame

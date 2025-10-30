@@ -2,11 +2,12 @@ import AppLayout from '../../../../components/ui/AppLayout';
 import type { PageProps } from '../../../_page-types';
 import { RichText } from '../../../../components/ui/RichText';
 import { WeatherWidget } from '../../../../components/ui/WeatherWidget';
-import { InfoPanel } from '../../../../components/ui/InfoPanel';
 import { Card } from '../../../../components/ui/Card';
 import { MetricWidget } from '../../../../components/ui/forDashboard/MetricWidget';
-import { MiniTrendChart } from '../../../../components/ui/forDashboard';
-import type { MiniTrendChartLine } from '../../../../components/ui/forDashboard';
+import { TableWidget } from '../../../../components/ui/forDashboard/TableWidget';
+import { InfoPanelWidget } from '../../../../components/ui/forDashboard/InfoPanelWidget';
+import type { TableColumn } from '../../../../components/ui/Table';
+import { mockTargetTableData, type TargetTableRow } from './data';
 import styles from './styles.module.scss';
 
 // ============================================
@@ -258,10 +259,10 @@ const JingjingOnePageV0 = () => {
   };
 
   // TODO: Phase 5 - Extract to PeakHoursPanel and CategoryMixPanel components
-  // - Uses InfoPanel component (already done in Phase 1)
+  // - Uses InfoPanelWidget component (already done in Phase 1)
   const renderInfoPanels = () => (
     <div className={styles.infoPanelsRow}>
-      <InfoPanel
+      <InfoPanelWidget
         icon="🕐"
         title="Peak Hours"
         items={[
@@ -270,7 +271,7 @@ const JingjingOnePageV0 = () => {
           { label: "Rush", value: mockDashboardData.peakHours.rush }
         ]}
       />
-      <InfoPanel
+      <InfoPanelWidget
         icon="🛍️"
         title="Category Mix"
         items={[
@@ -285,41 +286,71 @@ const JingjingOnePageV0 = () => {
   // TODO: Phase 5 - Extract to TodayTargetDetail component
   // - Accept props: TodayTargetDetail
   // - Style must use var(--wilderness-4) and var(--wilderness-5)
-  // NOW USING: MiniTrendChart for hourly sales, MetricWidget for breakdown
+  // NOW USING: TableWidget for hourly sales breakdown
   const renderTodayTargetDetail = () => {
-    // Single line showing today's hourly sales
-    const trendLines: MiniTrendChartLine[] = [
+    // Define table columns
+    const columns: TableColumn<TargetTableRow>[] = [
       {
-        dataKey: 'sales',
-        name: 'Hourly Sales',
-        color: '#ef4444', // Red color
-        strokeWidth: 3,
+        key: 'time',
+        header: 'Time',
+        render: (row) => row.time,
+        width: '120px',
+        align: 'left',
+      },
+      {
+        key: 'sales',
+        header: 'Sales',
+        render: (row) => `$${row.sales.toLocaleString()}`,
+        width: '120px',
+        align: 'right',
+      },
+      {
+        key: 'target',
+        header: 'Target',
+        render: (row) => `$${row.target.toLocaleString()}`,
+        width: '120px',
+        align: 'right',
+      },
+      {
+        key: 'progress',
+        header: 'Progress',
+        render: (row) => {
+          const progressStyle = {
+            color: row.status === 'success' 
+              ? 'var(--color-semantic-success)' 
+              : row.status === 'warning' 
+              ? 'var(--color-semantic-warning)' 
+              : 'var(--color-semantic-error)',
+            fontWeight: 'bold' as const,
+          };
+          return <span style={progressStyle}>{row.progress}%</span>;
+        },
+        width: '100px',
+        align: 'center',
       },
     ];
 
     return (
       <div className={styles.todayTargetDetail}>
-        {/* Main Target Chart - Full Width */}
+        {/* Main Target Table - Full Width */}
         <div className={styles.targetChartContainer}>
-          <MiniTrendChart
-            data={mockDashboardData.todayTargetDetail.trendData}
-            lines={trendLines}
-            showGrid={true}
-            showLegend={true}
-            showYAxis={true}
-            yAxisTickFormatter={(value: number) => `$${(value / 1000).toFixed(1)}k`}
-            xAxisAngle={0}
-            xAxisHeight={40}
-            marginBottom={5}
+          <TableWidget
+            columns={columns}
+            data={mockTargetTableData}
+            showHeader={true}
+            // headerIcon="schedule"
             headerTitle={
               <div className={styles.targetDetailHeader}>
                 <h2 className={styles.targetDetailTitle}>Today's Target</h2>
                 <p className={styles.targetDetailSubtitle}>{mockDashboardData.todayTargetDetail.currentProgress} <span className={styles.targetDetailSubtitleSeparator}>/</span> {mockDashboardData.todayTargetDetail.total}</p>
               </div>
             }
-            headerColor={"primary"}
-            showHeader={true}
-            className={styles.targetTrendChart}
+            headerColor="primary"
+            striped={true}
+            hoverable={true}
+            bordered={true}
+            size="medium"
+            rowKey={(row) => row.id}
           />
         </div>
         

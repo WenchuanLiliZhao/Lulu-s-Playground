@@ -15,7 +15,6 @@ export * from './forDashboard/TrendChart'
 // Phase 1: Universal Components for JingJing One Page
 export * from './RichText'
 export * from './WeatherWidget'
-export * from './InfoPanel'
 export * from './Card'
 export * from './StatusBadge'
 export * from './Table'

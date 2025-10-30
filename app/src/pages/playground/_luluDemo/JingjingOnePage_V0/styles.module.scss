@@ -208,16 +208,10 @@
   }
 }
 
-// Full-width chart container - CRITICAL: Must have fixed height for Recharts
+// Full-width table container - no fixed height, let table hug content
 .targetChartContainer {
   width: 100%;
-  height: 320px; // Fixed height required by ResponsiveContainer
-  // Let the component use its own styles - no overrides!
-}
-
-.targetTrendChart {
-  height: 100%;
-  width: 100%;
+  // No height constraint - let content determine size
 }
 
 // Side-by-side small widgets
@@ -349,9 +343,9 @@
     grid-template-columns: 1fr;
   }
 
-  .targetChartContainer {
-    height: 250px;
-  }
+  // .targetChartContainer {
+  //   height: 250px;
+  // }
 
   .targetWidgetsContainer {
     grid-template-columns: 1fr;
