@@ -23,6 +23,13 @@ $sparkline-right: calc(-1 * var(--dashboard-card-padding-h));
   // Note: No position: relative here - sparkline positions relative to frame-container
 }
 
+.metric-content-centered {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 8px;
+}
+
 // ===== Metric-specific Elements =====
 .metric-header {
   display: flex;
@@ -56,9 +63,41 @@ $sparkline-right: calc(-1 * var(--dashboard-card-padding-h));
 
 .metric-footer {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 12px;
+}
+
+.metric-breakdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--color-border-main);
+  font-size: 12px;
+  line-height: 1.4;
   flex-wrap: wrap;
+}
+
+.breakdown-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.breakdown-label {
+  color: var(--color-sec);
+  font-weight: 500;
+}
+
+.breakdown-value {
+  color: var(--color-main);
+  font-weight: 700;
+}
+
+.breakdown-separator {
+  color: var(--color-border-main);
+  font-size: 10px;
+  margin: 0 4px;
 }
 
 .metric-change {

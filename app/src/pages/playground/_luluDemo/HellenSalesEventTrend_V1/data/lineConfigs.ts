@@ -12,8 +12,8 @@ export const salesLines: TrendChartLine[] = [
     strokeWidth: 2,
   },
   {
-    dataKey: 'transaction',
-    name: 'Transaction',
+    dataKey: 'Traffic',
+    name: 'Traffic',
     color: COLOR_SCALES.wilderness.colors[4],
     strokeWidth: 2,
   },
@@ -36,8 +36,8 @@ export const userGrowthLines: TrendChartLine[] = [
     strokeWidth: 2,
   },
   {
-    dataKey: 'transaction',
-    name: 'Transaction',
+    dataKey: 'traffic',
+    name: 'Traffic',
     color: COLOR_SCALES.wilderness.colors[4],
     strokeWidth: 2,
   },

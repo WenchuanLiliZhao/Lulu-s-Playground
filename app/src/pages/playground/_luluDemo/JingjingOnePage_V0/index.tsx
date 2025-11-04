@@ -1,6 +1,6 @@
 import AppLayout from "../../../../components/ui/AppLayout";
 import type { PageProps } from "../../../_page-types";
-import { RichText } from "../../../../components/ui/RichText";
+import { RichText, type RichTextContent } from "../../../../components/ui/RichText";
 import { WeatherWidget } from "../../../../components/ui/WeatherWidget";
 import { Card } from "../../../../components/ui/Card";
 import { MetricWidget } from "../../../../components/ui/forDashboard/MetricWidget";
@@ -13,6 +13,11 @@ import {
   mockNavigationData,
   mockDashboardData,
   mockTipsData,
+  mockSalesSummaryData,
+  mockHotSellersData,
+  mockCrossSellingData,
+  mockProductOpportunitiesData,
+  mockStockoutWecomData,
 } from "./data";
 import styles from "./styles.module.scss";
 import { DashboardWidgetFrame } from "../../../../components/ui/forDashboard/DashboardWidgetFrame";
@@ -68,6 +73,10 @@ const JingjingOnePageV0 = () => {
           value={mockDashboardData.performanceSnapshot.yesterday.value}
           statusText={mockDashboardData.performanceSnapshot.yesterday.subtitle}
           statusColor="success"
+          breakdown={[
+            { label: "XStore", value: mockDashboardData.performanceSnapshot.yesterday.breakdown.xstore },
+            { label: "Omini", value: mockDashboardData.performanceSnapshot.yesterday.breakdown.omini }
+          ]}
           // statusColor="var(--color-semantic-success)"
         />
         <MetricWidget
@@ -78,6 +87,10 @@ const JingjingOnePageV0 = () => {
             mockDashboardData.performanceSnapshot.todayTarget.subtitle
           }
           statusColor="warning"
+          breakdown={[
+            { label: "XStore", value: mockDashboardData.performanceSnapshot.todayTarget.breakdown.xstore },
+            { label: "Omini", value: mockDashboardData.performanceSnapshot.todayTarget.breakdown.omini }
+          ]}
           // statusColor="var(--color-semantic-success)"
         />
       </div>
@@ -100,26 +113,20 @@ const JingjingOnePageV0 = () => {
     return (
       <div className={styles.metricsRow}>
         <MetricWidget
+          icon="receipt_long"
+          title={mockDashboardData.metrics.txn.label}
+          value={mockDashboardData.metrics.txn.value}
+          statusText={mockDashboardData.metrics.txn.statusLabel}
+          statusColor={mapStatusColor(mockDashboardData.metrics.txn.status)}
+          centered={true}
+        />
+        <MetricWidget
           icon="shopping_bag"
           title={mockDashboardData.metrics.upt.label}
           value={mockDashboardData.metrics.upt.value}
           statusText={mockDashboardData.metrics.upt.statusLabel}
           statusColor={mapStatusColor(mockDashboardData.metrics.upt.status)}
-          sparklineData={[...mockDashboardData.metrics.upt.sparklineData]}
-          sparklineColor="var(--color-semantic-success)"
-        />
-        <MetricWidget
-          icon="trending_up"
-          title={mockDashboardData.metrics.conversionRate.label}
-          value={mockDashboardData.metrics.conversionRate.value}
-          statusText={mockDashboardData.metrics.conversionRate.statusLabel}
-          statusColor={mapStatusColor(
-            mockDashboardData.metrics.conversionRate.status
-          )}
-          sparklineData={[
-            ...mockDashboardData.metrics.conversionRate.sparklineData,
-          ]}
-          sparklineColor="var(--color-semantic-active)"
+          centered={true}
         />
         <MetricWidget
           icon="payments"
@@ -127,8 +134,23 @@ const JingjingOnePageV0 = () => {
           value={mockDashboardData.metrics.aur.value}
           statusText={mockDashboardData.metrics.aur.statusLabel}
           statusColor={mapStatusColor(mockDashboardData.metrics.aur.status)}
-          sparklineData={[...mockDashboardData.metrics.aur.sparklineData]}
-          sparklineColor="var(--color-semantic-error)"
+          centered={true}
+        />
+        <MetricWidget
+          icon="point_of_sale"
+          title={mockDashboardData.metrics.transaction.label}
+          value={mockDashboardData.metrics.transaction.value}
+          statusText={mockDashboardData.metrics.transaction.statusLabel}
+          statusColor={mapStatusColor(mockDashboardData.metrics.transaction.status)}
+          centered={true}
+        />
+        <MetricWidget
+          icon="trending_up"
+          title={mockDashboardData.metrics.cr.label}
+          value={mockDashboardData.metrics.cr.value}
+          statusText={mockDashboardData.metrics.cr.statusLabel}
+          statusColor={mapStatusColor(mockDashboardData.metrics.cr.status)}
+          centered={true}
         />
       </div>
     );
@@ -307,7 +329,7 @@ const JingjingOnePageV0 = () => {
         body={
           <div className={styles.tipCardBody}>
             {"body" in tip && tip.body ? (
-              <RichText content={tip.body} />
+              <RichText content={tip.body as RichTextContent[]} />
             ) : "items" in tip && tip.items ? (
               <div className={styles.inventoryList}>
                 {tip.items.map((item, idx) => (
@@ -331,10 +353,190 @@ const JingjingOnePageV0 = () => {
     );
   };
 
+  // Render Sales Summary Block
+  const renderSalesSummaryBlock = () => (
+    <Card
+      header={<h3 className={styles.tipCardHeader}>📊 Sales Summary</h3>}
+      body={
+        <div className={styles.salesSummaryBody}>
+          <p className={styles.salesSummaryText}>
+            {mockSalesSummaryData.summary}
+          </p>
+        </div>
+      }
+      variant="default"
+      borderPosition="left"
+      className={styles.tipCard}
+    />
+  );
+
+  // Render Hot Sellers Block
+  const renderHotSellersBlock = () => (
+    <Card
+      header={<h3 className={styles.tipCardHeader}>🔥 Hot Sellers</h3>}
+      body={
+        <div className={styles.hotSellersList}>
+          {mockHotSellersData.map((product, index) => (
+            <div key={product.id} className={styles.hotSellersItem}>
+              <div className={styles.hotSellersRank}>#{index + 1}</div>
+              <div className={styles.hotSellersImage}>
+                <img 
+                  src={product.image} 
+                  alt={product.productName}
+                  className={styles.hotSellersImageImg}
+                />
+              </div>
+              <div className={styles.hotSellersInfo}>
+                <div className={styles.hotSellersName}>{product.productName}</div>
+                <div className={styles.hotSellersMetrics}>
+                  <span className={styles.hotSellersMetricItem}>
+                    <span className={styles.hotSellersMetricLabel}>Sold:</span>
+                    <span className={styles.hotSellersMetricValue}>{product.unitsSold}</span>
+                  </span>
+                  <span className={styles.hotSellersMetricSeparator}>•</span>
+                  <span className={styles.hotSellersMetricItem}>
+                    <span className={styles.hotSellersMetricLabel}>Stock:</span>
+                    <span className={styles.hotSellersMetricValue}>{product.inventory}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      }
+      variant="default"
+      borderPosition="left"
+      className={styles.tipCard}
+    />
+  );
+
+  // Render Cross Selling Opportunities Block
+  const renderCrossSellingBlock = () => (
+    <Card
+      header={<h3 className={styles.tipCardHeader}>🎨 Cross Selling Opportunities</h3>}
+      body={
+        <div className={styles.crossSellingContainer}>
+          <div className={styles.crossSellingScroll}>
+            {mockCrossSellingData.map((product) => (
+              <div key={product.id} className={styles.productCard}>
+                <div className={styles.productImage}>
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className={styles.productImageImg}
+                  />
+                </div>
+                <div className={styles.productInfo}>
+                  <div className={styles.productCategory}>
+                    {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                  </div>
+                  <div className={styles.productName}>{product.name}</div>
+                  <div className={styles.productColor}>{product.color}</div>
+                  <div className={styles.productPrice}>{product.price}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      }
+      variant="info"
+      borderPosition="left"
+      className={styles.tipCard}
+    />
+  );
+
+  // Render Product Opportunities Block
+  const renderProductOpportunitiesBlock = () => (
+    <Card
+      header={<h3 className={styles.tipCardHeader}>💡 Product Opportunities</h3>}
+      body={
+        <div className={styles.productOpportunitiesContainer}>
+          <p className={styles.opportunityIntro}>
+            {mockProductOpportunitiesData.introduction}
+          </p>
+          <div className={styles.productGridContainer}>
+            {mockProductOpportunitiesData.products.map((product) => (
+              <div key={product.id} className={styles.productCard}>
+                <div className={styles.productImage}>
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className={styles.productImageImg}
+                  />
+                </div>
+                <div className={styles.productInfo}>
+                  <div className={styles.productCategory}>
+                    {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                  </div>
+                  <div className={styles.productName}>{product.name}</div>
+                  <div className={styles.productColor}>{product.color}</div>
+                  <div className={styles.productPrice}>{product.price}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      }
+      variant="success"
+      borderPosition="left"
+      className={styles.tipCard}
+    />
+  );
+
+  // Render Stockout but Wecom Opportunities Block
+  const renderStockoutWecomBlock = () => (
+    <Card
+      header={<h3 className={styles.tipCardHeader}>💬 Stockout but Wecom Opportunities</h3>}
+      body={
+        <div className={styles.stockoutWecomContainer}>
+          <p className={styles.opportunityIntro}>
+            {mockStockoutWecomData.introduction}
+          </p>
+          <div className={styles.productGridContainer}>
+            {mockStockoutWecomData.products.map((product) => (
+              <div key={product.id} className={styles.productCard}>
+                <div className={styles.productImage}>
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className={styles.productImageImg}
+                  />
+                </div>
+                <div className={styles.productInfo}>
+                  <div className={styles.productCategory}>
+                    {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                  </div>
+                  <div className={styles.productName}>{product.name}</div>
+                  <div className={styles.productColor}>{product.color}</div>
+                  <div className={styles.productPrice}>{product.price}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      }
+      variant="warning"
+      borderPosition="left"
+      className={styles.tipCard}
+    />
+  );
+
   // TODO: Phase 4 - Extract to TipsSection component
   const renderTips = () => (
     <div className={styles.tipsSection}>
       <h2 className={styles.tipsSectionTitle}>Actionable Tips</h2>
+      {/* 1. Sales Summary */}
+      {renderSalesSummaryBlock()}
+      {/* 2. Hot Sellers */}
+      {renderHotSellersBlock()}
+      {/* 3. Cross Selling Opportunities */}
+      {renderCrossSellingBlock()}
+      {/* 4. Product Opportunities */}
+      {renderProductOpportunitiesBlock()}
+      {/* 5. Stockout but Wecom Opportunities */}
+      {renderStockoutWecomBlock()}
+      {/* 6. Critical Out-of-Stock (High Demand) */}
+      {/* 7. Overstock Opportunities */}
       {mockTipsData.map((tip) => renderTipCard(tip))}
     </div>
   );

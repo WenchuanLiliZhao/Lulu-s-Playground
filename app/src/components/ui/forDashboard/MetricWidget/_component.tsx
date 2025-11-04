@@ -45,6 +45,17 @@ export interface MetricWidgetProps extends DashboardCommonProps {
    * Whether to use smooth/rounded curves for sparkline (default: true)
    */
   sparklineSmooth?: boolean
+  /**
+   * Value breakdown data (e.g., XStore and Omini components)
+   */
+  breakdown?: Array<{
+    label: string
+    value: string
+  }>
+  /**
+   * Center align all content (default: false)
+   */
+  centered?: boolean
 }
 
 export const MetricWidget = ({
@@ -72,6 +83,8 @@ export const MetricWidget = ({
   sparklineData,
   sparklineColor = 'var(--color-semantic-active)',
   sparklineSmooth = true,
+  breakdown,
+  centered = false,
 }: MetricWidgetProps) => {
   // Generate area path for sparkline fill
   const generateSparklineAreaPath = () => {
@@ -161,7 +174,7 @@ export const MetricWidget = ({
       showAlertLight={showAlertLight}
       alertLightColor={alertLightColor}
       className={className}
-      contentClassName={styles['metric-content']}
+      contentClassName={`${styles['metric-content']} ${centered ? styles['metric-content-centered'] : ''}`}
     >
       {/* Metric header with icon and title */}
       <div className={styles['metric-header']}>
@@ -192,6 +205,21 @@ export const MetricWidget = ({
         {statusText && (
           <div className={`${styles['metric-status']} ${statusColorClassName}`}>
             {statusText}
+          </div>
+        )}
+        
+        {/* Value breakdown */}
+        {breakdown && breakdown.length > 0 && (
+          <div className={styles['metric-breakdown']}>
+            {breakdown.map((item, index) => (
+              <span key={index}>
+                {index > 0 && <span className={styles['breakdown-separator']}>•</span>}
+                <span className={styles['breakdown-item']}>
+                  <span className={styles['breakdown-label']}>{item.label}:</span>
+                  <span className={styles['breakdown-value']}>{item.value}</span>
+                </span>
+              </span>
+            ))}
           </div>
         )}
       </div>

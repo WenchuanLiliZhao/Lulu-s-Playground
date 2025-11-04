@@ -219,15 +219,15 @@ const highRiskAccountsLines: MiniTrendChartLine[] = [
 ];
 
 // High-Risk Transactions data
-const highRiskTransactionsDataPoints = generateTrendDataPoints(
+const highRiskTrafficDataPoints = generateTrendDataPoints(
   30,
-  ["transactions"],
-  "transactions"
+  ["traffic"],
+  "traffic"
 );
-const highRiskTransactionsLines: MiniTrendChartLine[] = [
+const highRiskTrafficLines: MiniTrendChartLine[] = [
   {
-    dataKey: "transactions",
-    name: "Transactions",
+    dataKey: "traffic",
+    name: "Traffic",
     color: "#f59e0b",
     strokeWidth: 2,
   },
@@ -728,8 +728,8 @@ const DashboardWidgetsDebug = () => {
             showAlertLight={false}
             title="High-Risk Login Attempts"
             subtitle="42 Transactions"
-            data={highRiskTransactionsDataPoints}
-            lines={highRiskTransactionsLines}
+            data={highRiskTrafficDataPoints}
+            lines={highRiskTrafficLines}
             height={140}
             showGrid={false}
             showLegend={false}
@@ -1082,8 +1082,8 @@ const DashboardWidgetsDebug = () => {
               alertLightColor="#f59e0b"
               title="High-Risk Login Attempts"
               subtitle="42 Transactions"
-              data={highRiskTransactionsDataPoints}
-              lines={highRiskTransactionsLines}
+              data={highRiskTrafficDataPoints}
+              lines={highRiskTrafficLines}
               height={180}
               showGrid={false}
               showLegend={false}
