@@ -366,15 +366,62 @@
 }
 
 // ===========================================
-// TIPS - Cross Selling Opportunities Block
+// TIPS - Cross Selling Recommendation Sets
 // ===========================================
 
-.crossSellingContainer {
-  width: 100%;
-  overflow: hidden;
+.recommendationSetsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.crossSellingScroll {
+.recommendationSet {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.setTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-main);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.setDescription {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-sec);
+  margin: 0;
+}
+
+// ===========================================
+// TIPS - Product Opportunities & Stockout (Single intro style)
+// ===========================================
+
+.singleOpportunityContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.opportunityIntro {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-sec);
+  margin: 0;
+  padding: 8px 12px;
+  background: var(--color-bg-sec);
+  border-radius: 6px;
+  border-left: 3px solid var(--color-semantic-active);
+}
+
+// ===========================================
+// TIPS - Product Scroll Container (Shared)
+// ===========================================
+
+.productScrollContainer {
   display: flex;
   gap: 12px;
   overflow-x: auto;
@@ -471,54 +518,6 @@
   margin-top: 4px;
 }
 
-// ===========================================
-// TIPS - Product Opportunities & Stockout Wecom Blocks
-// ===========================================
-
-.productOpportunitiesContainer,
-.stockoutWecomContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.opportunityIntro {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--color-sec);
-  margin: 0;
-  padding: 8px 12px;
-  background: var(--color-bg-sec);
-  border-radius: 6px;
-  border-left: 3px solid var(--color-semantic-active);
-}
-
-.productGridContainer {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 8px 4px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border-main) transparent;
-
-  &::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--color-border-main);
-    border-radius: 3px;
-
-    &:hover {
-      background: var(--color-sec);
-    }
-  }
-}
 
 // ===========================================
 // RESPONSIVE DESIGN

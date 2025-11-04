@@ -133,7 +133,7 @@ export interface SalesSummaryData {
 }
 
 export const mockSalesSummaryData: SalesSummaryData = {
-  summary: "Your store achieved 103% of yesterday's target with $24,580 in sales. Today's performance is tracking well with strong conversion rates in the afternoon. The team has completed 68% of the daily target so far, with Men's category showing particularly strong momentum at 58% of mix. Peak traffic is expected between 5-7 PM based on historical patterns."
+  summary: "Your store achieved 103% of yesterday's target with $24,580 in sales. Today's performance is tracking well with strong conversion rates in the afternoon."
 };
 
 // Tips mock data (only keeping Critical Out-of-Stock and Overstock)
@@ -174,11 +174,11 @@ export interface HotSellerProduct {
 const DEFAULT_PRODUCT_IMAGE = 'https://i.pinimg.com/1200x/4a/98/d4/4a98d46259a02433b2715d411eda4fe8.jpg';
 
 export const mockHotSellersData: HotSellerProduct[] = [
-  { id: 'prod1', productName: 'Align High-Rise Pant 25"', image: DEFAULT_PRODUCT_IMAGE, unitsSold: 45, inventory: 28 },
-  { id: 'prod2', productName: 'Define Jacket', image: DEFAULT_PRODUCT_IMAGE, unitsSold: 38, inventory: 15 },
-  { id: 'prod3', productName: 'Scuba Oversized Hoodie', image: DEFAULT_PRODUCT_IMAGE, unitsSold: 35, inventory: 22 },
-  { id: 'prod4', productName: 'Fast and Free Tight 25"', image: DEFAULT_PRODUCT_IMAGE, unitsSold: 32, inventory: 18 },
-  { id: 'prod5', productName: 'Everywhere Belt Bag', image: DEFAULT_PRODUCT_IMAGE, unitsSold: 28, inventory: 12 },
+  { id: 'prod1', productName: 'Align High-Rise Pant 25"', image: "https://i.pinimg.com/1200x/dd/18/4b/dd184bfd9d8bf57a68024d67d8d7b72b.jpg", unitsSold: 45, inventory: 28 },
+  { id: 'prod2', productName: 'Define Jacket', image: "https://i.pinimg.com/736x/dd/f6/20/ddf62093da84fdb8b1c482a3d4f0d240.jpg", unitsSold: 38, inventory: 15 },
+  { id: 'prod3', productName: 'Scuba Oversized Hoodie', image: "https://i.pinimg.com/1200x/5d/31/ec/5d31ec1add2b2e902ea79c491d47ff4f.jpg", unitsSold: 35, inventory: 22 },
+  // { id: 'prod4', productName: 'Fast and Free Tight 25"', image: DEFAULT_PRODUCT_IMAGE, unitsSold: 32, inventory: 18 },
+  // { id: 'prod5', productName: 'Everywhere Belt Bag', image: DEFAULT_PRODUCT_IMAGE, unitsSold: 28, inventory: 12 },
 ];
 
 // Cross Selling Opportunities mock data
@@ -191,39 +191,44 @@ export interface ProductCard {
   color: string;
 }
 
-export const mockCrossSellingData: ProductCard[] = [
-  { 
-    id: 'prod1', 
-    category: 'top', 
-    name: 'Lightweight Training Tee', 
-    price: '$48', 
-    image: DEFAULT_PRODUCT_IMAGE,
-    color: 'Navy Blue'
+export interface RecommendationSet {
+  id: string;
+  title: string;
+  description: string;
+  products: ProductCard[];
+}
+
+export const mockCrossSellingData: RecommendationSet[] = [
+  {
+    id: 'set1',
+    title: 'Workout Ready',
+    description: 'Complete athletic outfit for high-performance training sessions.',
+    products: [
+      { id: 'prod1', category: 'top', name: 'Swiftly Tech SS 2.0', price: '$68', image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", color: 'Black' },
+      { id: 'prod2', category: 'bottom', name: 'Fast and Free 25"', price: '$128', image: "https://i.pinimg.com/1200x/ec/52/4e/ec524e67e67a7f39a0e081100ad5a1eb.jpg", color: 'Navy' },
+      { id: 'prod3', category: 'shoes', name: 'Blissfeel Running Shoe', price: '$148', image: "https://i.pinimg.com/1200x/39/be/4b/39be4bdcfe074b073e98f4eb4ef62d53.jpg", color: 'White' },
+    ]
   },
-  { 
-    id: 'prod2', 
-    category: 'bottom', 
-    name: 'Swift Shorts 7"', 
-    price: '$68', 
-    image: DEFAULT_PRODUCT_IMAGE,
-    color: 'Black'
+  {
+    id: 'set2',
+    title: 'Casual Comfort',
+    description: 'Effortless everyday style with maximum comfort.',
+    products: [
+      { id: 'prod4', category: 'top', name: 'Scuba Hoodie', price: '$118', image: DEFAULT_PRODUCT_IMAGE, color: 'Heathered Grey' },
+      { id: 'prod5', category: 'bottom', name: 'Align HR 28"', price: '$98', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
+      { id: 'prod6', category: 'accessories', name: 'Everywhere Belt Bag', price: '$38', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
+    ]
   },
-  { 
-    id: 'prod3', 
-    category: 'shoes', 
-    name: 'Blissfeel Running Shoe', 
-    price: '$148', 
-    image: DEFAULT_PRODUCT_IMAGE,
-    color: 'White/Grey'
-  },
-  { 
-    id: 'prod4', 
-    category: 'accessories', 
-    name: 'Fast and Free Cap', 
-    price: '$38', 
-    image: DEFAULT_PRODUCT_IMAGE,
-    color: 'Black'
-  },
+  {
+    id: 'set3',
+    title: 'Yoga Essentials',
+    description: 'Perfect combination for mindful movement and stretching.',
+    products: [
+      { id: 'prod7', category: 'top', name: 'Align Tank', price: '$58', image: DEFAULT_PRODUCT_IMAGE, color: 'White' },
+      { id: 'prod8', category: 'bottom', name: 'Wunder Under 28"', price: '$98', image: DEFAULT_PRODUCT_IMAGE, color: 'Deep Coal' },
+      { id: 'prod9', category: 'accessories', name: 'The Reversible Mat 5mm', price: '$78', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
+    ]
+  }
 ];
 
 // Product Opportunities mock data
@@ -235,54 +240,12 @@ export interface ProductOpportunityData {
 export const mockProductOpportunitiesData: ProductOpportunityData = {
   introduction: "Trending now: Athleisure wear is in high demand this season. Focus on versatile pieces that transition from workout to casual wear.",
   products: [
-    { 
-      id: 'opp1', 
-      category: 'top', 
-      name: 'Define Jacket', 
-      price: '$118', 
-      image: DEFAULT_PRODUCT_IMAGE,
-      color: 'Black'
-    },
-    { 
-      id: 'opp2', 
-      category: 'bottom', 
-      name: 'Align High-Rise Pant 28"', 
-      price: '$98', 
-      image: DEFAULT_PRODUCT_IMAGE,
-      color: 'Navy'
-    },
-    { 
-      id: 'opp3', 
-      category: 'top', 
-      name: 'Scuba Hoodie', 
-      price: '$118', 
-      image: DEFAULT_PRODUCT_IMAGE,
-      color: 'Heathered Grey'
-    },
-    { 
-      id: 'opp4', 
-      category: 'accessories', 
-      name: 'Everywhere Belt Bag', 
-      price: '$38', 
-      image: DEFAULT_PRODUCT_IMAGE,
-      color: 'Black'
-    },
-    { 
-      id: 'opp5', 
-      category: 'bottom', 
-      name: 'Wunder Train 25"', 
-      price: '$98', 
-      image: DEFAULT_PRODUCT_IMAGE,
-      color: 'Dark Olive'
-    },
-    { 
-      id: 'opp6', 
-      category: 'accessories', 
-      name: 'Light Locks Scrunchie', 
-      price: '$18', 
-      image: DEFAULT_PRODUCT_IMAGE,
-      color: 'Assorted'
-    },
+    { id: 'opp1', category: 'top', name: 'Define Jacket', price: '$118', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
+    { id: 'opp2', category: 'bottom', name: 'Align High-Rise Pant 28"', price: '$98', image: DEFAULT_PRODUCT_IMAGE, color: 'Navy' },
+    { id: 'opp3', category: 'top', name: 'Scuba Hoodie', price: '$118', image: DEFAULT_PRODUCT_IMAGE, color: 'Heathered Grey' },
+    { id: 'opp4', category: 'accessories', name: 'Everywhere Belt Bag', price: '$38', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
+    { id: 'opp5', category: 'bottom', name: 'Wunder Train 25"', price: '$98', image: DEFAULT_PRODUCT_IMAGE, color: 'Dark Olive' },
+    { id: 'opp6', category: 'accessories', name: 'Light Locks Scrunchie', price: '$18', image: DEFAULT_PRODUCT_IMAGE, color: 'Assorted' },
   ]
 };
 
@@ -295,38 +258,10 @@ export interface StockoutWecomData {
 export const mockStockoutWecomData: StockoutWecomData = {
   introduction: "These popular items are out of stock in-store, but available through WeChat for customer orders. Great opportunity to connect digitally!",
   products: [
-    { 
-      id: 'wecom1', 
-      category: 'top', 
-      name: 'All Yours Tee', 
-      price: '$58', 
-      image: DEFAULT_PRODUCT_IMAGE,
-      color: 'White'
-    },
-    { 
-      id: 'wecom2', 
-      category: 'bottom', 
-      name: 'Fast and Free 23"', 
-      price: '$128', 
-      image: DEFAULT_PRODUCT_IMAGE,
-      color: 'Black'
-    },
-    { 
-      id: 'wecom3', 
-      category: 'shoes', 
-      name: 'Chargefeel Running Shoe', 
-      price: '$158', 
-      image: DEFAULT_PRODUCT_IMAGE,
-      color: 'White/Silver'
-    },
-    { 
-      id: 'wecom4', 
-      category: 'accessories', 
-      name: 'The Reversible Mat 5mm', 
-      price: '$78', 
-      image: DEFAULT_PRODUCT_IMAGE,
-      color: 'Deep Coal'
-    },
+    { id: 'wecom1', category: 'top', name: 'All Yours Tee', price: '$58', image: DEFAULT_PRODUCT_IMAGE, color: 'White' },
+    { id: 'wecom2', category: 'bottom', name: 'Fast and Free 23"', price: '$128', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
+    { id: 'wecom3', category: 'shoes', name: 'Chargefeel Running Shoe', price: '$158', image: DEFAULT_PRODUCT_IMAGE, color: 'White/Silver' },
+    { id: 'wecom4', category: 'accessories', name: 'The Reversible Mat 5mm', price: '$78', image: DEFAULT_PRODUCT_IMAGE, color: 'Deep Coal' },
   ]
 };
 

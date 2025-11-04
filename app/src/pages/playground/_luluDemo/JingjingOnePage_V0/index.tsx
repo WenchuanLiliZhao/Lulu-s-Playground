@@ -415,28 +415,34 @@ const JingjingOnePageV0 = () => {
     <Card
       header={<h3 className={styles.tipCardHeader}>🎨 Cross Selling Opportunities</h3>}
       body={
-        <div className={styles.crossSellingContainer}>
-          <div className={styles.crossSellingScroll}>
-            {mockCrossSellingData.map((product) => (
-              <div key={product.id} className={styles.productCard}>
-                <div className={styles.productImage}>
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className={styles.productImageImg}
-                  />
-                </div>
-                <div className={styles.productInfo}>
-                  <div className={styles.productCategory}>
-                    {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+        <div className={styles.recommendationSetsContainer}>
+          {mockCrossSellingData.map((set) => (
+            <div key={set.id} className={styles.recommendationSet}>
+              <h4 className={styles.setTitle}>{set.title}</h4>
+              <p className={styles.setDescription}>{set.description}</p>
+              <div className={styles.productScrollContainer}>
+                {set.products.map((product) => (
+                  <div key={product.id} className={styles.productCard}>
+                    <div className={styles.productImage}>
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className={styles.productImageImg}
+                      />
+                    </div>
+                    <div className={styles.productInfo}>
+                      <div className={styles.productCategory}>
+                        {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                      </div>
+                      <div className={styles.productName}>{product.name}</div>
+                      <div className={styles.productColor}>{product.color}</div>
+                      <div className={styles.productPrice}>{product.price}</div>
+                    </div>
                   </div>
-                  <div className={styles.productName}>{product.name}</div>
-                  <div className={styles.productColor}>{product.color}</div>
-                  <div className={styles.productPrice}>{product.price}</div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       }
       variant="info"
@@ -450,11 +456,11 @@ const JingjingOnePageV0 = () => {
     <Card
       header={<h3 className={styles.tipCardHeader}>💡 Product Opportunities</h3>}
       body={
-        <div className={styles.productOpportunitiesContainer}>
+        <div className={styles.singleOpportunityContainer}>
           <p className={styles.opportunityIntro}>
             {mockProductOpportunitiesData.introduction}
           </p>
-          <div className={styles.productGridContainer}>
+          <div className={styles.productScrollContainer}>
             {mockProductOpportunitiesData.products.map((product) => (
               <div key={product.id} className={styles.productCard}>
                 <div className={styles.productImage}>
@@ -488,11 +494,11 @@ const JingjingOnePageV0 = () => {
     <Card
       header={<h3 className={styles.tipCardHeader}>💬 Stockout but Wecom Opportunities</h3>}
       body={
-        <div className={styles.stockoutWecomContainer}>
+        <div className={styles.singleOpportunityContainer}>
           <p className={styles.opportunityIntro}>
             {mockStockoutWecomData.introduction}
           </p>
-          <div className={styles.productGridContainer}>
+          <div className={styles.productScrollContainer}>
             {mockStockoutWecomData.products.map((product) => (
               <div key={product.id} className={styles.productCard}>
                 <div className={styles.productImage}>
