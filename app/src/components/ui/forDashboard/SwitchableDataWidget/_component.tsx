@@ -5,7 +5,7 @@ import type { DashboardCommonProps } from '../_shared-types'
 import { DASHBOARD_DEFAULTS } from '../_shared-config'
 import { Table, type TableColumn } from '../../Table'
 import { TrendChartCore, type TrendChartCoreProps } from '../TrendChart'
-import { IconButton } from '../../IconButton'
+import { Switch } from '../../Switch'
 
 /**
  * View mode for the widget
@@ -17,11 +17,22 @@ export type DataWidgetViewMode = 'table' | 'chart'
  */
 export interface SwitchableDataWidgetProps<T = unknown> extends DashboardCommonProps {
   /**
+   * A unique identifier for the widget.
+   * This is required to persist the view mode in local storage.
+   */
+  widgetId: string;
+  /**
    * Initial view mode
    * @default 'table'
    */
   initialMode?: DataWidgetViewMode
   
+  /**
+   * Whether to persist the view mode in browser storage.
+   * @default true
+   */
+  persistState?: boolean;
+
   /**
    * Table configuration
    */
@@ -101,19 +112,34 @@ export const SwitchableDataWidget = <T,>({
   className = '',
   
   // Component-specific props
+  widgetId,
   initialMode = 'table',
+  persistState = true,
   tableConfig,
   chartConfig,
   onModeChange,
 }: SwitchableDataWidgetProps<T>) => {
-  const [viewMode, setViewMode] = useState<DataWidgetViewMode>(initialMode)
-  
-  const handleModeToggle = () => {
-    const newMode: DataWidgetViewMode = viewMode === 'table' ? 'chart' : 'table'
+  const getInitialMode = () => {
+    if (persistState) {
+      const savedMode = localStorage.getItem(`widget-${widgetId}-mode`) as DataWidgetViewMode;
+      if (savedMode) {
+        return savedMode;
+      }
+    }
+    return initialMode;
+  };
+
+  const [viewMode, setViewMode] = useState<DataWidgetViewMode>(getInitialMode())
+
+  const handleModeChange = (selectedIndex: number) => {
+    const newMode: DataWidgetViewMode = selectedIndex === 0 ? 'table' : 'chart'
     setViewMode(newMode)
+    if (persistState) {
+      localStorage.setItem(`widget-${widgetId}-mode`, newMode);
+    }
     onModeChange?.(newMode)
   }
-  
+
   // Render header with mode toggle button
   const renderHeader = () => {
     if (!showHeader) return undefined
@@ -128,12 +154,10 @@ export const SwitchableDataWidget = <T,>({
           )}
         </div>
         <div className={styles.toggleButton}>
-          <IconButton
-            icon={viewMode === 'table' ? 'show_chart' : 'table_chart'}
-            onClick={handleModeToggle}
-            size="small"
-            variant="ghost"
-            aria-label={`Switch to ${viewMode === 'table' ? 'chart' : 'table'} view`}
+          <Switch
+            options={['Table', 'Chart']}
+            selectedIndex={viewMode === 'table' ? 0 : 1}
+            onChange={handleModeChange}
           />
         </div>
       </div>

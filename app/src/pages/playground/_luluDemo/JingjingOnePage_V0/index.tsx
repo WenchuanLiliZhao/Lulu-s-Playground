@@ -75,7 +75,7 @@ const JingjingOnePageV0 = () => {
           statusColor="success"
           breakdown={[
             { label: "XStore", value: mockDashboardData.performanceSnapshot.yesterday.breakdown.xstore },
-            { label: "Omini", value: mockDashboardData.performanceSnapshot.yesterday.breakdown.omini }
+            { label: "Omni", value: mockDashboardData.performanceSnapshot.yesterday.breakdown.omni }
           ]}
           // statusColor="var(--color-semantic-success)"
         />
@@ -89,7 +89,7 @@ const JingjingOnePageV0 = () => {
           statusColor="warning"
           breakdown={[
             { label: "XStore", value: mockDashboardData.performanceSnapshot.todayTarget.breakdown.xstore },
-            { label: "Omini", value: mockDashboardData.performanceSnapshot.todayTarget.breakdown.omini }
+            { label: "Omni", value: mockDashboardData.performanceSnapshot.todayTarget.breakdown.omni }
           ]}
           // statusColor="var(--color-semantic-success)"
         />
@@ -258,6 +258,7 @@ const JingjingOnePageV0 = () => {
         {/* Main Target Widget - Switchable between Table and Chart */}
         <div className={styles.targetChartContainer}>
           <SwitchableDataWidget
+            widgetId="today-target-detail"
             showHeader={true}
             headerTitle={
               <div className={styles.targetDetailHeader}>

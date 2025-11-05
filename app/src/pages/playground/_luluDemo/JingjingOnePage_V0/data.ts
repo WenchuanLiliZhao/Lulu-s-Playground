@@ -17,14 +17,14 @@ export const mockTargetTableData: TargetTableRow[] = [
   {
     id: "h10-12",
     time: "10:00 ~ 12:00",
-    netSales: { achieve: 2800, goal: 3200 },
+    netSales: { achieve: 2800, goal: 4200 },
     plan: { achieve: 3200, goal: 3400 },
     status: "warning",
   },
   {
     id: "h12-14",
     time: "12:00 ~ 14:00",
-    netSales: { achieve: 5200, goal: 4800 },
+    netSales: { achieve: 5200, goal: 6800 },
     plan: { achieve: 4800, goal: 4500 },
     status: "success",
   },
@@ -81,7 +81,7 @@ export const mockDashboardData = {
       subtitle: "103% of target",
       breakdown: {
         xstore: "$18,200",
-        omini: "$6,380"
+        omni: "$6,380"
       }
     },
     todayTarget: {
@@ -89,7 +89,7 @@ export const mockDashboardData = {
       subtitle: "+2.5% vs yesterday",
       breakdown: {
         xstore: "$19,000",
-        omini: "$6,200"
+        omni: "$6,200"
       }
     },
   },
@@ -156,9 +156,9 @@ export const mockDashboardData = {
       id: row.id,
       name: row.time,
       netSalesAchieved: row.netSales.achieve,
-      netSalesGoal: row.netSales.goal,
+      netSalesTarget: row.netSales.goal,
       planAchieved: row.plan.achieve,
-      planGoal: row.plan.goal,
+      planTarget: row.plan.goal,
     })),
     // Four lines with paired colors
     // Net Sales: wilderness (green) - achieved (dark), goal (light)
@@ -167,12 +167,13 @@ export const mockDashboardData = {
       {
         dataKey: "netSalesAchieved",
         name: "Net Sales (Achieved)",
-        color: "var(--wilderness-3)",  // Deep green
+        color: "var(--hot-heat-4)",  // Deep green
       },
       {
-        dataKey: "netSalesGoal",
+        dataKey: "netSalesTarget",
         name: "Net Sales (Goal)",
-        color: "var(--wilderness-5)",  // Light green
+        color: "var(--hot-heat-6)",  // Light green
+        strokeDasharray: "5 5",
       },
       {
         dataKey: "planAchieved",
@@ -180,9 +181,10 @@ export const mockDashboardData = {
         color: "var(--daydream-3)",  // Deep blue
       },
       {
-        dataKey: "planGoal",
+        dataKey: "planTarget",
         name: "Plan (Goal)",
         color: "var(--daydream-5)",  // Light blue
+        strokeDasharray: "5 5",
       },
     ],
   },

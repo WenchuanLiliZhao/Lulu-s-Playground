@@ -256,9 +256,10 @@ export const TrendChartCore = ({
                 dataKey={line.dataKey}
                 name={line.name}
                 stroke={line.color}
-                strokeWidth={line.strokeWidth ?? 1.5}
-                dot={(props) => renderDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 1.5 })}
-                activeDot={(props) => renderActiveDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 1.5 })}
+                strokeWidth={line.strokeWidth ?? 2}
+                strokeDasharray={line.strokeDasharray}
+                dot={(props) => renderDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 2 })}
+                activeDot={(props) => renderActiveDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 2 })}
                 animationDuration={animationDuration}
               />
             ))}

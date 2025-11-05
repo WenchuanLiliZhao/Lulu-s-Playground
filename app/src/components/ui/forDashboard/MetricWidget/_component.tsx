@@ -46,7 +46,7 @@ export interface MetricWidgetProps extends DashboardCommonProps {
    */
   sparklineSmooth?: boolean
   /**
-   * Value breakdown data (e.g., XStore and Omini components)
+   * Value breakdown data (e.g., XStore and Omni components)
    */
   breakdown?: Array<{
     label: string

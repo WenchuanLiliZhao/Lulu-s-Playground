@@ -305,6 +305,7 @@ export const MiniTrendChart = ({
                 name={line.name}
                 stroke={line.color}
                 strokeWidth={line.strokeWidth ?? 1}
+                strokeDasharray={line.strokeDasharray}
                 dot={(props) => renderDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 1 })}
                 activeDot={(props) => renderActiveDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 1 })}
                 animationDuration={animationDuration}
