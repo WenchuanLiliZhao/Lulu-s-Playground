@@ -116,7 +116,7 @@ export const mockDashboardData = {
       sparklineData: [115, 112, 110, 108, 107, 105, 103, 105],
     },
     transaction: {
-      label: "Transaction",
+      label: "Traffic",
       value: "234",
       status: "info" as const,
       statusLabel: "On Track",
@@ -138,8 +138,8 @@ export const mockDashboardData = {
   categoryMix: {
     mens: { percentage: "60%", trend: "+3%" },
     womens: { percentage: "28%", trend: "-2%" },
-    ace: { percentage: "10%", trend: "-6%" },
-    ftw: { percentage: "2%", trend: "+2%" },
+    // ace: { percentage: "10%", trend: "-6%" },
+    // ftw: { percentage: "2%", trend: "+2%" },
   },
   todayTargetDetail: {
     total: "$25,200",
@@ -172,8 +172,9 @@ export const mockDashboardData = {
       {
         dataKey: "netSalesTarget",
         name: "Net Sales (Goal)",
-        color: "var(--hot-heat-6)",  // Light green
+        color: "var(--hot-heat-4)",  // Light green
         strokeDasharray: "5 5",
+        opacity: 0.4,
       },
       {
         dataKey: "planAchieved",
@@ -183,8 +184,9 @@ export const mockDashboardData = {
       {
         dataKey: "planTarget",
         name: "Plan (Goal)",
-        color: "var(--daydream-5)",  // Light blue
+        color: "var(--daydream-3)",  // Light blue
         strokeDasharray: "5 5",
+        opacity: 0.4,
       },
     ],
   },
@@ -327,4 +329,29 @@ export const mockStockoutWecomData: StockoutWecomData = {
     { id: 'wecom4', category: 'accessories', name: 'The Reversible Mat 5mm', price: '$78', image: DEFAULT_PRODUCT_IMAGE, color: 'Deep Coal' },
   ]
 };
+
+// Weather forecast mock data (10 days)
+export interface WeatherForecastDay {
+  id: string;
+  name: string;
+  dateString: string; // Date as string for display
+  value: number; // Temperature in Celsius
+  weather: string; // Weather condition
+  humidity?: number;
+  wind?: number;
+  [key: string]: string | number | Date | undefined;
+}
+
+export const mockWeatherForecastData: WeatherForecastDay[] = [
+  { id: 'day1', name: 'Today', dateString: '2025-11-05', value: 10, weather: 'Partly Cloudy', humidity: 65, wind: 15 },
+  { id: 'day2', name: 'Nov 6', dateString: '2025-11-06', value: 10, weather: 'Cloudy', humidity: 70, wind: 18 },
+  { id: 'day3', name: 'Nov 7', dateString: '2025-11-07', value: 5, weather: 'Light Rain', humidity: 85, wind: 22 },
+  { id: 'day4', name: 'Nov 8', dateString: '2025-11-08', value: 9, weather: 'Rainy', humidity: 90, wind: 20 },
+  { id: 'day5', name: 'Nov 9', dateString: '2025-11-09', value: -1, weather: 'Cloudy', humidity: 80, wind: 16 },
+  { id: 'day6', name: 'Nov 10', dateString: '2025-11-10', value: -3, weather: 'Partly Cloudy', humidity: 70, wind: 14 },
+  { id: 'day7', name: 'Nov 11', dateString: '2025-11-11', value: 3, weather: 'Sunny', humidity: 60, wind: 10 },
+  { id: 'day8', name: 'Nov 12', dateString: '2025-11-12', value: 4, weather: 'Sunny', humidity: 55, wind: 8 },
+  { id: 'day9', name: 'Nov 13', dateString: '2025-11-13', value: 5, weather: 'Partly Cloudy', humidity: 65, wind: 12 },
+  { id: 'day10', name: 'Nov 14', dateString: '2025-11-14', value: -3, weather: 'Cloudy', humidity: 75, wind: 15 },
+];
 

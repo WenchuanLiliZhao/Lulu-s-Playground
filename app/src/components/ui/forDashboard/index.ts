@@ -24,7 +24,8 @@ export {
   DASHBOARD_COLOR_CONFIG,
   CHART_DEFAULTS,
   TREND_CHART_DEFAULTS,
-  MINI_TREND_CHART_DEFAULTS
+  MINI_TREND_CHART_DEFAULTS,
+  COLUMN_CHART_DEFAULTS
 } from './_shared-config'
 
 export { 
@@ -63,4 +64,7 @@ export type { InfoPanelWidgetProps, InfoItem } from './InfoPanelWidget'
 
 export { SwitchableDataWidget } from './SwitchableDataWidget'
 export type { SwitchableDataWidgetProps, DataWidgetViewMode } from './SwitchableDataWidget'
+
+export { ColumnChart, ColumnChartCore } from './ColumnChart'
+export type { ColumnChartProps, ColumnChartCoreProps, ColumnChartDataPoint, ColorMapping } from './ColumnChart'
 

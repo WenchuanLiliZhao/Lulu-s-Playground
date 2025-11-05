@@ -139,3 +139,39 @@ export const MINI_TREND_CHART_DEFAULTS = {
   yAxisTickMargin: 5,
 }
 
+/**
+ * ColumnChart specific defaults
+ * Optimized for column/bar chart displays with weather data
+ */
+export const COLUMN_CHART_DEFAULTS = {
+  ...CHART_DEFAULTS,
+  // Visual
+  showGrid: true, // Show grid like TrendChart
+  animationDuration: 800,
+  height: 300,
+  
+  // X-axis
+  xAxisAngle: 0,
+  xAxisHeight: 30,
+  xAxisTickMargin: 8,
+  minXAxisSpacing: 40,
+  maxTickCount: 15,
+  
+  // Chart margins
+  marginTop: 10,
+  marginRight: 10,
+  marginBottom: 5,
+  marginLeft: 5,
+  
+  // Y-axis
+  showYAxis: true,
+  yAxisWidth: 50,
+  yAxisTickMargin: 8,
+  
+  // Bar specific
+  barSize: 20, // Auto-calculated by Recharts
+  barGap: 4, // Gap between bars in the same category
+  barCategoryGap: '20%', // Gap between categories
+  radius: [4, 4, 0, 0] as [number, number, number, number], // Rounded top corners
+}
+

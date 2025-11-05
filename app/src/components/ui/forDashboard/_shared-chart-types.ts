@@ -34,6 +34,8 @@ export interface BaseChartLine {
   strokeWidth?: number
   /** Line dash style (e.g., "5 5") */
   strokeDasharray?: string
+  /** Line opacity (0 to 1) */
+  opacity?: number
 }
 
 /**

@@ -6,6 +6,7 @@ import { Card } from "../../../../components/ui/Card";
 import { MetricWidget } from "../../../../components/ui/forDashboard/MetricWidget";
 import { SwitchableDataWidget } from "../../../../components/ui/forDashboard/SwitchableDataWidget";
 import { InfoPanelWidget } from "../../../../components/ui/forDashboard/InfoPanelWidget";
+import { ColumnChart } from "../../../../components/ui/forDashboard/ColumnChart";
 import type { TableColumn } from "../../../../components/ui/Table";
 import {
   mockTargetTableData,
@@ -18,6 +19,7 @@ import {
   mockCrossSellingData,
   mockProductOpportunitiesData,
   mockStockoutWecomData,
+  mockWeatherForecastData,
 } from "./data";
 import styles from "./styles.module.scss";
 import { DashboardWidgetFrame } from "../../../../components/ui/forDashboard/DashboardWidgetFrame";
@@ -188,14 +190,6 @@ const JingjingOnePageV0 = () => {
             label: "Women's",
             value: `${mockDashboardData.categoryMix.womens.percentage} (${mockDashboardData.categoryMix.womens.trend})`,
           },
-          {
-            label: "ACE",
-            value: `${mockDashboardData.categoryMix.ace.percentage} (${mockDashboardData.categoryMix.ace.trend})`,
-          },
-          {
-            label: "FTW",
-            value: `${mockDashboardData.categoryMix.ftw.percentage} (${mockDashboardData.categoryMix.ftw.trend})`,
-          }
         ]}
       />
     </div>
@@ -307,7 +301,7 @@ const JingjingOnePageV0 = () => {
         <div className={styles.targetWidgetsContainer}>
           <MetricWidget
             icon="wb_twilight"
-            title="Morning Target"
+            title="Morning Plan"
             value={mockDashboardData.todayTargetDetail.morning}
             statusText="45% of total"
             statusColor="neutral"
@@ -315,13 +309,41 @@ const JingjingOnePageV0 = () => {
           />
           <MetricWidget
             icon="nights_stay"
-            title="Evening Target"
+            title="Evening Plan"
             value={mockDashboardData.todayTargetDetail.evening}
             statusText="55% of total"
             statusColor="neutral"
           />
         </div>
       </>
+    );
+  };
+
+  // Weather forecast chart
+  const renderWeatherForecast = () => {
+    // Temperature-based color mappings using design system colors
+    const temperatureColorMappings = [
+      { threshold: 0, color: 'var(--cyan-4)' },       // Freezing (≤0°C) - cold blue
+      { threshold: 10, color: 'var(--daydream-4)' },  // Cold (≤10°C) - light blue
+      { threshold: 15, color: 'var(--wilderness-4)' }, // Cool (≤15°C) - green
+      { threshold: 20, color: 'var(--amber-4)' },     // Mild (≤20°C) - amber
+      { threshold: 100, color: 'var(--hot-heat-4)' }, // Warm (>20°C) - red
+    ];
+
+    return (
+      <ColumnChart
+        title="10-Day Weather Forecast"
+        data={mockWeatherForecastData}
+        showHeader={true}
+        headerIcon="wb_sunny"
+        headerColor="primary"
+        showIcons={true}
+        iconSize={22}
+        colorMappings={temperatureColorMappings}
+        height={300}
+        yAxisTickFormatter={(value) => `${value}°C`}
+        barCategoryGap="15%"
+      />
     );
   };
 
@@ -333,6 +355,7 @@ const JingjingOnePageV0 = () => {
       {renderInfoPanels()}
       {renderTodayTargetDetail()}
       {renderMorningTargetDetail()}
+      {renderWeatherForecast()}
     </div>
   );
 
