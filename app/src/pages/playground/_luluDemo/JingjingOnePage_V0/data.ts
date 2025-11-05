@@ -337,21 +337,22 @@ export interface WeatherForecastDay {
   dateString: string; // Date as string for display
   value: number; // Temperature in Celsius
   weather: string; // Weather condition
+  icon?: string; // Icon name for the weather condition
   humidity?: number;
   wind?: number;
   [key: string]: string | number | Date | undefined;
 }
 
 export const mockWeatherForecastData: WeatherForecastDay[] = [
-  { id: 'day1', name: 'Today', dateString: '2025-11-05', value: 10, weather: 'Partly Cloudy', humidity: 65, wind: 15 },
-  { id: 'day2', name: 'Nov 6', dateString: '2025-11-06', value: 10, weather: 'Cloudy', humidity: 70, wind: 18 },
-  { id: 'day3', name: 'Nov 7', dateString: '2025-11-07', value: 5, weather: 'Light Rain', humidity: 85, wind: 22 },
-  { id: 'day4', name: 'Nov 8', dateString: '2025-11-08', value: 9, weather: 'Rainy', humidity: 90, wind: 20 },
-  { id: 'day5', name: 'Nov 9', dateString: '2025-11-09', value: -1, weather: 'Cloudy', humidity: 80, wind: 16 },
-  { id: 'day6', name: 'Nov 10', dateString: '2025-11-10', value: -3, weather: 'Partly Cloudy', humidity: 70, wind: 14 },
-  { id: 'day7', name: 'Nov 11', dateString: '2025-11-11', value: 3, weather: 'Sunny', humidity: 60, wind: 10 },
-  { id: 'day8', name: 'Nov 12', dateString: '2025-11-12', value: 4, weather: 'Sunny', humidity: 55, wind: 8 },
-  { id: 'day9', name: 'Nov 13', dateString: '2025-11-13', value: 5, weather: 'Partly Cloudy', humidity: 65, wind: 12 },
-  { id: 'day10', name: 'Nov 14', dateString: '2025-11-14', value: -3, weather: 'Cloudy', humidity: 75, wind: 15 },
+  { id: 'day1', name: 'Today', dateString: '2025-11-05', value: 10, weather: 'Partly Cloudy', icon: 'partly_cloudy_day', humidity: 65, wind: 15 },
+  { id: 'day2', name: 'Nov 6', dateString: '2025-11-06', value: 10, weather: 'Cloudy', icon: 'cloudy', humidity: 70, wind: 18 },
+  { id: 'day3', name: 'Nov 7', dateString: '2025-11-07', value: 5, weather: 'Light Rain', icon: 'rainy_light', humidity: 85, wind: 22 },
+  { id: 'day4', name: 'Nov 8', dateString: '2025-11-08', value: 9, weather: 'Rainy', icon: 'rainy', humidity: 90, wind: 20 },
+  { id: 'day5', name: 'Nov 9', dateString: '2025-11-09', value: -1, weather: 'Cloudy', icon: 'cloudy', humidity: 80, wind: 16 },
+  { id: 'day6', name: 'Nov 10', dateString: '2025-11-10', value: -3, weather: 'Partly Cloudy', icon: 'partly_cloudy_day', humidity: 70, wind: 14 },
+  { id: 'day7', name: 'Nov 11', dateString: '2025-11-11', value: 3, weather: 'Sunny', icon: 'wb_sunny', humidity: 60, wind: 10 },
+  { id: 'day8', name: 'Nov 12', dateString: '2025-11-12', value: 4, weather: 'Sunny', icon: 'wb_sunny', humidity: 55, wind: 8 },
+  { id: 'day9', name: 'Nov 13', dateString: '2025-11-13', value: 5, weather: 'Partly Cloudy', icon: 'partly_cloudy_day', humidity: 65, wind: 12 },
+  { id: 'day10', name: 'Nov 14', dateString: '2025-11-14', value: -3, weather: 'Cloudy', icon: 'cloudy', humidity: 75, wind: 15 },
 ];
 

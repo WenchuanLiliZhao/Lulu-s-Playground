@@ -191,82 +191,42 @@ const getBarColor = (
 }
 
 /**
- * Weather icon mapping
+ * Custom tick component for the X-axis that renders an icon below the label.
  */
-const WEATHER_ICON_MAP: Record<string, string> = {
-  'sunny': 'wb_sunny',
-  'clear': 'wb_sunny',
-  'partly cloudy': 'partly_cloudy_day',
-  'partly_cloudy': 'partly_cloudy_day',
-  'cloudy': 'cloud',
-  'overcast': 'cloud',
-  'rainy': 'rainy',
-  'rain': 'rainy',
-  'light rain': 'rainy_light',
-  'heavy rain': 'rainy_heavy',
-  'drizzle': 'rainy_light',
-  'showers': 'rainy',
-  'snowy': 'weather_snowy',
-  'snow': 'weather_snowy',
-  'sleet': 'weather_mix',
-  'stormy': 'thunderstorm',
-  'thunder': 'thunderstorm',
-  'thunderstorm': 'thunderstorm',
-  'foggy': 'foggy',
-  'fog': 'foggy',
-  'mist': 'mist',
-  'windy': 'air',
-  'haze': 'mist',
-  'default': 'warning',
-}
-
-/**
- * Get Material Symbol icon name for weather condition
- */
-const getWeatherIcon = (condition?: string): string => {
-  if (!condition) return WEATHER_ICON_MAP['default']
-  
-  const normalized = condition.toLowerCase().trim()
-  return WEATHER_ICON_MAP[normalized] || WEATHER_ICON_MAP['default']
-}
-
-/**
- * Custom label component that renders icons on top of bars
- */
-const IconLabel = (props: {
+const CustomizedXAxisTick = (props: {
   x?: number
   y?: number
-  width?: number
-  height?: number
-  value?: number
-  payload?: ColumnChartDataPoint
-  iconSize?: number
+  payload?: { value: string; index: number }
+  data: ColumnChartDataPoint[]
+  iconSize: number
 }) => {
-  const { x = 0, y = 0, width = 0, payload, iconSize = 22 } = props
-  
-  if (!payload || !payload.icon) return null
-  
-  const iconName = getWeatherIcon(payload.icon)
-  const iconX = x + width / 2 - iconSize / 2
-  const iconY = y - iconSize - 6
-  
+  const { x, y, payload, data, iconSize } = props
+
+  if (!payload || typeof payload.index === 'undefined') {
+    return null
+  }
+
+  const dataPoint = data[payload.index]
+  if (!dataPoint) {
+    return null
+  }
+
+  const { name, icon } = dataPoint
+
+  // Using foreignObject to allow for HTML rendering (divs for line breaks) within SVG
   return (
-    <g>
-      <foreignObject
-        x={iconX}
-        y={iconY}
-        width={iconSize}
-        height={iconSize}
-      >
-        <div 
-          className={styles.iconLabel}
-          style={{ 
-            width: `${iconSize}px`,
-            height: `${iconSize}px`,
-            fontSize: `${iconSize}px`,
-          }}
-        >
-          <Icon icon={iconName} />
+    <g transform={`translate(${x},${y})`}>
+      <foreignObject x={-50} y={0} width={100} height={60}>
+        <div className={styles.customTick}>
+          <div className={styles.tickLabel}>{name}</div>
+          {icon && (
+            <div className={styles.tickIcon}>
+              <Icon
+                icon={icon}
+                style={{ fontSize: `${iconSize}px`, lineHeight: 1 }}
+              />
+            </div>
+          )}
         </div>
       </foreignObject>
     </g>
@@ -354,6 +314,11 @@ export const ColumnChartCore = ({
 }: ColumnChartCoreProps) => {
   const { refCallback } = useChartWidth()
   
+  // Adjust X-axis height if icons are shown
+  const finalXAxisHeight = useMemo(() => {
+    return showIcons ? Math.max(xAxisHeight, 60) : xAxisHeight
+  }, [showIcons, xAxisHeight])
+  
   // Calculate colors for each bar
   const dataWithColors = useMemo(() => {
     return data.map(point => ({
@@ -370,7 +335,7 @@ export const ColumnChartCore = ({
         <BarChart
           data={dataWithColors}
           margin={{
-            top: showIcons ? marginTop + iconSize + 10 : marginTop,
+            top: marginTop,
             right: marginRight,
             left: marginLeft,
             bottom: marginBottom,
@@ -385,10 +350,17 @@ export const ColumnChartCore = ({
               dataKey="name"
               angle={xAxisAngle}
               textAnchor={xAxisAngle === 0 ? "middle" : xAxisAngle < 0 ? "end" : "start"}
-              height={xAxisHeight}
+              height={finalXAxisHeight}
               tickMargin={xAxisTickMargin}
               axisLine={{ strokeWidth: 1 }}
               tickLine={false}
+              tick={
+                showIcons ? (
+                  <CustomizedXAxisTick data={data} iconSize={iconSize} />
+                ) : (
+                  true
+                )
+              }
             />
           )}
           {showYAxis && (
@@ -406,7 +378,6 @@ export const ColumnChartCore = ({
           <Bar
             dataKey={dataKey}
             animationDuration={animationDuration}
-            label={showIcons ? <IconLabel iconSize={iconSize} /> : undefined}
             radius={radius}
           >
             {dataWithColors.map((entry, index) => (
