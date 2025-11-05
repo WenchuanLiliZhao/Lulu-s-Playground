@@ -4,7 +4,7 @@ import { RichText, type RichTextContent } from "../../../../components/ui/RichTe
 import { WeatherWidget } from "../../../../components/ui/WeatherWidget";
 import { Card } from "../../../../components/ui/Card";
 import { MetricWidget } from "../../../../components/ui/forDashboard/MetricWidget";
-import { TableWidget } from "../../../../components/ui/forDashboard/TableWidget";
+import { SwitchableDataWidget } from "../../../../components/ui/forDashboard/SwitchableDataWidget";
 import { InfoPanelWidget } from "../../../../components/ui/forDashboard/InfoPanelWidget";
 import type { TableColumn } from "../../../../components/ui/Table";
 import {
@@ -173,7 +173,7 @@ const JingjingOnePageV0 = () => {
             label: "Low CR",
             value: `${mockDashboardData.peakHours.lowCR.time} (${mockDashboardData.peakHours.lowCR.rate})`,
           },
-          { label: "Rush", value: mockDashboardData.peakHours.rush },
+          { label: "Rush Hours (Traffic)", value: `${mockDashboardData.peakHours.rushHours.time} (${mockDashboardData.peakHours.rushHours.rate})` },
         ]}
       />
       <InfoPanelWidget
@@ -182,16 +182,20 @@ const JingjingOnePageV0 = () => {
         items={[
           {
             label: "Men's",
-            value: `${mockDashboardData.categoryMix.mens.percentage} ${mockDashboardData.categoryMix.mens.trend}`,
+            value: `${mockDashboardData.categoryMix.mens.percentage} (${mockDashboardData.categoryMix.mens.trend})`,
           },
           {
             label: "Women's",
-            value: mockDashboardData.categoryMix.womens.percentage,
+            value: `${mockDashboardData.categoryMix.womens.percentage} (${mockDashboardData.categoryMix.womens.trend})`,
           },
           {
-            label: "Traffic",
-            value: `${mockDashboardData.categoryMix.traffic.count} (+${mockDashboardData.categoryMix.traffic.change})`,
+            label: "ACE",
+            value: `${mockDashboardData.categoryMix.ace.percentage} (${mockDashboardData.categoryMix.ace.trend})`,
           },
+          {
+            label: "FTW",
+            value: `${mockDashboardData.categoryMix.ftw.percentage} (${mockDashboardData.categoryMix.ftw.trend})`,
+          }
         ]}
       />
     </div>
@@ -212,23 +216,27 @@ const JingjingOnePageV0 = () => {
         align: "left",
       },
       {
-        key: "sales",
-        header: "Sales",
-        render: (row) => `$${row.sales.toLocaleString()}`,
+        key: "netSales",
+        header: "Net Sales",
+        render: (row) => `$${row.netSales.achieve.toLocaleString()}`,
         width: "120px",
-        align: "right",
+        align: "left",
       },
       {
-        key: "target",
-        header: "Target",
-        render: (row) => `$${row.target.toLocaleString()}`,
+        key: "plan",
+        header: "Plan",
+        render: (row) => `$${row.plan.achieve.toLocaleString()}`,
         width: "120px",
-        align: "right",
+        align: "left",
       },
       {
         key: "progress",
         header: "Progress",
         render: (row) => {
+          const totalAchieve = row.netSales.achieve + row.plan.achieve;
+          const totalGoal = row.netSales.goal + row.plan.goal;
+          const progress = totalGoal > 0 ? Math.round((totalAchieve / totalGoal) * 100) : 0;
+
           const progressStyle = {
             color:
               row.status === "success"
@@ -238,22 +246,19 @@ const JingjingOnePageV0 = () => {
                 : "var(--color-semantic-error)",
             fontWeight: "bold" as const,
           };
-          return <span style={progressStyle}>{row.progress}%</span>;
+          return <span style={progressStyle}>{progress}%</span>;
         },
         width: "100px",
-        align: "center",
+        align: "left",
       },
     ];
 
     return (
       <div className={styles.todayTargetDetail}>
-        {/* Main Target Table - Full Width */}
+        {/* Main Target Widget - Switchable between Table and Chart */}
         <div className={styles.targetChartContainer}>
-          <TableWidget
-            columns={columns}
-            data={mockTargetTableData}
+          <SwitchableDataWidget
             showHeader={true}
-            // headerIcon="schedule"
             headerTitle={
               <div className={styles.targetDetailHeader}>
                 <h2 className={styles.targetDetailTitle}>Today's Target</h2>
@@ -267,11 +272,28 @@ const JingjingOnePageV0 = () => {
               </div>
             }
             headerColor="primary"
-            striped={true}
-            hoverable={true}
-            bordered={true}
-            size="medium"
-            rowKey={(row) => row.id}
+            initialMode="table"
+            tableConfig={{
+              columns,
+              data: mockTargetTableData,
+              striped: true,
+              hoverable: true,
+              bordered: true,
+              size: "medium",
+              rowKey: (row) => row.id,
+            }}
+            chartConfig={{
+              data: mockDashboardData.todayTargetDetail.trendData,
+              lines: mockDashboardData.todayTargetDetail.trendChartLines,
+              height: 300,
+              showGrid: true,
+              showLegend: true,
+              showXAxis: true,
+              showYAxis: true,
+            }}
+            onModeChange={(mode) => {
+              console.log(`Today's Target view switched to: ${mode}`)
+            }}
           />
         </div>
       </div>

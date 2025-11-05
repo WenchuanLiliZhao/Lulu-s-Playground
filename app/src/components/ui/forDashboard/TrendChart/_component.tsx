@@ -40,23 +40,32 @@ export interface TrendChartProps
   // All other props are inherited from BaseChartProps and DashboardCommonProps
 }
 
-export const TrendChart = ({
-  title,
+/**
+ * Core chart props (without dashboard frame)
+ */
+export interface TrendChartCoreProps extends Omit<BaseChartProps<TrendChartDataPoint>, 'data' | 'lines'> {
+  /**
+   * Data for the chart
+   */
+  data: TrendChartDataPoint[]
+  /**
+   * Lines to display
+   */
+  lines: TrendChartLine[]
+  /**
+   * Optional className for the container
+   */
+  className?: string
+}
+
+/**
+ * TrendChartCore - Core chart component without DashboardWidgetFrame
+ * Use this when you want to embed the chart in a custom container
+ */
+export const TrendChartCore = ({
   data,
   lines,
   className = '',
-  // Dashboard header props
-  showHeader = DASHBOARD_DEFAULTS.showHeader,
-  headerIcon,
-  headerTitle,
-  headerSummary,
-  headerTitleSize = DASHBOARD_DEFAULTS.headerTitleSize,
-  headerIconSize = DASHBOARD_DEFAULTS.headerIconSize,
-  headerSummarySize,
-  headerColor = DASHBOARD_DEFAULTS.headerColor,
-  // Dashboard alert light props
-  showAlertLight = DASHBOARD_DEFAULTS.showAlertLight,
-  alertLightColor = DASHBOARD_DEFAULTS.alertLightColor,
   // Visual props
   showGrid = TREND_CHART_DEFAULTS.showGrid,
   showLegend = TREND_CHART_DEFAULTS.showLegend,
@@ -90,7 +99,7 @@ export const TrendChart = ({
   getDateFromDataPoint,
   initialStartDate = TREND_CHART_DEFAULTS.initialStartDate,
   initialEndDate = TREND_CHART_DEFAULTS.initialEndDate,
-}: TrendChartProps) => {
+}: TrendChartCoreProps) => {
   const [startDate, setStartDate] = useState<Date | null>(initialStartDate)
   const [endDate, setEndDate] = useState<Date | null>(initialEndDate)
   
@@ -126,7 +135,7 @@ export const TrendChart = ({
   const effectiveXAxisInterval = useMemo(() => {
     return calculateXAxisInterval(
       filteredData.length,
-      chartWidth || estimatedChartWidth, // Use actual width, fallback to estimated
+      chartWidth || estimatedChartWidth,
       xAxisInterval,
       targetTickCount,
       minXAxisSpacing,
@@ -151,12 +160,10 @@ export const TrendChart = ({
   const renderDot = (props: { cx?: number; cy?: number; stroke?: string; strokeWidth?: number; index?: number; key?: Key | null }) => {
     const { cx, cy, stroke, strokeWidth, index = 0, key } = props
     
-    // If showDots is false, don't render any dots
     if (!showDots) {
       return <circle key={key} cx={cx} cy={cy} r={0} fill="none" stroke="none" />
     }
     
-    // Only show dots at specified intervals
     if (effectiveDotInterval === 0 || index % (effectiveDotInterval + 1) === 0) {
       return (
         <circle
@@ -166,12 +173,11 @@ export const TrendChart = ({
           r={4}
           fill={getCssVar('colorBgMain')}
           stroke={stroke}
-          strokeWidth={strokeWidth || 2}
+          strokeWidth={strokeWidth || 1}
         />
       )
     }
     
-    // Return invisible dot to maintain structure
     return <circle key={key} cx={cx} cy={cy} r={0} fill="none" stroke="none" />
   }
 
@@ -186,41 +192,25 @@ export const TrendChart = ({
         r={6}
         fill={getCssVar('colorBgMain')}
         stroke={stroke}
-        strokeWidth={strokeWidth || 2}
+        strokeWidth={strokeWidth || 1}
       />
     )
   }
 
   return (
-    <DashboardWidgetFrame
-      showHeader={showHeader || !!title}
-      headerIcon={headerIcon}
-      headerTitle={headerTitle || title}
-      headerSummary={headerSummary}
-      headerTitleSize={headerTitleSize}
-      headerIconSize={headerIconSize}
-      headerSummarySize={headerSummarySize}
-      headerColor={headerColor}
-      showAlertLight={showAlertLight}
-      alertLightColor={alertLightColor}
-      className={className}
-      renderAfterHeader={
-        enableDateFilter
-          ? () => (
-              <div className={styles.header}>
-                <DateFilter
-                  startDate={startDate}
-                  endDate={endDate}
-                  onStartDateChange={setStartDate}
-                  onEndDateChange={setEndDate}
-                  size="small"
-                />
-              </div>
-            )
-          : undefined
-      }
-    >
-      <div ref={refCallback} className={styles.chartWrapper}>
+    <>
+      {enableDateFilter && (
+        <div className={styles.header}>
+          <DateFilter
+            startDate={startDate}
+            endDate={endDate}
+            onStartDateChange={setStartDate}
+            onEndDateChange={setEndDate}
+            size="small"
+          />
+        </div>
+      )}
+      <div ref={refCallback} className={`${styles.chartWrapper} ${className}`}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={filteredData}
@@ -266,15 +256,54 @@ export const TrendChart = ({
                 dataKey={line.dataKey}
                 name={line.name}
                 stroke={line.color}
-                strokeWidth={line.strokeWidth ?? 2}
-                dot={(props) => renderDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 2 })}
-                activeDot={(props) => renderActiveDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 2 })}
+                strokeWidth={line.strokeWidth ?? 1.5}
+                dot={(props) => renderDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 1.5 })}
+                activeDot={(props) => renderActiveDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 1.5 })}
                 animationDuration={animationDuration}
               />
             ))}
           </LineChart>
         </ResponsiveContainer>
       </div>
+    </>
+  )
+}
+
+export const TrendChart = ({
+  title,
+  data,
+  lines,
+  className = '',
+  // Dashboard header props
+  showHeader = DASHBOARD_DEFAULTS.showHeader,
+  headerIcon,
+  headerTitle,
+  headerSummary,
+  headerTitleSize = DASHBOARD_DEFAULTS.headerTitleSize,
+  headerIconSize = DASHBOARD_DEFAULTS.headerIconSize,
+  headerSummarySize,
+  headerColor = DASHBOARD_DEFAULTS.headerColor,
+  // Dashboard alert light props
+  showAlertLight = DASHBOARD_DEFAULTS.showAlertLight,
+  alertLightColor = DASHBOARD_DEFAULTS.alertLightColor,
+  // All other props passed to TrendChartCore
+  ...chartProps
+}: TrendChartProps) => {
+  return (
+    <DashboardWidgetFrame
+      showHeader={showHeader || !!title}
+      headerIcon={headerIcon}
+      headerTitle={headerTitle || title}
+      headerSummary={headerSummary}
+      headerTitleSize={headerTitleSize}
+      headerIconSize={headerIconSize}
+      headerSummarySize={headerSummarySize}
+      headerColor={headerColor}
+      showAlertLight={showAlertLight}
+      alertLightColor={alertLightColor}
+      className={className}
+    >
+      <TrendChartCore data={data} lines={lines} {...chartProps} />
     </DashboardWidgetFrame>
   )
 }

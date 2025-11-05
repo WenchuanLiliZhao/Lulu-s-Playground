@@ -43,8 +43,8 @@ export { DashboardWidgetFrame } from './DashboardWidgetFrame'
 export type { DashboardWidgetFrameProps } from './DashboardWidgetFrame'
 
 // ===== Dashboard Components =====
-export { TrendChart } from './TrendChart'
-export type { TrendChartProps, TrendChartDataPoint, TrendChartLine } from './TrendChart'
+export { TrendChart, TrendChartCore } from './TrendChart'
+export type { TrendChartProps, TrendChartCoreProps, TrendChartDataPoint, TrendChartLine } from './TrendChart'
 
 export { MiniTrendChart } from './MiniTrendChart'
 export type { MiniTrendChartProps, MiniTrendChartLine, MiniTrendChartDataPoint } from './MiniTrendChart'
@@ -60,4 +60,7 @@ export type { TableWidgetProps } from './TableWidget'
 
 export { InfoPanelWidget } from './InfoPanelWidget'
 export type { InfoPanelWidgetProps, InfoItem } from './InfoPanelWidget'
+
+export { SwitchableDataWidget } from './SwitchableDataWidget'
+export type { SwitchableDataWidgetProps, DataWidgetViewMode } from './SwitchableDataWidget'
 

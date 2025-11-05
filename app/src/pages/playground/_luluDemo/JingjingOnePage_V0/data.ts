@@ -2,16 +2,53 @@
 export interface TargetTableRow {
   id: string;
   time: string;
-  sales: number;
-  target: number;
-  progress: number;
-  status: 'success' | 'warning' | 'error';
+  netSales: {
+    achieve: number;
+    goal: number;
+  };
+  plan: {
+    achieve: number;
+    goal: number;
+  };
+  status: "success" | "warning" | "error";
 }
 
 export const mockTargetTableData: TargetTableRow[] = [
-  { id: 'h10', time: '10:00 AM', sales: 1200, target: 1500, progress: 80, status: 'warning' },
-  { id: 'h11', time: '11:00 AM', sales: 1850, target: 1800, progress: 103, status: 'success' },
-  { id: 'h12', time: '12:00 PM', sales: 2400, target: 2200, progress: 109, status: 'success' },
+  {
+    id: "h10-12",
+    time: "10:00 ~ 12:00",
+    netSales: { achieve: 2800, goal: 3200 },
+    plan: { achieve: 3200, goal: 3400 },
+    status: "warning",
+  },
+  {
+    id: "h12-14",
+    time: "12:00 ~ 14:00",
+    netSales: { achieve: 5200, goal: 4800 },
+    plan: { achieve: 4800, goal: 4500 },
+    status: "success",
+  },
+  {
+    id: "h14-16",
+    time: "14:00 ~ 16:00",
+    netSales: { achieve: 3500, goal: 4200 },
+    plan: { achieve: 4200, goal: 4000 },
+    status: "error",
+  },
+  {
+    id: "h16-18",
+    time: "16:00 ~ 18:00",
+    netSales: { achieve: 6100, goal: 6000 },
+    plan: { achieve: 6000, goal: 5800 },
+    status: "success",
+  },
+  {
+    id: "h18-20",
+    time: "18:00 ~ 20:00",
+    netSales: { achieve: 4800, goal: 5300 },
+    plan: { achieve: 5300, goal: 5500 },
+    status: "warning",
+  },
 ];
 
 
@@ -94,14 +131,15 @@ export const mockDashboardData = {
     },
   },
   peakHours: {
-    bestCR: { time: "2-4PM", rate: "78%" },
-    lowCR: { time: "10-12PM", rate: "52%" },
-    rush: "5-7PM",
+    bestCR: { time: "2-4PM", rate: "16.1%" },
+    lowCR: { time: "10-12PM", rate: "5%" },
+    rushHours: { time: "2-4PM", rate: "500" },
   },
   categoryMix: {
-    mens: { percentage: "58%", trend: "↑5%" },
-    womens: { percentage: "42%" },
-    traffic: { count: 342, change: 12 },
+    mens: { percentage: "60%", trend: "+3%" },
+    womens: { percentage: "28%", trend: "-2%" },
+    ace: { percentage: "10%", trend: "-6%" },
+    ftw: { percentage: "2%", trend: "+2%" },
   },
   todayTargetDetail: {
     total: "$25,200",
@@ -112,20 +150,43 @@ export const mockDashboardData = {
       morning: [8200, 8800, 9500, 10200, 10800, 11100, 11340],
       evening: [9800, 10400, 11000, 11600, 12300, 13100, 13860],
     },
-    // Today's hourly sales data (10 AM - 6 PM so far)
-    trendData: [
-      { id: "h10", name: "10 AM", sales: 1200 },
-      { id: "h11", name: "11 AM", sales: 1850 },
-      { id: "h12", name: "12 PM", sales: 2400 },
-      { id: "h13", name: "1 PM", sales: 2100 },
-      { id: "h14", name: "2 PM", sales: 2800 },
-      { id: "h15", name: "3 PM", sales: 3200 },
-      { id: "h16", name: "4 PM", sales: 2900 },
-      { id: "h17", name: "5 PM", sales: 3500 },
-      { id: "h18", name: "6 PM", sales: 2550 },
+    // Today's target trend data (converted from table data)
+    // Each data point contains: netSalesAchieved, netSalesGoal, planAchieved, planGoal
+    trendData: mockTargetTableData.map((row) => ({
+      id: row.id,
+      name: row.time,
+      netSalesAchieved: row.netSales.achieve,
+      netSalesGoal: row.netSales.goal,
+      planAchieved: row.plan.achieve,
+      planGoal: row.plan.goal,
+    })),
+    // Four lines with paired colors
+    // Net Sales: wilderness (green) - achieved (dark), goal (light)
+    // Plan: daydream (blue) - achieved (dark), goal (light)
+    trendChartLines: [
+      {
+        dataKey: "netSalesAchieved",
+        name: "Net Sales (Achieved)",
+        color: "var(--wilderness-3)",  // Deep green
+      },
+      {
+        dataKey: "netSalesGoal",
+        name: "Net Sales (Goal)",
+        color: "var(--wilderness-5)",  // Light green
+      },
+      {
+        dataKey: "planAchieved",
+        name: "Plan (Achieved)",
+        color: "var(--daydream-3)",  // Deep blue
+      },
+      {
+        dataKey: "planGoal",
+        name: "Plan (Goal)",
+        color: "var(--daydream-5)",  // Light blue
+      },
     ],
   },
-} as const;
+};
 
 // Sales Summary mock data
 export interface SalesSummaryData {

@@ -184,7 +184,7 @@ export const MiniTrendChart = ({
           r={3}
           fill={getCssVar('colorBgMain')}
           stroke={stroke}
-          strokeWidth={strokeWidth || 2}
+          strokeWidth={strokeWidth || 1}
         />
       )
     }
@@ -204,7 +204,7 @@ export const MiniTrendChart = ({
         r={5}
         fill={getCssVar('colorBgMain')}
         stroke={stroke}
-        strokeWidth={strokeWidth || 2}
+        strokeWidth={strokeWidth || 1}
       />
     )
   }
@@ -304,9 +304,9 @@ export const MiniTrendChart = ({
                 dataKey={line.dataKey}
                 name={line.name}
                 stroke={line.color}
-                strokeWidth={line.strokeWidth ?? 2}
-                dot={(props) => renderDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 2 })}
-                activeDot={(props) => renderActiveDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 2 })}
+                strokeWidth={line.strokeWidth ?? 1}
+                dot={(props) => renderDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 1 })}
+                activeDot={(props) => renderActiveDot({ ...props, stroke: line.color, strokeWidth: line.strokeWidth ?? 1 })}
                 animationDuration={animationDuration}
               />
             ))}
