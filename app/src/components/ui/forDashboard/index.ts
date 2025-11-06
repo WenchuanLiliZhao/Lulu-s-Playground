@@ -68,3 +68,9 @@ export type { SwitchableDataWidgetProps, DataWidgetViewMode } from './Switchable
 export { ColumnChart, ColumnChartCore } from './ColumnChart'
 export type { ColumnChartProps, ColumnChartCoreProps, ColumnChartDataPoint, ColorMapping } from './ColumnChart'
 
+import { WaterfallChart } from "./WaterfallChart";
+
+export {
+    WaterfallChart,
+}
+

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import AppLayout from "../../../../components/ui/AppLayout";
 import type { PageProps } from "../../../_page-types";
 import {
@@ -8,7 +9,9 @@ import { WeatherWidget } from "../../../../components/ui/WeatherWidget";
 import { Card } from "../../../../components/ui/Card";
 import { MetricWidget } from "../../../../components/ui/forDashboard/MetricWidget";
 import { SwitchableDataWidget } from "../../../../components/ui/forDashboard/SwitchableDataWidget";
-import { InfoPanelWidget } from "../../../../components/ui/forDashboard/InfoPanelWidget";
+import { IconButton } from "../../../../components/ui/IconButton";
+import { Switch } from "../../../../components/ui/Switch";
+import { WaterfallChart } from "../../../../components/ui/forDashboard/WaterfallChart";
 import { ColumnChart } from "../../../../components/ui/forDashboard/ColumnChart";
 import type { TableColumn } from "../../../../components/ui/Table";
 import {
@@ -19,11 +22,14 @@ import {
   mockTipsData,
   mockSalesSummaryData,
   mockHotSellersData,
-  mockCrossSellingData,
-  mockProductOpportunitiesData,
-  mockStockoutWecomData,
+  mockGuestBuyingOtherStoresData,
+  mockGuestTryingOnData,
+  mockWecomRecommendationsData,
+  mockNewDropData,
+  mockWeeklyRhythmData,
   mockWeatherForecastData,
 } from "./data";
+import type { ProductCard } from "./data";
 import styles from "./styles.module.scss";
 import { DashboardWidgetFrame } from "../../../../components/ui/forDashboard/DashboardWidgetFrame";
 
@@ -33,6 +39,7 @@ import { DashboardWidgetFrame } from "../../../../components/ui/forDashboard/Das
 
 // eslint-disable-next-line react-refresh/only-export-components
 const JingjingOnePageV0 = () => {
+  const [hotSellerMode, setHotSellerMode] = useState(0); // 0: XStore, 1: Omni
   // ============================================
   // RENDER HELPERS
   // ============================================
@@ -57,6 +64,12 @@ const JingjingOnePageV0 = () => {
           condition={mockNavigationData.weather.condition}
           temperature={mockNavigationData.weather.temperature}
           size="medium"
+        />
+        <IconButton
+          icon="smart_toy"
+          variant="ghost"
+          size="medium"
+          onClick={() => alert("AI assistant clicked!")}
         />
       </div>
     </div>
@@ -181,46 +194,6 @@ const JingjingOnePageV0 = () => {
       </div>
     );
   };
-
-  // TODO: Phase 5 - Extract to PeakHoursPanel and CategoryMixPanel components
-  // - Uses InfoPanelWidget component (already done in Phase 1)
-  const renderInfoPanels = () => (
-    <div className={styles.infoPanelsRow}>
-      <InfoPanelWidget
-        icon="🕐"
-        title="Peak Hours"
-        items={[
-          {
-            label: "Best CR",
-            value: `${mockDashboardData.peakHours.bestCR.time} (${mockDashboardData.peakHours.bestCR.rate})`,
-            highlight: true,
-          },
-          {
-            label: "Low CR",
-            value: `${mockDashboardData.peakHours.lowCR.time} (${mockDashboardData.peakHours.lowCR.rate})`,
-          },
-          {
-            label: "Rush Hours (Traffic)",
-            value: `${mockDashboardData.peakHours.rushHours.time} (${mockDashboardData.peakHours.rushHours.rate})`,
-          },
-        ]}
-      />
-      <InfoPanelWidget
-        icon="🛍️"
-        title="Category Mix"
-        items={[
-          {
-            label: "Men's",
-            value: `${mockDashboardData.categoryMix.mens.percentage} (${mockDashboardData.categoryMix.mens.trend})`,
-          },
-          {
-            label: "Women's",
-            value: `${mockDashboardData.categoryMix.womens.percentage} (${mockDashboardData.categoryMix.womens.trend})`,
-          },
-        ]}
-      />
-    </div>
-  );
 
   // TODO: Phase 5 - Extract to TodayTargetDetail component
   // - Accept props: TodayTargetDetail
@@ -380,9 +353,22 @@ const JingjingOnePageV0 = () => {
     <div className={styles.dashboardSection}>
       {renderPerformanceSnapshotA()}
       {renderMetricsRow()}
-      {renderInfoPanels()}
       {renderTodayTargetDetail()}
       {renderMorningTargetDetail()}
+      <WaterfallChart
+        showHeader={true}
+        headerTitle="Weekly Rhythm"
+        headerIcon="calendar_month"
+        headerColor="primary"
+        data={mockWeeklyRhythmData}
+        height={300}
+        yAxisTickFormatter={(value) => `${value}%`}
+        positiveColor="var(--wilderness-4)"
+        showLabels={true}
+        labelFormatter={(value) => `${value > 0 ? '+' : ''}${value}%`}
+        barSize={40}  // 块块宽度：40px
+        labelFontSize={12}  // 标签字号：12px
+      />
       {renderWeatherForecast()}
     </div>
   );
@@ -446,108 +432,82 @@ const JingjingOnePageV0 = () => {
   );
 
   // Render Hot Sellers Block
-  const renderHotSellersBlock = () => (
-    <Card
-      header={<h3 className={styles.tipCardHeader}>🔥 Hot Sellers</h3>}
-      body={
-        <div className={styles.hotSellersList}>
-          {mockHotSellersData.map((product, index) => (
-            <div key={product.id} className={styles.hotSellersItem}>
-              <div className={styles.hotSellersRank}>#{index + 1}</div>
-              <div className={styles.hotSellersImage}>
-                <img
-                  src={product.image}
-                  alt={product.productName}
-                  className={styles.hotSellersImageImg}
-                />
-              </div>
-              <div className={styles.hotSellersInfo}>
-                <div className={styles.hotSellersName}>
-                  {product.productName}
-                </div>
-                <div className={styles.hotSellersMetrics}>
-                  <span className={styles.hotSellersMetricItem}>
-                    <span className={styles.hotSellersMetricLabel}>Sold:</span>
-                    <span className={styles.hotSellersMetricValue}>
-                      {product.unitsSold}
-                    </span>
-                  </span>
-                  <span className={styles.hotSellersMetricSeparator}>•</span>
-                  <span className={styles.hotSellersMetricItem}>
-                    <span className={styles.hotSellersMetricLabel}>Stock:</span>
-                    <span className={styles.hotSellersMetricValue}>
-                      {product.inventory}
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      }
-      variant="default"
-      borderPosition="left"
-      className={styles.tipCard}
-    />
-  );
+  const renderHotSellersBlock = () => {
+    const dataToRender =
+      hotSellerMode === 0 ? mockHotSellersData.xstore : mockHotSellersData.omni;
 
-  // Render Cross Selling Opportunities Block
-  const renderCrossSellingBlock = () => (
-    <Card
-      header={
-        <h3 className={styles.tipCardHeader}>🎨 Cross Selling Opportunities</h3>
-      }
-      body={
-        <div className={styles.recommendationSetsContainer}>
-          {mockCrossSellingData.map((set) => (
-            <div key={set.id} className={styles.recommendationSet}>
-              <h4 className={styles.setTitle}>{set.title}</h4>
-              <p className={styles.setDescription}>{set.description}</p>
-              <div className={styles.productScrollContainer}>
-                {set.products.map((product) => (
-                  <div key={product.id} className={styles.productCard}>
-                    <div className={styles.productImage}>
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className={styles.productImageImg}
-                      />
-                    </div>
-                    <div className={styles.productInfo}>
-                      <div className={styles.productCategory}>
-                        {product.category.charAt(0).toUpperCase() +
-                          product.category.slice(1)}
-                      </div>
-                      <div className={styles.productName}>{product.name}</div>
-                      <div className={styles.productColor}>{product.color}</div>
-                      <div className={styles.productPrice}>{product.price}</div>
-                    </div>
+    return (
+      <Card
+        header={
+          <div className={styles.hotSellersHeader}>
+            <h3 className={styles.tipCardHeader}>🔥 Hot Sellers</h3>
+            <Switch
+              options={["XStore", "Omni"]}
+              selectedIndex={hotSellerMode}
+              onChange={(index) => setHotSellerMode(index)}
+            />
+          </div>
+        }
+        body={
+          <div className={styles.hotSellersList}>
+            {dataToRender.map((product, index) => (
+              <div key={product.id} className={styles.hotSellersItem}>
+                <div className={styles.hotSellersRank}>#{index + 1}</div>
+                <div className={styles.hotSellersImage}>
+                  <img
+                    src={product.image}
+                    alt={product.productName}
+                    className={styles.hotSellersImageImg}
+                  />
+                </div>
+                <div className={styles.hotSellersInfo}>
+                  <div className={styles.hotSellersName}>
+                    {product.productName}
                   </div>
-                ))}
+                  <div className={styles.hotSellersMetrics}>
+                    <span className={styles.hotSellersMetricItem}>
+                      <span className={styles.hotSellersMetricLabel}>
+                        Sold:
+                      </span>
+                      <span className={styles.hotSellersMetricValue}>
+                        {product.unitsSold}
+                      </span>
+                    </span>
+                    <span className={styles.hotSellersMetricSeparator}>•</span>
+                    <span className={styles.hotSellersMetricItem}>
+                      <span className={styles.hotSellersMetricLabel}>
+                        Stock:
+                      </span>
+                      <span className={styles.hotSellersMetricValue}>
+                        {product.inventory}
+                      </span>
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      }
-      variant="info"
-      borderPosition="left"
-      className={styles.tipCard}
-    />
-  );
+            ))}
+          </div>
+        }
+        variant="default"
+        borderPosition="left"
+        className={styles.tipCard}
+      />
+    );
+  };
 
-  // Render Product Opportunities Block
-  const renderProductOpportunitiesBlock = () => (
+  // Generic block renderer for product opportunities
+  const renderOpportunityBlock = (
+    title: string,
+    data: { introduction: string; products: ProductCard[] },
+    variant: "success" | "info" | "warning" | "danger" | "default"
+  ) => (
     <Card
-      header={
-        <h3 className={styles.tipCardHeader}>💡 Product Opportunities</h3>
-      }
+      header={<h3 className={styles.tipCardHeader}>{title}</h3>}
       body={
         <div className={styles.singleOpportunityContainer}>
-          <p className={styles.opportunityIntro}>
-            {mockProductOpportunitiesData.introduction}
-          </p>
+          <p className={styles.opportunityIntro}>{data.introduction}</p>
           <div className={styles.productScrollContainer}>
-            {mockProductOpportunitiesData.products.map((product) => (
+            {data.products.map((product) => (
               <div key={product.id} className={styles.productCard}>
                 <div className={styles.productImage}>
                   <img
@@ -570,50 +530,7 @@ const JingjingOnePageV0 = () => {
           </div>
         </div>
       }
-      variant="success"
-      borderPosition="left"
-      className={styles.tipCard}
-    />
-  );
-
-  // Render Stockout but Wecom Opportunities Block
-  const renderStockoutWecomBlock = () => (
-    <Card
-      header={
-        <h3 className={styles.tipCardHeader}>
-          💬 Stockout but Wecom Opportunities
-        </h3>
-      }
-      body={
-        <div className={styles.singleOpportunityContainer}>
-          <p className={styles.opportunityIntro}>
-            {mockStockoutWecomData.introduction}
-          </p>
-          <div className={styles.productScrollContainer}>
-            {mockStockoutWecomData.products.map((product) => (
-              <div key={product.id} className={styles.productCard}>
-                <div className={styles.productImage}>
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className={styles.productImageImg}
-                  />
-                </div>
-                <div className={styles.productInfo}>
-                  <div className={styles.productCategory}>
-                    {product.category.charAt(0).toUpperCase() +
-                      product.category.slice(1)}
-                  </div>
-                  <div className={styles.productName}>{product.name}</div>
-                  <div className={styles.productColor}>{product.color}</div>
-                  <div className={styles.productPrice}>{product.price}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      }
-      variant="warning"
+      variant={variant}
       borderPosition="left"
       className={styles.tipCard}
     />
@@ -627,12 +544,27 @@ const JingjingOnePageV0 = () => {
       {renderSalesSummaryBlock()}
       {/* 2. Hot Sellers */}
       {renderHotSellersBlock()}
-      {/* 3. Cross Selling Opportunities */}
-      {renderCrossSellingBlock()}
-      {/* 4. Product Opportunities */}
-      {renderProductOpportunitiesBlock()}
-      {/* 5. Stockout but Wecom Opportunities */}
-      {renderStockoutWecomBlock()}
+      {/* 3. Product Opportunities */}
+      {renderOpportunityBlock(
+        "💡 1. Guest are buying those items in other stores",
+        mockGuestBuyingOtherStoresData,
+        "success"
+      )}
+      {renderOpportunityBlock(
+        "💡 2. Guest are trying on those items in our store",
+        mockGuestTryingOnData,
+        "info"
+      )}
+      {renderOpportunityBlock(
+        "💬 3. Wecom Recommendations",
+        mockWecomRecommendationsData,
+        "warning"
+      )}
+      {renderOpportunityBlock(
+        "🚚 4. New Drop/Replen coming up next week",
+        mockNewDropData,
+        "default"
+      )}
       {/* 6. Critical Out-of-Stock (High Demand) */}
       {/* 7. Overstock Opportunities */}
       {mockTipsData.map((tip) => renderTipCard(tip))}

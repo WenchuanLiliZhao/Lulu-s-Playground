@@ -1,0 +1,143 @@
+@use '../_shared-styles.scss' as shared;
+
+// ===== Configurable parameters =====
+$x-axis-label-font-size: 12px !default;
+$y-axis-label-font-size: 12px !default;
+
+// ===== Chart Wrapper =====
+.chartWrapper {
+  flex: 1;
+  width: 100%;
+  min-height: 120px;
+  overflow: visible;
+
+  // Recharts custom styling
+  :global {
+    // Ensure SVG doesn't clip labels
+    .recharts-wrapper {
+      overflow: visible !important;
+      
+      svg {
+        overflow: visible !important;
+        outline: none !important;
+        
+        &:focus,
+        &:focus-visible {
+          outline: none !important;
+        }
+      }
+    }
+    
+    // Remove outline from recharts surface
+    .recharts-surface {
+      outline: none !important;
+      
+      &:focus,
+      &:focus-visible {
+        outline: none !important;
+      }
+    }
+
+    .recharts-cartesian-axis-tick {
+      font-family: var(--ff-sans);
+      
+      &-value {
+        fill: var(--color-sec);
+      }
+    }
+
+    // X-axis specific styling
+    .recharts-xAxis {
+      .recharts-cartesian-axis-tick-value {
+        font-size: $x-axis-label-font-size;
+      }
+    }
+
+    // Y-axis specific styling
+    .recharts-yAxis {
+      .recharts-cartesian-axis-tick-value {
+        font-size: $y-axis-label-font-size;
+      }
+    }
+
+    // Grid styling
+    .recharts-cartesian-grid-horizontal,
+    .recharts-cartesian-grid-vertical {
+      line {
+        stroke: var(--color-border-main);
+      }
+    }
+
+    // Axis lines
+    .recharts-cartesian-axis-line {
+      stroke: var(--color-border-main);
+    }
+
+    .recharts-cartesian-axis-tick-line {
+      stroke: var(--color-border-main);
+    }
+
+    // Tooltip styling
+    .recharts-tooltip-wrapper {
+      z-index: var(--z-index-popup-sec) !important;
+      outline: none !important;
+    }
+    
+    // Additional tooltip background override with z-index
+    .recharts-default-tooltip {
+      background-color: var(--color-bg-main) !important;
+      z-index: var(--z-index-popup-sec) !important;
+    }
+    
+    // Ensure tooltip cursor is visible but below tooltip
+    .recharts-tooltip-cursor {
+      z-index: calc(var(--z-index-popup-sec) - 1) !important;
+    }
+
+    // Bar hover effect
+    .recharts-bar-rectangle {
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+  }
+}
+
+// ===== Custom Tooltip =====
+.tooltip {
+  background-color: var(--color-bg-main);
+  border: 1px solid var(--color-border-main);
+  border-radius: 4px;
+  box-shadow: var(--pop-shadow);
+  padding: 8px 10px;
+  font-family: var(--ff-sans);
+  position: relative;
+  z-index: var(--z-index-popup-sec);
+}
+
+.tooltipHeader {
+  color: var(--color-main);
+  font-weight: 600;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.tooltipContent {
+  font-size: 10px;
+}
+
+.tooltipRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.tooltipLabel {
+  color: var(--color-sec);
+}
+
+.tooltipValue {
+  color: var(--color-main);
+  font-weight: 600;
+}

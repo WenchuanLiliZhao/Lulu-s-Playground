@@ -156,17 +156,6 @@ export const mockDashboardData = {
       sparklineData: [62, 64, 65, 67, 66, 68, 69, 68],
     },
   },
-  peakHours: {
-    bestCR: { time: "2-4PM", rate: "16.1%" },
-    lowCR: { time: "10-12PM", rate: "5%" },
-    rushHours: { time: "2-4PM", rate: "500" },
-  },
-  categoryMix: {
-    mens: { percentage: "60%", trend: "+3%" },
-    womens: { percentage: "28%", trend: "-2%" },
-    // ace: { percentage: "10%", trend: "-6%" },
-    // ftw: { percentage: "2%", trend: "+2%" },
-  },
   todayTargetDetail: {
     total: formatToCNY("$25,200"),
     currentProgress: formatToCNY("$18,500"),
@@ -268,97 +257,96 @@ if (DEFAULT_PRODUCT_IMAGE) {
   console.log('DEFAULT_PRODUCT_IMAGE Testing');
 }
 
-export const mockHotSellersData: HotSellerProduct[] = [
+export const mockHotSellersData = {
+  xstore: [
   { id: 'prod1', productName: 'Align High-Rise Pant 25"', image: "https://i.pinimg.com/1200x/dd/18/4b/dd184bfd9d8bf57a68024d67d8d7b72b.jpg", unitsSold: 45, inventory: 28 },
   { id: 'prod2', productName: 'Define Jacket', image: "https://i.pinimg.com/736x/dd/f6/20/ddf62093da84fdb8b1c482a3d4f0d240.jpg", unitsSold: 38, inventory: 15 },
   { id: 'prod3', productName: 'Scuba Oversized Hoodie', image: "https://i.pinimg.com/1200x/5d/31/ec/5d31ec1add2b2e902ea79c491d47ff4f.jpg", unitsSold: 35, inventory: 22 },
-  // { id: 'prod4', productName: 'Fast and Free Tight 25"', image: DEFAULT_PRODUCT_IMAGE, unitsSold: 32, inventory: 18 },
-  // { id: 'prod5', productName: 'Everywhere Belt Bag', image: DEFAULT_PRODUCT_IMAGE, unitsSold: 28, inventory: 12 },
-];
+  ],
+  omni: [
+    { id: 'omni1', productName: 'Everywhere Belt Bag', image: "https://i.pinimg.com/1200x/18/76/7a/18767aee1d050a6d4724b2adbd841414.jpg", unitsSold: 88, inventory: 5 },
+    { id: 'omni2', productName: 'Align High-Rise Pant 28"', image: "https://i.pinimg.com/736x/e7/ac/98/e7ac98956174907395fbf25efd14c66a.jpg", unitsSold: 62, inventory: 18 },
+    { id: 'omni3', productName: 'Swiftly Tech SS 2.0', image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", unitsSold: 55, inventory: 30 },
+  ]
+};
 
-// Cross Selling Opportunities mock data
 export interface ProductCard {
   id: string;
-  category: 'top' | 'bottom' | 'shoes' | 'accessories';
+  category: "top" | "bottom" | "shoes" | "accessories";
   name: string;
   price: string;
   image: string;
   color: string;
 }
 
-export interface RecommendationSet {
-  id: string;
-  title: string;
-  description: string;
-  products: ProductCard[];
-}
-
-export const mockCrossSellingData: RecommendationSet[] = [
-  {
-    id: 'set1',
-    title: 'Workout Ready',
-    description: 'Complete athletic outfit for high-performance training sessions.',
-    products: [
-      { id: 'prod1', category: 'top', name: 'Swiftly Tech SS 2.0', price: convertProductPriceToCNY('$68'), image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", color: 'Black' },
-      { id: 'prod2', category: 'bottom', name: 'Fast and Free 25"', price: convertProductPriceToCNY('$128'), image: "https://i.pinimg.com/1200x/ec/52/4e/ec524e67e67a7f39a0e081100ad5a1eb.jpg", color: 'Navy' },
-      { id: 'prod3', category: 'shoes', name: 'Blissfeel Running Shoe', price: convertProductPriceToCNY('$148'), image: "https://i.pinimg.com/1200x/39/be/4b/39be4bdcfe074b073e98f4eb4ef62d53.jpg", color: 'White' },
-    ]
-  },
-  {
-    id: 'set2',
-    title: 'Casual Comfort',
-    description: 'Effortless everyday style with maximum comfort.',
-    products: [
-      { id: 'prod4', category: 'top', name: 'Scuba Hoodie', price: convertProductPriceToCNY('$118'), image: "https://i.pinimg.com/1200x/0f/1d/09/0f1d098c3826bc7303dfb4b188ef1960.jpg", color: 'Heathered Grey' },
-      { id: 'prod5', category: 'bottom', name: 'Align HR 28"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/736x/e7/ac/98/e7ac98956174907395fbf25efd14c66a.jpg", color: 'Black' },
-      { id: 'prod6', category: 'accessories', name: 'Everywhere Belt Bag', price: convertProductPriceToCNY('$38'), image: "https://i.pinimg.com/1200x/18/76/7a/18767aee1d050a6d4724b2adbd841414.jpg", color: 'Black' },
-    ]
-  },
-  {
-    id: 'set3',
-    title: 'Yoga Essentials',
-    description: 'Perfect combination for mindful movement and stretching.',
-    products: [
-      { id: 'prod7', category: 'top', name: 'Align Tank', price: convertProductPriceToCNY('$58'), image: "https://i.pinimg.com/1200x/ec/9e/6a/ec9e6a176239a5f95addb01b076a7197.jpg", color: 'White' },
-      { id: 'prod8', category: 'bottom', name: 'Wunder Under 28"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/736x/78/cb/c3/78cbc326fc6248259b0dbee7b255761a.jpg", color: 'Deep Coal' },
-      { id: 'prod9', category: 'accessories', name: 'The Reversible Mat 5mm', price: convertProductPriceToCNY('$78'), image: "https://i.pinimg.com/1200x/4c/87/48/4c87488385340181b1fcd69456808967.jpg", color: 'Black' },
-    ]
-  }
-];
-
-// Product Opportunities mock data
-export interface ProductOpportunityData {
+// 1. Guest are buying those items in other stores
+export interface GuestBuyingOtherStoresData {
   introduction: string;
   products: ProductCard[];
 }
 
-export const mockProductOpportunitiesData: ProductOpportunityData = {
-  introduction: "Trending now: Athleisure wear is in high demand this season. Focus on versatile pieces that transition from workout to casual wear.",
+export const mockGuestBuyingOtherStoresData: GuestBuyingOtherStoresData = {
+  introduction: "Guests are purchasing these popular items from other nearby locations. We have an opportunity to capture this demand.",
   products: [
     { id: 'opp1', category: 'top', name: 'Define Jacket', price: convertProductPriceToCNY('$118'), image: "https://i.pinimg.com/1200x/47/0e/a9/470ea92e55a90a618d3229fe05a96bd6.jpg", color: 'Black' },
     { id: 'opp2', category: 'bottom', name: 'Align High-Rise Pant 28"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/1200x/7b/aa/77/7baa7728cb321612720793c86318da82.jpg", color: 'Navy' },
     { id: 'opp3', category: 'top', name: 'Scuba Hoodie', price: convertProductPriceToCNY('$118'), image: "https://i.pinimg.com/736x/0e/92/67/0e9267cd8c4c97fecf02cdea091f2302.jpg", color: 'Heathered Grey' },
-    { id: 'opp4', category: 'accessories', name: 'Everywhere Belt Bag', price: convertProductPriceToCNY('$38'), image: "https://i.pinimg.com/1200x/c2/73/9b/c2739bab7682ff375ec6d6180c735650.jpg", color: 'Black' },
-    { id: 'opp5', category: 'bottom', name: 'Wunder Train 25"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/736x/89/aa/5b/89aa5b59eca424ca4c471b154c9e62f3.jpg", color: 'Dark Olive' },
-    { id: 'opp6', category: 'accessories', name: 'Light Locks Scrunchie', price: convertProductPriceToCNY('$18'), image: "https://i.pinimg.com/736x/b0/c7/c3/b0c7c3e0518e74ca500850a62313248d.jpg", color: 'Assorted' },
   ]
 };
 
-// Stockout but Wecom Opportunities mock data
-export interface StockoutWecomData {
+// 2. Guest are trying on those items in our store
+export interface GuestTryingOnData {
+  introduction: string;
+  products: ProductCard[];
+}
+export const mockGuestTryingOnData: GuestTryingOnData = {
+    introduction: "High try-on rates for these items indicate strong interest, but conversion is low. Let's focus on closing the sale.",
+    products: [
+      { id: 'try1', category: 'bottom', name: 'Wunder Train 25"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/736x/89/aa/5b/89aa5b59eca424ca4c471b154c9e62f3.jpg", color: 'Dark Olive' },
+      { id: 'try2', category: 'accessories', name: 'Light Locks Scrunchie', price: convertProductPriceToCNY('$18'), image: "https://i.pinimg.com/736x/b0/c7/c3/b0c7c3e0518e74ca500850a62313248d.jpg", color: 'Assorted' },
+      { id: 'try3', category: 'top', name: 'All Yours Tee', price: convertProductPriceToCNY('$58'), image: "https://i.pinimg.com/1200x/a7/12/7c/a7127cdb4a49ab6f7182b0a003cca76c.jpg", color: 'White' },
+    ]
+}
+
+// 3. Wecom Recommendations
+export interface WecomRecommendationsData {
   introduction: string;
   products: ProductCard[];
 }
 
-export const mockStockoutWecomData: StockoutWecomData = {
+export const mockWecomRecommendationsData: WecomRecommendationsData = {
   introduction: "These popular items are out of stock in-store, but available through WeChat for customer orders. Great opportunity to connect digitally!",
   products: [
     { id: 'wecom1', category: 'top', name: 'All Yours Tee', price: convertProductPriceToCNY('$58'), image: "https://i.pinimg.com/1200x/a7/12/7c/a7127cdb4a49ab6f7182b0a003cca76c.jpg", color: 'White' },
     { id: 'wecom2', category: 'bottom', name: 'Fast and Free 23"', price: convertProductPriceToCNY('$128'), image: "https://i.pinimg.com/736x/89/aa/5b/89aa5b59eca424ca4c471b154c9e62f3.jpg", color: 'Black' },
     { id: 'wecom3', category: 'shoes', name: 'Chargefeel Running Shoe', price: convertProductPriceToCNY('$158'), image: "https://i.pinimg.com/736x/cc/76/f6/cc76f6b967a8ba0fa9c6d19b82849357.jpg", color: 'White/Silver' },
-    { id: 'wecom4', category: 'accessories', name: 'The Reversible Mat 5mm', price: convertProductPriceToCNY('$78'), image: "https://i.pinimg.com/1200x/65/bc/f5/65bcf532a6ab142b881357a9b5dd7232.jpg", color: 'Deep Coal' },
   ]
 };
+
+// 4. New Drop/Replen coming up next week
+export interface NewDropData {
+    introduction: string;
+    products: ProductCard[];
+}
+export const mockNewDropData: NewDropData = {
+    introduction: "Get ready for these exciting new arrivals and restocks coming next week. Prepare the floor and inform our guests!",
+    products: [
+      { id: 'new1', category: 'accessories', name: 'Everywhere Belt Bag', price: convertProductPriceToCNY('$38'), image: "https://i.pinimg.com/1200x/c2/73/9b/c2739bab7682ff375ec6d6180c735650.jpg", color: 'Pastel Blue' },
+      { id: 'new2', category: 'bottom', name: 'Wunder Train 25"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/736x/89/aa/5b/89aa5b59eca424ca4c471b154c9e62f3.jpg", color: 'Java' },
+      { id: 'new3', category: 'accessories', name: 'The Reversible Mat 5mm', price: convertProductPriceToCNY('$78'), image: "https://i.pinimg.com/1200x/65/bc/f5/65bcf532a6ab142b881357a9b5dd7232.jpg", color: 'Deep Coal' },
+  ]
+}
+
+
+export const mockWeeklyRhythmData = [
+  { name: 'Mon', value: 11 },
+  { name: 'Tue', value: 13 },
+  { name: 'Wed', value: 12 },
+  { name: 'Thu', value: 12 },
+  { name: 'Fri', value: 13 },
+  { name: 'Sat', value: 19 },
+  { name: 'Sun', value: 18 },
+];
 
 // Weather forecast mock data (10 days)
 export interface WeatherForecastDay {
