@@ -1,4 +1,4 @@
-// Today's Target Table Data
+// Today's Plan Table Data
 const USD_TO_CNY_RATE = 7.0865;
 const PRODUCT_PRICE_CONVERSION_RATE = 15.5; // More realistic pricing for products
 
@@ -104,20 +104,28 @@ export const mockDashboardData = {
   performanceSnapshot: {
     yesterday: {
       value: formatToCNY("$24,580"),
-      subtitle: "103% of target",
+      subtitle: "103% of plan",
       breakdown: {
         xstore: formatToCNY("$18,200"),
         omni: formatToCNY("$6,380")
       }
     },
     todayTarget: {
-      value: formatToCNY("$25,200"),
+      value: "¥131,100",
       subtitle: "+2.5% vs yesterday",
       breakdown: {
-        xstore: formatToCNY("$19,000"),
-        omni: formatToCNY("$6,200")
+        xstore: "¥98,825",
+        omni: "¥32,275"
       }
     },
+    wtd: {
+      value: "¥656,200",
+      subtitle: "102% to Plan",
+      breakdown: {
+        xstore: "¥492,000",
+        omni: "¥164,200"
+      }
+    }
   },
   metrics: {
     txn: {
@@ -159,21 +167,29 @@ export const mockDashboardData = {
   todayTargetDetail: {
     total: formatToCNY("$25,200"),
     currentProgress: formatToCNY("$18,500"),
-    morning: formatToCNY("$11,340"),
-    evening: formatToCNY("$13,860"),
+    morning: {
+      plan: formatToCNY("$11,340"),
+      actual: formatToCNY("$10,500"),
+      toPlanPercent: "93%"
+    },
+    evening: {
+      plan: formatToCNY("$13,860"),
+      actual: formatToCNY("$8,000"),
+      toPlanPercent: "58%"
+    },
     sparklineData: {
       morning: [8200, 8800, 9500, 10200, 10800, 11100, 11340].map(formatToCNYWithoutSymbol),
       evening: [9800, 10400, 11000, 11600, 12300, 13100, 13860].map(formatToCNYWithoutSymbol),
     },
-    // Today's target trend data (converted from table data)
+    // Today's plan trend data (converted from table data)
     // Each data point contains: netSalesAchieved, netSalesGoal, planAchieved, planGoal
     trendData: mockTargetTableData.map((row) => ({
       id: row.id,
       name: row.time,
       netSalesAchieved: row.netSales.achieve,
-      netSalesTarget: row.netSales.goal,
+      netSalesGoal: row.netSales.goal,
       planAchieved: row.plan.achieve,
-      planTarget: row.plan.goal,
+      planGoal: row.plan.goal,
     })),
     // Four lines with paired colors
     // Net Sales: wilderness (green) - achieved (dark), goal (light)
@@ -185,7 +201,7 @@ export const mockDashboardData = {
         color: "var(--hot-heat-4)",  // Deep green
       },
       {
-        dataKey: "netSalesTarget",
+        dataKey: "netSalesGoal",
         name: "Net Sales (Goal)",
         color: "var(--hot-heat-4)",  // Light green
         strokeDasharray: "5 5",
@@ -197,7 +213,7 @@ export const mockDashboardData = {
         color: "var(--daydream-3)",  // Deep blue
       },
       {
-        dataKey: "planTarget",
+        dataKey: "planGoal",
         name: "Plan (Goal)",
         color: "var(--daydream-3)",  // Light blue
         strokeDasharray: "5 5",
@@ -213,34 +229,11 @@ export interface SalesSummaryData {
 }
 
 export const mockSalesSummaryData: SalesSummaryData = {
-  summary: "Your store achieved 103% of yesterday's target with ¥174,225 in sales. Today's performance is tracking well with strong conversion rates in the afternoon."
+  summary: "Your store achieved 103% of yesterday's plan with ¥174,225 in sales. Today's performance is tracking well with strong conversion rates in the afternoon."
 };
 
-// Tips mock data (only keeping Critical Out-of-Stock and Overstock)
-export const mockTipsData = [
-  {
-    id: "out-of-stock-001",
-    category: "danger" as const,
-    label: "🔴 Critical Out-of-Stock (High Demand)",
-    variant: "danger",
-    items: [
-      { product: "Slim Fit Chino - Navy (32x32)", detail: "Reorder!" },
-      { product: "Oxford Shirt - White (M)", detail: "2 days lead" },
-      { product: "Leather Sneakers - White (9.5)", detail: "Popular size" },
-    ],
-  },
-  {
-    id: "overstock-001",
-    category: "warning" as const,
-    label: "🟡 Overstock Opportunities",
-    variant: "warning",
-    items: [
-      { product: "Winter Jacket - Black (XL)", detail: "18 pcs" },
-      { product: "Wool Scarf - Grey", detail: "25 pcs" },
-      { product: "Flannel Shirt - Red (S)", detail: "12 pcs" },
-    ],
-  },
-];
+// Tips mock data (removed Critical Out-of-Stock and Overstock as requested)
+export const mockTipsData: never[] = [];
 
 // Hot Sellers mock data
 export interface HotSellerProduct {
@@ -339,13 +332,13 @@ export const mockNewDropData: NewDropData = {
 
 
 export const mockWeeklyRhythmData = [
-  { name: 'Mon', value: 11 },
-  { name: 'Tue', value: 13 },
-  { name: 'Wed', value: 12 },
-  { name: 'Thu', value: 12 },
-  { name: 'Fri', value: 13 },
-  { name: 'Sat', value: 19 },
-  { name: 'Sun', value: 18 },
+  { name: 'Mon', value: 11, plan: formatToCNYWithoutSymbol(20000), actual: formatToCNYWithoutSymbol(22200) },
+  { name: 'Tue', value: 13, plan: formatToCNYWithoutSymbol(21000), actual: formatToCNYWithoutSymbol(23730) },
+  { name: 'Wed', value: 12, plan: formatToCNYWithoutSymbol(22000), actual: formatToCNYWithoutSymbol(24640) },
+  { name: 'Thu', value: 12, plan: formatToCNYWithoutSymbol(23000), actual: formatToCNYWithoutSymbol(25760) },
+  { name: 'Fri', value: 13, plan: formatToCNYWithoutSymbol(24000), actual: formatToCNYWithoutSymbol(27120) },
+  { name: 'Sat', value: 19, plan: formatToCNYWithoutSymbol(28000), actual: formatToCNYWithoutSymbol(33320) },
+  { name: 'Sun', value: 18, plan: formatToCNYWithoutSymbol(27000), actual: formatToCNYWithoutSymbol(31860) },
 ];
 
 // Weather forecast mock data (10 days)

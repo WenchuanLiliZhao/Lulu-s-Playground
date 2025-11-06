@@ -19,7 +19,7 @@
   right: 0;
   height: 64px;
   z-index: 100;
-  background: var(--color-bg-main);
+  background: var(--color-abssy);
   border-bottom: 1px solid var(--color-border-main);
   display: flex;
   align-items: center;
@@ -28,9 +28,9 @@
 }
 
 .content {
+  flex: 1;
   display: flex;
   margin-top: 64px;
-  height: calc(100vh - 64px);
   overflow: hidden;
 }
 
@@ -110,7 +110,7 @@
 
 .performanceSnapshot {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   // padding: 16px;
   // padding-top: 8px;
@@ -577,7 +577,7 @@
 
   .content {
     margin-top: 80px;
-    height: calc(100vh - 80px);
+    flex: 1;
   }
 
   .performanceSnapshot {

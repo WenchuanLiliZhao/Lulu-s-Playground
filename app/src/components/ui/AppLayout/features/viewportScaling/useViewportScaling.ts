@@ -5,7 +5,11 @@ import type { ViewportMode, ViewportScalingState } from '../types';
  * Custom hook for viewport scaling functionality
  * Handles responsive scaling and centering of content based on base dimensions
  */
-export const useViewportScaling = (viewportMode: ViewportMode) => {
+export const useViewportScaling = (
+  viewportMode: ViewportMode, 
+  enableFrame: boolean = false,
+  rulerSizes: [number, number, number, number] = [24, 24, 24, 24]
+) => {
   const [scale, setScale] = useState(1);
   const [windowSize, setWindowSize] = useState({ 
     width: window.innerWidth, 
@@ -29,9 +33,17 @@ export const useViewportScaling = (viewportMode: ViewportMode) => {
       // Update window size state
       setWindowSize({ width: windowWidth, height: windowHeight });
 
+      // Account for ruler sizes if frame is enabled
+      const [topSize, rightSize, bottomSize, leftSize] = rulerSizes;
+      const horizontalPadding = enableFrame ? (leftSize + rightSize) : 0;
+      const verticalPadding = enableFrame ? (topSize + bottomSize) : 0;
+
+      const availableWidth = windowWidth - horizontalPadding;
+      const availableHeight = windowHeight - verticalPadding;
+
       // Calculate scale based on the smaller ratio to maintain aspect ratio
-      const scaleX = windowWidth / baseWidth;
-      const scaleY = windowHeight / baseHeight;
+      const scaleX = availableWidth / baseWidth;
+      const scaleY = availableHeight / baseHeight;
       const newScale = Math.min(scaleX, scaleY);
 
       setScale(newScale);
@@ -53,7 +65,7 @@ export const useViewportScaling = (viewportMode: ViewportMode) => {
     return () => {
       window.removeEventListener('resize', updateScale);
     };
-  }, [viewportMode]);
+  }, [viewportMode, enableFrame, rulerSizes]);
 
   const isScaled = viewportMode !== "default";
 

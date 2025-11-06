@@ -1,10 +1,6 @@
 import { useState } from "react";
 import AppLayout from "../../../../components/ui/AppLayout";
 import type { PageProps } from "../../../_page-types";
-import {
-  RichText,
-  type RichTextContent,
-} from "../../../../components/ui/RichText";
 import { WeatherWidget } from "../../../../components/ui/WeatherWidget";
 import { Card } from "../../../../components/ui/Card";
 import { MetricWidget } from "../../../../components/ui/forDashboard/MetricWidget";
@@ -19,7 +15,6 @@ import {
   type TargetTableRow,
   mockNavigationData,
   mockDashboardData,
-  mockTipsData,
   mockSalesSummaryData,
   mockHotSellersData,
   mockGuestBuyingOtherStoresData,
@@ -124,6 +119,25 @@ const JingjingOnePageV0 = () => {
           ]}
           // statusColor="var(--color-semantic-success)"
         />
+        <MetricWidget
+          icon="calendar_today"
+          title="WTD"
+          value={mockDashboardData.performanceSnapshot.wtd.value}
+          statusText={mockDashboardData.performanceSnapshot.wtd.subtitle}
+          statusColor="success"
+          breakdown={[
+            {
+              label: "XStore",
+              value:
+                mockDashboardData.performanceSnapshot.wtd.breakdown.xstore,
+            },
+            {
+              label: "Omni",
+              value:
+                mockDashboardData.performanceSnapshot.wtd.breakdown.omni,
+            },
+          ]}
+        />
       </div>
     </DashboardWidgetFrame>
   );
@@ -212,14 +226,14 @@ const JingjingOnePageV0 = () => {
       },
       {
         key: "plan",
-        header: "Plan",
+        header: "Hourly Fcst",
         render: (row) => `¥${row.plan.achieve.toLocaleString()}`,
         width: "120px",
         align: "left",
       },
       {
         key: "progress",
-        header: "Progress",
+        header: "to Plan%",
         render: (row) => {
           const totalAchieve = row.netSales.achieve + row.plan.achieve;
           const totalGoal = row.netSales.goal + row.plan.goal;
@@ -251,7 +265,7 @@ const JingjingOnePageV0 = () => {
             showHeader={true}
             headerTitle={
               <div className={styles.targetDetailHeader}>
-                <h2 className={styles.targetDetailTitle}>Today's Target</h2>
+                <h2 className={styles.targetDetailTitle}>Today's Plan</h2>
                 <p className={styles.targetDetailSubtitle}>
                   {mockDashboardData.todayTargetDetail.currentProgress}{" "}
                   <span className={styles.targetDetailSubtitleSeparator}>
@@ -282,7 +296,7 @@ const JingjingOnePageV0 = () => {
               showYAxis: true,
             }}
             onModeChange={(mode) => {
-              console.log(`Today's Target view switched to: ${mode}`);
+              console.log(`Today's Plan view switched to: ${mode}`);
             }}
           />
         </div>
@@ -297,16 +311,16 @@ const JingjingOnePageV0 = () => {
           <MetricWidget
             icon="wb_twilight"
             title="Morning Plan"
-            value={mockDashboardData.todayTargetDetail.morning}
-            statusText="45% of total"
+            value={mockDashboardData.todayTargetDetail.morning.plan}
+            statusText={`Actual: ${mockDashboardData.todayTargetDetail.morning.actual} • to Plan: ${mockDashboardData.todayTargetDetail.morning.toPlanPercent}`}
             statusColor="neutral"
             // sparklineData={mockDashboardData.todayTargetDetail.sparklineData.morning}
           />
           <MetricWidget
             icon="nights_stay"
             title="Evening Plan"
-            value={mockDashboardData.todayTargetDetail.evening}
-            statusText="55% of total"
+            value={mockDashboardData.todayTargetDetail.evening.plan}
+            statusText={`Actual: ${mockDashboardData.todayTargetDetail.evening.actual} • to Plan: ${mockDashboardData.todayTargetDetail.evening.toPlanPercent}`}
             statusColor="neutral"
           />
         </div>
@@ -359,7 +373,7 @@ const JingjingOnePageV0 = () => {
         yAxisTickFormatter={(value) => `${value}%`}
         positiveColor="var(--wilderness-4)"
         showLabels={true}
-        labelFormatter={(value) => `${value > 0 ? '+' : ''}${value}%`}
+        labelFormatter={(value) => `${value}%`}
         barSize={40}  // 块块宽度：40px
         labelFontSize={12}  // 标签字号：12px
       />
@@ -368,45 +382,7 @@ const JingjingOnePageV0 = () => {
   );
 
   // TODO: Phase 6 - Extract to TipCard component
-  // - Accept props: TipCard
-  // - Category determines border color from design system
-  // TODO: Phase 6 - Extract to BlockRenderer system
-  // - Dispatches to ParagraphBlock, ProductCardBlock, ListBlock
-  const renderTipCard = (tip: (typeof mockTipsData)[0]) => {
-    const variant: "default" | "info" | "warning" | "danger" =
-      (tip as { variant?: "default" | "info" | "warning" | "danger" })
-        .variant ?? "default";
-
-    return (
-      <Card
-        key={tip.id}
-        header={<h3 className={styles.tipCardHeader}>{tip.label}</h3>}
-        body={
-          <div className={styles.tipCardBody}>
-            {"body" in tip && tip.body ? (
-              <RichText content={tip.body as RichTextContent[]} />
-            ) : "items" in tip && tip.items ? (
-              <div className={styles.inventoryList}>
-                {tip.items.map((item, idx) => (
-                  <div key={idx} className={styles.inventoryItem}>
-                    <span className={styles.inventoryProduct}>
-                      {item.product}
-                    </span>
-                    <span className={styles.inventoryDetail}>
-                      {item.detail}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            ) : null}
-          </div>
-        }
-        variant={variant}
-        borderPosition="left"
-        className={styles.tipCard}
-      />
-    );
-  };
+  // Removed: renderTipCard function (no longer needed as mockTipsData is empty)
 
   // Render Sales Summary Block
   const renderSalesSummaryBlock = () => (
@@ -470,7 +446,7 @@ const JingjingOnePageV0 = () => {
                     <span className={styles.hotSellersMetricSeparator}>•</span>
                     <span className={styles.hotSellersMetricItem}>
                       <span className={styles.hotSellersMetricLabel}>
-                        Stock:
+                        Inventory:
                       </span>
                       <span className={styles.hotSellersMetricValue}>
                         {product.inventory}
@@ -533,7 +509,7 @@ const JingjingOnePageV0 = () => {
   // TODO: Phase 4 - Extract to TipsSection component
   const renderTips = () => (
     <div className={styles.tipsSection}>
-      <h2 className={styles.tipsSectionTitle}>Actionable Tips</h2>
+      <h2 className={styles.tipsSectionTitle}>Tips</h2>
       {/* 1. Sales Summary */}
       {renderSalesSummaryBlock()}
       {/* 2. Hot Sellers */}
@@ -559,9 +535,7 @@ const JingjingOnePageV0 = () => {
         mockNewDropData,
         "default"
       )}
-      {/* 6. Critical Out-of-Stock (High Demand) */}
-      {/* 7. Overstock Opportunities */}
-      {mockTipsData.map((tip) => renderTipCard(tip))}
+      {/* Removed: Critical Out-of-Stock (High Demand) and Overstock Opportunities */}
     </div>
   );
 
@@ -588,7 +562,13 @@ const JingjingOnePage_V0: PageProps = {
   title: "JingJing One Page V0",
   slug: "jingjing-one-page-v0",
   content: (
-    <AppLayout isTesting={true} viewportMode={"default"}>
+    <AppLayout 
+      isTesting={true} 
+      viewportMode={["scaled-from", 1920, 1080]}
+      enableFrame={true}
+      rulerSizes={[64, 64, 64, 64]}
+      frameBackground="var(--color-abssy)"
+    >
       <JingjingOnePageV0 />
     </AppLayout>
   ),
