@@ -9,10 +9,10 @@ import { WeatherWidget } from "../../../../components/ui/WeatherWidget";
 import { Card } from "../../../../components/ui/Card";
 import { MetricWidget } from "../../../../components/ui/forDashboard/MetricWidget";
 import { SwitchableDataWidget } from "../../../../components/ui/forDashboard/SwitchableDataWidget";
-import { IconButton } from "../../../../components/ui/IconButton";
 import { Switch } from "../../../../components/ui/Switch";
 import { WaterfallChart } from "../../../../components/ui/forDashboard/WaterfallChart";
 import { ColumnChart } from "../../../../components/ui/forDashboard/ColumnChart";
+import { FloatingActionButton } from "../../../../components/ui/FloatingActionButton";
 import type { TableColumn } from "../../../../components/ui/Table";
 import {
   mockTargetTableData,
@@ -64,12 +64,6 @@ const JingjingOnePageV0 = () => {
           condition={mockNavigationData.weather.condition}
           temperature={mockNavigationData.weather.temperature}
           size="medium"
-        />
-        <IconButton
-          icon="smart_toy"
-          variant="ghost"
-          size="medium"
-          onClick={() => alert("AI assistant clicked!")}
         />
       </div>
     </div>
@@ -581,6 +575,11 @@ const JingjingOnePageV0 = () => {
         {renderDashboard()}
         {renderTips()}
       </div>
+      <FloatingActionButton
+        icon="smart_toy"
+        onClick={() => alert("AI assistant clicked!")}
+        tooltip="AI Assistant"
+      />
     </div>
   );
 };
