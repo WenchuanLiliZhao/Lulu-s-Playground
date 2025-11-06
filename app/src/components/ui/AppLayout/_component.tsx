@@ -13,12 +13,14 @@ export interface AppLayoutProps {
   children: React.ReactNode;
   isTesting?: boolean;
   viewportMode?: ViewportMode;
+  className?: string;
 }
 
 export const AppLayout: React.FC<AppLayoutProps> = ({
   children,
   isTesting = false,
   viewportMode = "default",
+  className = "",
 }) => {
   // Viewport scaling feature
   const { state: scalingState, contentRef } = useViewportScaling(viewportMode);
@@ -38,7 +40,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
   const scaledViewportMode = isScaled ? (viewportMode as ["scaled-from", number, number]) : null;
 
   return (
-    <div className={`${styles["lulu-layout"]} ${isScaled ? styles["scaled"] : ''}`}>
+    <div className={`${styles["lulu-layout"]} ${isScaled ? styles["scaled"] : ''} ${className}`}>
       {isScaled && scaledViewportMode ? (
         <div 
           ref={contentRef} 

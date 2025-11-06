@@ -1,6 +1,9 @@
 import AppLayout from "../../../../components/ui/AppLayout";
 import type { PageProps } from "../../../_page-types";
-import { RichText, type RichTextContent } from "../../../../components/ui/RichText";
+import {
+  RichText,
+  type RichTextContent,
+} from "../../../../components/ui/RichText";
 import { WeatherWidget } from "../../../../components/ui/WeatherWidget";
 import { Card } from "../../../../components/ui/Card";
 import { MetricWidget } from "../../../../components/ui/forDashboard/MetricWidget";
@@ -76,8 +79,17 @@ const JingjingOnePageV0 = () => {
           statusText={mockDashboardData.performanceSnapshot.yesterday.subtitle}
           statusColor="success"
           breakdown={[
-            { label: "XStore", value: mockDashboardData.performanceSnapshot.yesterday.breakdown.xstore },
-            { label: "Omni", value: mockDashboardData.performanceSnapshot.yesterday.breakdown.omni }
+            {
+              label: "XStore",
+              value:
+                mockDashboardData.performanceSnapshot.yesterday.breakdown
+                  .xstore,
+            },
+            {
+              label: "Omni",
+              value:
+                mockDashboardData.performanceSnapshot.yesterday.breakdown.omni,
+            },
           ]}
           // statusColor="var(--color-semantic-success)"
         />
@@ -90,8 +102,18 @@ const JingjingOnePageV0 = () => {
           }
           statusColor="warning"
           breakdown={[
-            { label: "XStore", value: mockDashboardData.performanceSnapshot.todayTarget.breakdown.xstore },
-            { label: "Omni", value: mockDashboardData.performanceSnapshot.todayTarget.breakdown.omni }
+            {
+              label: "XStore",
+              value:
+                mockDashboardData.performanceSnapshot.todayTarget.breakdown
+                  .xstore,
+            },
+            {
+              label: "Omni",
+              value:
+                mockDashboardData.performanceSnapshot.todayTarget.breakdown
+                  .omni,
+            },
           ]}
           // statusColor="var(--color-semantic-success)"
         />
@@ -143,7 +165,9 @@ const JingjingOnePageV0 = () => {
           title={mockDashboardData.metrics.transaction.label}
           value={mockDashboardData.metrics.transaction.value}
           statusText={mockDashboardData.metrics.transaction.statusLabel}
-          statusColor={mapStatusColor(mockDashboardData.metrics.transaction.status)}
+          statusColor={mapStatusColor(
+            mockDashboardData.metrics.transaction.status
+          )}
           centered={true}
         />
         <MetricWidget
@@ -175,7 +199,10 @@ const JingjingOnePageV0 = () => {
             label: "Low CR",
             value: `${mockDashboardData.peakHours.lowCR.time} (${mockDashboardData.peakHours.lowCR.rate})`,
           },
-          { label: "Rush Hours (Traffic)", value: `${mockDashboardData.peakHours.rushHours.time} (${mockDashboardData.peakHours.rushHours.rate})` },
+          {
+            label: "Rush Hours (Traffic)",
+            value: `${mockDashboardData.peakHours.rushHours.time} (${mockDashboardData.peakHours.rushHours.rate})`,
+          },
         ]}
       />
       <InfoPanelWidget
@@ -212,14 +239,14 @@ const JingjingOnePageV0 = () => {
       {
         key: "netSales",
         header: "Net Sales",
-        render: (row) => `$${row.netSales.achieve.toLocaleString()}`,
+        render: (row) => `¥${row.netSales.achieve.toLocaleString()}`,
         width: "120px",
         align: "left",
       },
       {
         key: "plan",
         header: "Plan",
-        render: (row) => `$${row.plan.achieve.toLocaleString()}`,
+        render: (row) => `¥${row.plan.achieve.toLocaleString()}`,
         width: "120px",
         align: "left",
       },
@@ -229,7 +256,8 @@ const JingjingOnePageV0 = () => {
         render: (row) => {
           const totalAchieve = row.netSales.achieve + row.plan.achieve;
           const totalGoal = row.netSales.goal + row.plan.goal;
-          const progress = totalGoal > 0 ? Math.round((totalAchieve / totalGoal) * 100) : 0;
+          const progress =
+            totalGoal > 0 ? Math.round((totalAchieve / totalGoal) * 100) : 0;
 
           const progressStyle = {
             color:
@@ -287,7 +315,7 @@ const JingjingOnePageV0 = () => {
               showYAxis: true,
             }}
             onModeChange={(mode) => {
-              console.log(`Today's Target view switched to: ${mode}`)
+              console.log(`Today's Target view switched to: ${mode}`);
             }}
           />
         </div>
@@ -323,11 +351,11 @@ const JingjingOnePageV0 = () => {
   const renderWeatherForecast = () => {
     // Temperature-based color mappings using design system colors
     const temperatureColorMappings = [
-      { threshold: 0, color: 'var(--cyan-4)' },       // Freezing (≤0°C) - cold blue
-      { threshold: 10, color: 'var(--daydream-4)' },  // Cold (≤10°C) - light blue
-      { threshold: 15, color: 'var(--wilderness-4)' }, // Cool (≤15°C) - green
-      { threshold: 20, color: 'var(--amber-4)' },     // Mild (≤20°C) - amber
-      { threshold: 100, color: 'var(--hot-heat-4)' }, // Warm (>20°C) - red
+      { threshold: 0, color: "var(--cyan-4)" }, // Freezing (≤0°C) - cold blue
+      { threshold: 10, color: "var(--daydream-4)" }, // Cold (≤10°C) - light blue
+      { threshold: 15, color: "var(--wilderness-4)" }, // Cool (≤15°C) - green
+      { threshold: 20, color: "var(--amber-4)" }, // Mild (≤20°C) - amber
+      { threshold: 100, color: "var(--hot-heat-4)" }, // Warm (>20°C) - red
     ];
 
     return (
@@ -366,7 +394,8 @@ const JingjingOnePageV0 = () => {
   // - Dispatches to ParagraphBlock, ProductCardBlock, ListBlock
   const renderTipCard = (tip: (typeof mockTipsData)[0]) => {
     const variant: "default" | "info" | "warning" | "danger" =
-      (tip as { variant?: "default" | "info" | "warning" | "danger" }).variant ?? "default";
+      (tip as { variant?: "default" | "info" | "warning" | "danger" })
+        .variant ?? "default";
 
     return (
       <Card
@@ -426,23 +455,29 @@ const JingjingOnePageV0 = () => {
             <div key={product.id} className={styles.hotSellersItem}>
               <div className={styles.hotSellersRank}>#{index + 1}</div>
               <div className={styles.hotSellersImage}>
-                <img 
-                  src={product.image} 
+                <img
+                  src={product.image}
                   alt={product.productName}
                   className={styles.hotSellersImageImg}
                 />
               </div>
               <div className={styles.hotSellersInfo}>
-                <div className={styles.hotSellersName}>{product.productName}</div>
+                <div className={styles.hotSellersName}>
+                  {product.productName}
+                </div>
                 <div className={styles.hotSellersMetrics}>
                   <span className={styles.hotSellersMetricItem}>
                     <span className={styles.hotSellersMetricLabel}>Sold:</span>
-                    <span className={styles.hotSellersMetricValue}>{product.unitsSold}</span>
+                    <span className={styles.hotSellersMetricValue}>
+                      {product.unitsSold}
+                    </span>
                   </span>
                   <span className={styles.hotSellersMetricSeparator}>•</span>
                   <span className={styles.hotSellersMetricItem}>
                     <span className={styles.hotSellersMetricLabel}>Stock:</span>
-                    <span className={styles.hotSellersMetricValue}>{product.inventory}</span>
+                    <span className={styles.hotSellersMetricValue}>
+                      {product.inventory}
+                    </span>
                   </span>
                 </div>
               </div>
@@ -459,7 +494,9 @@ const JingjingOnePageV0 = () => {
   // Render Cross Selling Opportunities Block
   const renderCrossSellingBlock = () => (
     <Card
-      header={<h3 className={styles.tipCardHeader}>🎨 Cross Selling Opportunities</h3>}
+      header={
+        <h3 className={styles.tipCardHeader}>🎨 Cross Selling Opportunities</h3>
+      }
       body={
         <div className={styles.recommendationSetsContainer}>
           {mockCrossSellingData.map((set) => (
@@ -470,15 +507,16 @@ const JingjingOnePageV0 = () => {
                 {set.products.map((product) => (
                   <div key={product.id} className={styles.productCard}>
                     <div className={styles.productImage}>
-                      <img 
-                        src={product.image} 
+                      <img
+                        src={product.image}
                         alt={product.name}
                         className={styles.productImageImg}
                       />
                     </div>
                     <div className={styles.productInfo}>
                       <div className={styles.productCategory}>
-                        {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                        {product.category.charAt(0).toUpperCase() +
+                          product.category.slice(1)}
                       </div>
                       <div className={styles.productName}>{product.name}</div>
                       <div className={styles.productColor}>{product.color}</div>
@@ -500,7 +538,9 @@ const JingjingOnePageV0 = () => {
   // Render Product Opportunities Block
   const renderProductOpportunitiesBlock = () => (
     <Card
-      header={<h3 className={styles.tipCardHeader}>💡 Product Opportunities</h3>}
+      header={
+        <h3 className={styles.tipCardHeader}>💡 Product Opportunities</h3>
+      }
       body={
         <div className={styles.singleOpportunityContainer}>
           <p className={styles.opportunityIntro}>
@@ -510,15 +550,16 @@ const JingjingOnePageV0 = () => {
             {mockProductOpportunitiesData.products.map((product) => (
               <div key={product.id} className={styles.productCard}>
                 <div className={styles.productImage}>
-                  <img 
-                    src={product.image} 
+                  <img
+                    src={product.image}
                     alt={product.name}
                     className={styles.productImageImg}
                   />
                 </div>
                 <div className={styles.productInfo}>
                   <div className={styles.productCategory}>
-                    {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                    {product.category.charAt(0).toUpperCase() +
+                      product.category.slice(1)}
                   </div>
                   <div className={styles.productName}>{product.name}</div>
                   <div className={styles.productColor}>{product.color}</div>
@@ -538,7 +579,11 @@ const JingjingOnePageV0 = () => {
   // Render Stockout but Wecom Opportunities Block
   const renderStockoutWecomBlock = () => (
     <Card
-      header={<h3 className={styles.tipCardHeader}>💬 Stockout but Wecom Opportunities</h3>}
+      header={
+        <h3 className={styles.tipCardHeader}>
+          💬 Stockout but Wecom Opportunities
+        </h3>
+      }
       body={
         <div className={styles.singleOpportunityContainer}>
           <p className={styles.opportunityIntro}>
@@ -548,15 +593,16 @@ const JingjingOnePageV0 = () => {
             {mockStockoutWecomData.products.map((product) => (
               <div key={product.id} className={styles.productCard}>
                 <div className={styles.productImage}>
-                  <img 
-                    src={product.image} 
+                  <img
+                    src={product.image}
                     alt={product.name}
                     className={styles.productImageImg}
                   />
                 </div>
                 <div className={styles.productInfo}>
                   <div className={styles.productCategory}>
-                    {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                    {product.category.charAt(0).toUpperCase() +
+                      product.category.slice(1)}
                   </div>
                   <div className={styles.productName}>{product.name}</div>
                   <div className={styles.productColor}>{product.color}</div>

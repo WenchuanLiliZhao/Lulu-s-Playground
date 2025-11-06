@@ -1,4 +1,30 @@
 // Today's Target Table Data
+const USD_TO_CNY_RATE = 7.0865;
+const PRODUCT_PRICE_CONVERSION_RATE = 15.5; // More realistic pricing for products
+
+const convertToCNY = (value: number | string): number => {
+  if (typeof value === 'string') {
+    const numberValue = parseFloat(value.replace(/[^0-9.-]+/g,""));
+    return Math.round(numberValue * USD_TO_CNY_RATE);
+  }
+  return Math.round(value * USD_TO_CNY_RATE);
+};
+
+const formatToCNY = (value: number | string): string => {
+  const cnyValue = convertToCNY(value);
+  return `¥${cnyValue.toLocaleString('zh-CN')}`;
+};
+
+const formatToCNYWithoutSymbol = (value: number | string): number => {
+    return convertToCNY(value)
+}
+
+const convertProductPriceToCNY = (value: string): string => {
+  const numberValue = parseFloat(value.replace(/[^0-9.-]+/g,""));
+  const cnyValue = Math.round(numberValue * PRODUCT_PRICE_CONVERSION_RATE);
+  return `¥${cnyValue.toLocaleString('zh-CN')}`;
+};
+
 export interface TargetTableRow {
   id: string;
   time: string;
@@ -17,36 +43,36 @@ export const mockTargetTableData: TargetTableRow[] = [
   {
     id: "h10-12",
     time: "10:00 ~ 12:00",
-    netSales: { achieve: 2800, goal: 4200 },
-    plan: { achieve: 3200, goal: 3400 },
+    netSales: { achieve: formatToCNYWithoutSymbol(2800), goal: formatToCNYWithoutSymbol(4200) },
+    plan: { achieve: formatToCNYWithoutSymbol(3200), goal: formatToCNYWithoutSymbol(3400) },
     status: "warning",
   },
   {
     id: "h12-14",
     time: "12:00 ~ 14:00",
-    netSales: { achieve: 5200, goal: 6800 },
-    plan: { achieve: 4800, goal: 4500 },
+    netSales: { achieve: formatToCNYWithoutSymbol(5200), goal: formatToCNYWithoutSymbol(6800) },
+    plan: { achieve: formatToCNYWithoutSymbol(4800), goal: formatToCNYWithoutSymbol(4500) },
     status: "success",
   },
   {
     id: "h14-16",
     time: "14:00 ~ 16:00",
-    netSales: { achieve: 3500, goal: 4200 },
-    plan: { achieve: 4200, goal: 4000 },
+    netSales: { achieve: formatToCNYWithoutSymbol(3500), goal: formatToCNYWithoutSymbol(4200) },
+    plan: { achieve: formatToCNYWithoutSymbol(4200), goal: formatToCNYWithoutSymbol(4000) },
     status: "error",
   },
   {
     id: "h16-18",
     time: "16:00 ~ 18:00",
-    netSales: { achieve: 6100, goal: 6000 },
-    plan: { achieve: 6000, goal: 5800 },
+    netSales: { achieve: formatToCNYWithoutSymbol(6100), goal: formatToCNYWithoutSymbol(6000) },
+    plan: { achieve: formatToCNYWithoutSymbol(6000), goal: formatToCNYWithoutSymbol(5800) },
     status: "success",
   },
   {
     id: "h18-20",
     time: "18:00 ~ 20:00",
-    netSales: { achieve: 4800, goal: 5300 },
-    plan: { achieve: 5300, goal: 5500 },
+    netSales: { achieve: formatToCNYWithoutSymbol(4800), goal: formatToCNYWithoutSymbol(5300) },
+    plan: { achieve: formatToCNYWithoutSymbol(5300), goal: formatToCNYWithoutSymbol(5500) },
     status: "warning",
   },
 ];
@@ -77,19 +103,19 @@ export const mockNavigationData: NavigationData = {
 export const mockDashboardData = {
   performanceSnapshot: {
     yesterday: {
-      value: "$24,580",
+      value: formatToCNY("$24,580"),
       subtitle: "103% of target",
       breakdown: {
-        xstore: "$18,200",
-        omni: "$6,380"
+        xstore: formatToCNY("$18,200"),
+        omni: formatToCNY("$6,380")
       }
     },
     todayTarget: {
-      value: "$25,200",
+      value: formatToCNY("$25,200"),
       subtitle: "+2.5% vs yesterday",
       breakdown: {
-        xstore: "$19,000",
-        omni: "$6,200"
+        xstore: formatToCNY("$19,000"),
+        omni: formatToCNY("$6,200")
       }
     },
   },
@@ -110,10 +136,10 @@ export const mockDashboardData = {
     },
     aur: {
       label: "AUR",
-      value: "$105",
+      value: convertProductPriceToCNY("$105"),
       status: "danger" as const,
       statusLabel: "↓ Below",
-      sparklineData: [115, 112, 110, 108, 107, 105, 103, 105],
+      sparklineData: [115, 112, 110, 108, 107, 105, 103, 105].map(formatToCNYWithoutSymbol),
     },
     transaction: {
       label: "Traffic",
@@ -142,13 +168,13 @@ export const mockDashboardData = {
     // ftw: { percentage: "2%", trend: "+2%" },
   },
   todayTargetDetail: {
-    total: "$25,200",
-    currentProgress: "$18,500",
-    morning: "$11,340",
-    evening: "$13,860",
+    total: formatToCNY("$25,200"),
+    currentProgress: formatToCNY("$18,500"),
+    morning: formatToCNY("$11,340"),
+    evening: formatToCNY("$13,860"),
     sparklineData: {
-      morning: [8200, 8800, 9500, 10200, 10800, 11100, 11340],
-      evening: [9800, 10400, 11000, 11600, 12300, 13100, 13860],
+      morning: [8200, 8800, 9500, 10200, 10800, 11100, 11340].map(formatToCNYWithoutSymbol),
+      evening: [9800, 10400, 11000, 11600, 12300, 13100, 13860].map(formatToCNYWithoutSymbol),
     },
     // Today's target trend data (converted from table data)
     // Each data point contains: netSalesAchieved, netSalesGoal, planAchieved, planGoal
@@ -198,7 +224,7 @@ export interface SalesSummaryData {
 }
 
 export const mockSalesSummaryData: SalesSummaryData = {
-  summary: "Your store achieved 103% of yesterday's target with $24,580 in sales. Today's performance is tracking well with strong conversion rates in the afternoon."
+  summary: "Your store achieved 103% of yesterday's target with ¥174,225 in sales. Today's performance is tracking well with strong conversion rates in the afternoon."
 };
 
 // Tips mock data (only keeping Critical Out-of-Stock and Overstock)
@@ -238,6 +264,10 @@ export interface HotSellerProduct {
 
 const DEFAULT_PRODUCT_IMAGE = 'https://i.pinimg.com/1200x/4a/98/d4/4a98d46259a02433b2715d411eda4fe8.jpg';
 
+if (DEFAULT_PRODUCT_IMAGE) {
+  console.log('DEFAULT_PRODUCT_IMAGE Testing');
+}
+
 export const mockHotSellersData: HotSellerProduct[] = [
   { id: 'prod1', productName: 'Align High-Rise Pant 25"', image: "https://i.pinimg.com/1200x/dd/18/4b/dd184bfd9d8bf57a68024d67d8d7b72b.jpg", unitsSold: 45, inventory: 28 },
   { id: 'prod2', productName: 'Define Jacket', image: "https://i.pinimg.com/736x/dd/f6/20/ddf62093da84fdb8b1c482a3d4f0d240.jpg", unitsSold: 38, inventory: 15 },
@@ -269,9 +299,9 @@ export const mockCrossSellingData: RecommendationSet[] = [
     title: 'Workout Ready',
     description: 'Complete athletic outfit for high-performance training sessions.',
     products: [
-      { id: 'prod1', category: 'top', name: 'Swiftly Tech SS 2.0', price: '$68', image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", color: 'Black' },
-      { id: 'prod2', category: 'bottom', name: 'Fast and Free 25"', price: '$128', image: "https://i.pinimg.com/1200x/ec/52/4e/ec524e67e67a7f39a0e081100ad5a1eb.jpg", color: 'Navy' },
-      { id: 'prod3', category: 'shoes', name: 'Blissfeel Running Shoe', price: '$148', image: "https://i.pinimg.com/1200x/39/be/4b/39be4bdcfe074b073e98f4eb4ef62d53.jpg", color: 'White' },
+      { id: 'prod1', category: 'top', name: 'Swiftly Tech SS 2.0', price: convertProductPriceToCNY('$68'), image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", color: 'Black' },
+      { id: 'prod2', category: 'bottom', name: 'Fast and Free 25"', price: convertProductPriceToCNY('$128'), image: "https://i.pinimg.com/1200x/ec/52/4e/ec524e67e67a7f39a0e081100ad5a1eb.jpg", color: 'Navy' },
+      { id: 'prod3', category: 'shoes', name: 'Blissfeel Running Shoe', price: convertProductPriceToCNY('$148'), image: "https://i.pinimg.com/1200x/39/be/4b/39be4bdcfe074b073e98f4eb4ef62d53.jpg", color: 'White' },
     ]
   },
   {
@@ -279,9 +309,9 @@ export const mockCrossSellingData: RecommendationSet[] = [
     title: 'Casual Comfort',
     description: 'Effortless everyday style with maximum comfort.',
     products: [
-      { id: 'prod4', category: 'top', name: 'Scuba Hoodie', price: '$118', image: DEFAULT_PRODUCT_IMAGE, color: 'Heathered Grey' },
-      { id: 'prod5', category: 'bottom', name: 'Align HR 28"', price: '$98', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
-      { id: 'prod6', category: 'accessories', name: 'Everywhere Belt Bag', price: '$38', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
+      { id: 'prod4', category: 'top', name: 'Scuba Hoodie', price: convertProductPriceToCNY('$118'), image: "https://i.pinimg.com/1200x/0f/1d/09/0f1d098c3826bc7303dfb4b188ef1960.jpg", color: 'Heathered Grey' },
+      { id: 'prod5', category: 'bottom', name: 'Align HR 28"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/736x/e7/ac/98/e7ac98956174907395fbf25efd14c66a.jpg", color: 'Black' },
+      { id: 'prod6', category: 'accessories', name: 'Everywhere Belt Bag', price: convertProductPriceToCNY('$38'), image: "https://i.pinimg.com/1200x/18/76/7a/18767aee1d050a6d4724b2adbd841414.jpg", color: 'Black' },
     ]
   },
   {
@@ -289,9 +319,9 @@ export const mockCrossSellingData: RecommendationSet[] = [
     title: 'Yoga Essentials',
     description: 'Perfect combination for mindful movement and stretching.',
     products: [
-      { id: 'prod7', category: 'top', name: 'Align Tank', price: '$58', image: DEFAULT_PRODUCT_IMAGE, color: 'White' },
-      { id: 'prod8', category: 'bottom', name: 'Wunder Under 28"', price: '$98', image: DEFAULT_PRODUCT_IMAGE, color: 'Deep Coal' },
-      { id: 'prod9', category: 'accessories', name: 'The Reversible Mat 5mm', price: '$78', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
+      { id: 'prod7', category: 'top', name: 'Align Tank', price: convertProductPriceToCNY('$58'), image: "https://i.pinimg.com/1200x/ec/9e/6a/ec9e6a176239a5f95addb01b076a7197.jpg", color: 'White' },
+      { id: 'prod8', category: 'bottom', name: 'Wunder Under 28"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/736x/78/cb/c3/78cbc326fc6248259b0dbee7b255761a.jpg", color: 'Deep Coal' },
+      { id: 'prod9', category: 'accessories', name: 'The Reversible Mat 5mm', price: convertProductPriceToCNY('$78'), image: "https://i.pinimg.com/1200x/4c/87/48/4c87488385340181b1fcd69456808967.jpg", color: 'Black' },
     ]
   }
 ];
@@ -305,12 +335,12 @@ export interface ProductOpportunityData {
 export const mockProductOpportunitiesData: ProductOpportunityData = {
   introduction: "Trending now: Athleisure wear is in high demand this season. Focus on versatile pieces that transition from workout to casual wear.",
   products: [
-    { id: 'opp1', category: 'top', name: 'Define Jacket', price: '$118', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
-    { id: 'opp2', category: 'bottom', name: 'Align High-Rise Pant 28"', price: '$98', image: DEFAULT_PRODUCT_IMAGE, color: 'Navy' },
-    { id: 'opp3', category: 'top', name: 'Scuba Hoodie', price: '$118', image: DEFAULT_PRODUCT_IMAGE, color: 'Heathered Grey' },
-    { id: 'opp4', category: 'accessories', name: 'Everywhere Belt Bag', price: '$38', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
-    { id: 'opp5', category: 'bottom', name: 'Wunder Train 25"', price: '$98', image: DEFAULT_PRODUCT_IMAGE, color: 'Dark Olive' },
-    { id: 'opp6', category: 'accessories', name: 'Light Locks Scrunchie', price: '$18', image: DEFAULT_PRODUCT_IMAGE, color: 'Assorted' },
+    { id: 'opp1', category: 'top', name: 'Define Jacket', price: convertProductPriceToCNY('$118'), image: "https://i.pinimg.com/1200x/47/0e/a9/470ea92e55a90a618d3229fe05a96bd6.jpg", color: 'Black' },
+    { id: 'opp2', category: 'bottom', name: 'Align High-Rise Pant 28"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/1200x/7b/aa/77/7baa7728cb321612720793c86318da82.jpg", color: 'Navy' },
+    { id: 'opp3', category: 'top', name: 'Scuba Hoodie', price: convertProductPriceToCNY('$118'), image: "https://i.pinimg.com/736x/0e/92/67/0e9267cd8c4c97fecf02cdea091f2302.jpg", color: 'Heathered Grey' },
+    { id: 'opp4', category: 'accessories', name: 'Everywhere Belt Bag', price: convertProductPriceToCNY('$38'), image: "https://i.pinimg.com/1200x/c2/73/9b/c2739bab7682ff375ec6d6180c735650.jpg", color: 'Black' },
+    { id: 'opp5', category: 'bottom', name: 'Wunder Train 25"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/736x/89/aa/5b/89aa5b59eca424ca4c471b154c9e62f3.jpg", color: 'Dark Olive' },
+    { id: 'opp6', category: 'accessories', name: 'Light Locks Scrunchie', price: convertProductPriceToCNY('$18'), image: "https://i.pinimg.com/736x/b0/c7/c3/b0c7c3e0518e74ca500850a62313248d.jpg", color: 'Assorted' },
   ]
 };
 
@@ -323,10 +353,10 @@ export interface StockoutWecomData {
 export const mockStockoutWecomData: StockoutWecomData = {
   introduction: "These popular items are out of stock in-store, but available through WeChat for customer orders. Great opportunity to connect digitally!",
   products: [
-    { id: 'wecom1', category: 'top', name: 'All Yours Tee', price: '$58', image: DEFAULT_PRODUCT_IMAGE, color: 'White' },
-    { id: 'wecom2', category: 'bottom', name: 'Fast and Free 23"', price: '$128', image: DEFAULT_PRODUCT_IMAGE, color: 'Black' },
-    { id: 'wecom3', category: 'shoes', name: 'Chargefeel Running Shoe', price: '$158', image: DEFAULT_PRODUCT_IMAGE, color: 'White/Silver' },
-    { id: 'wecom4', category: 'accessories', name: 'The Reversible Mat 5mm', price: '$78', image: DEFAULT_PRODUCT_IMAGE, color: 'Deep Coal' },
+    { id: 'wecom1', category: 'top', name: 'All Yours Tee', price: convertProductPriceToCNY('$58'), image: "https://i.pinimg.com/1200x/a7/12/7c/a7127cdb4a49ab6f7182b0a003cca76c.jpg", color: 'White' },
+    { id: 'wecom2', category: 'bottom', name: 'Fast and Free 23"', price: convertProductPriceToCNY('$128'), image: "https://i.pinimg.com/736x/89/aa/5b/89aa5b59eca424ca4c471b154c9e62f3.jpg", color: 'Black' },
+    { id: 'wecom3', category: 'shoes', name: 'Chargefeel Running Shoe', price: convertProductPriceToCNY('$158'), image: "https://i.pinimg.com/736x/cc/76/f6/cc76f6b967a8ba0fa9c6d19b82849357.jpg", color: 'White/Silver' },
+    { id: 'wecom4', category: 'accessories', name: 'The Reversible Mat 5mm', price: convertProductPriceToCNY('$78'), image: "https://i.pinimg.com/1200x/65/bc/f5/65bcf532a6ab142b881357a9b5dd7232.jpg", color: 'Deep Coal' },
   ]
 };
 
