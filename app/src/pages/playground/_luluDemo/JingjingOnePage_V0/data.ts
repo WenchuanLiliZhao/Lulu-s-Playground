@@ -182,40 +182,25 @@ export const mockDashboardData = {
       evening: [9800, 10400, 11000, 11600, 12300, 13100, 13860].map(formatToCNYWithoutSymbol),
     },
     // Today's plan trend data (converted from table data)
-    // Each data point contains: netSalesAchieved, netSalesGoal, planAchieved, planGoal
+    // Only Net Sales data for trend chart (plan data removed)
     trendData: mockTargetTableData.map((row) => ({
       id: row.id,
       name: row.time,
       netSalesAchieved: row.netSales.achieve,
       netSalesGoal: row.netSales.goal,
-      planAchieved: row.plan.achieve,
-      planGoal: row.plan.goal,
     })),
-    // Four lines with paired colors
-    // Net Sales: wilderness (green) - achieved (dark), goal (light)
-    // Plan: daydream (blue) - achieved (dark), goal (light)
+    // Two lines for Net Sales only (plan-related lines removed)
+    // Net Sales: hot-heat (red) - achieved (solid), goal (dashed)
     trendChartLines: [
       {
         dataKey: "netSalesAchieved",
         name: "Net Sales (Achieved)",
-        color: "var(--hot-heat-4)",  // Deep green
+        color: "var(--hot-heat-4)",
       },
       {
         dataKey: "netSalesGoal",
         name: "Net Sales (Goal)",
-        color: "var(--hot-heat-4)",  // Light green
-        strokeDasharray: "5 5",
-        opacity: 0.4,
-      },
-      {
-        dataKey: "planAchieved",
-        name: "Plan (Achieved)",
-        color: "var(--daydream-3)",  // Deep blue
-      },
-      {
-        dataKey: "planGoal",
-        name: "Plan (Goal)",
-        color: "var(--daydream-3)",  // Light blue
+        color: "var(--hot-heat-4)",
         strokeDasharray: "5 5",
         opacity: 0.4,
       },
