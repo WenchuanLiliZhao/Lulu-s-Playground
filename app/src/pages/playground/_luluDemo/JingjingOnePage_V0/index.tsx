@@ -560,7 +560,7 @@ const JingjingOnePageV0 = () => {
 
 const JingjingOnePage_V0: PageProps = {
   title: "JingJing One Page V0",
-  slug: "jingjing-one-page-v0",
+  slug: "one-page-numbers-all-in-one",
   content: (
     <AppLayout 
       isTesting={true} 
