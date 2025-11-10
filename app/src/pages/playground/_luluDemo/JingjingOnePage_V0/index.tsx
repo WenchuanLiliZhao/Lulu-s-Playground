@@ -556,28 +556,28 @@ const JingjingOnePageV0 = () => {
       {renderHotSellersBlock()}
       {/* 3. Product Opportunities */}
       {renderOpportunityBlock(
-        "💡 1. Guest are buying those items in other stores",
+        "🚚 1. New Drop/Replen coming up next week",
+        mockNewDropData,
+        "default",
+        contentDisplayBooleans.newDrop
+      )}
+      {renderOpportunityBlock(
+        "💡 2. Guest are buying those items in other stores",
         mockGuestBuyingOtherStoresData,
         "success",
         contentDisplayBooleans.guestBuyingOtherStores
       )}
       {renderOpportunityBlock(
-        "💡 2. Guest are trying on those items in our store",
+        "💡 3. Guest are trying on those items in our store",
         mockGuestTryingOnData,
         "info",
         contentDisplayBooleans.guestTryingOn
       )}
       {renderOpportunityBlock(
-        "💬 3. Wecom Recommendations",
+        "💬 4. Wecom Recommendations",
         mockWecomRecommendationsData,
         "warning",
         contentDisplayBooleans.wecomRecommendations
-      )}
-      {renderOpportunityBlock(
-        "🚚 4. New Drop/Replen coming up next week",
-        mockNewDropData,
-        "default",
-        contentDisplayBooleans.newDrop
       )}
       {/* Removed: Critical Out-of-Stock (High Demand) and Overstock Opportunities */}
     </div>
