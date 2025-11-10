@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import AppLayout from '../../../components/ui/AppLayout'
-import { PathwayVisualization3D } from '../../../components/ui/forDashboard/PathwayVisualization3D'
+import { PathwayVisualization3D, PATHWAY_VISUALIZATION_DEFAULTS } from '../../../components/ui/forDashboard/PathwayVisualization3D'
 import type { PathNode, PathConnection } from '../../../components/ui/forDashboard/PathwayVisualization3D'
 import type { PageProps } from '../../_page-types'
 import styles from './styles.module.scss'
@@ -107,14 +107,24 @@ const DEFAULT_CONNECTIONS: PathConnection[] = [
 // ===== Debug Page Component =====
 
 function PathwayVisualization3DDebug() {
-  // Scene parameters
-  const [gridSize, setGridSize] = useState(20)
-  const [gridCellSize, setGridCellSize] = useState(1)
-  const [flagHeight, setFlagHeight] = useState(2)
-  const [flagSize, setFlagSize] = useState(0.8)
-  const [cameraDistance, setCameraDistance] = useState(15)
-  const [autoRotate, setAutoRotate] = useState(true)
-  const [autoRotateSpeed, setAutoRotateSpeed] = useState(0.5)
+  // Scene parameters (using component defaults)
+  const [gridSize, setGridSize] = useState(PATHWAY_VISUALIZATION_DEFAULTS.gridSize)
+  const [gridCellSize, setGridCellSize] = useState(PATHWAY_VISUALIZATION_DEFAULTS.gridCellSize)
+  const [flagHeight, setFlagHeight] = useState(PATHWAY_VISUALIZATION_DEFAULTS.flagHeight)
+  const [flagSize, setFlagSize] = useState(PATHWAY_VISUALIZATION_DEFAULTS.flagSize)
+  const [cameraDistance, setCameraDistance] = useState(PATHWAY_VISUALIZATION_DEFAULTS.cameraDistance)
+  const [cameraElevation, setCameraElevation] = useState(PATHWAY_VISUALIZATION_DEFAULTS.cameraElevation)
+  const [autoRotate, setAutoRotate] = useState(true) // Debug default: true for better demo
+  const [autoRotateSpeed, setAutoRotateSpeed] = useState(PATHWAY_VISUALIZATION_DEFAULTS.autoRotateSpeed)
+
+  // New adjustable parameters (using component defaults)
+  const [labelSize, setLabelSize] = useState(PATHWAY_VISUALIZATION_DEFAULTS.labelSize)
+  const [labelDistance, setLabelDistance] = useState(PATHWAY_VISUALIZATION_DEFAULTS.labelDistance)
+  const [iconSize, setIconSize] = useState(PATHWAY_VISUALIZATION_DEFAULTS.iconSize)
+  const [lineWidth, setLineWidth] = useState(PATHWAY_VISUALIZATION_DEFAULTS.lineWidth)
+  const [dashAnimationSpeed, setDashAnimationSpeed] = useState(PATHWAY_VISUALIZATION_DEFAULTS.dashAnimationSpeed)
+  const [showAxes, setShowAxes] = useState(PATHWAY_VISUALIZATION_DEFAULTS.showAxes)
+  const [showGrid, setShowGrid] = useState(PATHWAY_VISUALIZATION_DEFAULTS.showGrid)
 
   // Widget parameters
   const [showHeader, setShowHeader] = useState(true)
@@ -205,6 +215,20 @@ function PathwayVisualization3DDebug() {
           </div>
 
           <div className={styles.controlGroup}>
+            <label>
+              <span>Camera Elevation (Height): {cameraElevation.toFixed(2)}</span>
+              <input
+                type="range"
+                min="0.1"
+                max="1"
+                step="0.05"
+                value={cameraElevation}
+                onChange={(e) => setCameraElevation(Number(e.target.value))}
+              />
+            </label>
+          </div>
+
+          <div className={styles.controlGroup}>
             <label className={styles.checkbox}>
               <input
                 type="checkbox"
@@ -230,6 +254,100 @@ function PathwayVisualization3DDebug() {
               </label>
             </div>
           )}
+
+          <h2>Visual Parameters</h2>
+
+          <div className={styles.controlGroup}>
+            <label>
+              <span>Label Text Size: {labelSize.toFixed(1)}</span>
+              <input
+                type="range"
+                min="0.5"
+                max="4"
+                step="0.1"
+                value={labelSize}
+                onChange={(e) => setLabelSize(Number(e.target.value))}
+              />
+            </label>
+          </div>
+
+          <div className={styles.controlGroup}>
+            <label>
+              <span>Label Distance: {labelDistance.toFixed(2)}</span>
+              <input
+                type="range"
+                min="0"
+                max="2"
+                step="0.05"
+                value={labelDistance}
+                onChange={(e) => setLabelDistance(Number(e.target.value))}
+              />
+            </label>
+          </div>
+
+          <div className={styles.controlGroup}>
+            <label>
+              <span>Icon Size: {iconSize.toFixed(2)}</span>
+              <input
+                type="range"
+                min="0.3"
+                max="1"
+                step="0.05"
+                value={iconSize}
+                onChange={(e) => setIconSize(Number(e.target.value))}
+              />
+            </label>
+          </div>
+
+          <div className={styles.controlGroup}>
+            <label>
+              <span>Line Width: {lineWidth.toFixed(1)}</span>
+              <input
+                type="range"
+                min="0.5"
+                max="3"
+                step="0.1"
+                value={lineWidth}
+                onChange={(e) => setLineWidth(Number(e.target.value))}
+              />
+            </label>
+          </div>
+
+          <div className={styles.controlGroup}>
+            <label>
+              <span>Dash Animation Speed: {dashAnimationSpeed.toFixed(3)}</span>
+              <input
+                type="range"
+                min="0"
+                max="0.1"
+                step="0.005"
+                value={dashAnimationSpeed}
+                onChange={(e) => setDashAnimationSpeed(Number(e.target.value))}
+              />
+            </label>
+          </div>
+
+          <div className={styles.controlGroup}>
+            <label className={styles.checkbox}>
+              <input
+                type="checkbox"
+                checked={showAxes}
+                onChange={(e) => setShowAxes(e.target.checked)}
+              />
+              <span>Show XY-Plane Axes</span>
+            </label>
+          </div>
+
+          <div className={styles.controlGroup}>
+            <label className={styles.checkbox}>
+              <input
+                type="checkbox"
+                checked={showGrid}
+                onChange={(e) => setShowGrid(e.target.checked)}
+              />
+              <span>Show Ground Grid</span>
+            </label>
+          </div>
 
           <h2>Widget Parameters</h2>
 
@@ -278,6 +396,9 @@ function PathwayVisualization3DDebug() {
               <li key="feature-colors">Custom colors for nodes and paths</li>
               <li key="feature-scaling">Camera distance scaling</li>
               <li key="feature-pathways">Grid-aligned pathways</li>
+              <li key="feature-visual">Adjustable visual parameters (labels, icons, lines)</li>
+              <li key="feature-axes">Optional coordinate axes display</li>
+              <li key="feature-dark-mode">Dark mode support</li>
             </ul>
           </div>
         </div>
@@ -292,8 +413,16 @@ function PathwayVisualization3DDebug() {
             flagHeight={flagHeight}
             flagSize={flagSize}
             cameraDistance={cameraDistance}
+            cameraElevation={cameraElevation}
             autoRotate={autoRotate}
             autoRotateSpeed={autoRotateSpeed}
+            labelSize={labelSize}
+            labelDistance={labelDistance}
+            iconSize={iconSize}
+            lineWidth={lineWidth}
+            dashAnimationSpeed={dashAnimationSpeed}
+            showAxes={showAxes}
+            showGrid={showGrid}
             showHeader={showHeader}
             headerIcon="route"
             headerTitle="Network Pathway Visualization"

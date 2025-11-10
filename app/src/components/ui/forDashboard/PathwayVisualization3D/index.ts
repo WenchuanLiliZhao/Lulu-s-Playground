@@ -1,5 +1,6 @@
 export { PathwayVisualization3D } from './_component'
 export { PathwayVisualization3D as default } from './_component'
+export { PATHWAY_VISUALIZATION_DEFAULTS } from './_config'
 export type { 
   PathwayVisualization3DProps,
   PathNode,

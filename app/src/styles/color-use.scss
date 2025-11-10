@@ -6,6 +6,7 @@
 
 @mixin light-theme {
   --color-abssy: #ffffff;
+  --color-abssy-invert: #000000;
   
   --color-main: #1a1a1a;
   --color-sec: #858585;
@@ -37,7 +38,8 @@
 
 @mixin dark-theme {
   --color-abssy: #000000;
-
+  --color-abssy-invert: #ffffff;
+  
   --color-main: #eaeaea;
   --color-sec: #b3b3b3;
   --color-sec-trans: rgba(255, 255, 255, 0.48);

@@ -3,6 +3,13 @@
 // ===== Design Parameters =====
 // Adjustable parameters for the 3D visualization
 
+// Theme Colors (automatically adapt to light/dark mode)
+// Scene background: --color-bg-main
+// Grid lines: --color-border-main, --color-border-darken-trans
+// Flag poles: --color-neg
+// Text labels: --color-main
+// All theme colors are read from CSS variables and update automatically when theme changes
+
 // Scene container dimensions
 $scene-min-height: 400px;
 $scene-default-height: 500px;

@@ -5,7 +5,11 @@ A 3D visualization widget for displaying network paths with nodes (flags) and co
 ## Features
 
 - **3D Scene**: Interactive 3D environment with perspective and camera controls
-- **Flag Nodes**: Visual nodes represented as flags with icons and labels
+- **Flag Nodes**: Visual nodes represented as flags with icons, labels, and ground base discs
+  - Flags face a unified direction parallel to the camera-to-center line (consistent orientation across all nodes)
+  - Color-coded base discs on the ground for visual emphasis
+  - Material Symbols icons rendered with high quality
+  - Label text with theme-adaptive stroke/outline for better visibility
 - **Path Connections**: Lines connecting nodes with support for:
   - Animated flowing dashed lines (indicating direction)
   - Custom colors
@@ -14,6 +18,7 @@ A 3D visualization widget for displaying network paths with nodes (flags) and co
 - **Camera Distance Scaling**: Node sizes automatically adjust based on camera distance to maintain consistent visual size
 - **Interactive Controls**: Orbit controls for rotating, panning, and zooming
 - **Auto-rotation**: Optional automatic scene rotation
+- **Dark Mode Support**: Automatic theme adaptation with real-time color updates
 
 ## Usage
 
@@ -78,7 +83,7 @@ const connections = [
   - `position`: [x, y, z] coordinates in 3D space
   - `label`: Display text
   - `icon`: Material Symbol icon name (optional)
-  - `color`: CSS color for the flag (optional)
+  - `color`: CSS color for the flag and base disc (optional, default: red)
 
 ### Connection Configuration
 
@@ -96,7 +101,17 @@ const connections = [
 - `flagSize`: Size of flag banners (default: 0.8)
 - `cameraDistance`: Initial camera distance from origin (default: 15)
 - `autoRotate`: Enable automatic scene rotation (default: false)
-- `autoRotateSpeed`: Rotation speed multiplier (default: 0.5)
+- `autoRotateSpeed`: Rotation speed multiplier (default: 0.2)
+
+### Visual Customization
+
+- `labelSize`: Label text size multiplier relative to flag size (default: 2.0)
+- `labelDistance`: Distance from flag to label text in 3D units, added to flagHeight (default: 0.6)
+- `iconSize`: Icon size multiplier (0-1) relative to flag height in canvas (default: 0.7)
+- `lineWidth`: Line width multiplier (default: 1) - Note: WebGL has limitations, affects dash/gap size
+- `dashAnimationSpeed`: Dash animation speed in units per frame (default: 0.03)
+- `showAxes`: Show XY-plane coordinate axes (default: false)
+- `showGrid`: Show ground grid (default: true)
 
 ### Dashboard Props
 
@@ -146,9 +161,21 @@ All connection lines are rendered as animated dashed lines on the ground plane (
 
 Connections follow grid-aligned paths (orthogonal turns) to maintain visual consistency with the ground grid. Paths use L-shaped routing by default.
 
-### Theme Integration
+### Theme Integration & Dark Mode Support
 
-The component automatically adapts to the current theme (light/dark) by reading CSS variables for colors and background.
+The component fully supports automatic theme switching between light and dark modes:
+
+**Adaptive Elements:**
+- **Scene Background**: Uses `--color-bg-main` (white in light mode, dark in dark mode)
+- **Grid Lines**: Uses `--color-border-main` for consistent grid pattern
+- **Flag Poles**: Uses `--color-main` for primary text color that adapts to theme
+- **Text Labels**: Uses `--color-main` for text color, with `--color-bg-main` for text stroke/outline for better contrast and visibility
+
+**Real-time Updates:**
+The component includes a `MutationObserver` that listens for theme changes (via `data-theme` attribute or class changes) and automatically updates all scene colors without requiring a re-render. This ensures smooth transitions when users toggle between light and dark modes.
+
+**Implementation:**
+All colors are read from CSS variables using `getComputedStyle(document.documentElement).getPropertyValue()` and applied to Three.js materials, ensuring consistent theming across the entire application.
 
 ## Performance
 
