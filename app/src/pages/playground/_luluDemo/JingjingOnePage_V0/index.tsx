@@ -470,6 +470,26 @@ const JingjingOnePageV0 = () => {
                       </span>
                     </div>
                   </div>
+                  {product.linkedSales && product.linkedSales.length > 0 && (
+                    <div className={styles.linkedSalesContainer}>
+                      <div className={styles.linkedSalesLabel}>Link Sales</div>
+                      <div className={styles.linkedSalesImages}>
+                        {product.linkedSales.map((linkedProduct) => (
+                          <div 
+                            key={linkedProduct.id} 
+                            className={styles.linkedSalesImageWrapper}
+                            title={linkedProduct.name}
+                          >
+                            <img
+                              src={linkedProduct.image}
+                              alt={linkedProduct.name}
+                              className={styles.linkedSalesImage}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

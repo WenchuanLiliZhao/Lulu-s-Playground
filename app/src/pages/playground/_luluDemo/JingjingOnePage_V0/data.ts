@@ -221,12 +221,19 @@ export const mockSalesSummaryData: SalesSummaryData = {
 export const mockTipsData: never[] = [];
 
 // Hot Sellers mock data
+export interface LinkedProduct {
+  id: string;
+  image: string;
+  name: string;
+}
+
 export interface HotSellerProduct {
   id: string;
   productName: string;
   image: string;
   unitsSold: number;
   inventory: number;
+  linkedSales?: LinkedProduct[];
 }
 
 const DEFAULT_PRODUCT_IMAGE = 'https://i.pinimg.com/1200x/4a/98/d4/4a98d46259a02433b2715d411eda4fe8.jpg';
@@ -237,14 +244,72 @@ if (DEFAULT_PRODUCT_IMAGE) {
 
 export const mockHotSellersData = {
   xstore: [
-  { id: 'prod1', productName: 'Align High-Rise Pant 25"', image: "https://i.pinimg.com/1200x/dd/18/4b/dd184bfd9d8bf57a68024d67d8d7b72b.jpg", unitsSold: 45, inventory: 28 },
-  { id: 'prod2', productName: 'Define Jacket', image: "https://i.pinimg.com/736x/dd/f6/20/ddf62093da84fdb8b1c482a3d4f0d240.jpg", unitsSold: 38, inventory: 15 },
-  { id: 'prod3', productName: 'Scuba Oversized Hoodie', image: "https://i.pinimg.com/1200x/5d/31/ec/5d31ec1add2b2e902ea79c491d47ff4f.jpg", unitsSold: 35, inventory: 22 },
+    { 
+      id: 'prod1', 
+      productName: 'Align High-Rise Pant 25"', 
+      image: "https://i.pinimg.com/1200x/dd/18/4b/dd184bfd9d8bf57a68024d67d8d7b72b.jpg", 
+      unitsSold: 45, 
+      inventory: 28,
+      linkedSales: [
+        { id: 'link1', image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", name: "Swiftly Tech SS 2.0" },
+        { id: 'link2', image: "https://i.pinimg.com/736x/cc/76/f6/cc76f6b967a8ba0fa9c6d19b82849357.jpg", name: "Running Shoe" }
+      ]
+    },
+    { 
+      id: 'prod2', 
+      productName: 'Define Jacket', 
+      image: "https://i.pinimg.com/736x/dd/f6/20/ddf62093da84fdb8b1c482a3d4f0d240.jpg", 
+      unitsSold: 38, 
+      inventory: 15,
+      linkedSales: [
+        { id: 'link3', image: "https://i.pinimg.com/1200x/dd/18/4b/dd184bfd9d8bf57a68024d67d8d7b72b.jpg", name: "Align Pant 25\"" },
+        { id: 'link4', image: "https://i.pinimg.com/1200x/18/76/7a/18767aee1d050a6d4724b2adbd841414.jpg", name: "Belt Bag" }
+      ]
+    },
+    { 
+      id: 'prod3', 
+      productName: 'Scuba Oversized Hoodie', 
+      image: "https://i.pinimg.com/1200x/5d/31/ec/5d31ec1add2b2e902ea79c491d47ff4f.jpg", 
+      unitsSold: 35, 
+      inventory: 22,
+      linkedSales: [
+        { id: 'link5', image: "https://i.pinimg.com/736x/89/aa/5b/89aa5b59eca424ca4c471b154c9e62f3.jpg", name: "Wunder Train" }
+      ]
+    },
   ],
   omni: [
-    { id: 'omni1', productName: 'Everywhere Belt Bag', image: "https://i.pinimg.com/1200x/18/76/7a/18767aee1d050a6d4724b2adbd841414.jpg", unitsSold: 88, inventory: 5 },
-    { id: 'omni2', productName: 'Align High-Rise Pant 28"', image: "https://i.pinimg.com/736x/e7/ac/98/e7ac98956174907395fbf25efd14c66a.jpg", unitsSold: 62, inventory: 18 },
-    { id: 'omni3', productName: 'Swiftly Tech SS 2.0', image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", unitsSold: 55, inventory: 30 },
+    { 
+      id: 'omni1', 
+      productName: 'Everywhere Belt Bag', 
+      image: "https://i.pinimg.com/1200x/18/76/7a/18767aee1d050a6d4724b2adbd841414.jpg", 
+      unitsSold: 88, 
+      inventory: 5,
+      linkedSales: [
+        { id: 'olink1', image: "https://i.pinimg.com/1200x/5d/31/ec/5d31ec1add2b2e902ea79c491d47ff4f.jpg", name: "Scuba Hoodie" },
+        { id: 'olink2', image: "https://i.pinimg.com/1200x/a7/12/7c/a7127cdb4a49ab6f7182b0a003cca76c.jpg", name: "All Yours Tee" }
+      ]
+    },
+    { 
+      id: 'omni2', 
+      productName: 'Align High-Rise Pant 28"', 
+      image: "https://i.pinimg.com/736x/e7/ac/98/e7ac98956174907395fbf25efd14c66a.jpg", 
+      unitsSold: 62, 
+      inventory: 18,
+      linkedSales: [
+        { id: 'olink3', image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", name: "Swiftly Tech SS" }
+      ]
+    },
+    { 
+      id: 'omni3', 
+      productName: 'Swiftly Tech SS 2.0', 
+      image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", 
+      unitsSold: 55, 
+      inventory: 30,
+      linkedSales: [
+        { id: 'olink4', image: "https://i.pinimg.com/736x/e7/ac/98/e7ac98956174907395fbf25efd14c66a.jpg", name: "Align Pant 28\"" },
+        { id: 'olink5', image: "https://i.pinimg.com/736x/cc/76/f6/cc76f6b967a8ba0fa9c6d19b82849357.jpg", name: "Running Shoe" }
+      ]
+    },
   ]
 };
 
