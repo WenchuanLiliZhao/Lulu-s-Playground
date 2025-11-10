@@ -27,6 +27,7 @@ import {
 import type { ProductCard } from "./data";
 import styles from "./styles.module.scss";
 import { DashboardWidgetFrame } from "../../../../components/ui/forDashboard/DashboardWidgetFrame";
+import { contentDisplayBooleans } from "./display";
 
 // ============================================
 // MOCK DATA - EXTRACTED TO data.ts
@@ -35,6 +36,12 @@ import { DashboardWidgetFrame } from "../../../../components/ui/forDashboard/Das
 // eslint-disable-next-line react-refresh/only-export-components
 const JingjingOnePageV0 = () => {
   const [hotSellerMode, setHotSellerMode] = useState(0); // 0: XStore, 1: Omni
+  
+  // Helper function to get display style
+  const getDisplayStyle = (isVisible: boolean) => {
+    return isVisible ? {} : { display: "none" };
+  };
+  
   // ============================================
   // RENDER HELPERS
   // ============================================
@@ -43,7 +50,7 @@ const JingjingOnePageV0 = () => {
   // - Accept props: { storeName, date, dayOfWeek, weather }
   // - Uses WeatherWidget component (already done in Phase 1)
   const renderNavigation = () => (
-    <div className={styles.navigation}>
+    <div className={styles.navigation} style={getDisplayStyle(contentDisplayBooleans.navigation)}>
       <div className={styles.navLeft}>
         <img
           src="/logo/BlackWhite.svg"
@@ -65,14 +72,15 @@ const JingjingOnePageV0 = () => {
   );
 
   const renderPerformanceSnapshotA = () => (
-    <DashboardWidgetFrame
-      showHeader={true}
-      headerTitle="🎯 Performance Snapshot"
-      // headerIcon="dashboard"
-      headerColor="primary"
-      showAlertLight={true}
-      alertLightColor="var(--color-semantic-success)"
-    >
+    <div style={getDisplayStyle(contentDisplayBooleans.performanceSnapshot)}>
+      <DashboardWidgetFrame
+        showHeader={true}
+        headerTitle="🎯 Performance Snapshot"
+        // headerIcon="dashboard"
+        headerColor="primary"
+        showAlertLight={true}
+        alertLightColor="var(--color-semantic-success)"
+      >
       <div className={styles.performanceSnapshot}>
         <MetricWidget
           icon="dashboard"
@@ -140,6 +148,7 @@ const JingjingOnePageV0 = () => {
         />
       </div>
     </DashboardWidgetFrame>
+    </div>
   );
 
   // TODO: Phase 5 - Extract to MetricsRow component
@@ -156,7 +165,7 @@ const JingjingOnePageV0 = () => {
     };
 
     return (
-      <div className={styles.metricsRow}>
+      <div className={styles.metricsRow} style={getDisplayStyle(contentDisplayBooleans.metricsRow)}>
         <MetricWidget
           icon="receipt_long"
           title={mockDashboardData.metrics.txn.label}
@@ -257,7 +266,7 @@ const JingjingOnePageV0 = () => {
     ];
 
     return (
-      <div className={styles.todayTargetDetail}>
+      <div className={styles.todayTargetDetail} style={getDisplayStyle(contentDisplayBooleans.todayTargetDetail)}>
         {/* Main Target Widget - Switchable between Table and Chart */}
         <div className={styles.targetChartContainer}>
           <SwitchableDataWidget
@@ -307,7 +316,7 @@ const JingjingOnePageV0 = () => {
   const renderMorningTargetDetail = () => {
     return (
       <>
-        <div className={styles.targetWidgetsContainer}>
+        <div className={styles.targetWidgetsContainer} style={getDisplayStyle(contentDisplayBooleans.morningTargetDetail)}>
           <MetricWidget
             icon="wb_twilight"
             title="Morning Plan"
@@ -340,19 +349,21 @@ const JingjingOnePageV0 = () => {
     ];
 
     return (
-      <ColumnChart
-        title="10-Day Weather Forecast"
-        data={mockWeatherForecastData}
-        showHeader={true}
-        headerIcon="wb_sunny"
-        headerColor="primary"
-        showIcons={true}
-        iconSize={22}
-        colorMappings={temperatureColorMappings}
-        height={300}
-        yAxisTickFormatter={(value) => `${value}°C`}
-        barCategoryGap="15%"
-      />
+      <div style={getDisplayStyle(contentDisplayBooleans.weatherForecast)}>
+        <ColumnChart
+          title="10-Day Weather Forecast"
+          data={mockWeatherForecastData}
+          showHeader={true}
+          headerIcon="wb_sunny"
+          headerColor="primary"
+          showIcons={true}
+          iconSize={22}
+          colorMappings={temperatureColorMappings}
+          height={300}
+          yAxisTickFormatter={(value) => `${value}°C`}
+          barCategoryGap="15%"
+        />
+      </div>
     );
   };
 
@@ -363,20 +374,22 @@ const JingjingOnePageV0 = () => {
       {renderMetricsRow()}
       {renderTodayTargetDetail()}
       {renderMorningTargetDetail()}
-      <WaterfallChart
-        showHeader={true}
-        headerTitle="Weekly Rhythm"
-        headerIcon="calendar_month"
-        headerColor="primary"
-        data={mockWeeklyRhythmData}
-        height={300}
-        yAxisTickFormatter={(value) => `${value}%`}
-        positiveColor="var(--wilderness-4)"
-        showLabels={true}
-        labelFormatter={(value) => `${value}%`}
-        barSize={40}  // 块块宽度：40px
-        labelFontSize={12}  // 标签字号：12px
-      />
+      <div style={getDisplayStyle(contentDisplayBooleans.weeklyRhythm)}>
+        <WaterfallChart
+          showHeader={true}
+          headerTitle="Weekly Rhythm"
+          headerIcon="calendar_month"
+          headerColor="primary"
+          data={mockWeeklyRhythmData}
+          height={300}
+          yAxisTickFormatter={(value) => `${value}%`}
+          positiveColor="var(--wilderness-4)"
+          showLabels={true}
+          labelFormatter={(value) => `${value}%`}
+          barSize={40}  // 块块宽度：40px
+          labelFontSize={12}  // 标签字号：12px
+        />
+      </div>
       {renderWeatherForecast()}
     </div>
   );
@@ -386,19 +399,21 @@ const JingjingOnePageV0 = () => {
 
   // Render Sales Summary Block
   const renderSalesSummaryBlock = () => (
-    <Card
-      header={<h3 className={styles.tipCardHeader}>📊 Sales Summary</h3>}
-      body={
-        <div className={styles.salesSummaryBody}>
-          <p className={styles.salesSummaryText}>
-            {mockSalesSummaryData.summary}
-          </p>
-        </div>
-      }
-      variant="default"
-      borderPosition="left"
-      className={styles.tipCard}
-    />
+    <div style={getDisplayStyle(contentDisplayBooleans.salesSummary)}>
+      <Card
+        header={<h3 className={styles.tipCardHeader}>📊 Sales Summary</h3>}
+        body={
+          <div className={styles.salesSummaryBody}>
+            <p className={styles.salesSummaryText}>
+              {mockSalesSummaryData.summary}
+            </p>
+          </div>
+        }
+        variant="default"
+        borderPosition="left"
+        className={styles.tipCard}
+      />
+    </div>
   );
 
   // Render Hot Sellers Block
@@ -407,61 +422,63 @@ const JingjingOnePageV0 = () => {
       hotSellerMode === 0 ? mockHotSellersData.xstore : mockHotSellersData.omni;
 
     return (
-      <Card
-        header={
-          <div className={styles.hotSellersHeader}>
-            <h3 className={styles.tipCardHeader}>🔥 Hot Sellers</h3>
-            <Switch
-              options={["XStore", "Omni"]}
-              selectedIndex={hotSellerMode}
-              onChange={(index) => setHotSellerMode(index)}
-            />
-          </div>
-        }
-        body={
-          <div className={styles.hotSellersList}>
-            {dataToRender.map((product, index) => (
-              <div key={product.id} className={styles.hotSellersItem}>
-                <div className={styles.hotSellersRank}>#{index + 1}</div>
-                <div className={styles.hotSellersImage}>
-                  <img
-                    src={product.image}
-                    alt={product.productName}
-                    className={styles.hotSellersImageImg}
-                  />
-                </div>
-                <div className={styles.hotSellersInfo}>
-                  <div className={styles.hotSellersName}>
-                    {product.productName}
+      <div style={getDisplayStyle(contentDisplayBooleans.hotSellers)}>
+        <Card
+          header={
+            <div className={styles.hotSellersHeader}>
+              <h3 className={styles.tipCardHeader}>🔥 Hot Sellers</h3>
+              <Switch
+                options={["XStore", "Omni"]}
+                selectedIndex={hotSellerMode}
+                onChange={(index) => setHotSellerMode(index)}
+              />
+            </div>
+          }
+          body={
+            <div className={styles.hotSellersList}>
+              {dataToRender.map((product, index) => (
+                <div key={product.id} className={styles.hotSellersItem}>
+                  <div className={styles.hotSellersRank}>#{index + 1}</div>
+                  <div className={styles.hotSellersImage}>
+                    <img
+                      src={product.image}
+                      alt={product.productName}
+                      className={styles.hotSellersImageImg}
+                    />
                   </div>
-                  <div className={styles.hotSellersMetrics}>
-                    <span className={styles.hotSellersMetricItem}>
-                      <span className={styles.hotSellersMetricLabel}>
-                        Sold:
+                  <div className={styles.hotSellersInfo}>
+                    <div className={styles.hotSellersName}>
+                      {product.productName}
+                    </div>
+                    <div className={styles.hotSellersMetrics}>
+                      <span className={styles.hotSellersMetricItem}>
+                        <span className={styles.hotSellersMetricLabel}>
+                          Sold:
+                        </span>
+                        <span className={styles.hotSellersMetricValue}>
+                          {product.unitsSold}
+                        </span>
                       </span>
-                      <span className={styles.hotSellersMetricValue}>
-                        {product.unitsSold}
+                      <span className={styles.hotSellersMetricSeparator}>•</span>
+                      <span className={styles.hotSellersMetricItem}>
+                        <span className={styles.hotSellersMetricLabel}>
+                          Inventory:
+                        </span>
+                        <span className={styles.hotSellersMetricValue}>
+                          {product.inventory}
+                        </span>
                       </span>
-                    </span>
-                    <span className={styles.hotSellersMetricSeparator}>•</span>
-                    <span className={styles.hotSellersMetricItem}>
-                      <span className={styles.hotSellersMetricLabel}>
-                        Inventory:
-                      </span>
-                      <span className={styles.hotSellersMetricValue}>
-                        {product.inventory}
-                      </span>
-                    </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        }
-        variant="default"
-        borderPosition="left"
-        className={styles.tipCard}
-      />
+              ))}
+            </div>
+          }
+          variant="default"
+          borderPosition="left"
+          className={styles.tipCard}
+        />
+      </div>
     );
   };
 
@@ -469,41 +486,44 @@ const JingjingOnePageV0 = () => {
   const renderOpportunityBlock = (
     title: string,
     data: { introduction: string; products: ProductCard[] },
-    variant: "success" | "info" | "warning" | "danger" | "default"
+    variant: "success" | "info" | "warning" | "danger" | "default",
+    isVisible: boolean
   ) => (
-    <Card
-      header={<h3 className={styles.tipCardHeader}>{title}</h3>}
-      body={
-        <div className={styles.singleOpportunityContainer}>
-          <p className={styles.opportunityIntro}>{data.introduction}</p>
-          <div className={styles.productScrollContainer}>
-            {data.products.map((product) => (
-              <div key={product.id} className={styles.productCard}>
-                <div className={styles.productImage}>
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className={styles.productImageImg}
-                  />
-                </div>
-                <div className={styles.productInfo}>
-                  <div className={styles.productCategory}>
-                    {product.category.charAt(0).toUpperCase() +
-                      product.category.slice(1)}
+    <div style={getDisplayStyle(isVisible)}>
+      <Card
+        header={<h3 className={styles.tipCardHeader}>{title}</h3>}
+        body={
+          <div className={styles.singleOpportunityContainer}>
+            <p className={styles.opportunityIntro}>{data.introduction}</p>
+            <div className={styles.productScrollContainer}>
+              {data.products.map((product) => (
+                <div key={product.id} className={styles.productCard}>
+                  <div className={styles.productImage}>
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className={styles.productImageImg}
+                    />
                   </div>
-                  <div className={styles.productName}>{product.name}</div>
-                  <div className={styles.productColor}>{product.color}</div>
-                  <div className={styles.productPrice}>{product.price}</div>
+                  <div className={styles.productInfo}>
+                    <div className={styles.productCategory}>
+                      {product.category.charAt(0).toUpperCase() +
+                        product.category.slice(1)}
+                    </div>
+                    <div className={styles.productName}>{product.name}</div>
+                    <div className={styles.productColor}>{product.color}</div>
+                    <div className={styles.productPrice}>{product.price}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      }
-      variant={variant}
-      borderPosition="left"
-      className={styles.tipCard}
-    />
+        }
+        variant={variant}
+        borderPosition="left"
+        className={styles.tipCard}
+      />
+    </div>
   );
 
   // TODO: Phase 4 - Extract to TipsSection component
@@ -518,22 +538,26 @@ const JingjingOnePageV0 = () => {
       {renderOpportunityBlock(
         "💡 1. Guest are buying those items in other stores",
         mockGuestBuyingOtherStoresData,
-        "success"
+        "success",
+        contentDisplayBooleans.guestBuyingOtherStores
       )}
       {renderOpportunityBlock(
         "💡 2. Guest are trying on those items in our store",
         mockGuestTryingOnData,
-        "info"
+        "info",
+        contentDisplayBooleans.guestTryingOn
       )}
       {renderOpportunityBlock(
         "💬 3. Wecom Recommendations",
         mockWecomRecommendationsData,
-        "warning"
+        "warning",
+        contentDisplayBooleans.wecomRecommendations
       )}
       {renderOpportunityBlock(
         "🚚 4. New Drop/Replen coming up next week",
         mockNewDropData,
-        "default"
+        "default",
+        contentDisplayBooleans.newDrop
       )}
       {/* Removed: Critical Out-of-Stock (High Demand) and Overstock Opportunities */}
     </div>
@@ -549,11 +573,13 @@ const JingjingOnePageV0 = () => {
         {renderDashboard()}
         {renderTips()}
       </div>
-      <FloatingActionButton
-        icon="smart_toy"
-        onClick={() => alert("AI assistant clicked!")}
-        tooltip="AI Assistant"
-      />
+      <div style={getDisplayStyle(contentDisplayBooleans.floatingActionButton)}>
+        <FloatingActionButton
+          icon="smart_toy"
+          onClick={() => alert("AI assistant clicked!")}
+          tooltip="AI Assistant"
+        />
+      </div>
     </div>
   );
 };
