@@ -4,6 +4,7 @@ import IconButtonDebugPage from "./IconButton";
 import TrendChartDebugPage from "./TrendChart";
 import DashboardWidgetsDebugPage from "./DashboardWidgets";
 import DashboardWidgetFrameDebugPage from "./DashboardWidgetFrame";
+import PathwayVisualization3DDebugPage from "./PathwayVisualization3D";
 
 export const DebugPages = {
   SearchBarDebug: SearchBarDebugPage,
@@ -12,5 +13,6 @@ export const DebugPages = {
   TrendChartDebug: TrendChartDebugPage,
   DashboardWidgetsDebug: DashboardWidgetsDebugPage,
   DashboardWidgetFrameDebug: DashboardWidgetFrameDebugPage,
+  PathwayVisualization3DDebug: PathwayVisualization3DDebugPage,
 };
 

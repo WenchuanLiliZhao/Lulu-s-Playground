@@ -1,0 +1,68 @@
+@use '../_shared-styles.scss' as shared;
+
+// ===== Design Parameters =====
+// Adjustable parameters for the 3D visualization
+
+// Scene container dimensions
+$scene-min-height: 400px;
+$scene-default-height: 500px;
+
+// Node parameters (these are base values; actual sizes scale with camera distance)
+$flag-pole-thickness: 0.02; // in 3D units
+$flag-icon-scale: 0.5; // relative to flag size
+$label-scale: 2.0; // relative to flag size
+$label-height-scale: 0.5; // relative to flag size
+
+// Line parameters (all paths are 2D, drawn on the ground)
+$line-hover-width: 2; // multiplier for line width on hover
+
+// Grid parameters
+$grid-opacity: 0.3;
+$grid-line-weight: 1px;
+
+// Animation parameters
+$transition-duration: 0.3s;
+
+// ===== Visualization Content Wrapper =====
+.visualization-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: $scene-min-height;
+  overflow: hidden;
+  position: relative;
+}
+
+// ===== Scene Container =====
+.scene-container {
+  width: 100%;
+  height: $scene-default-height;
+  min-height: $scene-min-height;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  
+  // Ensure canvas fills container
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    outline: none;
+  }
+}
+
+// ===== Responsive Design =====
+@media (max-width: 768px) {
+  .scene-container {
+    height: 350px;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scene-container {
+    height: 300px;
+    min-height: 250px;
+  }
+}
+

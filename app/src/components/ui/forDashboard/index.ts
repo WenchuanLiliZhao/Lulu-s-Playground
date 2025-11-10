@@ -74,3 +74,6 @@ export {
     WaterfallChart,
 }
 
+export { PathwayVisualization3D } from './PathwayVisualization3D'
+export type { PathwayVisualization3DProps, PathNode, PathConnection } from './PathwayVisualization3D'
+
