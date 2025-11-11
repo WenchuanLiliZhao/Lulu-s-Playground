@@ -53,6 +53,7 @@ const ProductTag = ({ label }: { label: string }) => (
 export const JingjingOnePageV0View = () => {
   const [hotSellerMode, setHotSellerMode] = useState(0); // 0: XStore, 1: Omni
   const [openOpportunity, setOpenOpportunity] = useState<OpportunityId | null>(null);
+  const [isWeatherPopupOpen, setIsWeatherPopupOpen] = useState(false);
   const iconButtonRefs = useRef<Partial<Record<OpportunityId, HTMLButtonElement | null>>>({});
 
   const {
@@ -91,6 +92,10 @@ export const JingjingOnePageV0View = () => {
   const getDisplayStyle = (isVisible: boolean) => {
     return isVisible ? {} : { display: "none" };
   };
+
+  const getRandomPercentage = () => {
+    return Math.floor(Math.random() * 21) + 10;
+  };
   
   // ============================================
   // RENDER HELPERS
@@ -109,7 +114,7 @@ export const JingjingOnePageV0View = () => {
         />
         <span className={styles.storeName}>{mockNavigationData.storeName}</span>
       </div>
-      <div className={styles.navRight}>
+      <div className={styles.navRight} onClick={() => setIsWeatherPopupOpen(true)} style={{ cursor: 'pointer' }}>
         <span className={styles.date}>{mockNavigationData.date}</span>
         <span className={styles.day}>{mockNavigationData.dayOfWeek}</span>
         <WeatherWidget
@@ -425,10 +430,20 @@ export const JingjingOnePageV0View = () => {
         />
       </div>
       
-      {/* Weather Forecast using TrendChart */}
+      {/* Weather Forecast using TrendChart - MOVED TO POPUP */}
+    </div>
+  );
+
+  // Render Weather Forecast Popup
+  const renderWeatherForecastPopup = () => (
+    <Popup
+      isOpen={isWeatherPopupOpen}
+      onClose={() => setIsWeatherPopupOpen(false)}
+      variant="modal"
+      className={styles.weatherPopup}
+    >
       <div 
         style={{
-          ...getDisplayStyle(contentDisplayBooleans.weatherForecast),
           height: '400px',
           minHeight: '400px',
         }}
@@ -444,7 +459,7 @@ export const JingjingOnePageV0View = () => {
           yAxisTickFormatter={(value) => `${value}°C`}
         />
       </div>
-    </div>
+    </Popup>
   );
 
   // TODO: Phase 6 - Extract to TipCard component
@@ -528,16 +543,18 @@ export const JingjingOnePageV0View = () => {
                       <div className={styles.linkedSalesLabel}>Cross Selling</div>
                       <div className={styles.linkedSalesImages}>
                         {product.linkedSales.map((linkedProduct) => (
-                          <div 
-                            key={linkedProduct.id} 
-                            className={styles.linkedSalesImageWrapper}
-                            title={linkedProduct.name}
-                          >
-                            <img
-                              src={linkedProduct.image}
-                              alt={linkedProduct.name}
-                              className={styles.linkedSalesImage}
-                            />
+                          <div key={linkedProduct.id} className={styles.linkedSalesItem}>
+                            <div 
+                              className={styles.linkedSalesImageWrapper}
+                              title={linkedProduct.name}
+                            >
+                              <img
+                                src={linkedProduct.image}
+                                alt={linkedProduct.name}
+                                className={styles.linkedSalesImage}
+                              />
+                            </div>
+                            <div className={styles.percentageLabel}>{getRandomPercentage()}%</div>
                           </div>
                         ))}
                       </div>
@@ -676,6 +693,7 @@ export const JingjingOnePageV0View = () => {
         {renderDashboard()}
         {renderTips()}
       </div>
+      {renderWeatherForecastPopup()}
       <div style={getDisplayStyle(contentDisplayBooleans.floatingActionButton)}>
         <FloatingActionButton
           icon="smart_toy"

@@ -9,7 +9,11 @@ import {
 } from 'react'
 import styles from './_styles.module.scss'
 
-export type PopupPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'
+export type PopupPlacement =
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'top-start'
+  | 'top-end'
 
 export interface PopupProps {
   /**
@@ -17,7 +21,8 @@ export interface PopupProps {
    */
   isOpen: boolean
   /**
-   * Optional reference element to anchor the popup
+   * Optional reference element to anchor the popup.
+   * Required for 'popover' variant.
    */
   anchorEl?: HTMLElement | null
   /**
@@ -38,7 +43,8 @@ export interface PopupProps {
    */
   offset?: number
   /**
-   * Placement relative to the anchor
+   * Placement relative to the anchor.
+   * Used only for 'popover' variant.
    * @default 'bottom-start'
    */
   placement?: PopupPlacement
@@ -47,6 +53,19 @@ export interface PopupProps {
    * @default true
    */
   closeOnOutsideClick?: boolean
+  /**
+   * The variant of the popup.
+   * 'popover' is anchored to an element.
+   * 'modal' is centered on the screen.
+   * @default 'popover'
+   */
+  variant?: 'popover' | 'modal'
+  /**
+   * If true, a backdrop will be rendered behind the modal.
+   * Only used for 'modal' variant.
+   * @default true
+   */
+  withBackdrop?: boolean
 }
 
 const DEFAULT_OFFSET = 8
@@ -61,6 +80,8 @@ export const Popup = ({
   offset = DEFAULT_OFFSET,
   placement = DEFAULT_PLACEMENT,
   closeOnOutsideClick = true,
+  variant = 'popover',
+  withBackdrop = true,
 }: PopupProps) => {
   const popupRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
@@ -72,7 +93,7 @@ export const Popup = ({
   }, [])
 
   useLayoutEffect(() => {
-    if (!isOpen || !mounted) return
+    if (!isOpen || !mounted || variant !== 'popover') return
 
     const updatePosition = () => {
       if (!anchorEl || !popupRef.current) return
@@ -125,18 +146,25 @@ export const Popup = ({
       window.removeEventListener('resize', updatePosition)
       window.removeEventListener('scroll', updatePosition, true)
     }
-  }, [isOpen, mounted, anchorEl, placement, offset])
+  }, [isOpen, mounted, anchorEl, placement, offset, variant])
 
   useEffect(() => {
     if (!isOpen || !closeOnOutsideClick) return
 
     const handlePointerDown = (event: MouseEvent) => {
       const target = event.target as Node
+
+      // For modal, backdrop click is handled separately if backdrop exists.
+      // If no backdrop, this allows clicking outside to close.
+      if (variant === 'modal' && withBackdrop) {
+        return
+      }
+
       if (
         popupRef.current &&
         !popupRef.current.contains(target) &&
-        anchorEl &&
-        !anchorEl.contains(target)
+        // For popover, check anchorEl
+        (variant !== 'popover' || (anchorEl && !anchorEl.contains(target)))
       ) {
         onClose?.()
       }
@@ -155,10 +183,32 @@ export const Popup = ({
       document.removeEventListener('mousedown', handlePointerDown)
       document.removeEventListener('keydown', handleEscape)
     }
-  }, [isOpen, onClose, anchorEl, closeOnOutsideClick])
+  }, [isOpen, onClose, anchorEl, closeOnOutsideClick, variant, withBackdrop])
 
   if (!isOpen || !mounted) {
     return null
+  }
+
+  if (variant === 'modal') {
+    return createPortal(
+      <>
+        {withBackdrop && (
+          <div
+            className={styles.backdrop}
+            onClick={closeOnOutsideClick ? onClose : undefined}
+          />
+        )}
+        <div
+          ref={popupRef}
+          className={`${styles.popup} ${styles.modal} ${className}`.trim()}
+          role="dialog"
+          aria-modal="true"
+        >
+          {children}
+        </div>
+      </>,
+      document.body,
+    )
   }
 
   return createPortal(
@@ -171,7 +221,7 @@ export const Popup = ({
     >
       {children}
     </div>,
-    document.body
+    document.body,
   )
 }
 

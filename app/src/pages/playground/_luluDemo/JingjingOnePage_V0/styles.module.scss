@@ -228,10 +228,18 @@
 }
 
 .opportunityTipText {
+  white-space: pre-wrap;
   margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--color-sec);
+  padding: 8px;
+  font-size: 13px;
+  color: var(--color-neutral-6);
+}
+
+.weatherPopup {
+  width: 80vw;
+  max-width: 900px;
+  height: 500px;
+  padding: 24px;
 }
 
 .tipCardBody {
@@ -413,7 +421,14 @@
 .linkedSalesImages {
   display: flex;
   gap: 6px;
+  align-items: flex-start;
+}
+
+.linkedSalesItem {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 4px;
 }
 
 .linkedSalesImageWrapper {
@@ -438,6 +453,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.percentageLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-semantic-success);
+  text-align: center;
 }
 
 // ===========================================
