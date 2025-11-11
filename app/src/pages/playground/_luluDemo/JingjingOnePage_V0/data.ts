@@ -119,6 +119,7 @@ export interface PerformanceMetric {
   value: string
   subtitle: string
   breakdown: PerformanceBreakdown
+  sparklineData: number[]
 }
 
 export interface TodayTargetPeriod {
@@ -165,7 +166,15 @@ export const mockDashboardData: DashboardData = {
       breakdown: {
         xstore: formatToCNY("$18,200"),
         omni: formatToCNY("$6,380")
-      }
+      },
+      sparklineData: [
+        formatToCNYWithoutSymbol("$20,800"),
+        formatToCNYWithoutSymbol("$21,900"),
+        formatToCNYWithoutSymbol("$22,750"),
+        formatToCNYWithoutSymbol("$23,600"),
+        formatToCNYWithoutSymbol("$24,200"),
+        formatToCNYWithoutSymbol("$24,580")
+      ]
     },
     todayTarget: {
       value: "¥131,100",
@@ -173,7 +182,8 @@ export const mockDashboardData: DashboardData = {
       breakdown: {
         xstore: "¥98,825",
         omni: "¥32,275"
-      }
+      },
+      sparklineData: [118200, 121450, 124900, 127800, 129600, 131100]
     },
     wtd: {
       value: "¥656,200",
@@ -181,7 +191,8 @@ export const mockDashboardData: DashboardData = {
       breakdown: {
         xstore: "¥492,000",
         omni: "¥164,200"
-      }
+      },
+      sparklineData: [602300, 615800, 628400, 639900, 648200, 656200]
     }
   },
   metrics: {
@@ -189,21 +200,21 @@ export const mockDashboardData: DashboardData = {
       label: "TXN",
       value: "342",
       status: "success" as const,
-      statusLabel: "↑ Above",
+      statusLabel: "↑ 6% Above",
       sparklineData: [280, 290, 305, 315, 325, 335, 340, 342],
     },
     upt: {
       label: "UPT",
       value: "2.3",
       status: "success" as const,
-      statusLabel: "↑ Above",
+      statusLabel: "↑ 7% Above",
       sparklineData: [1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.3],
     },
     aur: {
       label: "AUR",
       value: convertProductPriceToCNY("$105"),
       status: "danger" as const,
-      statusLabel: "↓ Below",
+      statusLabel: "↓ 5% Below",
       sparklineData: [115, 112, 110, 108, 107, 105, 103, 105].map(formatToCNYWithoutSymbol),
     },
     transaction: {

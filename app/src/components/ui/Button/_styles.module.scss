@@ -15,13 +15,15 @@
   }
 
   &:not(:disabled):hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   }
+}
 
-  &:not(:disabled):active {
-    transform: translateY(0);
-  }
+.icon {
+  display: inline-flex;
+  margin-right: 0.25rem;
+  font-size: 1.25em;
+  line-height: 1;
 }
 
 // Variants
@@ -30,7 +32,7 @@
   color: white;
 
   &:not(:disabled):hover {
-    background-color: #b5112c;
+    background-color: rgba(211, 19, 52, 0.88);
   }
 }
 
@@ -39,7 +41,7 @@
   color: white;
 
   &:not(:disabled):hover {
-    background-color: #1a1a1a;
+    background-color: rgba(44, 44, 44, 0.85);
   }
 }
 
@@ -47,11 +49,6 @@
   background-color: transparent;
   color: #d31334;
   border: 2px solid #d31334;
-
-  &:not(:disabled):hover {
-    background-color: #d31334;
-    color: white;
-  }
 }
 
 // Sizes

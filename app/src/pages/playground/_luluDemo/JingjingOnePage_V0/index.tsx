@@ -87,6 +87,7 @@ const JingjingOnePageV0 = () => {
           value={mockDashboardData.performanceSnapshot.yesterday.value}
           statusText={mockDashboardData.performanceSnapshot.yesterday.subtitle}
           statusColor="success"
+          sparklineData={mockDashboardData.performanceSnapshot.yesterday.sparklineData}
           breakdown={[
             {
               label: "XStore",
@@ -110,6 +111,7 @@ const JingjingOnePageV0 = () => {
             mockDashboardData.performanceSnapshot.todayTarget.subtitle
           }
           statusColor="warning"
+          sparklineData={mockDashboardData.performanceSnapshot.todayTarget.sparklineData}
           breakdown={[
             {
               label: "XStore",
@@ -132,6 +134,7 @@ const JingjingOnePageV0 = () => {
           value={mockDashboardData.performanceSnapshot.wtd.value}
           statusText={mockDashboardData.performanceSnapshot.wtd.subtitle}
           statusColor="success"
+          sparklineData={mockDashboardData.performanceSnapshot.wtd.sparklineData}
           breakdown={[
             {
               label: "XStore",
@@ -198,6 +201,7 @@ const JingjingOnePageV0 = () => {
           statusColor={mapStatusColor(
             mockDashboardData.metrics.transaction.status
           )}
+          sparklineData={mockDashboardData.metrics.transaction.sparklineData}
           centered={true}
         />
         <MetricWidget
@@ -206,6 +210,7 @@ const JingjingOnePageV0 = () => {
           value={mockDashboardData.metrics.cr.value}
           statusText={mockDashboardData.metrics.cr.statusLabel}
           statusColor={mapStatusColor(mockDashboardData.metrics.cr.status)}
+          sparklineData={mockDashboardData.metrics.cr.sparklineData}
           centered={true}
         />
       </div>
@@ -306,6 +311,10 @@ const JingjingOnePageV0 = () => {
             onModeChange={(mode) => {
               console.log(`Today's Plan view switched to: ${mode}`);
             }}
+          toggleOptions={[
+            { label: 'Table', value: 'table', icon: 'table_chart' },
+            { label: 'Chart', value: 'chart', icon: 'monitoring' },
+          ]}
           />
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
+import { Icon } from '../Icon'
 import styles from './_styles.module.scss'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -31,6 +32,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    * Optional className
    */
   className?: string
+  /**
+   * Optional leading icon name from Material Symbols
+   */
+  icon?: string
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -42,6 +47,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       fullWidth = false,
       disabled = false,
       className = '',
+      icon,
       ...rest
     },
     ref
@@ -58,6 +64,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <button ref={ref} className={classNames} disabled={disabled} {...rest}>
+        {icon ? <Icon icon={icon} className={styles.icon} /> : null}
         {children}
       </button>
     )

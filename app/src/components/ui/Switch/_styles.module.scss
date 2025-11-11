@@ -26,10 +26,6 @@
     color: var(--color-main);
   }
 
-  &:active {
-    transform: scale(0.98);
-  }
-
   &.active {
     background: var(--color-semantic-active);
     color: white;

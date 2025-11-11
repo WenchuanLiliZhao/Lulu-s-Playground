@@ -5,7 +5,7 @@ import type { DashboardCommonProps } from '../_shared-types'
 import { DASHBOARD_DEFAULTS } from '../_shared-config'
 import { Table, type TableColumn } from '../../Table'
 import { TrendChartCore, type TrendChartCoreProps } from '../TrendChart'
-import { Switch } from '../../Switch'
+import { Switch, type SwitchOption } from '../../Switch'
 
 /**
  * View mode for the widget
@@ -98,6 +98,11 @@ export interface SwitchableDataWidgetProps<T = unknown> extends DashboardCommonP
    * Callback when view mode changes
    */
   onModeChange?: (mode: DataWidgetViewMode) => void
+  /**
+   * Custom toggle options for view switching
+   * @default Table / Chart text options
+   */
+  toggleOptions?: [SwitchOption, SwitchOption] | SwitchOption[]
 }
 
 export const SwitchableDataWidget = <T,>({
@@ -117,6 +122,7 @@ export const SwitchableDataWidget = <T,>({
   persistState = true,
   tableConfig,
   chartConfig,
+  toggleOptions,
   onModeChange,
 }: SwitchableDataWidgetProps<T>) => {
   const getInitialMode = () => {
@@ -143,6 +149,12 @@ export const SwitchableDataWidget = <T,>({
   // Render header with mode toggle button
   const renderHeader = () => {
     if (!showHeader) return undefined
+    const modeToggleOptions =
+      toggleOptions ??
+      ([
+        { label: 'Table', value: 'table' },
+        { label: 'Chart', value: 'chart' },
+      ] as [SwitchOption, SwitchOption])
     
     return (
       <div className={styles.headerWithToggle}>
@@ -155,7 +167,7 @@ export const SwitchableDataWidget = <T,>({
         </div>
         <div className={styles.toggleButton}>
           <Switch
-            options={['Table', 'Chart']}
+            options={modeToggleOptions}
             selectedIndex={viewMode === 'table' ? 0 : 1}
             onChange={handleModeChange}
           />
