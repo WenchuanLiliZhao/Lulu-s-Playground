@@ -192,7 +192,7 @@ export const mockDashboardData: DashboardData = {
         xstore: "¥492,000",
         omni: "¥164,200"
       },
-      sparklineData: [602300, 615800, 628400, 639900, 648200, 656200]
+      sparklineData: [602300, 612800, 605500, 623900, 642100, 656200]
     }
   },
   metrics: {

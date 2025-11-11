@@ -138,7 +138,7 @@ export const JingjingOnePageV0View = () => {
           value={mockDashboardData.performanceSnapshot.yesterday.value}
           statusText={mockDashboardData.performanceSnapshot.yesterday.subtitle}
           statusColor="success"
-          sparklineData={mockDashboardData.performanceSnapshot.yesterday.sparklineData}
+          // sparklineData={mockDashboardData.performanceSnapshot.yesterday.sparklineData}
           breakdown={[
             {
               label: "XStore",
@@ -162,7 +162,7 @@ export const JingjingOnePageV0View = () => {
             mockDashboardData.performanceSnapshot.todayTarget.subtitle
           }
           statusColor="warning"
-          sparklineData={mockDashboardData.performanceSnapshot.todayTarget.sparklineData}
+          // sparklineData={mockDashboardData.performanceSnapshot.todayTarget.sparklineData}
           breakdown={[
             {
               label: "XStore",
@@ -252,7 +252,7 @@ export const JingjingOnePageV0View = () => {
           statusColor={mapStatusColor(
             mockDashboardData.metrics.transaction.status
           )}
-          sparklineData={mockDashboardData.metrics.transaction.sparklineData}
+          // sparklineData={mockDashboardData.metrics.transaction.sparklineData}
           centered={true}
         />
         <MetricWidget
