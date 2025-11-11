@@ -1,6 +1,4 @@
-import { useState } from "react";
-import AppLayout from "../../../../components/ui/AppLayout";
-import type { PageProps } from "../../../_page-types";
+import { useEffect, useRef, useState } from "react";
 import { WeatherWidget } from "../../../../components/ui/WeatherWidget";
 import { Card } from "../../../../components/ui/Card";
 import { MetricWidget } from "../../../../components/ui/forDashboard/MetricWidget";
@@ -9,6 +7,7 @@ import { Switch } from "../../../../components/ui/Switch";
 import { TrendChart } from "../../../../components/ui/forDashboard/TrendChart";
 import { FloatingActionButton } from "../../../../components/ui/FloatingActionButton";
 import type { TableColumn } from "../../../../components/ui/Table";
+import { IconButton } from "../../../../components/ui/IconButton";
 import {
   mockTargetTableData,
   type TargetTableRow,
@@ -27,14 +26,55 @@ import type { ProductCard } from "./data";
 import styles from "./styles.module.scss";
 import { DashboardWidgetFrame } from "../../../../components/ui/forDashboard/DashboardWidgetFrame";
 import { contentDisplayBooleans } from "./display";
+import { Popup } from "../../../../components/ui/Popup";
 
 // ============================================
 // MOCK DATA - EXTRACTED TO data.ts
 // ============================================
 
-// eslint-disable-next-line react-refresh/only-export-components
-const JingjingOnePageV0 = () => {
+
+type OpportunityId =
+  | "comingUp"
+  | "guestBuyingOtherStores"
+  | "guestTryingOn"
+  | "wecomRecommendations";
+
+export const JingjingOnePageV0View = () => {
   const [hotSellerMode, setHotSellerMode] = useState(0); // 0: XStore, 1: Omni
+  const [openOpportunity, setOpenOpportunity] = useState<OpportunityId | null>(null);
+  const iconButtonRefs = useRef<Partial<Record<OpportunityId, HTMLButtonElement | null>>>({});
+
+  const {
+    newDrop: showComingUp,
+    guestBuyingOtherStores: showGuestBuyingOtherStores,
+    guestTryingOn: showGuestTryingOn,
+    wecomRecommendations: showWecomRecommendations,
+  } = contentDisplayBooleans;
+
+  useEffect(() => {
+    if (!openOpportunity) return;
+
+    const visibilityMap: Record<OpportunityId, boolean> = {
+      comingUp: showComingUp,
+      guestBuyingOtherStores: showGuestBuyingOtherStores,
+      guestTryingOn: showGuestTryingOn,
+      wecomRecommendations: showWecomRecommendations,
+    };
+
+    if (!visibilityMap[openOpportunity]) {
+      setOpenOpportunity(null);
+    }
+  }, [
+    openOpportunity,
+    showComingUp,
+    showGuestBuyingOtherStores,
+    showGuestTryingOn,
+    showWecomRecommendations,
+  ]);
+
+  const handleToggleOpportunityInfo = (id: OpportunityId) => {
+    setOpenOpportunity((current) => (current === id ? null : id));
+  };
   
   // Helper function to get display style
   const getDisplayStyle = (isVisible: boolean) => {
@@ -506,6 +546,7 @@ const JingjingOnePageV0 = () => {
 
   // Generic block renderer for product opportunities
   const renderOpportunityBlock = (
+    id: OpportunityId,
     title: string,
     data: { introduction: string; products: ProductCard[] },
     variant: "success" | "info" | "warning" | "danger" | "default",
@@ -513,10 +554,35 @@ const JingjingOnePageV0 = () => {
   ) => (
     <div style={getDisplayStyle(isVisible)}>
       <Card
-        header={<h3 className={styles.tipCardHeader}>{title}</h3>}
+        header={
+          <div className={styles.tipCardHeaderRow}>
+            <h3 className={styles.tipCardHeader}>{title}</h3>
+            <IconButton
+              icon="help"
+              aria-label="Show opportunity tip"
+              variant="ghost"
+              size="small"
+              ref={(node) => {
+                iconButtonRefs.current[id] = node;
+                if (!node && openOpportunity === id) {
+                  setOpenOpportunity(null);
+                }
+              }}
+              onClick={() => handleToggleOpportunityInfo(id)}
+            />
+            <Popup
+              isOpen={openOpportunity === id}
+              anchorEl={iconButtonRefs.current[id] ?? undefined}
+              onClose={() => setOpenOpportunity(null)}
+              placement="bottom-end"
+              className={styles.opportunityTipPopup}
+            >
+              <p className={styles.opportunityTipText}>{data.introduction}</p>
+            </Popup>
+          </div>
+        }
         body={
           <div className={styles.singleOpportunityContainer}>
-            <p className={styles.opportunityIntro}>{data.introduction}</p>
             <div className={styles.productScrollContainer}>
               {data.products.map((product) => (
                 <div key={product.id} className={styles.productCard}>
@@ -558,28 +624,32 @@ const JingjingOnePageV0 = () => {
       {renderHotSellersBlock()}
       {/* 3. Product Opportunities */}
       {renderOpportunityBlock(
+        "comingUp",
         "🎉 Coming Up",
         mockNewDropData,
         "default",
-        contentDisplayBooleans.newDrop
+        showComingUp
       )}
       {renderOpportunityBlock(
+        "guestBuyingOtherStores",
         "💡 Guest are buying those items in other stores",
         mockGuestBuyingOtherStoresData,
         "success",
-        contentDisplayBooleans.guestBuyingOtherStores
+        showGuestBuyingOtherStores
       )}
       {renderOpportunityBlock(
+        "guestTryingOn",
         "💡 Guest are trying on those items in our store",
         mockGuestTryingOnData,
         "info",
-        contentDisplayBooleans.guestTryingOn
+        showGuestTryingOn
       )}
       {renderOpportunityBlock(
-        "💬 4. Wecom Recommendations",
+        "wecomRecommendations",
+        "💬 Wecom Recommendations",
         mockWecomRecommendationsData,
         "warning",
-        contentDisplayBooleans.wecomRecommendations
+        showWecomRecommendations
       )}
       {/* Removed: Critical Out-of-Stock (High Demand) and Overstock Opportunities */}
     </div>
@@ -606,20 +676,4 @@ const JingjingOnePageV0 = () => {
   );
 };
 
-const JingjingOnePage_V0: PageProps = {
-  title: "JingJing One Page V0",
-  slug: "tech-data-one-page-numbers-all-in-one",
-  content: (
-    <AppLayout 
-      isTesting={true} 
-      viewportMode={["scaled-from", 1800, 1200]}
-      enableFrame={true}
-      rulerSizes={[64, 64, 64, 64]}
-      frameBackground="var(--color-abssy)"
-    >
-      <JingjingOnePageV0 />
-    </AppLayout>
-  ),
-};
-
-export default JingjingOnePage_V0;
+export default JingjingOnePageV0View;
