@@ -428,7 +428,7 @@ const JingjingOnePageV0 = () => {
         <Card
           header={
             <div className={styles.hotSellersHeader}>
-              <h3 className={styles.tipCardHeader}>🔥 Hot Sellers</h3>
+              <h3 className={styles.tipCardHeader}>🔥 Top Seller & Cross-Selling</h3>
               <Switch
                 options={["XStore", "Omni"]}
                 selectedIndex={hotSellerMode}
@@ -464,7 +464,7 @@ const JingjingOnePageV0 = () => {
                       <span className={styles.hotSellersMetricSeparator}>•</span>
                       <span className={styles.hotSellersMetricItem}>
                         <span className={styles.hotSellersMetricLabel}>
-                          Inventory:
+                          On Hand:
                         </span>
                         <span className={styles.hotSellersMetricValue}>
                           {product.inventory}
@@ -474,7 +474,7 @@ const JingjingOnePageV0 = () => {
                   </div>
                   {product.linkedSales && product.linkedSales.length > 0 && (
                     <div className={styles.linkedSalesContainer}>
-                      <div className={styles.linkedSalesLabel}>Link Sales</div>
+                      <div className={styles.linkedSalesLabel}>Cross Selling</div>
                       <div className={styles.linkedSalesImages}>
                         {product.linkedSales.map((linkedProduct) => (
                           <div 
@@ -558,19 +558,19 @@ const JingjingOnePageV0 = () => {
       {renderHotSellersBlock()}
       {/* 3. Product Opportunities */}
       {renderOpportunityBlock(
-        "🚚 1. New Drop/Replen coming up next week",
+        "🎉 Coming Up",
         mockNewDropData,
         "default",
         contentDisplayBooleans.newDrop
       )}
       {renderOpportunityBlock(
-        "💡 2. Guest are buying those items in other stores",
+        "💡 Guest are buying those items in other stores",
         mockGuestBuyingOtherStoresData,
         "success",
         contentDisplayBooleans.guestBuyingOtherStores
       )}
       {renderOpportunityBlock(
-        "💡 3. Guest are trying on those items in our store",
+        "💡 Guest are trying on those items in our store",
         mockGuestTryingOnData,
         "info",
         contentDisplayBooleans.guestTryingOn
