@@ -39,6 +39,17 @@ type OpportunityId =
   | "guestTryingOn"
   | "wecomRecommendations";
 
+const opportunityTagLabels: Record<OpportunityId, string> = {
+  comingUp: "New Drop",
+  guestBuyingOtherStores: "Replen",
+  guestTryingOn: "Replen",
+  wecomRecommendations: "New Drop",
+};
+
+const ProductTag = ({ label }: { label: string }) => (
+  <div className={styles.productTag}>{label}</div>
+);
+
 export const JingjingOnePageV0View = () => {
   const [hotSellerMode, setHotSellerMode] = useState(0); // 0: XStore, 1: Omni
   const [openOpportunity, setOpenOpportunity] = useState<OpportunityId | null>(null);
@@ -587,11 +598,13 @@ export const JingjingOnePageV0View = () => {
               {data.products.map((product) => (
                 <div key={product.id} className={styles.productCard}>
                   <div className={styles.productImage}>
+                    
                     <img
                       src={product.image}
                       alt={product.name}
                       className={styles.productImageImg}
                     />
+                    <ProductTag label={opportunityTagLabels[id]} />
                   </div>
                   <div className={styles.productInfo}>
                     <div className={styles.productCategory}>
@@ -599,8 +612,6 @@ export const JingjingOnePageV0View = () => {
                         product.category.slice(1)}
                     </div>
                     <div className={styles.productName}>{product.name}</div>
-                    <div className={styles.productColor}>{product.color}</div>
-                    <div className={styles.productPrice}>{product.price}</div>
                   </div>
                 </div>
               ))}

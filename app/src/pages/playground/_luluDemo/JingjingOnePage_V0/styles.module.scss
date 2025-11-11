@@ -514,7 +514,7 @@
 
 .productCard {
   flex: 0 0 auto;
-  width: 160px;
+  width: 140px;
   background: var(--color-bg-sec);
   border: 1px solid var(--color-border-main);
   border-radius: 8px;
@@ -531,13 +531,14 @@
 
 .productImage {
   width: 100%;
-  height: 160px;
+  height: 140px;
   background: var(--color-bg-main);
   display: flex;
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid var(--color-border-main);
   overflow: hidden;
+  position: relative;
 }
 
 .productImageImg {
@@ -546,11 +547,26 @@
   object-fit: cover;
 }
 
+.productTag {
+  position: absolute;
+  bottom: 8px;
+  right: -1px;
+  padding: 4px 8px;
+  border-radius: 1000px 0 0 1000px;
+  background: var(--color-semantic-error);
+  color: var(--color-bg-main);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  // text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
 .productInfo {
   padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .productCategory {
