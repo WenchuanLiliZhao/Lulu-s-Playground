@@ -50,6 +50,8 @@ export interface PathwayVisualization3DProps extends DashboardCommonProps {
   cameraDistance?: number
   /** Camera elevation factor (0-1), multiplied by cameraDistance for Y position */
   cameraElevation?: number
+  /** 3D view center point [x, y, z] - camera and controls will focus on this point */
+  viewCenter?: [number, number, number]
   /** Enable camera auto-rotation */
   autoRotate?: boolean
   /** Auto-rotation speed */
@@ -95,6 +97,7 @@ export const PathwayVisualization3D = ({
   flagSize = PATHWAY_VISUALIZATION_DEFAULTS.flagSize,
   cameraDistance = PATHWAY_VISUALIZATION_DEFAULTS.cameraDistance,
   cameraElevation = PATHWAY_VISUALIZATION_DEFAULTS.cameraElevation,
+  viewCenter = [0, 0, 0] as [number, number, number],
   autoRotate = PATHWAY_VISUALIZATION_DEFAULTS.autoRotate,
   autoRotateSpeed = PATHWAY_VISUALIZATION_DEFAULTS.autoRotateSpeed,
   labelSize = PATHWAY_VISUALIZATION_DEFAULTS.labelSize,
@@ -143,8 +146,13 @@ export const PathwayVisualization3D = ({
         0.1,
         1000
       )
-      camera.position.set(cameraDistance * 0.7, cameraDistance * cameraElevation, cameraDistance * 0.7)
-      camera.lookAt(0, 0, 0)
+      const [centerX, centerY, centerZ] = viewCenter
+      camera.position.set(
+        centerX + cameraDistance * 0.7, 
+        centerY + cameraDistance * cameraElevation, 
+        centerZ + cameraDistance * 0.7
+      )
+      camera.lookAt(centerX, centerY, centerZ)
       cameraRef.current = camera
 
       // Renderer setup
@@ -156,6 +164,7 @@ export const PathwayVisualization3D = ({
 
       // Controls setup
       const controls = new OrbitControls(camera, renderer.domElement)
+      controls.target.set(centerX, centerY, centerZ)
       controls.enableDamping = true
       controls.dampingFactor = 0.05
       controls.minDistance = 5
@@ -261,17 +270,24 @@ export const PathwayVisualization3D = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []) // Only run once on mount - other params updated via separate effects
 
-  // Update camera position when cameraDistance or cameraElevation changes
+  // Update camera position and controls target when cameraDistance, cameraElevation, or viewCenter changes
   useEffect(() => {
     const camera = cameraRef.current
-    if (!camera) return
+    const controls = controlsRef.current
+    if (!camera || !controls) return
+    
+    const [centerX, centerY, centerZ] = viewCenter
     
     camera.position.set(
-      cameraDistance * 0.7,
-      cameraDistance * cameraElevation,
-      cameraDistance * 0.7
+      centerX + cameraDistance * 0.7,
+      centerY + cameraDistance * cameraElevation,
+      centerZ + cameraDistance * 0.7
     )
-  }, [cameraDistance, cameraElevation])
+    camera.lookAt(centerX, centerY, centerZ)
+    
+    controls.target.set(centerX, centerY, centerZ)
+    controls.update()
+  }, [cameraDistance, cameraElevation, viewCenter])
 
   // Update controls when autoRotate settings change
   useEffect(() => {

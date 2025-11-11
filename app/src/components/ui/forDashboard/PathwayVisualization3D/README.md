@@ -62,12 +62,28 @@ const connections = [
   },
 ]
 
+// Calculate center of all nodes for optimal view
+const calculateCenter = (): [number, number, number] => {
+  if (nodes.length === 0) return [0, 0, 0];
+  const sum = nodes.reduce((acc, node) => [
+    acc[0] + node.position[0],
+    acc[1] + node.position[1],
+    acc[2] + node.position[2],
+  ], [0, 0, 0]);
+  return [
+    sum[0] / nodes.length,
+    sum[1] / nodes.length,
+    sum[2] / nodes.length,
+  ];
+};
+
 <PathwayVisualization3D
   nodes={nodes}
   connections={connections}
   showHeader
   headerIcon="route"
   headerTitle="Network Pathways"
+  viewCenter={calculateCenter()}
   gridSize={20}
   cameraDistance={15}
   autoRotate
@@ -100,6 +116,7 @@ const connections = [
 - `flagHeight`: Height of flag poles (default: 2)
 - `flagSize`: Size of flag banners (default: 0.8)
 - `cameraDistance`: Initial camera distance from origin (default: 15)
+- `viewCenter`: 3D view center point `[x, y, z]` - camera and controls focus on this point (default: [0, 0, 0])
 - `autoRotate`: Enable automatic scene rotation (default: false)
 - `autoRotateSpeed`: Rotation speed multiplier (default: 0.2)
 

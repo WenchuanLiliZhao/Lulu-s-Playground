@@ -1,0 +1,207 @@
+@use "../../../styles/color-use.scss" as *;
+
+// ============================================
+// ADJUSTABLE VARIABLES
+// ============================================
+
+// Layout spacing
+$dashboard-padding: 32px;
+$grid-gap: 24px;
+$section-gap: 24px;
+
+// Section styles
+$section-bg: var(--color-bg-sec);
+$section-border-radius: 0;
+$section-padding: 16px;
+$section-shadow: none;
+
+// Metrics grid
+$metrics-gap: 16px;
+$metrics-gap-compact: 12px;
+
+// Section title
+$section-title-size: 16px;
+$section-title-weight: 600;
+$section-title-margin-bottom: 12px;
+$section-title-padding-bottom: 10px;
+
+// ============================================
+// REUSABLE SECTION STYLE
+// ============================================
+
+@mixin section-card {
+  background: $section-bg;
+  border-radius: $section-border-radius;
+  padding: $section-padding;
+  box-shadow: $section-shadow;
+}
+
+@mixin section-card-no-padding {
+  background: $section-bg;
+  border-radius: $section-border-radius;
+  box-shadow: $section-shadow;
+}
+
+// ============================================
+// MAIN LAYOUT
+// ============================================
+
+.dashboard {
+  width: 100%;
+  height: 100vh;
+  padding: $dashboard-padding;
+  background: var(--color-bg-main);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: $grid-gap;
+  height: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+// ============================================
+// LEFT COLUMN
+// ============================================
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $section-gap;
+  height: 100%;
+  overflow: hidden;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $metrics-gap;
+  flex-shrink: 0;
+}
+
+.userJourney {
+  @include section-card;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+// ============================================
+// MIDDLE COLUMN
+// ============================================
+
+.middleColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $section-gap;
+  height: 100%;
+  overflow: hidden;
+}
+
+.dashboardHeader {
+  text-align: center;
+  padding: $section-padding;
+  // background: linear-gradient(135deg, var(--wilderness-5), var(--wilderness-4));
+  border-radius: $section-border-radius;
+  box-shadow: $section-shadow;
+  flex-shrink: 0;
+}
+
+.dashboardTitle {
+  font-size: 28px;
+  font-weight: 700;
+  // color: var(--color-abssy);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.dashboardSubtitle {
+  font-size: 14px;
+  color: var(--wilderness-1);
+  margin: 0;
+  font-weight: 500;
+}
+
+.pathwaySection {
+  @include section-card-no-padding;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: $section-padding;
+  box-sizing: border-box;
+  
+  // Ensure the PathwayVisualization3D component fits properly
+  > * {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.appPerformance {
+  @include section-card;
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  font-size: $section-title-size;
+  font-weight: $section-title-weight;
+  color: var(--color-main);
+  margin: 0 0 $section-title-margin-bottom 0;
+  padding-bottom: $section-title-padding-bottom;
+  border-bottom: 1px solid var(--color-border-main);
+}
+
+.performanceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $metrics-gap-compact;
+}
+
+// ============================================
+// RIGHT COLUMN
+// ============================================
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $section-gap;
+  height: 100%;
+  overflow: hidden;
+}
+
+.securitySection {
+  @include section-card;
+  flex-shrink: 0;
+}
+
+.securityGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $metrics-gap-compact;
+}
+
+.networkSection {
+  @include section-card;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.networkMetrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $metrics-gap-compact;
+  flex-shrink: 0;
+}
+
