@@ -2,12 +2,13 @@ import styles from './_styles.module.scss'
 import { DashboardWidgetFrame } from '../DashboardWidgetFrame'
 import type { DashboardCommonProps } from '../_shared-types'
 import { DASHBOARD_DEFAULTS } from '../_shared-config'
+import type { ReactNode } from 'react'
 
 export interface TextWidgetProps extends DashboardCommonProps {
   /**
    * The text content to display
    */
-  text: string
+  text: ReactNode
   /**
    * Whether to center align the text (default: false)
    */

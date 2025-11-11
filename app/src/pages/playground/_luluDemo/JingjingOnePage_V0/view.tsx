@@ -42,13 +42,6 @@ type OpportunityId =
   | "guestTryingOn"
   | "wecomRecommendations";
 
-const opportunityTagLabels: Record<OpportunityId, string> = {
-  comingUp: "New Drop",
-  guestBuyingOtherStores: "Replen",
-  guestTryingOn: "Replen",
-  wecomRecommendations: "New Drop",
-};
-
 const ProductTag = ({ label }: { label: string }) => (
   <div className={styles.productTag}>{label}</div>
 );
@@ -132,11 +125,11 @@ export const JingjingOnePageV0View = () => {
           initialSelected={0}
           className={styles.navSwitch}
         />
-        <Switch
+        {/* <Switch
           options={["EN", "ZH"]}
           initialSelected={0}
           className={styles.navSwitch}
-        />
+        /> */}
       </div>
       <div
         className={styles.navRight}
@@ -196,7 +189,7 @@ export const JingjingOnePageV0View = () => {
             statusText={
               mockDashboardData.performanceSnapshot.todayTarget.subtitle
             }
-            statusColor="warning"
+            statusColor="success"
             // sparklineData={mockDashboardData.performanceSnapshot.todayTarget.sparklineData}
             breakdown={[
               {
@@ -223,6 +216,7 @@ export const JingjingOnePageV0View = () => {
             sparklineData={
               mockDashboardData.performanceSnapshot.wtd.sparklineData
             }
+            sparklineColor="var(--color-semantic-success)"
             breakdown={[
               {
                 label: "XStore",
@@ -405,8 +399,8 @@ export const JingjingOnePageV0View = () => {
               console.log(`Today's Plan view switched to: ${mode}`);
             }}
             toggleOptions={[
-              { label: "Table", value: "table", icon: "table_chart" },
-              { label: "Chart", value: "chart", icon: "monitoring" },
+              { label: "", value: "table", icon: "table_chart" },
+              { label: "", value: "chart", icon: "monitoring" },
             ]}
           />
         </div>
@@ -514,7 +508,7 @@ export const JingjingOnePageV0View = () => {
       <TextWidget
         text={mockSalesSummaryData.summary}
         showHeader={true}
-        headerTitle="📊 Sales Summary"
+        headerTitle="📊 Sales Recap"
         headerColor="primary"
       />
     </div>
@@ -531,7 +525,7 @@ export const JingjingOnePageV0View = () => {
           header={
             <div className={styles.hotSellersHeader}>
               <h3 className={styles.tipCardHeader}>
-                🔥 Top Seller & Cross-Selling
+                🔥 Top Sellers & Cross-Selling
               </h3>
               <Switch
                 options={["XStore", "Omni"]}
@@ -667,7 +661,11 @@ export const JingjingOnePageV0View = () => {
                       alt={product.name}
                       className={styles.productImageImg}
                     />
-                    <ProductTag label={opportunityTagLabels[id]} />
+                    {id === "comingUp" ? (
+                      product.tag && <ProductTag label={product.tag} />
+                    ) : (
+                      <></>
+                    )}
                   </div>
                   <div className={styles.productInfo}>
                     <div className={styles.productCategory}>
@@ -697,7 +695,7 @@ export const JingjingOnePageV0View = () => {
       {/* 2. Product Opportunities */}
       {renderOpportunityBlock(
         "comingUp",
-        "🎉 Coming Up",
+        "🎉 Coming Up Products",
         mockNewDropData,
         "default",
         showComingUp

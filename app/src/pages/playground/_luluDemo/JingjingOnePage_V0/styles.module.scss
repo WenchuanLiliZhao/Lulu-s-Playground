@@ -213,6 +213,7 @@
   font-weight: 700;
   color: var(--color-main);
   margin: 0 0 8px 0;
+  display: none;
 }
 
 .tipCard {
@@ -316,14 +317,14 @@
 .hotSellersList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .hotSellersItem {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px;
+  padding: 8px 12px;
   border-radius: 8px;
   background: var(--color-bg-sec);
   transition: all 0.2s ease;

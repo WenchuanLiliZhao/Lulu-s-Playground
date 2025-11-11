@@ -1,4 +1,5 @@
 // Today's Plan Table Data
+import type { ReactNode } from 'react'
 import type { MultiSeriesChartData } from '../../../../components/ui/forDashboard/TrendChart'
 
 const USD_TO_CNY_RATE = 7.0865;
@@ -192,7 +193,7 @@ export const mockDashboardData: DashboardData = {
         xstore: "¥492,000",
         omni: "¥164,200"
       },
-      sparklineData: [602300, 612800, 605500, 623900, 642100, 656200]
+      sparklineData: [402300, 612800, 305500, 623900, 442100, 756200]
     }
   },
   metrics: {
@@ -200,35 +201,35 @@ export const mockDashboardData: DashboardData = {
       label: "TXN",
       value: "342",
       status: "success" as const,
-      statusLabel: "↑ 6% Above",
+      statusLabel: "↑ 6%",
       sparklineData: [280, 290, 305, 315, 325, 335, 340, 342],
     },
     upt: {
       label: "UPT",
       value: "2.3",
       status: "success" as const,
-      statusLabel: "↑ 7% Above",
+      statusLabel: "↑ 7%",
       sparklineData: [1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.3],
     },
     aur: {
       label: "AUR",
       value: convertProductPriceToCNY("$105"),
       status: "danger" as const,
-      statusLabel: "↓ 5% Below",
+      statusLabel: "↓ 5%",
       sparklineData: [115, 112, 110, 108, 107, 105, 103, 105].map(formatToCNYWithoutSymbol),
     },
     transaction: {
       label: "Traffic",
       value: "234",
-      status: "info" as const,
-      statusLabel: "On Track",
+      status: "success" as const,
+      statusLabel: "↑ 10%",
       sparklineData: [190, 200, 210, 215, 220, 228, 232, 234],
     },
     cr: {
       label: "CR",
       value: "68%",
-      status: "info" as const,
-      statusLabel: "On Track",
+      status: "success" as const,
+      statusLabel: "↑ 2%",
       sparklineData: [62, 64, 65, 67, 66, 68, 69, 68],
     },
   },
@@ -290,11 +291,15 @@ export const mockDashboardData: DashboardData = {
 
 // Sales Summary mock data
 export interface SalesSummaryData {
-  summary: string;
+  summary: ReactNode;
 }
 
 export const mockSalesSummaryData: SalesSummaryData = {
-  summary: "Your store achieved 103% of yesterday's plan with ¥174,225 in sales. Today's performance is tracking well with strong conversion rates in the afternoon."
+  summary: (
+    <p>
+      Your store achieved <span style={{ fontWeight: "bold", color: "var(--hot-heat-4)" }}>103%</span> of yesterday's plan with <span style={{ fontWeight: "bold", color: "var(--hot-heat-4)" }}>¥174,225</span> in sales. Today's performance is tracking well with strong conversion rates in the afternoon.
+    </p>
+  )
 };
 
 // Tips mock data (removed Critical Out-of-Stock and Overstock as requested)
@@ -400,6 +405,7 @@ export interface ProductCard {
   price: string;
   image: string;
   color: string;
+  tag?: "New" | "Replen";
 }
 
 // 1. Guest are buying those items in other stores
@@ -454,9 +460,9 @@ export interface NewDropData {
 export const mockNewDropData: NewDropData = {
     introduction: "Get ready for these exciting new arrivals and restocks coming next week. Prepare the floor and inform our guests!",
     products: [
-      { id: 'new1', category: 'accessories', name: 'Everywhere Belt Bag', price: convertProductPriceToCNY('$38'), image: "https://i.pinimg.com/1200x/c2/73/9b/c2739bab7682ff375ec6d6180c735650.jpg", color: 'Pastel Blue' },
-      { id: 'new2', category: 'bottom', name: 'Wunder Train 25"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/736x/89/aa/5b/89aa5b59eca424ca4c471b154c9e62f3.jpg", color: 'Java' },
-      { id: 'new3', category: 'accessories', name: 'The Reversible Mat 5mm', price: convertProductPriceToCNY('$78'), image: "https://i.pinimg.com/1200x/65/bc/f5/65bcf532a6ab142b881357a9b5dd7232.jpg", color: 'Deep Coal' },
+      { id: 'new1', category: 'accessories', name: 'Everywhere Belt Bag', price: convertProductPriceToCNY('$38'), image: "https://i.pinimg.com/1200x/c2/73/9b/c2739bab7682ff375ec6d6180c735650.jpg", color: 'Pastel Blue', tag: "New" },
+      { id: 'new2', category: 'bottom', name: 'Wunder Train 25"', price: convertProductPriceToCNY('$98'), image: "https://i.pinimg.com/736x/89/aa/5b/89aa5b59eca424ca4c471b154c9e62f3.jpg", color: 'Java', tag: "New" },
+      { id: 'new3', category: 'accessories', name: 'The Reversible Mat 5mm', price: convertProductPriceToCNY('$78'), image: "https://i.pinimg.com/1200x/65/bc/f5/65bcf532a6ab142b881357a9b5dd7232.jpg", color: 'Deep Coal', tag: "Replen" },
   ]
 }
 
