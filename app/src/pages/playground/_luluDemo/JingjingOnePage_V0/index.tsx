@@ -6,8 +6,7 @@ import { Card } from "../../../../components/ui/Card";
 import { MetricWidget } from "../../../../components/ui/forDashboard/MetricWidget";
 import { SwitchableDataWidget } from "../../../../components/ui/forDashboard/SwitchableDataWidget";
 import { Switch } from "../../../../components/ui/Switch";
-import { WaterfallChart } from "../../../../components/ui/forDashboard/WaterfallChart";
-import { ColumnChart } from "../../../../components/ui/forDashboard/ColumnChart";
+import { TrendChart } from "../../../../components/ui/forDashboard/TrendChart";
 import { FloatingActionButton } from "../../../../components/ui/FloatingActionButton";
 import type { TableColumn } from "../../../../components/ui/Table";
 import {
@@ -21,8 +20,8 @@ import {
   mockGuestTryingOnData,
   mockWecomRecommendationsData,
   mockNewDropData,
-  mockWeeklyRhythmData,
-  mockWeatherForecastData,
+  mockWeeklyRhythmChartData,
+  mockWeatherForecastChartData,
 } from "./data";
 import type { ProductCard } from "./data";
 import styles from "./styles.module.scss";
@@ -157,10 +156,11 @@ const JingjingOnePageV0 = () => {
   const renderMetricsRow = () => {
     // Map status to MetricWidget's statusColor
     const mapStatusColor = (
-      status: "success" | "info" | "danger"
+      status: "success" | "info" | "danger" | "warning"
     ): "success" | "warning" | "error" | "neutral" => {
       if (status === "success") return "success";
       if (status === "danger") return "error";
+      if (status === "warning") return "warning";
       return "neutral";
     };
 
@@ -296,8 +296,7 @@ const JingjingOnePageV0 = () => {
               rowKey: (row) => row.id,
             }}
             chartConfig={{
-              data: mockDashboardData.todayTargetDetail.trendData,
-              lines: mockDashboardData.todayTargetDetail.trendChartLines,
+              multiSeries: mockDashboardData.todayTargetDetail.chartMultiSeries,
               height: 300,
               showGrid: true,
               showLegend: true,
@@ -337,36 +336,6 @@ const JingjingOnePageV0 = () => {
     );
   };
 
-  // Weather forecast chart
-  const renderWeatherForecast = () => {
-    // Temperature-based color mappings using design system colors
-    const temperatureColorMappings = [
-      { threshold: 0, color: "var(--cyan-4)" }, // Freezing (≤0°C) - cold blue
-      { threshold: 10, color: "var(--daydream-4)" }, // Cold (≤10°C) - light blue
-      { threshold: 15, color: "var(--wilderness-4)" }, // Cool (≤15°C) - green
-      { threshold: 20, color: "var(--amber-4)" }, // Mild (≤20°C) - amber
-      { threshold: 100, color: "var(--hot-heat-4)" }, // Warm (>20°C) - red
-    ];
-
-    return (
-      <div style={getDisplayStyle(contentDisplayBooleans.weatherForecast)}>
-        <ColumnChart
-          title="10-Day Weather Forecast"
-          data={mockWeatherForecastData}
-          showHeader={true}
-          headerIcon="wb_sunny"
-          headerColor="primary"
-          showIcons={true}
-          iconSize={22}
-          colorMappings={temperatureColorMappings}
-          height={300}
-          yAxisTickFormatter={(value) => `${value}°C`}
-          barCategoryGap="15%"
-        />
-      </div>
-    );
-  };
-
   // TODO: Phase 4 - Extract to DashboardSection component
   const renderDashboard = () => (
     <div className={styles.dashboardSection}>
@@ -374,23 +343,47 @@ const JingjingOnePageV0 = () => {
       {renderMetricsRow()}
       {renderTodayTargetDetail()}
       {renderMorningTargetDetail()}
-      <div style={getDisplayStyle(contentDisplayBooleans.weeklyRhythm)}>
-        <WaterfallChart
+      
+      {/* Weekly Rhythm using TrendChart */}
+      <div 
+        style={{
+          ...getDisplayStyle(contentDisplayBooleans.weeklyRhythm),
+          height: '400px',
+          minHeight: '400px',
+        }}
+      >
+        <TrendChart
+          title="Weekly Rhythm"
           showHeader={true}
-          headerTitle="Weekly Rhythm"
           headerIcon="calendar_month"
           headerColor="primary"
-          data={mockWeeklyRhythmData}
-          height={300}
+          multiSeries={mockWeeklyRhythmChartData}
+          showGrid={true}
+          showLegend={false}
           yAxisTickFormatter={(value) => `${value}%`}
-          positiveColor="var(--wilderness-4)"
-          showLabels={true}
-          labelFormatter={(value) => `${value}%`}
-          barSize={40}  // 块块宽度：40px
-          labelFontSize={12}  // 标签字号：12px
+          barSize={40}
         />
       </div>
-      {renderWeatherForecast()}
+      
+      {/* Weather Forecast using TrendChart */}
+      <div 
+        style={{
+          ...getDisplayStyle(contentDisplayBooleans.weatherForecast),
+          height: '400px',
+          minHeight: '400px',
+        }}
+      >
+        <TrendChart
+          title="10-Day Weather Forecast"
+          showHeader={true}
+          headerIcon="wb_sunny"
+          headerColor="primary"
+          multiSeries={mockWeatherForecastChartData}
+          showGrid={true}
+          showLegend={false}
+          yAxisTickFormatter={(value) => `${value}°C`}
+        />
+      </div>
     </div>
   );
 

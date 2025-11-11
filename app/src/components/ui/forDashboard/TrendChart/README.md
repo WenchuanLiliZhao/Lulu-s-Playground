@@ -1,12 +1,14 @@
 # TrendChart Component
 
-A responsive line chart component for displaying trends and analytics data, built with Recharts and following the Lululemon design system.
+A unified, responsive XY-axis chart component for displaying trends and analytics data with multiple display modes (line, column, area), built with Recharts and following the Lululemon design system.
 
 ## Features
 
+- **Multiple Display Modes**: Supports line chart (trend curve), column chart (bar), and area chart visualization
+- **Unified API**: Single component that adapts to different chart types based on data configuration
 - **Theme Support**: Automatically adapts to light/dark themes
 - **Responsive Design**: Uses ResponsiveContainer for fluid sizing
-- **Multiple Lines**: Support for displaying multiple data series
+- **Multiple Series**: Support for displaying multiple data series
 - **Interactive Tooltips**: Hover tooltips with detailed information
 - **Automatic Grid Spacing**: Intelligent x-axis label spacing to prevent overlap (minimum 8px spacing by default)
 - **Date Range Filtering**: Built-in date filter for temporal data
@@ -16,6 +18,56 @@ A responsive line chart component for displaying trends and analytics data, buil
 - **Flexible Axis Configuration**: Customizable label angles, heights, and intervals
 
 ## Usage
+
+### New Format (Series-based with Display Modes)
+
+```tsx
+import { TrendChart } from '@lululemon-ui'
+import type { ChartSeriesConfig } from '@lululemon-ui'
+
+const series: ChartSeriesConfig[] = [
+  {
+    defaultShowAs: 'line', // or 'column', 'area'
+    data: [
+      { id: '2024-01', name: 'Jan', revenue: 12000, users: 2400 },
+      { id: '2024-02', name: 'Feb', revenue: 13500, users: 2800 },
+      { id: '2024-03', name: 'Mar', revenue: 15000, users: 3200 },
+    ],
+    lines: [
+      {
+        dataKey: 'revenue',
+        name: 'Revenue ($)',
+        color: '#8884d8',
+        strokeWidth: 2,
+      },
+      {
+        dataKey: 'users',
+        name: 'Users',
+        color: '#82ca9d',
+        strokeWidth: 2,
+      },
+    ],
+  },
+]
+
+function MyComponent() {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <TrendChart
+        title="Monthly Performance"
+        series={series}
+        showGrid={true}
+        showLegend={true}
+        animationDuration={1500}
+      />
+    </div>
+  )
+}
+```
+
+### Legacy Format (Direct Data/Lines)
+
+The component maintains backward compatibility with the original API:
 
 ```tsx
 import { TrendChart } from '@lululemon-ui'
@@ -65,8 +117,11 @@ function MyComponent() {
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `title` | `string` | - | Chart title |
-| `data` | `TrendChartDataPoint[]` | **required** | Data for the chart |
-| `lines` | `TrendChartLine[]` | **required** | Configuration for lines to display |
+| `data` | `TrendChartDataPoint[]` | - | Data for the chart (legacy format) |
+| `lines` | `TrendChartLine[]` | - | Configuration for lines to display (legacy format) |
+| `series` | `ChartSeriesConfig[]` | - | Series configurations with display modes (new format, takes priority over data/lines) |
+| `barSize` | `number` | `undefined` | Bar size for column charts (auto-calculated if not specified) |
+| `barRadius` | `[number, number, number, number] \| number` | `[4, 4, 0, 0]` | Corner radius for bars: [topLeft, topRight, bottomRight, bottomLeft] |
 | `showGrid` | `boolean` | `true` | Show/hide grid lines |
 | `showLegend` | `boolean` | `true` | Show/hide legend (always displays at bottom) |
 | `animationDuration` | `number` | `1500` | Animation duration in milliseconds |
@@ -85,6 +140,26 @@ function MyComponent() {
 | `initialEndDate` | `Date \| null` | `null` | Initial end date for date filter |
 | `className` | `string` | - | Optional className for custom styling |
 
+### ChartSeriesConfig
+
+```typescript
+interface ChartSeriesConfig {
+  defaultShowAs: ChartDisplayMode  // Display mode: 'line' | 'column' | 'area'
+  data: TrendChartDataPoint[]      // Data for this series
+  lines: TrendChartLine[]          // Lines/bars/areas configuration
+}
+```
+
+### ChartDisplayMode
+
+```typescript
+type ChartDisplayMode = 'line' | 'column' | 'area'
+```
+
+- **`line`**: Traditional line chart (trend curve)
+- **`column`**: Vertical bar chart
+- **`area`**: Area chart with filled regions
+
 ### TrendChartDataPoint
 
 ```typescript
@@ -101,10 +176,12 @@ interface TrendChartDataPoint {
 
 ```typescript
 interface TrendChartLine {
-  dataKey: string     // Key in data object
-  name: string        // Display name in legend
-  color: string       // Line color (hex or CSS color)
-  strokeWidth?: number  // Line thickness (default: 2)
+  dataKey: string       // Key in data object
+  name: string          // Display name in legend
+  color: string         // Line/bar/area color (hex or CSS color)
+  strokeWidth?: number  // Line/border thickness (default: 2)
+  strokeDasharray?: string  // Dash pattern (e.g., "5 5")
+  opacity?: number      // Opacity (0 to 1, default varies by chart type)
 }
 ```
 
@@ -128,15 +205,76 @@ $chart-padding: 24px !default;
 
 ## Examples
 
-### Basic Chart
+### Line Chart (Trend Curve)
 
 ```tsx
+const series = [
+  {
+    defaultShowAs: 'line' as const,
+    data: [
+      { id: '2024-01', name: 'Jan', revenue: 12000 },
+      { id: '2024-02', name: 'Feb', revenue: 13500 },
+      { id: '2024-03', name: 'Mar', revenue: 15000 },
+    ],
+    lines: [
+      { dataKey: 'revenue', name: 'Revenue', color: '#8884d8' }
+    ],
+  },
+]
+
 <TrendChart
   title="Revenue Trend"
-  data={data}
-  lines={[
-    { dataKey: 'revenue', name: 'Revenue', color: '#8884d8' }
-  ]}
+  series={series}
+/>
+```
+
+### Column Chart (Bar Chart)
+
+```tsx
+const series = [
+  {
+    defaultShowAs: 'column' as const,
+    data: [
+      { id: '2024-01', name: 'Jan', sales: 120, target: 100 },
+      { id: '2024-02', name: 'Feb', sales: 135, target: 110 },
+      { id: '2024-03', name: 'Mar', sales: 150, target: 120 },
+    ],
+    lines: [
+      { dataKey: 'sales', name: 'Sales', color: '#82ca9d' },
+      { dataKey: 'target', name: 'Target', color: '#ffc658' },
+    ],
+  },
+]
+
+<TrendChart
+  title="Sales Performance"
+  series={series}
+  barSize={40}
+  barRadius={[8, 8, 0, 0]}
+/>
+```
+
+### Area Chart
+
+```tsx
+const series = [
+  {
+    defaultShowAs: 'area' as const,
+    data: [
+      { id: '2024-01', name: 'Jan', users: 2400, sessions: 4000 },
+      { id: '2024-02', name: 'Feb', users: 2800, sessions: 4500 },
+      { id: '2024-03', name: 'Mar', users: 3200, sessions: 5000 },
+    ],
+    lines: [
+      { dataKey: 'sessions', name: 'Sessions', color: '#8884d8', opacity: 0.6 },
+      { dataKey: 'users', name: 'Users', color: '#82ca9d', opacity: 0.6 },
+    ],
+  },
+]
+
+<TrendChart
+  title="User Activity"
+  series={series}
 />
 ```
 
@@ -163,35 +301,32 @@ const lines = [
   },
 ]
 
+const series = [
+  {
+    defaultShowAs: 'line' as const,
+    data: data,
+    lines: lines,
+  },
+]
+
 <TrendChart
   title="Business Metrics"
-  data={data}
-  lines={lines}
+  series={series}
   showGrid={true}
   showLegend={true}
 />
 ```
 
-### Without Grid and Legend
-
-```tsx
-<TrendChart
-  data={data}
-  lines={lines}
-  showGrid={false}
-  showLegend={false}
-  animationDuration={1000}
-/>
-```
-
-### With Legend
+### Legacy Format (Backward Compatible)
 
 ```tsx
 <TrendChart
   title="Sales Trend"
   data={data}
   lines={lines}
-  showLegend={true}
+  showGrid={false}
+  showLegend={false}
+  animationDuration={1000}
 />
 ```
 

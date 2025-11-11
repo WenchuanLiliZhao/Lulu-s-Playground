@@ -28,13 +28,43 @@ export interface BaseChartLine {
   dataKey: string
   /** Display name for the line */
   name: string
-  /** Line color (CSS color value) */
+  /** Line/bar/area color (CSS color value) */
   color: string
-  /** Line stroke width */
+  
+  // === Line Chart Properties ===
+  /** Line stroke width (for line charts) @default 2 */
   strokeWidth?: number
-  /** Line dash style (e.g., "5 5") */
+  /** Line dash style (e.g., "5 5") (for line charts) */
   strokeDasharray?: string
-  /** Line opacity (0 to 1) */
+  /** Line stroke opacity (for line charts) @default 1 */
+  strokeOpacity?: number
+  
+  // === Area Chart Properties ===
+  /** Area fill opacity (for area charts) @default 0.6 */
+  fillOpacity?: number
+  
+  // === Column/Bar Chart Properties ===
+  /** Bar width in pixels (for column charts, overrides global barSize) */
+  barWidth?: number
+  /** Bar fill opacity (for column charts) @default 1 */
+  barOpacity?: number
+  
+  // === Waterfall Chart Properties ===
+  /** Positive value color (for waterfall charts) @default var(--wilderness-4) */
+  positiveColor?: string
+  /** Negative value color (for waterfall charts) @default var(--hot-heat-4) */
+  negativeColor?: string
+  /** Show value labels on bars (for waterfall charts) @default true */
+  showLabels?: boolean
+  /** Label formatter function (for waterfall charts) */
+  labelFormatter?: (value: number) => string
+  
+  // === Legacy/Fallback ===
+  /** 
+   * Generic opacity (legacy, for backward compatibility)
+   * Used as fallback when specific opacity is not set
+   * @deprecated Use strokeOpacity, fillOpacity, or barOpacity instead
+   */
   opacity?: number
 }
 

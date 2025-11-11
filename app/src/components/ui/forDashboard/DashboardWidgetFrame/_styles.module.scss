@@ -15,6 +15,7 @@
   // Hug content by default - use native HTML height calculation
   display: flex;
   flex-direction: column;
+  height: 100%; // Fill parent container height (important for charts)
 
   &:hover {
     border-color: var(--color-border-darken-trans);
@@ -65,10 +66,10 @@
 // Content Area
 // Minimal styling - let child components control their own layout
 .frame-content {
-  // Removed flex: 1 to allow content-based height (hug content)
-  // Content will now naturally size based on children
+  flex: 1; // Fill remaining space in frame-container (important for charts)
   display: flex;
   flex-direction: column;
+  min-height: 0; // Allow flex children to shrink below content size
   // Most styling should come from child components
 }
 

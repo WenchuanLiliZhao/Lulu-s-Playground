@@ -198,8 +198,6 @@ export const SwitchableDataWidget = <T,>({
           >
             <TrendChartCore
               {...chartConfig}
-              data={chartConfig.data}
-              lines={chartConfig.lines}
               marginLeft={12}
               marginRight={32}
             />

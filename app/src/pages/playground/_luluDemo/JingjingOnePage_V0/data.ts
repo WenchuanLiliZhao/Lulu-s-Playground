@@ -1,4 +1,6 @@
 // Today's Plan Table Data
+import type { MultiSeriesChartData } from '../../../../components/ui/forDashboard/TrendChart'
+
 const USD_TO_CNY_RATE = 7.0865;
 const PRODUCT_PRICE_CONVERSION_RATE = 15.5; // More realistic pricing for products
 
@@ -99,8 +101,63 @@ export const mockNavigationData: NavigationData = {
   },
 };
 
+// Dashboard Types
+export interface MetricData {
+  label: string
+  value: string
+  status: 'success' | 'danger' | 'warning' | 'info'
+  statusLabel: string
+  sparklineData: number[]
+}
+
+export interface PerformanceBreakdown {
+  xstore: string
+  omni: string
+}
+
+export interface PerformanceMetric {
+  value: string
+  subtitle: string
+  breakdown: PerformanceBreakdown
+}
+
+export interface TodayTargetPeriod {
+  plan: string
+  actual: string
+  toPlanPercent: string
+}
+
+export interface TodayTargetDetail {
+  total: string
+  currentProgress: string
+  morning: TodayTargetPeriod
+  evening: TodayTargetPeriod
+  sparklineData: {
+    morning: number[]
+    evening: number[]
+  }
+  /** Multi-series chart configuration supporting mixed chart types */
+  chartMultiSeries: MultiSeriesChartData
+}
+
+export interface DashboardData {
+  performanceSnapshot: {
+    yesterday: PerformanceMetric
+    todayTarget: PerformanceMetric
+    wtd: PerformanceMetric
+  }
+  metrics: {
+    txn: MetricData
+    upt: MetricData
+    aur: MetricData
+    transaction: MetricData
+    cr: MetricData
+  }
+  todayTargetDetail: TodayTargetDetail
+}
+
 // Dashboard mock data
-export const mockDashboardData = {
+export const mockDashboardData: DashboardData = {
   performanceSnapshot: {
     yesterday: {
       value: formatToCNY("$24,580"),
@@ -181,30 +238,42 @@ export const mockDashboardData = {
       morning: [8200, 8800, 9500, 10200, 10800, 11100, 11340].map(formatToCNYWithoutSymbol),
       evening: [9800, 10400, 11000, 11600, 12300, 13100, 13860].map(formatToCNYWithoutSymbol),
     },
-    // Today's plan trend data (converted from table data)
-    // Only Net Sales data for trend chart (plan data removed)
-    trendData: mockTargetTableData.map((row) => ({
-      id: row.id,
-      name: row.time,
-      netSalesAchieved: row.netSales.achieve,
-      netSalesGoal: row.netSales.goal,
-    })),
-    // Two lines for Net Sales only (plan-related lines removed)
-    // Net Sales: hot-heat (red) - achieved (solid), goal (dashed)
-    trendChartLines: [
-      {
-        dataKey: "netSalesAchieved",
-        name: "Net Sales (Achieved)",
-        color: "var(--hot-heat-4)",
-      },
-      {
-        dataKey: "netSalesGoal",
-        name: "Net Sales (Goal)",
-        color: "var(--hot-heat-4)",
-        strokeDasharray: "5 5",
-        opacity: 0.4,
-      },
-    ],
+    // Today's plan multi-series chart - supports mixing line, column, and area
+    chartMultiSeries: {
+      // Shared data for all series
+      data: mockTargetTableData.map((row) => ({
+        id: row.id,
+        name: row.time,
+        netSalesAchieved: row.netSales.achieve,
+        netSalesGoal: row.netSales.goal,
+      })),
+      // Multiple series with different display modes
+      series: [
+        {
+          defaultShowAs: 'line' as const,
+          lines: [
+            {
+              dataKey: "netSalesAchieved",
+              name: "Net Sales (Achieved)",
+              color: "var(--hot-heat-4)",
+              opacity: 0.8,
+            },
+          ],
+        },
+        {
+          defaultShowAs: 'line' as const,
+          lines: [
+            {
+              dataKey: "netSalesGoal",
+              name: "Net Sales (Goal)",
+              color: "var(--hot-heat-4)",
+              strokeDasharray: "5 5",
+              opacity: 0.8,
+            },
+          ],
+        },
+      ],
+    },
   },
 };
 
@@ -416,4 +485,44 @@ export const mockWeatherForecastData: WeatherForecastDay[] = [
   { id: 'day9', name: 'Nov 13', dateString: '2025-11-13', value: 5, weather: 'Partly Cloudy', icon: 'partly_cloudy_day', humidity: 65, wind: 12 },
   { id: 'day10', name: 'Nov 14', dateString: '2025-11-14', value: -3, weather: 'Cloudy', icon: 'cloudy', humidity: 75, wind: 15 },
 ];
+
+// New version: Weekly Rhythm with TrendChart (MultiSeriesChartData)
+export const mockWeeklyRhythmChartData: MultiSeriesChartData = {
+  data: mockWeeklyRhythmData,
+  series: [
+    {
+      defaultShowAs: 'waterfall',
+      lines: [
+        {
+          dataKey: 'value',
+          name: 'Weekly Performance %',
+          color: 'var(--wilderness-4)',  // Base color (will be overridden by positiveColor/negativeColor)
+          positiveColor: 'var(--wilderness-4)',
+          negativeColor: 'var(--hot-heat-4)',
+          showLabels: true,
+          labelFormatter: (value: number) => `${value}%`,
+          barWidth: 40,
+        },
+      ],
+    },
+  ],
+};
+
+// New version: Weather Forecast with TrendChart (MultiSeriesChartData)
+export const mockWeatherForecastChartData: MultiSeriesChartData = {
+  data: mockWeatherForecastData,
+  series: [
+    {
+      defaultShowAs: 'column',
+      lines: [
+        {
+          dataKey: 'value',
+          name: 'Temperature (°C)',
+          color: 'var(--daydream-4)',  // Will be overridden by color mapping based on temperature
+          barOpacity: 0.9,
+        },
+      ],
+    },
+  ],
+};
 
