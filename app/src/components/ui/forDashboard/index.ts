@@ -77,3 +77,6 @@ export {
 export { PathwayVisualization3D } from './PathwayVisualization3D'
 export type { PathwayVisualization3DProps, PathNode, PathConnection } from './PathwayVisualization3D'
 
+export { TextWidget } from './TextWidget'
+export type { TextWidgetProps } from './TextWidget'
+

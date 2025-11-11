@@ -3,9 +3,13 @@ import { WeatherWidget } from "../../../../components/ui/WeatherWidget";
 import { Card } from "../../../../components/ui/Card";
 import { MetricWidget } from "../../../../components/ui/forDashboard/MetricWidget";
 import { SwitchableDataWidget } from "../../../../components/ui/forDashboard/SwitchableDataWidget";
+import { TextWidget } from "../../../../components/ui/forDashboard/TextWidget";
 import { Switch } from "../../../../components/ui/Switch";
 import { TrendChart } from "../../../../components/ui/forDashboard/TrendChart";
 import { FloatingActionButton } from "../../../../components/ui/FloatingActionButton";
+import { ChatDialog } from "../../../../components/ui/ChatDialog";
+import { TextInput } from "../../../../components/ui/TextInput";
+import { Button } from "../../../../components/ui/Button";
 import type { TableColumn } from "../../../../components/ui/Table";
 import { IconButton } from "../../../../components/ui/IconButton";
 import {
@@ -32,7 +36,6 @@ import { Popup } from "../../../../components/ui/Popup";
 // MOCK DATA - EXTRACTED TO data.ts
 // ============================================
 
-
 type OpportunityId =
   | "comingUp"
   | "guestBuyingOtherStores"
@@ -52,9 +55,15 @@ const ProductTag = ({ label }: { label: string }) => (
 
 export const JingjingOnePageV0View = () => {
   const [hotSellerMode, setHotSellerMode] = useState(0); // 0: XStore, 1: Omni
-  const [openOpportunity, setOpenOpportunity] = useState<OpportunityId | null>(null);
+  const [openOpportunity, setOpenOpportunity] = useState<OpportunityId | null>(
+    null
+  );
   const [isWeatherPopupOpen, setIsWeatherPopupOpen] = useState(false);
-  const iconButtonRefs = useRef<Partial<Record<OpportunityId, HTMLButtonElement | null>>>({});
+  const [isChatDialogOpen, setIsChatDialogOpen] = useState(false);
+  const [chatMessage, setChatMessage] = useState("");
+  const iconButtonRefs = useRef<
+    Partial<Record<OpportunityId, HTMLButtonElement | null>>
+  >({});
 
   const {
     newDrop: showComingUp,
@@ -87,7 +96,7 @@ export const JingjingOnePageV0View = () => {
   const handleToggleOpportunityInfo = (id: OpportunityId) => {
     setOpenOpportunity((current) => (current === id ? null : id));
   };
-  
+
   // Helper function to get display style
   const getDisplayStyle = (isVisible: boolean) => {
     return isVisible ? {} : { display: "none" };
@@ -96,7 +105,7 @@ export const JingjingOnePageV0View = () => {
   const getRandomPercentage = () => {
     return Math.floor(Math.random() * 21) + 10;
   };
-  
+
   // ============================================
   // RENDER HELPERS
   // ============================================
@@ -105,7 +114,10 @@ export const JingjingOnePageV0View = () => {
   // - Accept props: { storeName, date, dayOfWeek, weather }
   // - Uses WeatherWidget component (already done in Phase 1)
   const renderNavigation = () => (
-    <div className={styles.navigation} style={getDisplayStyle(contentDisplayBooleans.navigation)}>
+    <div
+      className={styles.navigation}
+      style={getDisplayStyle(contentDisplayBooleans.navigation)}
+    >
       <div className={styles.navLeft}>
         <img
           src="/logo/BlackWhite.svg"
@@ -114,7 +126,23 @@ export const JingjingOnePageV0View = () => {
         />
         <span className={styles.storeName}>{mockNavigationData.storeName}</span>
       </div>
-      <div className={styles.navRight} onClick={() => setIsWeatherPopupOpen(true)} style={{ cursor: 'pointer' }}>
+      <div className={styles.navMiddle}>
+        <Switch
+          options={["USD", "CNY"]}
+          initialSelected={0}
+          className={styles.navSwitch}
+        />
+        <Switch
+          options={["EN", "ZH"]}
+          initialSelected={0}
+          className={styles.navSwitch}
+        />
+      </div>
+      <div
+        className={styles.navRight}
+        onClick={() => setIsWeatherPopupOpen(true)}
+        style={{ cursor: "pointer" }}
+      >
         <span className={styles.date}>{mockNavigationData.date}</span>
         <span className={styles.day}>{mockNavigationData.dayOfWeek}</span>
         <WeatherWidget
@@ -133,79 +161,82 @@ export const JingjingOnePageV0View = () => {
         headerTitle="🎯 Performance Snapshot"
         // headerIcon="dashboard"
         headerColor="primary"
-        showAlertLight={true}
         alertLightColor="var(--color-semantic-success)"
       >
-      <div className={styles.performanceSnapshot}>
-        <MetricWidget
-          icon="dashboard"
-          title="Yesterday"
-          value={mockDashboardData.performanceSnapshot.yesterday.value}
-          statusText={mockDashboardData.performanceSnapshot.yesterday.subtitle}
-          statusColor="success"
-          // sparklineData={mockDashboardData.performanceSnapshot.yesterday.sparklineData}
-          breakdown={[
-            {
-              label: "XStore",
-              value:
-                mockDashboardData.performanceSnapshot.yesterday.breakdown
-                  .xstore,
-            },
-            {
-              label: "Omni",
-              value:
-                mockDashboardData.performanceSnapshot.yesterday.breakdown.omni,
-            },
-          ]}
-          // statusColor="var(--color-semantic-success)"
-        />
-        <MetricWidget
-          icon="dashboard"
-          title="Today"
-          value={mockDashboardData.performanceSnapshot.todayTarget.value}
-          statusText={
-            mockDashboardData.performanceSnapshot.todayTarget.subtitle
-          }
-          statusColor="warning"
-          // sparklineData={mockDashboardData.performanceSnapshot.todayTarget.sparklineData}
-          breakdown={[
-            {
-              label: "XStore",
-              value:
-                mockDashboardData.performanceSnapshot.todayTarget.breakdown
-                  .xstore,
-            },
-            {
-              label: "Omni",
-              value:
-                mockDashboardData.performanceSnapshot.todayTarget.breakdown
-                  .omni,
-            },
-          ]}
-          // statusColor="var(--color-semantic-success)"
-        />
-        <MetricWidget
-          icon="calendar_today"
-          title="WTD"
-          value={mockDashboardData.performanceSnapshot.wtd.value}
-          statusText={mockDashboardData.performanceSnapshot.wtd.subtitle}
-          statusColor="success"
-          sparklineData={mockDashboardData.performanceSnapshot.wtd.sparklineData}
-          breakdown={[
-            {
-              label: "XStore",
-              value:
-                mockDashboardData.performanceSnapshot.wtd.breakdown.xstore,
-            },
-            {
-              label: "Omni",
-              value:
-                mockDashboardData.performanceSnapshot.wtd.breakdown.omni,
-            },
-          ]}
-        />
-      </div>
-    </DashboardWidgetFrame>
+        <div className={styles.performanceSnapshot}>
+          <MetricWidget
+            icon="dashboard"
+            title="Yesterday"
+            value={mockDashboardData.performanceSnapshot.yesterday.value}
+            statusText={
+              mockDashboardData.performanceSnapshot.yesterday.subtitle
+            }
+            statusColor="success"
+            // sparklineData={mockDashboardData.performanceSnapshot.yesterday.sparklineData}
+            breakdown={[
+              {
+                label: "XStore",
+                value:
+                  mockDashboardData.performanceSnapshot.yesterday.breakdown
+                    .xstore,
+              },
+              {
+                label: "Omni",
+                value:
+                  mockDashboardData.performanceSnapshot.yesterday.breakdown
+                    .omni,
+              },
+            ]}
+            // statusColor="var(--color-semantic-success)"
+          />
+          <MetricWidget
+            icon="dashboard"
+            title="Today"
+            value={mockDashboardData.performanceSnapshot.todayTarget.value}
+            statusText={
+              mockDashboardData.performanceSnapshot.todayTarget.subtitle
+            }
+            statusColor="warning"
+            // sparklineData={mockDashboardData.performanceSnapshot.todayTarget.sparklineData}
+            breakdown={[
+              {
+                label: "XStore",
+                value:
+                  mockDashboardData.performanceSnapshot.todayTarget.breakdown
+                    .xstore,
+              },
+              {
+                label: "Omni",
+                value:
+                  mockDashboardData.performanceSnapshot.todayTarget.breakdown
+                    .omni,
+              },
+            ]}
+            // statusColor="var(--color-semantic-success)"
+          />
+          <MetricWidget
+            icon="calendar_today"
+            title="WTD"
+            value={mockDashboardData.performanceSnapshot.wtd.value}
+            statusText={mockDashboardData.performanceSnapshot.wtd.subtitle}
+            statusColor="success"
+            sparklineData={
+              mockDashboardData.performanceSnapshot.wtd.sparklineData
+            }
+            breakdown={[
+              {
+                label: "XStore",
+                value:
+                  mockDashboardData.performanceSnapshot.wtd.breakdown.xstore,
+              },
+              {
+                label: "Omni",
+                value: mockDashboardData.performanceSnapshot.wtd.breakdown.omni,
+              },
+            ]}
+          />
+        </div>
+      </DashboardWidgetFrame>
     </div>
   );
 
@@ -224,7 +255,10 @@ export const JingjingOnePageV0View = () => {
     };
 
     return (
-      <div className={styles.metricsRow} style={getDisplayStyle(contentDisplayBooleans.metricsRow)}>
+      <div
+        className={styles.metricsRow}
+        style={getDisplayStyle(contentDisplayBooleans.metricsRow)}
+      >
         <MetricWidget
           icon="receipt_long"
           title={mockDashboardData.metrics.txn.label}
@@ -327,7 +361,10 @@ export const JingjingOnePageV0View = () => {
     ];
 
     return (
-      <div className={styles.todayTargetDetail} style={getDisplayStyle(contentDisplayBooleans.todayTargetDetail)}>
+      <div
+        className={styles.todayTargetDetail}
+        style={getDisplayStyle(contentDisplayBooleans.todayTargetDetail)}
+      >
         {/* Main Target Widget - Switchable between Table and Chart */}
         <div className={styles.targetChartContainer}>
           <SwitchableDataWidget
@@ -367,10 +404,10 @@ export const JingjingOnePageV0View = () => {
             onModeChange={(mode) => {
               console.log(`Today's Plan view switched to: ${mode}`);
             }}
-          toggleOptions={[
-            { label: 'Table', value: 'table', icon: 'table_chart' },
-            { label: 'Chart', value: 'chart', icon: 'monitoring' },
-          ]}
+            toggleOptions={[
+              { label: "Table", value: "table", icon: "table_chart" },
+              { label: "Chart", value: "chart", icon: "monitoring" },
+            ]}
           />
         </div>
       </div>
@@ -380,7 +417,10 @@ export const JingjingOnePageV0View = () => {
   const renderMorningTargetDetail = () => {
     return (
       <>
-        <div className={styles.targetWidgetsContainer} style={getDisplayStyle(contentDisplayBooleans.morningTargetDetail)}>
+        <div
+          className={styles.targetWidgetsContainer}
+          style={getDisplayStyle(contentDisplayBooleans.morningTargetDetail)}
+        >
           <MetricWidget
             icon="wb_twilight"
             title="Morning Plan"
@@ -408,13 +448,13 @@ export const JingjingOnePageV0View = () => {
       {renderMetricsRow()}
       {renderTodayTargetDetail()}
       {renderMorningTargetDetail()}
-      
+
       {/* Weekly Rhythm using TrendChart */}
-      <div 
+      <div
         style={{
           ...getDisplayStyle(contentDisplayBooleans.weeklyRhythm),
-          height: '400px',
-          minHeight: '400px',
+          height: "400px",
+          minHeight: "400px",
         }}
       >
         <TrendChart
@@ -429,8 +469,11 @@ export const JingjingOnePageV0View = () => {
           barSize={40}
         />
       </div>
-      
+
       {/* Weather Forecast using TrendChart - MOVED TO POPUP */}
+
+      {/* Sales Summary Widget at the end of dashboard widgets */}
+      {renderSalesSummaryWidget()}
     </div>
   );
 
@@ -442,10 +485,10 @@ export const JingjingOnePageV0View = () => {
       variant="modal"
       className={styles.weatherPopup}
     >
-      <div 
+      <div
         style={{
-          height: '400px',
-          minHeight: '400px',
+          height: "400px",
+          minHeight: "400px",
         }}
       >
         <TrendChart
@@ -465,21 +508,14 @@ export const JingjingOnePageV0View = () => {
   // TODO: Phase 6 - Extract to TipCard component
   // Removed: renderTipCard function (no longer needed as mockTipsData is empty)
 
-  // Render Sales Summary Block
-  const renderSalesSummaryBlock = () => (
+  // Render Sales Summary Block using TextWidget
+  const renderSalesSummaryWidget = () => (
     <div style={getDisplayStyle(contentDisplayBooleans.salesSummary)}>
-      <Card
-        header={<h3 className={styles.tipCardHeader}>📊 Sales Summary</h3>}
-        body={
-          <div className={styles.salesSummaryBody}>
-            <p className={styles.salesSummaryText}>
-              {mockSalesSummaryData.summary}
-            </p>
-          </div>
-        }
-        variant="default"
-        borderPosition="left"
-        className={styles.tipCard}
+      <TextWidget
+        text={mockSalesSummaryData.summary}
+        showHeader={true}
+        headerTitle="📊 Sales Summary"
+        headerColor="primary"
       />
     </div>
   );
@@ -494,7 +530,9 @@ export const JingjingOnePageV0View = () => {
         <Card
           header={
             <div className={styles.hotSellersHeader}>
-              <h3 className={styles.tipCardHeader}>🔥 Top Seller & Cross-Selling</h3>
+              <h3 className={styles.tipCardHeader}>
+                🔥 Top Seller & Cross-Selling
+              </h3>
               <Switch
                 options={["XStore", "Omni"]}
                 selectedIndex={hotSellerMode}
@@ -527,7 +565,9 @@ export const JingjingOnePageV0View = () => {
                           {product.unitsSold}
                         </span>
                       </span>
-                      <span className={styles.hotSellersMetricSeparator}>•</span>
+                      <span className={styles.hotSellersMetricSeparator}>
+                        •
+                      </span>
                       <span className={styles.hotSellersMetricItem}>
                         <span className={styles.hotSellersMetricLabel}>
                           On Hand:
@@ -540,11 +580,16 @@ export const JingjingOnePageV0View = () => {
                   </div>
                   {product.linkedSales && product.linkedSales.length > 0 && (
                     <div className={styles.linkedSalesContainer}>
-                      <div className={styles.linkedSalesLabel}>Cross Selling</div>
+                      <div className={styles.linkedSalesLabel}>
+                        Cross Selling
+                      </div>
                       <div className={styles.linkedSalesImages}>
                         {product.linkedSales.map((linkedProduct) => (
-                          <div key={linkedProduct.id} className={styles.linkedSalesItem}>
-                            <div 
+                          <div
+                            key={linkedProduct.id}
+                            className={styles.linkedSalesItem}
+                          >
+                            <div
                               className={styles.linkedSalesImageWrapper}
                               title={linkedProduct.name}
                             >
@@ -554,7 +599,9 @@ export const JingjingOnePageV0View = () => {
                                 className={styles.linkedSalesImage}
                               />
                             </div>
-                            <div className={styles.percentageLabel}>{getRandomPercentage()}%</div>
+                            <div className={styles.percentageLabel}>
+                              {getRandomPercentage()}%
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -615,7 +662,6 @@ export const JingjingOnePageV0View = () => {
               {data.products.map((product) => (
                 <div key={product.id} className={styles.productCard}>
                   <div className={styles.productImage}>
-                    
                     <img
                       src={product.image}
                       alt={product.name}
@@ -646,11 +692,9 @@ export const JingjingOnePageV0View = () => {
   const renderTips = () => (
     <div className={styles.tipsSection}>
       <h2 className={styles.tipsSectionTitle}>Tips</h2>
-      {/* 1. Sales Summary */}
-      {renderSalesSummaryBlock()}
-      {/* 2. Hot Sellers */}
+      {/* 1. Hot Sellers */}
       {renderHotSellersBlock()}
-      {/* 3. Product Opportunities */}
+      {/* 2. Product Opportunities */}
       {renderOpportunityBlock(
         "comingUp",
         "🎉 Coming Up",
@@ -684,6 +728,85 @@ export const JingjingOnePageV0View = () => {
   );
 
   // ============================================
+  // CHAT BOT
+  // ============================================
+  const handlePresetQuestion = (question: string) => {
+    setChatMessage(question);
+    // Here you would typically send the message to your AI backend
+    // alert(`Preset question: ${question}`);
+  };
+
+  const handleSendMessage = () => {
+    if (!chatMessage.trim()) return;
+    // Here you would typically send the message to your AI backend
+    alert(`Sending message: ${chatMessage}`);
+    setChatMessage("");
+  };
+
+  const renderChatDialog = () => (
+    <ChatDialog
+      isOpen={isChatDialogOpen}
+      onClose={() => setIsChatDialogOpen(false)}
+      title="AI Assistant"
+      subtitle="How can I help you today?"
+    >
+      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <Button
+            variant="secondary"
+            size="medium"
+            onClick={() => handlePresetQuestion("I want to give feedback")}
+            style={{ width: "100%", justifyContent: "flex-start" }}
+          >
+            💬 I want to give feedback
+          </Button>
+          <Button
+            variant="secondary"
+            size="medium"
+            onClick={() => handlePresetQuestion("I have a question")}
+            style={{ width: "100%", justifyContent: "flex-start" }}
+          >
+            💡 I have a question
+          </Button>
+        </div>
+        <div
+          style={{
+            padding: "12px",
+            backgroundColor: "var(--color-bg-sec)",
+            borderRadius: "8px",
+            fontSize: "13px",
+            color: "var(--color-sec)",
+            lineHeight: "1.5",
+          }}
+        >
+          Or type your message below to get started!
+        </div>
+        <div style={{ display: "flex", gap: "8px" }}>
+          <TextInput
+            placeholder="Type your message..."
+            value={chatMessage}
+            onChange={(e) => setChatMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSendMessage();
+              }
+            }}
+            style={{ flex: 1 }}
+          />
+          <Button
+            variant="primary"
+            size="medium"
+            onClick={handleSendMessage}
+            disabled={!chatMessage.trim()}
+          >
+            Send
+          </Button>
+        </div>
+      </div>
+    </ChatDialog>
+  );
+
+  // ============================================
   // MAIN RENDER
   // ============================================
   return (
@@ -697,10 +820,11 @@ export const JingjingOnePageV0View = () => {
       <div style={getDisplayStyle(contentDisplayBooleans.floatingActionButton)}>
         <FloatingActionButton
           icon="smart_toy"
-          onClick={() => alert("AI assistant clicked!")}
+          onClick={() => setIsChatDialogOpen(!isChatDialogOpen)}
           tooltip="AI Assistant"
         />
       </div>
+      {renderChatDialog()}
     </div>
   );
 };

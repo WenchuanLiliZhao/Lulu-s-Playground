@@ -1,0 +1,22 @@
+@use "../../../../styles/color-use.scss" as *;
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.text-content-centered {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-pri);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+

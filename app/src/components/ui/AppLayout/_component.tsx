@@ -34,6 +34,11 @@ export interface AppLayoutProps {
    * @example "#f0f0f0"
    */
   frameBackground?: string;
+  /**
+   * Optional chat dialog content to render
+   * The dialog will be rendered inside AppLayout
+   */
+  chatDialog?: React.ReactNode;
 }
 
 export const AppLayout: React.FC<AppLayoutProps> = ({
@@ -44,6 +49,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
   enableFrame = false,
   rulerSizes = [24, 24, 24, 24],
   frameBackground = "var(--color-bg-sec)",
+  chatDialog,
 }) => {
   // Viewport scaling feature
   const { state: scalingState, contentRef } = useViewportScaling(viewportMode, enableFrame, rulerSizes);
@@ -152,6 +158,8 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
           />
         </>
       )}
+      
+      {chatDialog}
     </div>
   );
 };

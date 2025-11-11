@@ -73,6 +73,12 @@
   gap: 16px;
 }
 
+.navMiddle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .logo {
   height: 32px;
   width: auto;
@@ -88,6 +94,10 @@
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.navSwitch {
+  min-width: 140px;
 }
 
 .date {

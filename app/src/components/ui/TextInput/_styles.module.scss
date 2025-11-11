@@ -1,0 +1,78 @@
+// TextInput styles
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.input {
+  // Size & Layout
+  width: 100%;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  
+  // Typography
+  font-family: var(--ff-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  
+  // Appearance
+  background-color: var(--color-bg-sec-2);
+  color: var(--color-main);
+  border: 1px solid var(--color-border-main);
+  border-radius: 6px;
+  outline: none;
+  
+  // Interaction
+  -webkit-user-select: text;
+  user-select: text;
+  
+  // Placeholder
+  &::placeholder {
+    color: var(--color-neg-trans);
+  }
+  
+  // States
+  &:hover:not(:disabled) {
+    border-color: var(--color-border-darken-trans);
+  }
+  
+  &:focus {
+    border-color: var(--color-semantic-active);
+  }
+  
+  &.error {
+    border-color: var(--color-semantic-error);
+    
+    &:focus {
+      border-color: var(--color-semantic-error);
+    }
+  }
+  
+  &.disabled,
+  &:disabled {
+    background-color: var(--color-bg-sec);
+    color: var(--color-neg);
+    cursor: not-allowed;
+    
+    &::placeholder {
+      color: var(--color-neg-trans);
+    }
+  }
+}
+
+.error-message {
+  font-size: 12px;
+  color: var(--color-semantic-error);
+  margin-top: 2px;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .input {
+    font-size: 16px; // Prevent zoom on iOS
+  }
+}
+
