@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { type ThemeMode, getResolvedTheme } from '../../../../utils';
 import styles from '../../_styles.module.scss';
 
@@ -19,6 +19,30 @@ export const DebugPanel: React.FC<DebugPanelProps> = ({
   onThemeChange,
   onClose,
 }) => {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Listen for fullscreen changes
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (error) {
+      console.error('Error toggling fullscreen:', error);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -67,6 +91,19 @@ export const DebugPanel: React.FC<DebugPanelProps> = ({
           <div className={styles["theme-info"]}>
             Current: {getResolvedTheme(currentTheme)}
           </div>
+        </div>
+
+        {/* Fullscreen Toggle */}
+        <div className={styles["debug-section"]}>
+          <label className={styles["debug-label"]}>Display</label>
+          <button
+            className={`${styles["fullscreen-button"]} ${
+              isFullscreen ? styles["active"] : ''
+            }`}
+            onClick={toggleFullscreen}
+          >
+            {isFullscreen ? '✖ Exit Fullscreen' : 'Enter Fullscreen'}
+          </button>
         </div>
       </div>
     </div>

@@ -366,7 +366,7 @@ export const mockHotSellersData = {
     { 
       id: 'omni1', 
       productName: 'Everywhere Belt Bag', 
-      image: "https://i.pinimg.com/1200x/18/76/7a/18767aee1d050a6d4724b2adbd841414.jpg", 
+      image: "https://i.pinimg.com/1200x/06/30/88/0630885e2e9a23a779e9db8afca1b54b.jpg", 
       unitsSold: 28, 
       inventory: 51,
       linkedSales: [
