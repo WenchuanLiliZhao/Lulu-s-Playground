@@ -207,7 +207,7 @@ const LodaDashboard: PageProps = {
     <AppLayout
       isTesting={true}
       viewportMode={["scaled-from", 1920, 1080]}
-      enableFrame={true}
+      // enableFrame={true}
       rulerSizes={[64, 64, 64, 64]}
       frameBackground="var(--color-bg-sec)"
     >
