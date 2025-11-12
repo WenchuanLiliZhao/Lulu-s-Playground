@@ -297,7 +297,7 @@ export interface SalesSummaryData {
 export const mockSalesSummaryData: SalesSummaryData = {
   summary: (
     <p>
-      Your store achieved <span style={{ fontWeight: "bold", color: "var(--hot-heat-4)" }}>103%</span> of yesterday's plan with <span style={{ fontWeight: "bold", color: "var(--hot-heat-4)" }}>¥174,225</span> in sales. Today's performance is tracking well with strong conversion rates in the afternoon.
+      Your store achieved <span style={{ fontWeight: "bold", color: "var(--color-semantic-success)" }}>103%</span> of yesterday's plan with <span style={{ fontWeight: "bold", color: "var(--color-semantic-success)" }}>¥174,225</span> in sales. Today's performance is tracking well with strong conversion rates in the afternoon.
     </p>
   )
 };
