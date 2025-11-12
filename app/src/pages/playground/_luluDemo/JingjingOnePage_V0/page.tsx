@@ -8,8 +8,8 @@ const JingjingOnePage_V0: PageProps = {
   content: (
     <AppLayout
       isTesting={true}
-      viewportMode={["scaled-from", 1800, 1225]}
-      enableFrame={true}
+      viewportMode={["scaled-from", 2000, 1225]}
+      // enableFrame={true}
       rulerSizes={[64, 64, 64, 64]}
       frameBackground="var(--color-abssy)"
     >

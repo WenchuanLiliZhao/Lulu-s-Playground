@@ -22,6 +22,7 @@
     "build": "npm run build:lib && npm run build:playground",
     "build:lib": "vite build --config vite.config.lib.ts",
     "build:playground": "tsc -b && vite build",
+    "build:dap": "npm run build && rm -rf ../app-new/app/dist && cp -R dist ../app-new/app/",
     "lint": "eslint .",
     "preview": "vite preview",
     "preview:playground": "npm run build:playground && vite preview",
