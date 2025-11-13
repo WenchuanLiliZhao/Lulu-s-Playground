@@ -1,14 +1,14 @@
 import { useState, useMemo } from 'react'
 import { Calendar, Label, Button, IconButton } from '../../../../../components/ui'
 import {
-  events2025,
+  generatedEvents,
   holidays,
   convertEventsToTimeRanges,
   convertHolidaysToTimeRanges,
   getEventDuration,
-} from '../data/eventData'
+  fiscalYearConfig,
+} from '../data'
 import { useCalendarHighlight, highlightStyles, useEventFilter } from '../../SalesEventCalendar_V1/features'
-import { fiscalYearConfig } from '../data'
 import { COLOR_SCALES } from '../../../../../styles/color-chart'
 import { getCssVar } from '../../../../../styles/color-use'
 import styles from './CalendarView.module.scss'
@@ -28,7 +28,7 @@ export const CalendarView = () => {
     filterState,
     filteredEvents,
     toggleChannel,
-  } = useEventFilter(events2025)
+  } = useEventFilter(generatedEvents)
   
   // Use the calendar highlight feature
   const {
@@ -48,7 +48,7 @@ export const CalendarView = () => {
   )
 
   // Get unique events (avoid duplicates for display)
-  const getUniqueEvents = (eventList: typeof events2025) => {
+  const getUniqueEvents = (eventList: typeof generatedEvents) => {
     const seen = new Set<string>()
     return eventList.filter(event => {
       if (seen.has(event.name)) return false
@@ -140,7 +140,7 @@ export const CalendarView = () => {
                     <th>Link</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className={styles.tbody}>
                   {eventsWithStatus.map((event, index) => (
                     <tr 
                       key={index}

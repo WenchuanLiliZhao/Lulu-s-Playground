@@ -104,21 +104,23 @@ $container-padding-mobile: 16px;                // Container padding on mobile
 }
 
 .tableContainer {
-  overflow-x: auto;
   margin-top: 8px;
 }
 
 .eventsTable {
   width: 100%;
-  border-collapse: collapse;
   
   thead {
-
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    
     tr {
+      display: table-row;
       border-bottom: 1px solid var(--color-border-main);
-      margin-bottom: 12px;
       
       th {
+        display: table-cell;
         padding: 8px 12px;
         text-align: left;
         font-size: 12px;
@@ -141,30 +143,38 @@ $container-padding-mobile: 16px;                // Container padding on mobile
       }
     }
   }
+}
+
+.tbody {
+  display: block;
+  max-height: 560px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
   
-  tbody {
-    tr {
-      // border-bottom: 1px solid var(--color-border-main-trans);
+  tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    
+    &:hover {
+      background-color: var(--color-bg-sec-trans);
+    }
+    
+    td {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 0 12px;
+      
+      &:first-child {
+        padding-left: 0;
+        width: 100px;
+      }
       
       &:last-child {
-        border-bottom: none;
-      }
-      
-      &:hover {
-        background-color: var(--color-bg-sec-trans);
-      }
-      
-      td {
-        // padding: 12px;
-        vertical-align: middle;
-        
-        &:first-child {
-          padding-left: 0;
-        }
-        
-        &:last-child {
-          padding-right: 0;
-        }
+        padding-right: 0;
+        text-align: right;
+        width: 90px;
       }
     }
   }

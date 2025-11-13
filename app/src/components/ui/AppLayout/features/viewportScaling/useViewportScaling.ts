@@ -17,6 +17,9 @@ export const useViewportScaling = (
   });
   const contentRef = useRef<HTMLDivElement>(null);
 
+  // Destructure rulerSizes to avoid array reference issues in dependencies
+  const [topSize, rightSize, bottomSize, leftSize] = rulerSizes;
+
   useEffect(() => {
     if (viewportMode === "default") {
       setScale(1);
@@ -30,11 +33,7 @@ export const useViewportScaling = (
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;
 
-      // Update window size state
-      setWindowSize({ width: windowWidth, height: windowHeight });
-
       // Account for ruler sizes if frame is enabled
-      const [topSize, rightSize, bottomSize, leftSize] = rulerSizes;
       const horizontalPadding = enableFrame ? (leftSize + rightSize) : 0;
       const verticalPadding = enableFrame ? (topSize + bottomSize) : 0;
 
@@ -47,6 +46,14 @@ export const useViewportScaling = (
       const newScale = Math.min(scaleX, scaleY);
 
       setScale(newScale);
+      
+      // Update window size state only when it actually changes
+      setWindowSize(prev => {
+        if (prev.width !== windowWidth || prev.height !== windowHeight) {
+          return { width: windowWidth, height: windowHeight };
+        }
+        return prev;
+      });
     };
 
     // Initial scale calculation
@@ -65,7 +72,7 @@ export const useViewportScaling = (
     return () => {
       window.removeEventListener('resize', updateScale);
     };
-  }, [viewportMode, enableFrame, rulerSizes]);
+  }, [viewportMode, enableFrame, topSize, rightSize, bottomSize, leftSize]);
 
   const isScaled = viewportMode !== "default";
 
