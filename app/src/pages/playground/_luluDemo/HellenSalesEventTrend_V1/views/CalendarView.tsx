@@ -7,6 +7,8 @@ import {
   convertHolidaysToTimeRanges,
   getEventDuration,
   fiscalYearConfig,
+  getFiscalYearStartDate,
+  getFiscalYearEndDate,
 } from '../data'
 import { useCalendarHighlight, highlightStyles, useEventFilter } from '../../SalesEventCalendar_V1/features'
 import { COLOR_SCALES } from '../../../../../styles/color-chart'
@@ -19,8 +21,10 @@ type EventStatus = 'In progress' | 'Past' | 'Incoming'
 const retailColor = COLOR_SCALES.teal.colors[4]
 const ecColor = COLOR_SCALES.indigo.colors[5]
 
+const initialYear = 2025
+
 export const CalendarView = () => {
-  const [currentYear] = useState(2025)
+  const [activeYear, setActiveYear] = useState(initialYear)
   const [useFiscalYear, setUseFiscalYear] = useState(false)
   
   // Use the event filter feature
@@ -36,15 +40,35 @@ export const CalendarView = () => {
     handleEventHover,
     handleHolidayHover,
     handleMouseLeave,
-  } = useCalendarHighlight(currentYear)
+  } = useCalendarHighlight(activeYear)
 
   // Convert events and holidays to time ranges for calendar
+  const activeYearRange = useMemo<[Date, Date]>(() => {
+    if (useFiscalYear) {
+      const start = getFiscalYearStartDate(activeYear, fiscalYearConfig)
+      const end = getFiscalYearEndDate(activeYear, fiscalYearConfig)
+      return [start, end]
+    }
+    return [new Date(activeYear, 0, 1), new Date(activeYear, 11, 31)]
+  }, [activeYear, useFiscalYear])
+
+  const eventsForActiveYear = useMemo(
+    () =>
+      filteredEvents.filter((event) => {
+        const [start, end] = event.interval
+        const rangeStart = activeYearRange[0].getTime()
+        const rangeEnd = activeYearRange[1].getTime()
+        return end.getTime() >= rangeStart && start.getTime() <= rangeEnd
+      }),
+    [filteredEvents, activeYearRange]
+  )
+
   const timeRanges = useMemo(
     () => [
-      ...convertEventsToTimeRanges(filteredEvents),
+      ...convertEventsToTimeRanges(eventsForActiveYear),
       ...convertHolidaysToTimeRanges(holidays),
     ],
-    [filteredEvents]
+    [eventsForActiveYear]
   )
 
   // Get unique events (avoid duplicates for display)
@@ -83,7 +107,7 @@ export const CalendarView = () => {
       return 'Past'
     }
 
-    const uniqueEvents = getUniqueEvents(filteredEvents)
+    const uniqueEvents = getUniqueEvents(eventsForActiveYear)
     return uniqueEvents.map(event => ({
       name: event.name,
       backgroundColor: event.backgroundColor,
@@ -94,7 +118,7 @@ export const CalendarView = () => {
       interval: event.interval,
       link: event.link,
     }))
-  }, [filteredEvents])
+  }, [eventsForActiveYear])
 
   return (
     <div className={styles.container}>
@@ -208,7 +232,8 @@ export const CalendarView = () => {
 
         <div className={styles.calendarWrapper} ref={calendarWrapperRef}>
           <Calendar
-            initialYear={currentYear}
+            initialYear={initialYear}
+            onYearChange={setActiveYear}
             timeRanges={timeRanges}
             headerMode={["switch", 1, 2]}
             fiscalYearConfig={fiscalYearConfig}

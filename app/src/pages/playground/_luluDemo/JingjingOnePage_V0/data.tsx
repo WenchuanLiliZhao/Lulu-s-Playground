@@ -310,6 +310,7 @@ export interface LinkedProduct {
   id: string;
   image: string;
   name: string;
+  percentage: number;
 }
 
 export interface HotSellerProduct {
@@ -336,8 +337,8 @@ export const mockHotSellersData = {
       unitsSold: 45, 
       inventory: 58,
       linkedSales: [
-        { id: 'link1', image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", name: "Swiftly Tech SS 2.0" },
-        { id: 'link2', image: "https://i.pinimg.com/736x/cc/76/f6/cc76f6b967a8ba0fa9c6d19b82849357.jpg", name: "Running Shoe" }
+        { id: 'link1', image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", name: "Swiftly Tech SS 2.0", percentage: 23 },
+        { id: 'link2', image: "https://i.pinimg.com/736x/cc/76/f6/cc76f6b967a8ba0fa9c6d19b82849357.jpg", name: "Running Shoe", percentage: 18 }
       ]
     },
     { 
@@ -347,8 +348,8 @@ export const mockHotSellersData = {
       unitsSold: 28, 
       inventory: 35,
       linkedSales: [
-        { id: 'link3', image: "https://i.pinimg.com/1200x/dd/18/4b/dd184bfd9d8bf57a68024d67d8d7b72b.jpg", name: "Align Pant 25\"" },
-        { id: 'link4', image: "https://i.pinimg.com/1200x/18/76/7a/18767aee1d050a6d4724b2adbd841414.jpg", name: "Belt Bag" }
+        { id: 'link3', image: "https://i.pinimg.com/1200x/dd/18/4b/dd184bfd9d8bf57a68024d67d8d7b72b.jpg", name: "Align Pant 25\"", percentage: 27 },
+        { id: 'link4', image: "https://i.pinimg.com/1200x/18/76/7a/18767aee1d050a6d4724b2adbd841414.jpg", name: "Belt Bag", percentage: 15 }
       ]
     },
     { 
@@ -358,7 +359,7 @@ export const mockHotSellersData = {
       unitsSold: 35, 
       inventory: 52,
       linkedSales: [
-        { id: 'link5', image: "https://i.pinimg.com/736x/89/aa/5b/89aa5b59eca424ca4c471b154c9e62f3.jpg", name: "Wunder Train" }
+        { id: 'link5', image: "https://i.pinimg.com/736x/89/aa/5b/89aa5b59eca424ca4c471b154c9e62f3.jpg", name: "Wunder Train", percentage: 21 }
       ]
     },
   ],
@@ -370,8 +371,8 @@ export const mockHotSellersData = {
       unitsSold: 28, 
       inventory: 51,
       linkedSales: [
-        { id: 'olink1', image: "https://i.pinimg.com/1200x/5d/31/ec/5d31ec1add2b2e902ea79c491d47ff4f.jpg", name: "Scuba Hoodie" },
-        { id: 'olink2', image: "https://i.pinimg.com/1200x/a7/12/7c/a7127cdb4a49ab6f7182b0a003cca76c.jpg", name: "All Yours Tee" }
+        { id: 'olink1', image: "https://i.pinimg.com/1200x/5d/31/ec/5d31ec1add2b2e902ea79c491d47ff4f.jpg", name: "Scuba Hoodie", percentage: 19 },
+        { id: 'olink2', image: "https://i.pinimg.com/1200x/a7/12/7c/a7127cdb4a49ab6f7182b0a003cca76c.jpg", name: "All Yours Tee", percentage: 16 }
       ]
     },
     { 
@@ -381,7 +382,7 @@ export const mockHotSellersData = {
       unitsSold: 62, 
       inventory: 18,
       linkedSales: [
-        { id: 'olink3', image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", name: "Swiftly Tech SS" }
+        { id: 'olink3', image: "https://i.pinimg.com/1200x/19/41/5b/19415b02885d39a111c7b99c338aa10f.jpg", name: "Swiftly Tech SS", percentage: 25 }
       ]
     },
     { 
@@ -391,8 +392,8 @@ export const mockHotSellersData = {
       unitsSold: 55, 
       inventory: 30,
       linkedSales: [
-        { id: 'olink4', image: "https://i.pinimg.com/736x/e7/ac/98/e7ac98956174907395fbf25efd14c66a.jpg", name: "Align Pant 28\"" },
-        { id: 'olink5', image: "https://i.pinimg.com/736x/cc/76/f6/cc76f6b967a8ba0fa9c6d19b82849357.jpg", name: "Running Shoe" }
+        { id: 'olink4', image: "https://i.pinimg.com/736x/e7/ac/98/e7ac98956174907395fbf25efd14c66a.jpg", name: "Align Pant 28\"", percentage: 22 },
+        { id: 'olink5', image: "https://i.pinimg.com/736x/cc/76/f6/cc76f6b967a8ba0fa9c6d19b82849357.jpg", name: "Running Shoe", percentage: 14 }
       ]
     },
   ]

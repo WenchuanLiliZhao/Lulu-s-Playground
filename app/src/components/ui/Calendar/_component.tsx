@@ -50,6 +50,10 @@ export interface CalendarProps {
    */
   initialYear?: number
   /**
+   * Callback when active year changes
+   */
+  onYearChange?: (year: number) => void
+  /**
    * Optional className
    */
   className?: string
@@ -349,6 +353,7 @@ const MonthCalendar = ({
 
 export const Calendar = ({
   initialYear = new Date().getFullYear(),
+  onYearChange,
   className = '',
   breakpoint = 600,
   timeRanges = [],
@@ -413,6 +418,12 @@ export const Calendar = ({
       resizeObserver.disconnect()
     }
   }, [breakpoint])
+
+  useEffect(() => {
+    if (onYearChange) {
+      onYearChange(year)
+    }
+  }, [year, onYearChange])
 
   return (
     <div

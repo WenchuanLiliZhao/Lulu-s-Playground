@@ -95,10 +95,6 @@ export const JingjingOnePageV0View = () => {
     return isVisible ? {} : { display: "none" };
   };
 
-  const getRandomPercentage = () => {
-    return Math.floor(Math.random() * 21) + 10;
-  };
-
   // ============================================
   // RENDER HELPERS
   // ============================================
@@ -594,7 +590,7 @@ export const JingjingOnePageV0View = () => {
                               />
                             </div>
                             <div className={styles.percentageLabel}>
-                              {getRandomPercentage()}%
+                              {linkedProduct.percentage}%
                             </div>
                           </div>
                         ))}
