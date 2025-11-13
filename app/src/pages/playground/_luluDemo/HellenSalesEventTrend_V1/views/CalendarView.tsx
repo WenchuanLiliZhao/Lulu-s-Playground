@@ -165,41 +165,49 @@ export const CalendarView = () => {
                   </tr>
                 </thead>
                 <tbody className={styles.tbody}>
-                  {eventsWithStatus.map((event, index) => (
-                    <tr 
-                      key={index}
-                      onMouseEnter={() => handleEventHover(event.interval)}
-                      onMouseLeave={handleMouseLeave}
-                      className={highlightStyles.eventRow}
-                    >
-                      <td>
-                        <span className={`${styles.statusBadge} ${styles[`status${event.status.replace(' ', '')}`]}`}>
-                          {event.status}
-                        </span>
-                      </td>
-                      <td>
-                        <Label
-                          backgroundColor={event.backgroundColor}
-                          color={event.color}
-                          backgroundOpacity={event.backgroundOpacity}
-                        >
-                          {event.name}
-                        </Label>
-                      </td>
-                      <td className={styles.moneyCell}>
-                        {event.duration}
-                      </td>
-                      <td className={styles.linkCell}>
-                        <a href={event.link} target="_blank" rel="noopener noreferrer">
-                          <IconButton
-                            icon="link"
-                            size="small"
-                            variant="default"
-                          />
-                        </a>
+                  {eventsWithStatus.length === 0 ? (
+                    <tr className={styles.emptyStateRow}>
+                      <td colSpan={4} className={styles.emptyStateCell}>
+                        No events for the selected year, yet...
                       </td>
                     </tr>
-                  ))}
+                  ) : (
+                    eventsWithStatus.map((event, index) => (
+                      <tr 
+                        key={index}
+                        onMouseEnter={() => handleEventHover(event.interval)}
+                        onMouseLeave={handleMouseLeave}
+                        className={highlightStyles.eventRow}
+                      >
+                        <td>
+                          <span className={`${styles.statusBadge} ${styles[`status${event.status.replace(' ', '')}`]}`}>
+                            {event.status}
+                          </span>
+                        </td>
+                        <td>
+                          <Label
+                            backgroundColor={event.backgroundColor}
+                            color={event.color}
+                            backgroundOpacity={event.backgroundOpacity}
+                          >
+                            {event.name}
+                          </Label>
+                        </td>
+                        <td className={styles.moneyCell}>
+                          {event.duration}
+                        </td>
+                        <td className={styles.linkCell}>
+                          <a href={event.link} target="_blank" rel="noopener noreferrer">
+                            <IconButton
+                              icon="link"
+                              size="small"
+                              variant="default"
+                            />
+                          </a>
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>
