@@ -7,6 +7,26 @@ const ecColor = COLOR_SCALES.indigo.colors[5]
 const holidayColor = COLOR_SCALES.hotHeat.colors[4]
 const holidayBackgroundOpacity = 0.16
 
+export interface HolidayData {
+  name: string
+  date: Date
+  color: string
+  backgroundColor: string
+  backgroundOpacity: number
+}
+
+const createHoliday = (
+  name: string,
+  year: number,
+  month: number,
+  day: number
+): HolidayData => ({
+  name,
+  date: new Date(year, month, day),
+  color: getCssVar('colorMain'),
+  backgroundColor: holidayColor,
+  backgroundOpacity: holidayBackgroundOpacity,
+})
 
 export interface EventData {
   name: string
@@ -83,22 +103,42 @@ export const ecEvents: EventData[] = [
 export const events2025: EventData[] = [...retailEvents, ...ecEvents]
 
 // Holiday Data - Red (Sequoia)
-export interface HolidayData {
-  name: string
-  date: Date
-  color: string
-  backgroundColor: string
-  backgroundOpacity: number
-}
-
 export const holidays: HolidayData[] = [
-  { name: "New Year's Day", date: new Date(2025, 0, 1), color: getCssVar("colorMain"), backgroundColor: holidayColor, backgroundOpacity: holidayBackgroundOpacity },
-  { name: "Chinese New Year", date: new Date(2025, 0, 29), color: getCssVar("colorMain"), backgroundColor: holidayColor, backgroundOpacity: holidayBackgroundOpacity },
-  { name: "Tomb-Sweeping Day", date: new Date(2025, 3, 4), color: getCssVar("colorMain"), backgroundColor: holidayColor, backgroundOpacity: holidayBackgroundOpacity },
-  { name: "International Workers' Day", date: new Date(2025, 4, 1), color: getCssVar("colorMain"), backgroundColor: holidayColor, backgroundOpacity: holidayBackgroundOpacity },
-  { name: "Dragon Boat Festival", date: new Date(2025, 5, 31), color: getCssVar("colorMain"), backgroundColor: holidayColor, backgroundOpacity: holidayBackgroundOpacity },
-  { name: "National Day", date: new Date(2025, 9, 1), color: getCssVar("colorMain"), backgroundColor: holidayColor, backgroundOpacity: holidayBackgroundOpacity },
-  { name: "Mid-Autumn Festival", date: new Date(2025, 9, 6), color: getCssVar("colorMain"), backgroundColor: holidayColor, backgroundOpacity: holidayBackgroundOpacity },
+  // 2024 Holidays
+  createHoliday("New Year's Day", 2024, 0, 1),
+  createHoliday('Chinese New Year', 2024, 1, 10),
+  createHoliday('Tomb-Sweeping Day', 2024, 3, 4),
+  createHoliday("International Workers' Day", 2024, 4, 1),
+  createHoliday('Dragon Boat Festival', 2024, 5, 10),
+  createHoliday('Mid-Autumn Festival', 2024, 8, 17),
+  createHoliday('National Day', 2024, 9, 1),
+
+  // 2025 Holidays
+  createHoliday("New Year's Day", 2025, 0, 1),
+  createHoliday('Chinese New Year', 2025, 0, 29),
+  createHoliday('Tomb-Sweeping Day', 2025, 3, 4),
+  createHoliday("International Workers' Day", 2025, 4, 1),
+  createHoliday('Dragon Boat Festival', 2025, 4, 31),
+  createHoliday('National Day', 2025, 9, 1),
+  createHoliday('Mid-Autumn Festival', 2025, 9, 6),
+
+  // 2026 Holidays
+  createHoliday("New Year's Day", 2026, 0, 1),
+  createHoliday('Chinese New Year', 2026, 1, 17),
+  createHoliday('Tomb-Sweeping Day', 2026, 3, 5),
+  createHoliday("International Workers' Day", 2026, 4, 1),
+  createHoliday('Dragon Boat Festival', 2026, 5, 19),
+  createHoliday('Mid-Autumn Festival', 2026, 8, 25),
+  createHoliday('National Day', 2026, 9, 1),
+
+  // 2027 Holidays
+  createHoliday("New Year's Day", 2027, 0, 1),
+  createHoliday('Chinese New Year', 2027, 1, 6),
+  createHoliday('Tomb-Sweeping Day', 2027, 3, 5),
+  createHoliday("International Workers' Day", 2027, 4, 1),
+  createHoliday('Dragon Boat Festival', 2027, 5, 9),
+  createHoliday('Mid-Autumn Festival', 2027, 8, 15),
+  createHoliday('National Day', 2027, 9, 1),
 ]
 
 export const convertEventsToTimeRanges = (events: EventData[]): TimeRange[] => {

@@ -63,12 +63,23 @@ export const CalendarView = () => {
     [filteredEvents, activeYearRange]
   )
 
+  const holidaysForActiveYear = useMemo(
+    () =>
+      holidays.filter((holiday) => {
+        const holidayTime = holiday.date.getTime()
+        const rangeStart = activeYearRange[0].getTime()
+        const rangeEnd = activeYearRange[1].getTime()
+        return holidayTime >= rangeStart && holidayTime <= rangeEnd
+      }),
+    [activeYearRange]
+  )
+
   const timeRanges = useMemo(
     () => [
       ...convertEventsToTimeRanges(eventsForActiveYear),
-      ...convertHolidaysToTimeRanges(holidays),
+      ...convertHolidaysToTimeRanges(holidaysForActiveYear),
     ],
-    [eventsForActiveYear]
+    [eventsForActiveYear, holidaysForActiveYear]
   )
 
   // Get unique events (avoid duplicates for display)
@@ -215,26 +226,32 @@ export const CalendarView = () => {
 
           <div className={styles.listSection}>
             <div className={styles.listHeader}>
-              <h3 className={styles.listTitle}>Holidays ({holidays.length})</h3>
+              <h3 className={styles.listTitle}>Holidays ({holidaysForActiveYear.length})</h3>
             </div>
-            <div className={styles.eventLabels}>
-              {holidays.map((holiday, index) => (
-                <div
-                  key={index}
-                  onMouseEnter={() => handleHolidayHover(holiday.date)}
-                  onMouseLeave={handleMouseLeave}
-                  className={highlightStyles.holidayLabelWrapper}
-                >
-                  <Label
-                    backgroundColor={holiday.backgroundColor}
-                    color={holiday.color}
-                    backgroundOpacity={holiday.backgroundOpacity}
+            {holidaysForActiveYear.length === 0 ? (
+              <div className={styles.emptyStateMessage}>
+                No holidays for the selected year.
+              </div>
+            ) : (
+              <div className={styles.eventLabels}>
+                {holidaysForActiveYear.map((holiday, index) => (
+                  <div
+                    key={index}
+                    onMouseEnter={() => handleHolidayHover(holiday.date)}
+                    onMouseLeave={handleMouseLeave}
+                    className={highlightStyles.holidayLabelWrapper}
                   >
-                    {holiday.name}
-                  </Label>
-                </div>
-              ))}
-            </div>
+                    <Label
+                      backgroundColor={holiday.backgroundColor}
+                      color={holiday.color}
+                      backgroundOpacity={holiday.backgroundOpacity}
+                    >
+                      {holiday.name}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
