@@ -1,1 +1,3 @@
+/jirareportres/assets/*    /assets/:splat    200
+/jirareportres/logo/*    /logo/:splat    200
 /*    /index.html   200

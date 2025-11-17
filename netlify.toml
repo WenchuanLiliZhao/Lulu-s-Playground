@@ -8,7 +8,18 @@
   # Publish directory (relative to base)
   publish = "playground-dist"
 
-# Redirect all routes to index.html for SPA routing
+# Rewrite asset paths to actual file locations
+[[redirects]]
+  from = "/jirareportres/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/jirareportres/logo/*"
+  to = "/logo/:splat"
+  status = 200
+
+# Redirect all other routes to index.html for SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
