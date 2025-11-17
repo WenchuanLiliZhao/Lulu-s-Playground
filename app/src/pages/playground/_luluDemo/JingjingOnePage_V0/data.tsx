@@ -544,3 +544,183 @@ export const mockWeatherForecastChartData: MultiSeriesChartData = {
   ],
 };
 
+// Product Focus Module - Store-selected products to track
+export interface ProductFocusVariant {
+  styleOption: string;
+  colors: Array<{
+    colorName: string;
+    colorHex?: string;
+    sizes: Array<{
+      size: string;
+      onHand: number;
+      soldToday: number;
+      soldWeek: number;
+    }>;
+  }>;
+}
+
+export interface ProductFocusItem {
+  id: string;
+  productName: string;
+  class: string; // Product classification
+  bestSellingColor: {
+    name: string;
+    image: string;
+    hex?: string;
+  };
+  todayUnits: number;
+  onHand: number;
+  sellThroughPercent: number; // ST% = (Units Sold / Initial Stock) × 100
+  weekUnits: number; // Units sold this week
+  // For drill-down details
+  variants: ProductFocusVariant[];
+}
+
+export interface ProductFocusData {
+  introduction: string;
+  availableProducts: Array<{
+    id: string;
+    name: string;
+    class: string;
+  }>;
+  selectedProducts: ProductFocusItem[];
+}
+
+export const mockProductFocusData: ProductFocusData = {
+  introduction: "Select and track products that are important for your store. Monitor their performance and inventory levels in real-time.",
+  availableProducts: [
+    { id: 'pf-available-1', name: 'Align High-Rise Pant 25"', class: 'Bottom' },
+    { id: 'pf-available-2', name: 'Define Jacket', class: 'Top' },
+    { id: 'pf-available-3', name: 'Scuba Oversized Hoodie', class: 'Top' },
+    { id: 'pf-available-4', name: 'Everywhere Belt Bag', class: 'Accessories' },
+    { id: 'pf-available-5', name: 'Wunder Train 25"', class: 'Bottom' },
+    { id: 'pf-available-6', name: 'Swiftly Tech SS 2.0', class: 'Top' },
+    { id: 'pf-available-7', name: 'Fast and Free 23"', class: 'Bottom' },
+    { id: 'pf-available-8', name: 'All Yours Tee', class: 'Top' },
+  ],
+  selectedProducts: [
+    {
+      id: 'pf-1',
+      productName: 'Align High-Rise Pant 25"',
+      class: 'Bottom',
+      bestSellingColor: {
+        name: 'Black',
+        image: 'https://i.pinimg.com/1200x/dd/18/4b/dd184bfd9d8bf57a68024d67d8d7b72b.jpg',
+        hex: '#1a1a1a',
+      },
+      todayUnits: 12,
+      onHand: 45,
+      sellThroughPercent: 73,
+      weekUnits: 68,
+      variants: [
+        {
+          styleOption: 'Regular',
+          colors: [
+            {
+              colorName: 'Black',
+              colorHex: '#1a1a1a',
+              sizes: [
+                { size: '0', onHand: 2, soldToday: 0, soldWeek: 3 },
+                { size: '2', onHand: 5, soldToday: 2, soldWeek: 8 },
+                { size: '4', onHand: 8, soldToday: 3, soldWeek: 12 },
+                { size: '6', onHand: 10, soldToday: 4, soldWeek: 15 },
+                { size: '8', onHand: 12, soldToday: 2, soldWeek: 18 },
+                { size: '10', onHand: 8, soldToday: 1, soldWeek: 12 },
+              ],
+            },
+            {
+              colorName: 'Navy',
+              colorHex: '#1e3a5f',
+              sizes: [
+                { size: '2', onHand: 3, soldToday: 1, soldWeek: 5 },
+                { size: '4', onHand: 4, soldToday: 1, soldWeek: 6 },
+                { size: '6', onHand: 6, soldToday: 2, soldWeek: 8 },
+                { size: '8', onHand: 5, soldToday: 1, soldWeek: 7 },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'pf-2',
+      productName: 'Define Jacket',
+      class: 'Top',
+      bestSellingColor: {
+        name: 'Black',
+        image: 'https://i.pinimg.com/736x/dd/f6/20/ddf62093da84fdb8b1c482a3d4f0d240.jpg',
+        hex: '#1a1a1a',
+      },
+      todayUnits: 8,
+      onHand: 28,
+      sellThroughPercent: 65,
+      weekUnits: 42,
+      variants: [
+        {
+          styleOption: 'Hooded',
+          colors: [
+            {
+              colorName: 'Black',
+              colorHex: '#1a1a1a',
+              sizes: [
+                { size: 'XS', onHand: 3, soldToday: 1, soldWeek: 6 },
+                { size: 'S', onHand: 6, soldToday: 2, soldWeek: 10 },
+                { size: 'M', onHand: 8, soldToday: 3, soldWeek: 14 },
+                { size: 'L', onHand: 7, soldToday: 2, soldWeek: 8 },
+                { size: 'XL', onHand: 4, soldToday: 0, soldWeek: 4 },
+              ],
+            },
+            {
+              colorName: 'Heathered Grey',
+              colorHex: '#9e9e9e',
+              sizes: [
+                { size: 'S', onHand: 2, soldToday: 0, soldWeek: 3 },
+                { size: 'M', onHand: 4, soldToday: 1, soldWeek: 5 },
+                { size: 'L', onHand: 3, soldToday: 0, soldWeek: 4 },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'pf-3',
+      productName: 'Scuba Oversized Hoodie',
+      class: 'Top',
+      bestSellingColor: {
+        name: 'Heathered Grey',
+        image: 'https://i.pinimg.com/1200x/5d/31/ec/5d31ec1add2b2e902ea79c491d47ff4f.jpg',
+        hex: '#9e9e9e',
+      },
+      todayUnits: 6,
+      onHand: 32,
+      sellThroughPercent: 58,
+      weekUnits: 35,
+      variants: [
+        {
+          styleOption: 'Full Zip',
+          colors: [
+            {
+              colorName: 'Heathered Grey',
+              colorHex: '#9e9e9e',
+              sizes: [
+                { size: 'XS/S', onHand: 8, soldToday: 2, soldWeek: 12 },
+                { size: 'M/L', onHand: 12, soldToday: 3, soldWeek: 15 },
+                { size: 'XL/XXL', onHand: 12, soldToday: 1, soldWeek: 8 },
+              ],
+            },
+            {
+              colorName: 'Pink',
+              colorHex: '#ffb6c1',
+              sizes: [
+                { size: 'XS/S', onHand: 4, soldToday: 0, soldWeek: 5 },
+                { size: 'M/L', onHand: 6, soldToday: 2, soldWeek: 8 },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+

@@ -13,6 +13,7 @@ export const contentDisplayBooleans = {
   // Tips Section
   salesSummary: true,
   hotSellers: true,
+  productFocus: true,
   guestBuyingOtherStores: true,
   guestTryingOn: true,
   wecomRecommendations: true,

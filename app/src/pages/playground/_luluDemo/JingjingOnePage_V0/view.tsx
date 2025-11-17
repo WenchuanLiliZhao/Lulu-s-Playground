@@ -26,6 +26,8 @@ import {
   mockNewDropData,
   mockWeeklyRhythmChartData,
   mockWeatherForecastChartData,
+  mockProductFocusData,
+  type ProductFocusItem,
 } from "./data";
 import type { ProductCard } from "./data";
 import styles from "./styles.module.scss";
@@ -63,6 +65,11 @@ export const JingjingOnePageV0View = () => {
   const [hourlyFeedback, setHourlyFeedback] = useState<
     Record<string, "good" | "bad" | null>
   >({});
+
+  // Product Focus state
+  const [isProductSelectorOpen, setIsProductSelectorOpen] = useState(false);
+  const [selectedProductForDetail, setSelectedProductForDetail] = useState<ProductFocusItem | null>(null);
+  const [addProductsButtonEl, setAddProductsButtonEl] = useState<HTMLButtonElement | null>(null);
 
   const {
     newDrop: showComingUp,
@@ -656,6 +663,225 @@ export const JingjingOnePageV0View = () => {
     );
   };
 
+  // Render Product Focus Block
+  const renderProductFocusBlock = () => {
+    return (
+      <div style={getDisplayStyle(contentDisplayBooleans.productFocus)}>
+        <Card
+          header={
+            <div className={styles.productFocusHeader}>
+              <div className={styles.productFocusHeaderLeft}>
+                <h3 className={styles.tipCardHeader}>🎯 Product Focus</h3>
+                {/* <IconButton
+                  icon="help"
+                  aria-label="Show product focus information"
+                  variant="ghost"
+                  size="small"
+                  onClick={() => {
+                    alert(mockProductFocusData.introduction);
+                  }}
+                /> */}
+              </div>
+              <Button
+                variant="secondary"
+                size="small"
+                onClick={(e) => {
+                  setAddProductsButtonEl(e.currentTarget);
+                  setIsProductSelectorOpen(!isProductSelectorOpen);
+                }}
+              >
+                <Icon icon="add" />
+                Add Products
+              </Button>
+              <Popup
+                isOpen={isProductSelectorOpen}
+                anchorEl={addProductsButtonEl ?? undefined}
+                onClose={() => setIsProductSelectorOpen(false)}
+                placement="bottom-end"
+                className={styles.productSelectorPopup}
+              >
+                <div className={styles.productSelectorContent}>
+                  <h4 className={styles.productSelectorTitle}>Available Products</h4>
+                  <div className={styles.productSelectorList}>
+                    {mockProductFocusData.availableProducts.map((product) => (
+                      <div key={product.id} className={styles.productSelectorItem}>
+                        <span className={styles.productSelectorItemName}>{product.name}</span>
+                        <span className={styles.productSelectorItemClass}>{product.class}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className={styles.productSelectorNote}>
+                    * Product selection feature coming soon
+                  </p>
+                </div>
+              </Popup>
+            </div>
+          }
+          body={
+            <div className={styles.productFocusList}>
+              {mockProductFocusData.selectedProducts.map((product) => (
+                <div
+                  key={product.id}
+                  className={styles.productFocusItem}
+                  onClick={() => setSelectedProductForDetail(product)}
+                >
+                  <div className={styles.productFocusImage}>
+                    <img
+                      src={product.bestSellingColor.image}
+                      alt={product.productName}
+                      className={styles.productFocusImageImg}
+                    />
+                    <div className={styles.productFocusColorBadge}>
+                      <div
+                        className={styles.productFocusColorCircle}
+                        style={{ backgroundColor: product.bestSellingColor.hex || '#ccc' }}
+                      />
+                      <span className={styles.productFocusColorName}>
+                        {product.bestSellingColor.name}
+                      </span>
+                    </div>
+                  </div>
+                  <div className={styles.productFocusInfo}>
+                    <div className={styles.productFocusClass}>{product.class}</div>
+                    <div className={styles.productFocusName}>{product.productName}</div>
+                    <div className={styles.productFocusMetrics}>
+                      <div className={styles.productFocusMetricRow}>
+                        <span className={styles.productFocusMetricLabel}>Today Units:</span>
+                        <span className={styles.productFocusMetricValue}>{product.todayUnits}</span>
+                      </div>
+                      <div className={styles.productFocusMetricRow}>
+                        <span className={styles.productFocusMetricLabel}>On Hand:</span>
+                        <span className={styles.productFocusMetricValue}>{product.onHand}</span>
+                      </div>
+                      <div className={styles.productFocusMetricRow}>
+                        <span className={styles.productFocusMetricLabel}>ST%:</span>
+                        <span
+                          className={styles.productFocusMetricValue}
+                          style={{
+                            color:
+                              product.sellThroughPercent >= 70
+                                ? 'var(--color-semantic-success)'
+                                : product.sellThroughPercent >= 50
+                                ? 'var(--color-semantic-warning)'
+                                : 'var(--color-semantic-error)',
+                            fontWeight: 'bold',
+                          }}
+                        >
+                          {product.sellThroughPercent}%
+                        </span>
+                      </div>
+                    </div>
+                    <div className={styles.productFocusClickHint}>
+                      <Icon icon="chevron_right" />
+                      <span>Click for details</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          }
+          variant="info"
+          borderPosition="left"
+          className={styles.tipCard}
+        />
+      </div>
+    );
+  };
+
+  // Render Product Focus Detail Popup
+  const renderProductFocusDetailPopup = () => {
+    if (!selectedProductForDetail) return null;
+
+    return (
+      <Popup
+        isOpen={!!selectedProductForDetail}
+        onClose={() => setSelectedProductForDetail(null)}
+        variant="modal"
+        className={styles.productFocusDetailPopup}
+      >
+        <div className={styles.productFocusDetailContent}>
+          <div className={styles.productFocusDetailHeader}>
+            <div>
+              <h3 className={styles.productFocusDetailTitle}>
+                {selectedProductForDetail.productName}
+              </h3>
+              <p className={styles.productFocusDetailSubtitle}>
+                {selectedProductForDetail.class} • Week Total: {selectedProductForDetail.weekUnits} units
+              </p>
+            </div>
+            <IconButton
+              icon="close"
+              aria-label="Close detail view"
+              variant="ghost"
+              size="small"
+              onClick={() => setSelectedProductForDetail(null)}
+            />
+          </div>
+
+          <div className={styles.productFocusDetailBody}>
+            {selectedProductForDetail.variants.map((variant, vIndex) => (
+              <div key={vIndex} className={styles.productFocusVariant}>
+                <h4 className={styles.productFocusVariantTitle}>
+                  {variant.styleOption}
+                </h4>
+                {variant.colors.map((color, cIndex) => (
+                  <div key={cIndex} className={styles.productFocusColor}>
+                    <div className={styles.productFocusColorHeader}>
+                      <div className={styles.productFocusColorInfo}>
+                        <div
+                          className={styles.productFocusColorCircleLarge}
+                          style={{ backgroundColor: color.colorHex || '#ccc' }}
+                        />
+                        <span className={styles.productFocusColorNameLarge}>
+                          {color.colorName}
+                        </span>
+                      </div>
+                    </div>
+                    <div className={styles.productFocusSizeTable}>
+                      <div className={styles.productFocusSizeTableHeader}>
+                        <div className={styles.productFocusSizeTableCell}>Size</div>
+                        <div className={styles.productFocusSizeTableCell}>On Hand</div>
+                        <div className={styles.productFocusSizeTableCell}>Today</div>
+                        <div className={styles.productFocusSizeTableCell}>Week</div>
+                      </div>
+                      {color.sizes.map((size, sIndex) => (
+                        <div key={sIndex} className={styles.productFocusSizeTableRow}>
+                          <div className={styles.productFocusSizeTableCell}>
+                            {size.size}
+                          </div>
+                          <div className={styles.productFocusSizeTableCell}>
+                            <span
+                              style={{
+                                color:
+                                  size.onHand <= 3
+                                    ? 'var(--color-semantic-error)'
+                                    : size.onHand <= 5
+                                    ? 'var(--color-semantic-warning)'
+                                    : 'var(--color-main)',
+                              }}
+                            >
+                              {size.onHand}
+                            </span>
+                          </div>
+                          <div className={styles.productFocusSizeTableCell}>
+                            {size.soldToday}
+                          </div>
+                          <div className={styles.productFocusSizeTableCell}>
+                            {size.soldWeek}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </Popup>
+    );
+  };
+
   // Generic block renderer for product opportunities
   const renderOpportunityBlock = (
     id: OpportunityId,
@@ -735,7 +961,9 @@ export const JingjingOnePageV0View = () => {
       <h2 className={styles.tipsSectionTitle}>Tips</h2>
       {/* 1. Hot Sellers */}
       {renderHotSellersBlock()}
-      {/* 2. Product Opportunities */}
+      {/* 2. Product Focus */}
+      {renderProductFocusBlock()}
+      {/* 3. Product Opportunities */}
       {renderOpportunityBlock(
         "comingUp",
         "🎉 Coming Up Products",
@@ -858,6 +1086,7 @@ export const JingjingOnePageV0View = () => {
         {renderTips()}
       </div>
       {renderWeatherForecastPopup()}
+      {renderProductFocusDetailPopup()}
       <div style={getDisplayStyle(contentDisplayBooleans.floatingActionButton)}>
         <FloatingActionButton
           icon="smart_toy"

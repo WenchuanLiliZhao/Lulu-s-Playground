@@ -763,3 +763,390 @@
   }
 }
 
+// ============================================
+// PRODUCT FOCUS MODULE STYLES
+// ============================================
+
+.productFocusHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+
+.productFocusHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.productFocusList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.productFocusItem {
+  display: flex;
+  gap: 16px;
+  padding: 12px;
+  border: 1px solid var(--color-border-main);
+  border-radius: 8px;
+  background-color: var(--color-bg-main);
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-bg-sec);
+    border-color: var(--color-border-hover, var(--indigo-4));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+  }
+}
+
+.productFocusImage {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--color-bg-sec);
+}
+
+.productFocusImageImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productFocusColorBadge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.productFocusColorCircle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.productFocusColorName {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-main);
+}
+
+.productFocusInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.productFocusClass {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-sec);
+  letter-spacing: 0.5px;
+}
+
+.productFocusName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-main);
+  line-height: 1.3;
+}
+
+.productFocusMetrics {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.productFocusMetricRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.productFocusMetricLabel {
+  color: var(--color-sec);
+  font-weight: 500;
+}
+
+.productFocusMetricValue {
+  color: var(--color-main);
+  font-weight: 600;
+}
+
+.productFocusClickHint {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--indigo-5);
+  font-weight: 500;
+  margin-top: 4px;
+
+  span {
+    font-size: 11px;
+  }
+}
+
+// Product Selector Popup
+.productSelectorPopup {
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.productSelectorContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.productSelectorTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-main);
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border-main);
+}
+
+.productSelectorList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.productSelectorItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border-main);
+  border-radius: 6px;
+  background-color: var(--color-bg-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-bg-sec);
+    border-color: var(--indigo-4);
+  }
+}
+
+.productSelectorItemName {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-main);
+}
+
+.productSelectorItemClass {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-sec);
+  text-transform: uppercase;
+  padding: 2px 8px;
+  background-color: var(--color-bg-sec);
+  border-radius: 4px;
+}
+
+.productSelectorNote {
+  font-size: 11px;
+  color: var(--color-sec);
+  font-style: italic;
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border-main);
+}
+
+// Product Focus Detail Popup (Drill-down)
+.productFocusDetailPopup {
+  max-width: 800px;
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.productFocusDetailContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.productFocusDetailHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--color-border-main);
+}
+
+.productFocusDetailTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-main);
+  margin: 0;
+}
+
+.productFocusDetailSubtitle {
+  font-size: 14px;
+  color: var(--color-sec);
+  margin: 4px 0 0 0;
+}
+
+.productFocusDetailBody {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.productFocusVariant {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.productFocusVariantTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-main);
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border-main);
+}
+
+.productFocusColor {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background-color: var(--color-bg-sec);
+  border-radius: 8px;
+}
+
+.productFocusColorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productFocusColorInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.productFocusColorCircleLarge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.productFocusColorNameLarge {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-main);
+}
+
+// Size Table Styles
+.productFocusSizeTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border-main);
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--color-bg-main);
+}
+
+.productFocusSizeTableHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background-color: var(--indigo-5);
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.productFocusSizeTableRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-top: 1px solid var(--color-border-main);
+
+  &:hover {
+    background-color: var(--color-bg-sec);
+  }
+}
+
+.productFocusSizeTableCell {
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-main);
+
+  &:not(:last-child) {
+    border-right: 1px solid var(--color-border-main);
+  }
+}
+
+// Responsive adjustments for Product Focus
+@media (max-width: 768px) {
+  .productFocusItem {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .productFocusImage {
+    width: 100%;
+    height: 200px;
+  }
+
+  .productFocusInfo {
+    width: 100%;
+  }
+
+  .productFocusMetricRow {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .productFocusDetailPopup {
+    width: 95vw;
+    max-height: 95vh;
+  }
+
+  .productFocusSizeTableHeader,
+  .productFocusSizeTableRow {
+    grid-template-columns: 80px 1fr 1fr 1fr;
+  }
+
+  .productFocusSizeTableCell {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+}
+
