@@ -130,7 +130,7 @@ export const JingjingOnePageV0View = () => {
     >
       <div className={styles.navLeft}>
         <img
-          src="/logo/BlackWhite.svg"
+          src="./logo/BlackWhite.svg"
           alt="Lululemon"
           className={styles.logo}
         />
