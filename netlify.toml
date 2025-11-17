@@ -1,6 +1,6 @@
 [build]
   # Source code base directory
-  base = "app-net"
+  base = "app"
   
   # Build command for Netlify (excludes jirareport paths)
   command = "npm run build:net"
