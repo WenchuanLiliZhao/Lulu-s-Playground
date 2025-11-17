@@ -19,6 +19,23 @@
   to = "/logo/:splat"
   status = 200
 
+# Redirect root path to basePath for React Router
+[[redirects]]
+  from = "/"
+  to = "/jirareport"
+  status = 301
+
+# Redirect basePath and all routes under basePath to index.html for SPA routing
+[[redirects]]
+  from = "/jirareport"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/jirareport/*"
+  to = "/index.html"
+  status = 200
+
 # Redirect all other routes to index.html for SPA routing
 [[redirects]]
   from = "/*"
