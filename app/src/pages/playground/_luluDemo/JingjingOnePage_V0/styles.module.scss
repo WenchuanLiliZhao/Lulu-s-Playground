@@ -697,3 +697,69 @@
   }
 }
 
+// ============================================
+// FEEDBACK BUTTONS
+// ============================================
+
+.feedbackButtons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedbackButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+  background: var(--color-bg-main);
+  color: var(--color-sec);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  // Material icon styling
+  .icon {
+    font-size: 18px;
+  }
+
+  &:hover {
+    background: var(--color-bg-sec);
+    border-color: var(--color-border-hover);
+    color: var(--color-main);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  // Active state when selected
+  &.active {
+    &:nth-child(1) {
+      // Good feedback (thumb up)
+      background: var(--color-semantic-success);
+      border-color: var(--color-semantic-success);
+      color: white;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    &:nth-child(2) {
+      // Bad feedback (thumb down)
+      background: var(--color-semantic-error);
+      border-color: var(--color-semantic-error);
+      color: white;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}
+

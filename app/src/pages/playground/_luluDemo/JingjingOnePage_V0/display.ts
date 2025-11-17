@@ -6,7 +6,7 @@ export const contentDisplayBooleans = {
   performanceSnapshot: true,
   metricsRow: true,
   todayTargetDetail: true,
-  morningTargetDetail: true,
+  morningTargetDetail: false,
   weeklyRhythm: false,
   weatherForecast: false,
   

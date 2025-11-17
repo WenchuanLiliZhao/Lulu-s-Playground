@@ -12,6 +12,7 @@ import { TextInput } from "../../../../components/ui/TextInput";
 import { Button } from "../../../../components/ui/Button";
 import type { TableColumn } from "../../../../components/ui/Table";
 import { IconButton } from "../../../../components/ui/IconButton";
+import { Icon } from "../../../../components/ui/Icon";
 import {
   mockTargetTableData,
   type TargetTableRow,
@@ -57,6 +58,11 @@ export const JingjingOnePageV0View = () => {
   const iconButtonRefs = useRef<
     Partial<Record<OpportunityId, HTMLButtonElement | null>>
   >({});
+  
+  // State for hourly feedback: { [rowId]: 'good' | 'bad' | null }
+  const [hourlyFeedback, setHourlyFeedback] = useState<
+    Record<string, "good" | "bad" | null>
+  >({});
 
   const {
     newDrop: showComingUp,
@@ -88,6 +94,14 @@ export const JingjingOnePageV0View = () => {
 
   const handleToggleOpportunityInfo = (id: OpportunityId) => {
     setOpenOpportunity((current) => (current === id ? null : id));
+  };
+  
+  // Handle hourly feedback
+  const handleFeedback = (rowId: string, feedbackType: "good" | "bad") => {
+    setHourlyFeedback((prev) => ({
+      ...prev,
+      [rowId]: prev[rowId] === feedbackType ? null : feedbackType,
+    }));
   };
 
   // Helper function to get display style
@@ -347,6 +361,39 @@ export const JingjingOnePageV0View = () => {
         },
         width: "100px",
         align: "left",
+      },
+      {
+        key: "feedback",
+        header: "Feedback",
+        render: (row) => {
+          const currentFeedback = hourlyFeedback[row.id];
+          return (
+            <div className={styles.feedbackButtons}>
+              <button
+                className={`${styles.feedbackButton} ${
+                  currentFeedback === "good" ? styles.active : ""
+                }`}
+                onClick={() => handleFeedback(row.id, "good")}
+                aria-label="Good performance"
+                title="Good performance"
+              >
+                <Icon icon="thumb_up" />
+              </button>
+              <button
+                className={`${styles.feedbackButton} ${
+                  currentFeedback === "bad" ? styles.active : ""
+                }`}
+                onClick={() => handleFeedback(row.id, "bad")}
+                aria-label="Poor performance"
+                title="Poor performance"
+              >
+                <Icon icon="thumb_down" />
+              </button>
+            </div>
+          );
+        },
+        width: "100px",
+        align: "center",
       },
     ];
 
