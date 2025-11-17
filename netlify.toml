@@ -2,41 +2,13 @@
   # Source code base directory
   base = "app"
   
-  # Build command
-  command = "npm run build"
+  # Build command for Netlify (excludes jirareport paths)
+  command = "npm run build:net"
   
   # Publish directory (relative to base)
-  publish = "playground-dist"
+  publish = "dist-net"
 
-# Rewrite asset paths to actual file locations
-[[redirects]]
-  from = "/jirareportres/assets/*"
-  to = "/assets/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/jirareportres/logo/*"
-  to = "/logo/:splat"
-  status = 200
-
-# Redirect root path to basePath for React Router
-[[redirects]]
-  from = "/"
-  to = "/jirareport"
-  status = 301
-
-# Redirect basePath and all routes under basePath to index.html for SPA routing
-[[redirects]]
-  from = "/jirareport"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/jirareport/*"
-  to = "/index.html"
-  status = 200
-
-# Redirect all other routes to index.html for SPA routing
+# Redirect all routes to index.html for SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
