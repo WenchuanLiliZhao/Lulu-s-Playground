@@ -39,6 +39,7 @@ export interface TargetTableRow {
     achieve: number;
     goal: number;
   };
+  netSalesLastWeek: number;
   status: "success" | "warning" | "error";
 }
 
@@ -48,6 +49,7 @@ export const mockTargetTableData: TargetTableRow[] = [
     time: "10:00 ~ 12:00",
     netSales: { achieve: formatToCNYWithoutSymbol(2800), goal: formatToCNYWithoutSymbol(4200) },
     plan: { achieve: formatToCNYWithoutSymbol(3200), goal: formatToCNYWithoutSymbol(3400) },
+    netSalesLastWeek: formatToCNYWithoutSymbol(2200),
     status: "warning",
   },
   {
@@ -55,6 +57,7 @@ export const mockTargetTableData: TargetTableRow[] = [
     time: "12:00 ~ 14:00",
     netSales: { achieve: formatToCNYWithoutSymbol(5200), goal: formatToCNYWithoutSymbol(6800) },
     plan: { achieve: formatToCNYWithoutSymbol(4800), goal: formatToCNYWithoutSymbol(4500) },
+    netSalesLastWeek: formatToCNYWithoutSymbol(4100),
     status: "success",
   },
   {
@@ -62,6 +65,7 @@ export const mockTargetTableData: TargetTableRow[] = [
     time: "14:00 ~ 16:00",
     netSales: { achieve: formatToCNYWithoutSymbol(3500), goal: formatToCNYWithoutSymbol(4200) },
     plan: { achieve: formatToCNYWithoutSymbol(4200), goal: formatToCNYWithoutSymbol(4000) },
+    netSalesLastWeek: formatToCNYWithoutSymbol(2800),
     status: "error",
   },
   {
@@ -69,6 +73,7 @@ export const mockTargetTableData: TargetTableRow[] = [
     time: "16:00 ~ 18:00",
     netSales: { achieve: formatToCNYWithoutSymbol(6100), goal: formatToCNYWithoutSymbol(6000) },
     plan: { achieve: formatToCNYWithoutSymbol(6000), goal: formatToCNYWithoutSymbol(5800) },
+    netSalesLastWeek: formatToCNYWithoutSymbol(4800),
     status: "success",
   },
   {
@@ -76,6 +81,7 @@ export const mockTargetTableData: TargetTableRow[] = [
     time: "18:00 ~ 20:00",
     netSales: { achieve: formatToCNYWithoutSymbol(4800), goal: formatToCNYWithoutSymbol(5300) },
     plan: { achieve: formatToCNYWithoutSymbol(5300), goal: formatToCNYWithoutSymbol(5500) },
+    netSalesLastWeek: formatToCNYWithoutSymbol(3800),
     status: "warning",
   },
 ];
@@ -258,6 +264,7 @@ export const mockDashboardData: DashboardData = {
         name: row.time,
         netSalesAchieved: row.netSales.achieve,
         netSalesGoal: row.netSales.goal,
+        netSalesLastWeek: row.netSalesLastWeek,
       })),
       // Multiple series with different display modes
       series: [
@@ -266,7 +273,7 @@ export const mockDashboardData: DashboardData = {
           lines: [
             {
               dataKey: "netSalesAchieved",
-              name: "Net Sales (Achieved)",
+              name: "Net Sales",
               color: "var(--hot-heat-4)",
               opacity: 0.7,
             },
@@ -277,10 +284,22 @@ export const mockDashboardData: DashboardData = {
           lines: [
             {
               dataKey: "netSalesGoal",
-              name: "Net Sales (Goal)",
+              name: "Net Sales Plan",
               color: "var(--purple-4)",
               strokeDasharray: "5 5",
               opacity: 0.7,
+            },
+          ],
+        },
+        {
+          defaultShowAs: 'line' as const,
+          lines: [
+            {
+              dataKey: "netSalesLastWeek",
+              name: "Net Sales Last Week",
+              color: "var(--daydream-4)",
+              strokeDasharray: "3 3",
+              opacity: 0.6,
             },
           ],
         },

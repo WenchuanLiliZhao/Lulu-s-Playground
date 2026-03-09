@@ -69,7 +69,8 @@ export const JingjingOnePageV0View = () => {
   // Product Focus state
   const [isProductSelectorOpen, setIsProductSelectorOpen] = useState(false);
   const [selectedProductForDetail, setSelectedProductForDetail] = useState<ProductFocusItem | null>(null);
-  const [addProductsButtonEl, setAddProductsButtonEl] = useState<HTMLButtonElement | null>(null);
+  const [favoriteProducts, setFavoriteProducts] = useState<Set<string>>(new Set());
+  const [productSearchQuery, setProductSearchQuery] = useState("");
 
   const {
     newDrop: showComingUp,
@@ -109,6 +110,19 @@ export const JingjingOnePageV0View = () => {
       ...prev,
       [rowId]: prev[rowId] === feedbackType ? null : feedbackType,
     }));
+  };
+
+  // Handle favorite toggle
+  const handleToggleFavorite = (productId: string) => {
+    setFavoriteProducts((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(productId)) {
+        newSet.delete(productId);
+      } else {
+        newSet.add(productId);
+      }
+      return newSet;
+    });
   };
 
   // Helper function to get display style
@@ -685,36 +699,13 @@ export const JingjingOnePageV0View = () => {
               <Button
                 variant="secondary"
                 size="small"
-                onClick={(e) => {
-                  setAddProductsButtonEl(e.currentTarget);
-                  setIsProductSelectorOpen(!isProductSelectorOpen);
+                onClick={() => {
+                  setIsProductSelectorOpen(true);
                 }}
               >
                 <Icon icon="add" />
                 Add Products
               </Button>
-              <Popup
-                isOpen={isProductSelectorOpen}
-                anchorEl={addProductsButtonEl ?? undefined}
-                onClose={() => setIsProductSelectorOpen(false)}
-                placement="bottom-end"
-                className={styles.productSelectorPopup}
-              >
-                <div className={styles.productSelectorContent}>
-                  <h4 className={styles.productSelectorTitle}>Available Products</h4>
-                  <div className={styles.productSelectorList}>
-                    {mockProductFocusData.availableProducts.map((product) => (
-                      <div key={product.id} className={styles.productSelectorItem}>
-                        <span className={styles.productSelectorItemName}>{product.name}</span>
-                        <span className={styles.productSelectorItemClass}>{product.class}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <p className={styles.productSelectorNote}>
-                    * Product selection feature coming soon
-                  </p>
-                </div>
-              </Popup>
             </div>
           }
           body={
@@ -876,6 +867,171 @@ export const JingjingOnePageV0View = () => {
                 ))}
               </div>
             ))}
+          </div>
+        </div>
+      </Popup>
+    );
+  };
+
+  // Render Product Selector Modal with Favorites
+  const renderProductSelectorModal = () => {
+    // Filter products based on search query
+    const filteredProducts = mockProductFocusData.selectedProducts.filter((product) => {
+      if (!productSearchQuery.trim()) return true;
+      const query = productSearchQuery.toLowerCase();
+      return (
+        product.productName.toLowerCase().includes(query) ||
+        product.class.toLowerCase().includes(query) ||
+        product.bestSellingColor.name.toLowerCase().includes(query)
+      );
+    });
+
+    const favoriteProductsList = mockProductFocusData.selectedProducts.filter(
+      (product) => favoriteProducts.has(product.id)
+    );
+
+    return (
+      <Popup
+        isOpen={isProductSelectorOpen}
+        onClose={() => {
+          setIsProductSelectorOpen(false);
+          setProductSearchQuery(""); // Clear search when closing
+        }}
+        variant="modal"
+        className={styles.productSelectorModal}
+      >
+        <div className={styles.productSelectorModalContent}>
+          <div className={styles.productSelectorModalHeader}>
+            <h3 className={styles.productSelectorModalTitle}>Product Selection</h3>
+            <IconButton
+              icon="close"
+              aria-label="Close product selector"
+              variant="ghost"
+              size="small"
+              onClick={() => {
+                setIsProductSelectorOpen(false);
+                setProductSearchQuery(""); // Clear search when closing
+              }}
+            />
+          </div>
+          <div className={styles.productSelectorModalBody}>
+            {/* Left Side: Products Grid (2/3 width) */}
+            <div className={styles.productSelectorMainContent}>
+              <div className={styles.productSelectorHeaderSection}>
+                <h4 className={styles.productSelectorSectionTitle}>All Products</h4>
+                <div className={styles.productSelectorSearchContainer}>
+                  <TextInput
+                    placeholder="Search products by name, class, or color..."
+                    value={productSearchQuery}
+                    onChange={(e) => setProductSearchQuery(e.target.value)}
+                    className={styles.productSelectorSearchInput}
+                  />
+                  {productSearchQuery && (
+                    <IconButton
+                      icon="close"
+                      aria-label="Clear search"
+                      variant="ghost"
+                      size="small"
+                      className={styles.productSelectorSearchClear}
+                      onClick={() => setProductSearchQuery("")}
+                    />
+                  )}
+                </div>
+              </div>
+              {filteredProducts.length === 0 ? (
+                <div className={styles.productSelectorNoResults}>
+                  <Icon icon="search_off" />
+                  <p>No products found</p>
+                  <p className={styles.productSelectorNoResultsHint}>
+                    Try adjusting your search query
+                  </p>
+                </div>
+              ) : (
+                <div className={styles.productSelectorGrid}>
+                {filteredProducts.map((product) => (
+                  <div key={product.id} className={styles.productSelectorCard}>
+                    <div className={styles.productSelectorCardImage}>
+                      <img
+                        src={product.bestSellingColor.image}
+                        alt={product.productName}
+                        className={styles.productSelectorCardImageImg}
+                      />
+                      <div className={styles.productSelectorCardColorBadge}>
+                        <div
+                          className={styles.productSelectorCardColorCircle}
+                          style={{ backgroundColor: product.bestSellingColor.hex || '#ccc' }}
+                        />
+                        <span className={styles.productSelectorCardColorName}>
+                          {product.bestSellingColor.name}
+                        </span>
+                      </div>
+                    </div>
+                    <div className={styles.productSelectorCardInfo}>
+                      <div className={styles.productSelectorCardClass}>{product.class}</div>
+                      <div className={styles.productSelectorCardName}>{product.productName}</div>
+                      <div className={styles.productSelectorCardMetrics}>
+                        <div className={styles.productSelectorCardMetricRow}>
+                          <span className={styles.productSelectorCardMetricLabel}>Today:</span>
+                          <span className={styles.productSelectorCardMetricValue}>{product.todayUnits}</span>
+                        </div>
+                        <div className={styles.productSelectorCardMetricRow}>
+                          <span className={styles.productSelectorCardMetricLabel}>On Hand:</span>
+                          <span className={styles.productSelectorCardMetricValue}>{product.onHand}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <IconButton
+                      icon="favorite"
+                      aria-label={favoriteProducts.has(product.id) ? "Remove from favorites" : "Add to favorites"}
+                      variant={favoriteProducts.has(product.id) ? "primary" : "ghost"}
+                      size="small"
+                      className={styles.productSelectorCardFavoriteButton}
+                      onClick={() => handleToggleFavorite(product.id)}
+                    />
+                  </div>
+                ))}
+                </div>
+              )}
+            </div>
+            {/* Right Side: Favorites Sidebar (1/3 width) */}
+            <div className={styles.productSelectorSidebar}>
+              <h4 className={styles.productSelectorSectionTitle}>Favorites</h4>
+              {favoriteProductsList.length === 0 ? (
+                <div className={styles.productSelectorEmptyState}>
+                  <Icon icon="favorite_border" />
+                  <p>No favorites yet</p>
+                  <p className={styles.productSelectorEmptyStateHint}>
+                    Click the heart icon on products to add them here
+                  </p>
+                </div>
+              ) : (
+                <div className={styles.productSelectorFavoritesList}>
+                  {favoriteProductsList.map((product) => (
+                    <div key={product.id} className={styles.productSelectorFavoriteCard}>
+                      <div className={styles.productSelectorFavoriteCardImage}>
+                        <img
+                          src={product.bestSellingColor.image}
+                          alt={product.productName}
+                          className={styles.productSelectorFavoriteCardImageImg}
+                        />
+                      </div>
+                      <div className={styles.productSelectorFavoriteCardInfo}>
+                        <div className={styles.productSelectorFavoriteCardName}>{product.productName}</div>
+                        <div className={styles.productSelectorFavoriteCardClass}>{product.class}</div>
+                      </div>
+                      <IconButton
+                        icon="favorite"
+                        aria-label="Remove from favorites"
+                        variant="primary"
+                        size="small"
+                        className={styles.productSelectorFavoriteCardButton}
+                        onClick={() => handleToggleFavorite(product.id)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </Popup>
@@ -1087,6 +1243,7 @@ export const JingjingOnePageV0View = () => {
       </div>
       {renderWeatherForecastPopup()}
       {renderProductFocusDetailPopup()}
+      {renderProductSelectorModal()}
       <div style={getDisplayStyle(contentDisplayBooleans.floatingActionButton)}>
         <FloatingActionButton
           icon="smart_toy"
